@@ -1,0 +1,108 @@
+h1, h2, h3, h4, h5, h6 {
+	color: black;
+	}
+
+#side-carousel img {
+	margin: 0 auto;
+	}
+
+.footer-blurb {
+    padding: 30px 0;
+    margin-top: 20px;
+    background-color: #eee;
+    color: black;
+}
+    
+.footer-blurb-item {
+    padding: 20px;
+    }
+ 
+.small-print {
+	background-color: #fff;
+	padding: 30px 0;
+}
+
+.feature,
+.page-intro,
+.article-intro,
+.small-print {
+	text-align: center;
+	}
+
+.slick-prev {
+  left: 50px;
+   z-index: 1;
+}
+.slick-next {
+  right: 50px;
+}
+
+.slick_slider img{
+	
+	object-fit: contain;
+	height: 100%;
+	width: 100%;	
+}
+
+.demo{
+
+}
+ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.lSSlideOuter .lSPager.lSGallery img:hover{
+
+opacity: 0.5;
+
+}
+
+.lSSlideOuter .lSPager.lSGallery img{
+
+border-radius: 5px !important;
+
+}
+
+.navbar-brand {
+
+font-family: 'ninja_narutoregular', Arial, sans-serif;
+font-weight:normal;
+font-style:normal;
+font-size: 25px;
+
+}
+
+@font-face {
+    font-family: 'ninja_narutoregular';
+    src: url('../njnaruto-webfont.woff2') format('woff2'),
+         url('../njnaruto-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
