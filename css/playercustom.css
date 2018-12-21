@@ -1,0 +1,42 @@
+.heightwrapper {
+	
+
+	
+}
+
+#player-screen {
+
+box-shadow: 0 0 20px #000;
+  
+}
+
+div#player-middle {
+
+background-color: #192029 !important;
+
+padding-top: 10px !important;
+padding-bottom: 10px !important;
+
+}
+
+body {
+	
+background-color: rgb(20, 25, 32) !important;
+
+}
+
+@-moz-document url-prefix() {
+div#player-bottom div#volume-container img {
+    margin-top: 0px !important;
+}
+}
+
+
+
+#control-container {
+
+height: 80px !important;
+padding-top: 0px !important;
+padding-bottom: 0px !important;
+  
+}
