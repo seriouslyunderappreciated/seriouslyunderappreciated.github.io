@@ -4,7 +4,10 @@ box-shadow: 0 0 20px #000;
   
 }
 
-@media only screen and (max-width: 600px) { #player-screen {box-shadow: none;} }
+@media only screen and (max-width: 600px) {
+#player-screen {box-shadow: none;}
+.wrapper {display:flex !important;}
+ }
 
 
 div#player-middle {
