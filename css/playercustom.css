@@ -16,9 +16,13 @@ padding-bottom: 10px !important;
 
 }
 
+
 body {
 	
 background-color: rgb(20, 25, 32) !important;
+background: url("../images/Background.png") no-repeat; 
+background-size : cover;
+ 	min-height: 100vh;
 
 }
 
