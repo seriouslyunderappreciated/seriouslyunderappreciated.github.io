@@ -4,6 +4,9 @@ box-shadow: 0 0 20px #000;
   
 }
 
+@media only screen and (max-width: 600px) { #player-screen {box-shadow: none;} }
+
+
 div#player-middle {
 
 background-color: #192029 !important;
@@ -29,7 +32,7 @@ div#player-bottom div#volume-container img {
 
 #control-container {
 
-height: 80px !important;
+height: 90px !important;
 padding-top: 0px !important;
 padding-bottom: 0px !important;
   
@@ -52,4 +55,9 @@ html, body {
     display: table-cell;
     height: 100%;
     vertical-align: middle;
+}
+
+div#player-top img[amplitude-main-song-info=true] {
+    width: 100%;
+    height: 300px !important;
 }
