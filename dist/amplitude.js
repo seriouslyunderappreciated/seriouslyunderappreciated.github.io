@@ -6214,7 +6214,7 @@ var Amplitude = function () {
 	function getSongsStatePlaylist(playlist) {
 		var songsArray = [];
 
-		if (_config2.default.shuffled_status[playlist]) {
+		if (_config2.default.shuffled_statuses[playlist]) {
 
 			for (var i = 0; i < _config2.default.shuffled_playlists[playlist].length; i++) {
 				songsArray.push(_config2.default.songs[i]);
