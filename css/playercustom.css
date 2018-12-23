@@ -35,8 +35,21 @@ padding-bottom: 0px !important;
   
 }
 
-@media only screen and (max-width: 600px) {
   div.player-header { 
    margin-top: 0px !important;
   }
+
+
+html, body {
+    height: 100%;
+}
+.main {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+.wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
 }
