@@ -34,3 +34,9 @@ padding-top: 0px !important;
 padding-bottom: 0px !important;
   
 }
+
+@media only screen and (max-width: 600px) {
+  div.player-header { 
+   margin-top: 0px !important;
+  }
+}
