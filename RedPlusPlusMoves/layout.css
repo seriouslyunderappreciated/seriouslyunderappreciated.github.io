@@ -3,8 +3,7 @@
 body {
 	margin: 0;
 	color: #ffffff;
-	background: #001042;
-	background: radial-gradient(circle farthest-side at top center, #001042 0%, #000320 15%);
+	background: radial-gradient(circle farthest-side at top center, #001042 0%, #000320 5%);
 	font-family: Verdana;
 	font-size: 11px;
 
