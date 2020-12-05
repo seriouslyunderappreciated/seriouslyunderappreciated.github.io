@@ -14,13 +14,6 @@ body {
 .fooevo:hover {
 	background: #5A68A6;
 }
-
-.fooevo {
-	padding: 3px;
-	cursor: pointer;
-	min-width: 90px;
-}
-
 article,
 aside,
 footer,

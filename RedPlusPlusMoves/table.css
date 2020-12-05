@@ -1,4 +1,5 @@
-.tablesorter-default .header,
+@media only screen and (min-width: 600px) {
+	.tablesorter-default .header,
 .tablesorter-default .tablesorter-header {
 	background-image: url("../RedPlusPlusMoves/sort.gif");
 	background-position: center right;
@@ -17,4 +18,10 @@
 .tablesorter-default thead .tablesorter-headerSortDown {
 	background-image: url("../RedPlusPlusMoves/sortdown.gif");
 }
-
+	
+.fooevo {
+	padding: 3px;
+	cursor: pointer;
+	min-width: 90px;
+}
+}
