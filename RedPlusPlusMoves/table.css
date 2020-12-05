@@ -1,0 +1,20 @@
+.tablesorter-default .header,
+.tablesorter-default .tablesorter-header {
+	background-image: url("../RedPlusPlusMoves/sort.gif");
+	background-position: center right;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.tablesorter-default thead .headerSortUp,
+.tablesorter-default thead .tablesorter-headerAsc,
+.tablesorter-default thead .tablesorter-headerSortUp {
+	background-image: url("../RedPlusPlusMoves/sortup.gif");
+}
+
+.tablesorter-default thead .headerSortDown,
+.tablesorter-default thead .tablesorter-headerDesc,
+.tablesorter-default thead .tablesorter-headerSortDown {
+	background-image: url("../RedPlusPlusMoves/sortdown.gif");
+}
+
