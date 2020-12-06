@@ -552,6 +552,15 @@
 		</tr>
 		<tr>
 			<td class="cen"><img src="RedPlusPlusMoves/fire.gif" title="Fire" border="0" /></td>
+			<td class="cen"><img src="RedPlusPlusMoves/physical.png" title="Physical" border="0" /></td>
+			<td class="fooinfo">Flame Wheel</td>
+			<td class="cen">60</td>
+			<td class="cen">100%</td>
+			<td class="cen">25</td>
+			<td class="fooinfo">Burn (Chance)</td>
+		</tr>
+		<tr>
+			<td class="cen"><img src="RedPlusPlusMoves/fire.gif" title="Fire" border="0" /></td>
 			<td class="cen"><img src="RedPlusPlusMoves/special.png" title="Special" border="0" /></td>
 			<td class="fooinfo">Blast Burn</td>
 			<td class="cen">150</td>
@@ -575,15 +584,6 @@
 			<td class="cen">90</td>
 			<td class="cen">100%</td>
 			<td class="cen">15</td>
-			<td class="fooinfo">Burn (Chance)</td>
-		</tr>
-		<tr>
-			<td class="cen"><img src="RedPlusPlusMoves/fire.gif" title="Fire" border="0" /></td>
-			<td class="cen"><img src="RedPlusPlusMoves/physical.png" title="Physical" border="0" /></td>
-			<td class="fooinfo">Flame Wheel</td>
-			<td class="cen">60</td>
-			<td class="cen">100%</td>
-			<td class="cen">25</td>
 			<td class="fooinfo">Burn (Chance)</td>
 		</tr>
 		<tr>
