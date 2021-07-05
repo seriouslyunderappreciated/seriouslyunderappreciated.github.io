@@ -1460,7 +1460,8 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
 }
 
 .tablesorter .filtered {
-    display: none
+    opacity: .7;
+	/* display: none; */
 }
 
 .tablesorter-default td:nth-child(5) {
