@@ -873,13 +873,6 @@ body {
     background-color: black
 }
 
-.dextable tr:hover {
-	text-shadow:
-    0 0 3px rgba(255,255,255, .9),
-    0 0 5px rgba(255, 255, 255, .7),
-    0 0 15px rgba(255, 255, 255, .6);
-}
-
 .fooevo:hover {
     background: #5a68a6
 }
@@ -1463,8 +1456,7 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
 }
 
 .tablesorter .filtered {
-    opacity: .8;
-	/* display: none; */
+    opacity: .8
 }
 
 .tablesorter-default td:nth-child(5) {
@@ -1479,7 +1471,13 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
     display: none
 }
 
-body, html {
-  cursor: url("../GamesCollection/cursor.png"), pointer;
-  height: 100%;
+body,
+html {
+    cursor: url("../GamesCollection/cursor.png"), pointer;
+    height: 100%
+}
+
+.dextable tr:hover {
+    text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 5px rgba(255, 255, 255, .7), 0 0 15px rgba(255, 255, 255, .6);
+    transition: .2s ease
 }
