@@ -1478,3 +1478,8 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
 .tablesorter-filter-row {
     display: none
 }
+
+body, html {
+  cursor: url("../GamesCollection/cursor.png"), pointer;
+  height: 100%;
+}
