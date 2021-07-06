@@ -1471,14 +1471,15 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
     display: none
 }
 
+.dextable tr:hover {
+    text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 5px rgba(255, 255, 255, .7), 0 0 15px rgba(255, 255, 255, .6);
+    transition: .1s ease
+}
+
+@media(min-width:901px) {
 body,
 html {
     cursor: url("../GamesCollection/cursor.png"), pointer;
     height: 100%
-}
-@media(min-width:901px) {
-.dextable tr:hover {
-    text-shadow: 0 0 3px rgba(255, 255, 255, .9), 0 0 5px rgba(255, 255, 255, .7), 0 0 15px rgba(255, 255, 255, .6);
-    transition: .1s ease
 }
 }
