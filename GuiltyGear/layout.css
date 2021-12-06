@@ -1,3 +1,9 @@
+th {
+  position: sticky;
+  top: 0px;
+  background-color:rgba(0, 0, 0, 0.2);
+}
+
 .dextable {
     border: 0;
     border-spacing: 2px;
