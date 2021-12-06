@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <title>Guilty Gear</title>
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta property="og:title" content="Dio's Library">
+    <meta property="og:description" content="Dio's game collection tracker.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/seriouslyunderappreciated/seriouslyunderappreciated.github.io/master/GuiltyGear/thumbnail.png">
+    <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
+    <link rel="stylesheet" type="text/css" href="GuiltyGear/layout.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta" />
+    <link rel="shortcut icon" href="GuiltyGear/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet"> <!-- load jQuery and tablesorter scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+</head>
+<script>
+    $(function() {
+        $(".dextable").tablesorter({
+            sortList: [
+                [0, 0],
+                [1, 0]
+            ],
+            widgets: ["filter"],
+            widgetOptions: {
+                filter_columnFilters: true,
+                filter_columnAnyMatch: true,
+                filter_filteredRow: 'filtered',
+                filter_filterLabel: 'Filter "{{label}}" column by...',
+                filter_hideEmpty: true,
+                filter_hideFilters: true,
+                filter_ignoreCase: true,
+                filter_liveSearch: true,
+                filter_matchType: {
+                    'input': 'exact',
+                    'select': 'exact'
+                },
+                filter_onlyAvail: 'filter-onlyAvail',
+                filter_placeholder: {
+                    search: '',
+                    select: ''
+                },
+                filter_reset: 'button.reset',
+                filter_resetOnEsc: true,
+                filter_searchDelay: 300,
+                filter_searchFiltered: true,
+                filter_selectSource: null,
+                filter_serversideFiltering: false,
+                filter_startsWith: false,
+                filter_useParsedData: false,
+                filter_defaultAttrib: 'data-value',
+                filter_selectSourceSeparator: '|'
+            }
+        });
+        $('.resetsaved').click(function() {
+            $('.dextable').trigger('filterResetSaved');
+            var $message = $('<span class="results"> Reset</span>').insertAfter(this);
+            setTimeout(function() {
+                $message.remove()
+            }, 500);
+            return false
+        });
+        $('button[data-filter-column]').click(function() {
+            var filters = [],
+                $t = $(this),
+                col = $t.data('filter-column'),
+                txt = $t.data('filter-text') || $t.text();
+            filters[col] = txt;
+            $.tablesorter.setFilters($('.dextable'), filters, true);
+            return false
+        })
+    });
+</script>
+<body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div id="wrapper">
+        <div id="content">
+            <main>
+                <div align="center">
+                    <table class="dextable">
+                        <thead>
+                            <tr>
+                                <th class="fooevo">Guilty Gear XX</th>
+                                <th class="fooevo">Guilty Gear Xrd</th>
+                                <th class="fooevo">Guilty Gear Strive</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/axl.png"><br>Axl</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/axl.png"><br>Axl</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/axl.png"><br>Axl</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/baiken.png"><br>Baiken</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/baiken.png"><br>Baiken</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/baiken.png"><br>Baiken</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/chipp.png"><br>Chipp</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/chipp.png"><br>Chipp</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/chipp.png"><br>Chipp</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/faust.png"><br>Faust</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/faust.png"><br>Faust</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/faust.png"><br>Faust</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ino.png"><br>I-No</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ino.png"><br>I-No</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ino.png"><br>I-No</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ky.png"><br>Ky</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ky.png"><br>Ky</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ky.png"><br>Ky</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/may.png"><br>May</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/may.png"><br>May</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/may.png"><br>May</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/millia.png"><br>Millia</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/millia.png"><br>Millia</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/millia.png"><br>Millia</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/potemkin.png"><br>Potemkin</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/potemkin.png"><br>Potemkin</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/potemkin.png"><br>Potemkin</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/sol.png"><br>Sol</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/sol.png"><br>Sol</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/sol.png"><br>Sol</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/zato.png"><br>Eddie</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/zato.png"><br>Eddie</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/zato.png"><br>Zato-ONE</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/dizzy.png"><br>Dizzy</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/dizzy.png"><br>Dizzy</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/jam.png"><br>Jam</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/jam.png"><br>Jam</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/johnny.png"><br>Johnny</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/johnny.png"><br>Johnny</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/slayer.png"><br>Slayer</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/slayer.png"><br>Slayer</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/venom.png"><br>Venom</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/venom.png"><br>Venom</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/anji.png"><br>Anji</td>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/anji.png"><br>Anji</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/jacko.png"><br>Jack-O</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/jacko.png"><br>Jack-O</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/leo.png"><br>Leo</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/leo.png"><br>Leo</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ramlethal.png"><br>Ramlethal</td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/ramlethal.png"><br>Ramlethal</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/aba.png"><br>A.B.A</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/bridget.png"><br>Bridget</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/justice.png"><br>Justice</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/kliff.png"><br>Kliff</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/osol.png"><br>Order-Sol</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/roboky.png"><br>Robo-Ky</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"><img class="preview" src="GuiltyGear/zappa.png"><br>Zappa</td>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/answer.png"><br>Answer</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/bedman.png"><br>Bedman</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/elphelt.png"><br>Elphelt</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/kum.png"><br>Kum</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/raven.png"><br>Raven</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/sin.png"><br>Sin</td>
+                            <td class="cen"></td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/chaos.png"><br>Chaos</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/giovanna.png"><br>Giovanna</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/goldlewis.png"><br>Goldlewis</td>
+                        </tr>
+                        <tr>
+                            <td class="cen"></td>
+                            <td class="cen"></td>
+                            <td class="cen"><img class="preview" src="GuiltyGear/nagoriyuki.png"><br>Nagoriyuki</td>
+                        </tr>
+                    </table>
+                    <div id="systems" align="center">
+                        <script>
+                            var btn = $('#button');
+                            $(window).scroll(function() {
+                                if ($(window).scrollTop() > 300) {
+                                    btn.addClass('show');
+                                } else {
+                                    btn.removeClass('show');
+                                }
+                            });
+                            btn.on('click', function(e) {
+                                e.preventDefault();
+                                $('html, body').animate({
+                                    scrollTop: 0
+                                }, '300');
+                            });
+                        </script>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
