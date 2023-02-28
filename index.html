@@ -128,14 +128,19 @@
 
 
 <script defer>
-// Select all <p> and <td> elements
-var paragraphs = document.querySelectorAll('p, td');
+$(document).ready(function() {
+  // Attach the event listener to the table after it's been initialized
+  $('table').on('tablesorter-update', function() {
+    // Select all <td> elements within the table
+    var tableCells = $(this).find('td');
 
-// Loop through each <p> and <td> element
-for (var i = 0; i < paragraphs.length; i++) {
-  // Replace instances of [hd] within the current element
-  paragraphs[i].innerHTML = paragraphs[i].innerHTML.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
-}
+    // Loop through each <td> element
+    tableCells.each(function() {
+      // Replace instances of [hd] within the current element
+      $(this).html($(this).html().replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>'));
+    });
+  });
+});
 </script>
 
                 </div>
