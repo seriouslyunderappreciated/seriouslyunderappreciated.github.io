@@ -2,7 +2,8 @@
     border: 0;
     border-spacing: 2px;
     border-collapse: seperate;
-    width: 70%
+    width: 70%;
+    margin: auto
 }
 
 .dextable td {
