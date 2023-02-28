@@ -24,129 +24,117 @@
     <div id='stars2'></div>
     <div id='stars3'></div>
     <div id="wrapper">
-        <div id="content">
-            <main>
+        <main>
+            <div id="content">
                 <div align="center"><img src="GamesCollection/logo.png" />
                     <h1>Dio's Games</h1>
                     <p>This is purely how I figure out what to play next.</p>
                     <p>Remakes[hd] and ports are listed under the release date of the original game for play order convenience.</p>
                     <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
-    <table id="myTable" class="dextable">
-        <thead>
-            <tr>
-                <th class="fooevo">Series</th>
-                <th class="fooevo">Release</th>
-                <th class="fooevo">Game</th>
-                <th class="fooevo">Platform</th>
-                <th data-value="!Yes" class="fooevo">Done</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-<script>
-  $(document).ready(function() {
-    $.get('GamesCollection/Collection.csv', function(data) {
-      var lines = data.split('\n');
-      var headers = lines[0].split(',');
-      for (var i = 1; i < lines.length; i++) {
-        var row = lines[i].split(',');
-        if (row.length == headers.length) {
-          var tableRow = '<tr>';
-          for (var j = 0; j < headers.length; j++) {
-            var cell = row[j].trim();
-            if (j == headers.length - 1) {
-              if (cell == 'Yes') {
-                tableRow += '<td class="cen">Yes</td>';
-              } else {
-                tableRow += '<td class="cen"></td>';
-              }
-            } else {
-              tableRow += '<td class="cen">' + cell + '</td>';
-            }
-          }
-          tableRow += '</tr>';
-          $('#myTable tbody').append(tableRow);
-        }
-      }
-      $('#myTable').tablesorter({
-        sortList: [
-          [0, 0],
-          [1, 0]
-        ],
-        widgets: ["filter"],
-        widgetOptions: {
-          filter_columnFilters: true,
-          filter_columnAnyMatch: true,
-          filter_filteredRow: 'filtered',
-          filter_filterLabel: 'Filter "{{label}}" column by...',
-          filter_hideEmpty: true,
-          filter_hideFilters: true,
-          filter_ignoreCase: true,
-          filter_liveSearch: true,
-          filter_matchType: {
-            'input': 'exact',
-            'select': 'exact'
-          },
-          filter_onlyAvail: 'filter-onlyAvail',
-          filter_placeholder: {
-            search: '',
-            select: ''
-          },
-          filter_reset: 'button.reset',
-          filter_resetOnEsc: true,
-          filter_searchDelay: 300,
-          filter_searchFiltered: true,
-          filter_selectSource: null,
-          filter_serversideFiltering: false,
-          filter_startsWith: false,
-          filter_useParsedData: false,
-          filter_defaultAttrib: 'data-value',
-          filter_selectSourceSeparator: '|'
-        }
-      });
-    });
-    $('.resetsaved').click(function() {
-      $('.dextable').trigger('filterResetSaved');
-      var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-      setTimeout(function() {
-        $message.remove()
-      }, 500);
-      return false
-    });
-    $('button[data-filter-column]').click(function() {
-      var filters = [],
-        $t = $(this),
-        col = $t.data('filter-column'),
-        txt = $t.data('filter-text') || $t.text();
-      filters[col] = txt;
-      $.tablesorter.setFilters($('.dextable'), filters, true);
-      return false;
-    });
-  });
-</script>
+                    <table id="myTable" class="dextable">
+                        <thead>
+                            <tr>
+                                <th class="fooevo">Series</th>
+                                <th class="fooevo">Release</th>
+                                <th class="fooevo">Game</th>
+                                <th class="fooevo">Platform</th>
+                                <th data-value="!Yes" class="fooevo">Done</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <script>
+                        $(document).ready(function() {
+                            $.get('GamesCollection/Collection.csv', function(data) {
+                                var lines = data.split('\n');
+                                var headers = lines[0].split(',');
+                                for (var i = 1; i < lines.length; i++) {
+                                    var row = lines[i].split(',');
+                                    if (row.length == headers.length) {
+                                        var tableRow = '<tr>';
+                                        for (var j = 0; j < headers.length; j++) {
+                                            var cell = row[j].trim();
+                                            if (j == headers.length - 1) {
+                                                if (cell == 'Yes') {
+                                                    tableRow += '<td class="cen">Yes</td>';
+                                                } else {
+                                                    tableRow += '<td class="cen"></td>';
+                                                }
+                                            } else {
+                                                tableRow += '<td class="cen">' + cell + '</td>';
+                                            }
+                                        }
+                                        tableRow += '</tr>';
+                                        $('#myTable tbody').append(tableRow);
+                                    }
+                                }
+                                $('#myTable').tablesorter({
+                                    sortList: [
+                                        [0, 0],
+                                        [1, 0]
+                                    ],
+                                    widgets: ["filter"],
+                                    widgetOptions: {
+                                        filter_columnFilters: true,
+                                        filter_columnAnyMatch: true,
+                                        filter_filteredRow: 'filtered',
+                                        filter_filterLabel: 'Filter "{{label}}" column by...',
+                                        filter_hideEmpty: true,
+                                        filter_hideFilters: true,
+                                        filter_ignoreCase: true,
+                                        filter_liveSearch: true,
+                                        filter_matchType: {
+                                            'input': 'exact',
+                                            'select': 'exact'
+                                        },
+                                        filter_onlyAvail: 'filter-onlyAvail',
+                                        filter_placeholder: {
+                                            search: '',
+                                            select: ''
+                                        },
+                                        filter_reset: 'button.reset',
+                                        filter_resetOnEsc: true,
+                                        filter_searchDelay: 300,
+                                        filter_searchFiltered: true,
+                                        filter_selectSource: null,
+                                        filter_serversideFiltering: false,
+                                        filter_startsWith: false,
+                                        filter_useParsedData: false,
+                                        filter_defaultAttrib: 'data-value',
+                                        filter_selectSourceSeparator: '|'
+                                    }
+                                });
+                            });
+                            $('.resetsaved').click(function() {
+                                $('.dextable').trigger('filterResetSaved');
+                                var $message = $('<span class="results"> Reset</span>').insertAfter(this);
+                                setTimeout(function() {
+                                    $message.remove()
+                                }, 500);
+                                return false
+                            });
+                            $('button[data-filter-column]').click(function() {
+                                var filters = [],
+                                    $t = $(this),
+                                    col = $t.data('filter-column'),
+                                    txt = $t.data('filter-text') || $t.text();
+                                filters[col] = txt;
+                                $.tablesorter.setFilters($('.dextable'), filters, true);
+                                return false;
+                            });
+                        });
+                    </script>
 
 
-<script defer>
-$(document).ready(function() {
-  // Attach the event listener to the table after it's been initialized
-  $('table').on('tablesorter-update', function() {
-    // Select all <td> elements within the table
-    var tableCells = $(this).find('td');
-
-    // Loop through each <td> element
-    tableCells.each(function() {
-      // Replace instances of [hd] within the current element
-      $(this).html($(this).html().replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>'));
-    });
-  });
-});
-</script>
+                    <script>
+                        // Replace all instances of [hd] with the HTML code
+                        document.body.innerHTML = document.body.innerHTML.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
+                    </script>
 
                 </div>
-        </div>
+            </div>
         </main>
-    </div>
     </div>
 </body>
 
