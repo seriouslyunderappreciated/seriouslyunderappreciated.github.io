@@ -131,59 +131,23 @@
         </main>
     </div>
 
-    <table class="dextable">
-    <thead>
-        <tr>
-            <th class="fooevo">Series</th>
-            <th class="fooevo">Release</th>
-            <th class="fooevo">Game</th>
-            <th class="fooevo">Platform</th>
-            <th data-value="!Yes" class="fooevo">Done</th>
-        </tr>
-    </thead>
-    <tr>
-        <td class="cen"></td>
-        <td class="cen">2023</td>
-        <td class="cen">Lunark</td>
-        <td class="cen">Nintendo Switch</td>
-        <td class="cen"></td>
-    </tr>
-    <tr>
-        <td class="cen">Ace Attorney</td>
-        <td class="cen">2001</td>
-        <td class="cen">Phoenix Wright: Ace Attorney</td>
-        <td class="cen">Nintendo 3DS</td>
-        <td class="cen">Yes</td>
-    </tr>
-    <tr>
-        <td class="cen">Castlevania</td>
-        <td class="cen">1989[hd]</td>
-        <td class="cen">Castlevania: Dracula&#39;s Curse</td>
-        <td class="cen">Nintendo NES</td>
-        <td class="cen">Yes</td>
-    </tr>
-    <tr>
-        <td class="cen">Castlevania</td>
-        <td class="cen">2001</td>
-        <td class="cen">Castlevania: Circle of the Moon</td>
-        <td class="cen">Nintendo GBA</td>
-        <td class="cen">Yes</td>
-    </tr>
-    <tr>
-        <td class="cen">Deus Ex</td>
-        <td class="cen">2016</td>
-        <td class="cen">Deus Ex: Mankind Divided</td>
-        <td class="cen">Microsoft Windows</td>
-        <td class="cen">Yes</td>
-    </tr>
-    <tr>
-        <td class="cen">Zone of the Enders</td>
-        <td class="cen">2003</td>
-        <td class="cen">Zone of the Enders: The 2nd Runner</td>
-        <td class="cen">Sony PS3</td>
-        <td class="cen"></td>
-    </tr>
-</table>
+    <script>
+        // Scroll to top button
+        var btn = $('#button');
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 300) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+        btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, '300');
+        });
+    </script>
 
     <script>
         // Replace all instances of [hd] with the HTML code
