@@ -18,9 +18,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
 </head>
-<script>
-    $(function() {
-        $(".dextable").tablesorter({
+
+<body>
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <div id="wrapper">
+        <div id="content">
+            <main>
+                <div align="center"><img src="GamesCollection/logo.png" />
+                    <h1>Dio's Games</h1>
+                    <p>This is purely how I figure out what to play next.</p>
+                    <p>Remakes[hd] and ports are listed under the release date of the original game for play order convenience.</p>
+                    <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
+    <table id="myTable" class="dextable">
+        <thead>
+            <tr>
+                <th class="fooevo">Series</th>
+                <th class="fooevo">Release</th>
+                <th class="fooevo">Game</th>
+                <th class="fooevo">Platform</th>
+                <th data-value="!Yes" class="fooevo">Done</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $.get('GamesCollection/Collection.csv', function(data) {
+                var lines = data.split('\n');
+                var headers = lines[0].split(',');
+                for (var i = 1; i < lines.length; i++) {
+                    var row = lines[i].split(',');
+                    if (row.length == headers.length) {
+                        var tableRow = '<tr>';
+                        for (var j = 0; j < headers.length; j++) {
+                            var cell = row[j].trim();
+                            if (j == headers.length - 1) {
+                                if (cell == 'Yes') {
+                                    tableRow += '<td class="cen">Yes</td>';
+                                } else {
+                                    tableRow += '<td class="cen"></td>';
+                                }
+                            } else {
+                                tableRow += '<td class="cen">' + cell + '</td>';
+                            }
+                        }
+                        tableRow += '</tr>';
+                        $('#myTable tbody').append(tableRow);
+                    }
+                }
+        $('#myTable').tablesorter({
             sortList: [
                 [0, 0],
                 [1, 0]
@@ -73,60 +122,6 @@
             $.tablesorter.setFilters($('.dextable'), filters, true);
             return false
         })
-    });
-</script>
-
-<body>
-    <div id='stars'></div>
-    <div id='stars2'></div>
-    <div id='stars3'></div>
-    <div id="wrapper">
-        <div id="content">
-            <main>
-                <div align="center"><img src="GamesCollection/logo.png" />
-                    <h1>Dio's Games</h1>
-                    <p>This is purely how I figure out what to play next.</p>
-                    <p>Remakes[hd] and ports are listed under the release date of the original game for play order convenience.</p>
-                    <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
-    <table id="myTable" class="dextable">
-        <thead>
-            <tr>
-                <th class="fooevo">Series</th>
-                <th class="fooevo">Release</th>
-                <th class="fooevo">Game</th>
-                <th class="fooevo">Platform</th>
-                <th data-value="!Yes" class="fooevo">Done</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <script>
-        $(document).ready(function() {
-            $.get('GamesCollection/Collection.csv', function(data) {
-                var lines = data.split('\n');
-                var headers = lines[0].split(',');
-                for (var i = 1; i < lines.length; i++) {
-                    var row = lines[i].split(',');
-                    if (row.length == headers.length) {
-                        var tableRow = '<tr>';
-                        for (var j = 0; j < headers.length; j++) {
-                            var cell = row[j].trim();
-                            if (j == headers.length - 1) {
-                                if (cell == 'Yes') {
-                                    tableRow += '<td class="cen">Yes</td>';
-                                } else {
-                                    tableRow += '<td class="cen"></td>';
-                                }
-                            } else {
-                                tableRow += '<td class="cen">' + cell + '</td>';
-                            }
-                        }
-                        tableRow += '</tr>';
-                        $('#myTable tbody').append(tableRow);
-                    }
-                }
-                $('#myTable').tablesorter();
             });
         });
     </script>
