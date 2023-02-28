@@ -128,12 +128,14 @@
 
 
 <script defer>
-  function replaceHd() {
-    let html = document.body.innerHTML;
-    html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
-    document.body.innerHTML = html;
-  }
-  document.addEventListener('DOMContentLoaded', replaceHd);
+// Select all <p> and <td> elements
+var paragraphs = document.querySelectorAll('p, td');
+
+// Loop through each <p> and <td> element
+for (var i = 0; i < paragraphs.length; i++) {
+  // Replace instances of [hd] within the current element
+  paragraphs[i].innerHTML = paragraphs[i].innerHTML.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
+}
 </script>
 
                 </div>
