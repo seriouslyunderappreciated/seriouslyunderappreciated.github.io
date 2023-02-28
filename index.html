@@ -22,87 +22,43 @@
 </head>
 
 <script>
-    // Load CSV file using fetch API
-    fetch('GamesCollection/Collection.csv')
-        .then(response => response.text())
-        .then(data => {
-            // Parse CSV data
-            const rows = data.split('\n');
-            const headers = rows[0].split(',');
-            const tableBody = document.getElementById('table-body');
-            
-            // Create HTML table rows
-            for (let i = 1; i < rows.length; i++) {
-                const cells = rows[i].split(',');
-                let row = document.createElement('tr');
-                for (let j = 0; j < headers.length; j++) {
-                    let cell = document.createElement('td');
-                    cell.className = 'cen';
-                    cell.innerText = cells[j];
-                    row.appendChild(cell);
-                }
-                tableBody.appendChild(row);
-            }
-        });
-</script>
+$.get("GamesCollection/Collection.csv", function(data) {
+  // parse the CSV data
+  var rows = data.split("\n");
+  var header = rows[0].split(",");
+  var tableData = [];
 
+  for (var i = 1; i < rows.length; i++) {
+    var row = rows[i].split(",");
+    var rowData = {};
+    for (var j = 0; j < row.length; j++) {
+      rowData[header[j]] = row[j];
+    }
+    tableData.push(rowData);
+  }
 
-<script>
-    $(function() {
-        $(".dextable").tablesorter({
-            sortList: [
-                [0, 0],
-                [1, 0]
-            ],
-            widgets: ["filter"],
-            widgetOptions: {
-                filter_columnFilters: true,
-                filter_columnAnyMatch: true,
-                filter_filteredRow: 'filtered',
-                filter_filterLabel: 'Filter "{{label}}" column by...',
-                filter_hideEmpty: true,
-                filter_hideFilters: true,
-                filter_ignoreCase: true,
-                filter_liveSearch: true,
-                filter_matchType: {
-                    'input': 'exact',
-                    'select': 'exact'
-                },
-                filter_onlyAvail: 'filter-onlyAvail',
-                filter_placeholder: {
-                    search: '',
-                    select: ''
-                },
-                filter_reset: 'button.reset',
-                filter_resetOnEsc: true,
-                filter_searchDelay: 300,
-                filter_searchFiltered: true,
-                filter_selectSource: null,
-                filter_serversideFiltering: false,
-                filter_startsWith: false,
-                filter_useParsedData: false,
-                filter_defaultAttrib: 'data-value',
-                filter_selectSourceSeparator: '|'
-            }
-        });
-        $('.resetsaved').click(function() {
-            $('.dextable').trigger('filterResetSaved');
-            var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-            setTimeout(function() {
-                $message.remove()
-            }, 500);
-            return false
-        });
-        $('button[data-filter-column]').click(function() {
-            var filters = [],
-                $t = $(this),
-                col = $t.data('filter-column'),
-                txt = $t.data('filter-text') || $t.text();
-            filters[col] = txt;
-            $.tablesorter.setFilters($('.dextable'), filters, true);
-            return false
-        })
-    });
+  // generate the HTML table using tablesorter
+  var table = $("<table>").addClass("dextable");
+  var headerRow = $("<tr>");
+  for (var i = 0; i < header.length; i++) {
+    headerRow.append($("<th>").addClass("fooevo").text(header[i]));
+  }
+  table.append($("<thead>").append(headerRow));
+
+  for (var i = 0; i < tableData.length; i++) {
+    var row = tableData[i];
+    var tableRow = $("<tr>");
+    tableRow.append($("<td>").addClass("cen").text(row.h1));
+    tableRow.append($("<td>").addClass("cen").text(row.h2));
+    tableRow.append($("<td>").addClass("cen").text(row.h3));
+    tableRow.append($("<td>").addClass("cen").text(row.h4));
+    tableRow.append($("<td>").addClass("cen").text(row.h5).attr("data-value", "!Yes"));
+    table.append(tableRow);
+  }
+
+  $("body").append(table);
+  $("table").tablesorter();
+});
 </script>
 
 <body>
