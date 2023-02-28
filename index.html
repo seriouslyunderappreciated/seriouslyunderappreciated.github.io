@@ -128,6 +128,13 @@
                                 return false;
                             });
                         });
+                        
+                                $(document).ready(function() {
+            // Replace [hd] with image
+            $("p, td").each(function() {
+                $(this).html($(this).html().replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>'));
+            });
+        });
                     </script>
 
                 </div>
@@ -150,15 +157,6 @@
             $('html, body').animate({
                 scrollTop: 0
             }, '300');
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Replace [hd] with image
-            $("p, td").each(function() {
-                $(this).html($(this).html().replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>'));
-            });
         });
     </script>
 
