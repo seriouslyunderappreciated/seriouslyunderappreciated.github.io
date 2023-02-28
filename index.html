@@ -77,12 +77,6 @@
     });
 </script>
 
-<script>
-let html = document.body.innerHTML;
-html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
-document.body.innerHTML = html;
-</script>
-
 <body>
     <div id='stars'></div>
     <div id='stars2'></div>
@@ -114,6 +108,12 @@ document.body.innerHTML = html;
                                 }, '300');
                             });
                         </script>
+			
+			<script>
+let html = document.body.innerHTML;
+html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
+document.body.innerHTML = html;
+</script>
                     </div>
                 </div>
             </main>
