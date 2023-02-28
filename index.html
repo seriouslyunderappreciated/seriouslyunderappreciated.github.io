@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <title>Game Collection</title>
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta property="og:title" content="Dio's Library">
+    <meta property="og:description" content="Game collection tracker.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/seriouslyunderappreciated/seriouslyunderappreciated.github.io/master/GamesCollection/thumbnail.png">
+    <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
+    <link rel="stylesheet" type="text/css" href="GamesCollection/layout.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta" />
+    <link rel="shortcut icon" href="GamesCollection/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet"> <!-- load jQuery and tablesorter scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<script>
+    // Load CSV file using fetch API
+    fetch('data.csv')
+        .then(response => response.text())
+        .then(data => {
+            // Parse CSV data
+            const rows = data.split('\n');
+            const headers = rows[0].split(',');
+            const tableBody = document.getElementById('table-body');
+            
+            // Create HTML table rows
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].split(',');
+                let row = document.createElement('tr');
+                for (let j = 0; j < headers.length; j++) {
+                    let cell = document.createElement('td');
+                    cell.className = 'cen';
+                    cell.innerText = cells[j];
+                    row.appendChild(cell);
+                }
+                tableBody.appendChild(row);
+            }
+        });
+</script>
+
+
+<script>
+    $(function() {
+        $(".dextable").tablesorter({
+            sortList: [
+                [0, 0],
+                [1, 0]
+            ],
+            widgets: ["filter"],
+            widgetOptions: {
+                filter_columnFilters: true,
+                filter_columnAnyMatch: true,
+                filter_filteredRow: 'filtered',
+                filter_filterLabel: 'Filter "{{label}}" column by...',
+                filter_hideEmpty: true,
+                filter_hideFilters: true,
+                filter_ignoreCase: true,
+                filter_liveSearch: true,
+                filter_matchType: {
+                    'input': 'exact',
+                    'select': 'exact'
+                },
+                filter_onlyAvail: 'filter-onlyAvail',
+                filter_placeholder: {
+                    search: '',
+                    select: ''
+                },
+                filter_reset: 'button.reset',
+                filter_resetOnEsc: true,
+                filter_searchDelay: 300,
+                filter_searchFiltered: true,
+                filter_selectSource: null,
+                filter_serversideFiltering: false,
+                filter_startsWith: false,
+                filter_useParsedData: false,
+                filter_defaultAttrib: 'data-value',
+                filter_selectSourceSeparator: '|'
+            }
+        });
+        $('.resetsaved').click(function() {
+            $('.dextable').trigger('filterResetSaved');
+            var $message = $('<span class="results"> Reset</span>').insertAfter(this);
+            setTimeout(function() {
+                $message.remove()
+            }, 500);
+            return false
+        });
+        $('button[data-filter-column]').click(function() {
+            var filters = [],
+                $t = $(this),
+                col = $t.data('filter-column'),
+                txt = $t.data('filter-text') || $t.text();
+            filters[col] = txt;
+            $.tablesorter.setFilters($('.dextable'), filters, true);
+            return false
+        })
+    });
+</script>
+
+<body>
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <div id="wrapper">
+        <div id="content">
+            <main>
+                <div align="center"><img src="GamesCollection/logo.png" />
+                    <h1>Dio's Games</h1>
+                    <p>This is purely how I figure out what to play next.</p>
+                    <p>Remakes[hd] and ports are listed under the release date of the original game for play order convenience.</p>
+                    <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
+
+	<table class="dextable">
+		<thead>
+			<tr>
+				<th class="fooevo">{h1}</th>
+				<th class="fooevo">{h2}</th>
+				<th class="fooevo">{h3}</th>
+				<th class="fooevo">{h4}</th>
+				<th data-value="!Yes" class="fooevo">{h5}</th>
+			</tr>
+		</thead>
+		<tbody id="table-body"></tbody>
+	</table>
+
+                    <script>
+                        var btn = $('#button');
+                        $(window).scroll(function() {
+                            if ($(window).scrollTop() > 300) {
+                                btn.addClass('show');
+                            } else {
+                                btn.removeClass('show');
+                            }
+                        });
+                        btn.on('click', function(e) {
+                            e.preventDefault();
+                            $('html, body').animate({
+                                scrollTop: 0
+                            }, '300');
+                        });
+                    </script>
+                    <script>
+                        let html = document.body.innerHTML;
+                        html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
+                        document.body.innerHTML = html;
+                    </script>
+                </div>
+        </div>
+        </main>
+    </div>
+    </div>
+</body>
+
+</html>
