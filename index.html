@@ -44,87 +44,88 @@
         <tbody>
         </tbody>
     </table>
-    <script>
-        $(document).ready(function() {
-            $.get('GamesCollection/Collection.csv', function(data) {
-                var lines = data.split('\n');
-                var headers = lines[0].split(',');
-                for (var i = 1; i < lines.length; i++) {
-                    var row = lines[i].split(',');
-                    if (row.length == headers.length) {
-                        var tableRow = '<tr>';
-                        for (var j = 0; j < headers.length; j++) {
-                            var cell = row[j].trim();
-                            if (j == headers.length - 1) {
-                                if (cell == 'Yes') {
-                                    tableRow += '<td class="cen">Yes</td>';
-                                } else {
-                                    tableRow += '<td class="cen"></td>';
-                                }
-                            } else {
-                                tableRow += '<td class="cen">' + cell + '</td>';
-                            }
-                        }
-                        tableRow += '</tr>';
-                        $('#myTable tbody').append(tableRow);
-                    }
-                }
-        $('#myTable').tablesorter({
-            sortList: [
-                [0, 0],
-                [1, 0]
-            ],
-            widgets: ["filter"],
-            widgetOptions: {
-                filter_columnFilters: true,
-                filter_columnAnyMatch: true,
-                filter_filteredRow: 'filtered',
-                filter_filterLabel: 'Filter "{{label}}" column by...',
-                filter_hideEmpty: true,
-                filter_hideFilters: true,
-                filter_ignoreCase: true,
-                filter_liveSearch: true,
-                filter_matchType: {
-                    'input': 'exact',
-                    'select': 'exact'
-                },
-                filter_onlyAvail: 'filter-onlyAvail',
-                filter_placeholder: {
-                    search: '',
-                    select: ''
-                },
-                filter_reset: 'button.reset',
-                filter_resetOnEsc: true,
-                filter_searchDelay: 300,
-                filter_searchFiltered: true,
-                filter_selectSource: null,
-                filter_serversideFiltering: false,
-                filter_startsWith: false,
-                filter_useParsedData: false,
-                filter_defaultAttrib: 'data-value',
-                filter_selectSourceSeparator: '|'
+<script>
+  $(document).ready(function() {
+    $.get('GamesCollection/Collection.csv', function(data) {
+      var lines = data.split('\n');
+      var headers = lines[0].split(',');
+      for (var i = 1; i < lines.length; i++) {
+        var row = lines[i].split(',');
+        if (row.length == headers.length) {
+          var tableRow = '<tr>';
+          for (var j = 0; j < headers.length; j++) {
+            var cell = row[j].trim();
+            if (j == headers.length - 1) {
+              if (cell == 'Yes') {
+                tableRow += '<td class="cen">Yes</td>';
+              } else {
+                tableRow += '<td class="cen"></td>';
+              }
+            } else {
+              tableRow += '<td class="cen">' + cell + '</td>';
             }
-        });
-        $('.resetsaved').click(function() {
-            $('.dextable').trigger('filterResetSaved');
-            var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-            setTimeout(function() {
-                $message.remove()
-            }, 500);
-            return false
-        });
-        $('button[data-filter-column]').click(function() {
-            var filters = [],
-                $t = $(this),
-                col = $t.data('filter-column'),
-                txt = $t.data('filter-text') || $t.text();
-            filters[col] = txt;
-            $.tablesorter.setFilters($('.dextable'), filters, true);
-            return false
-        })
-            });
-        });
-    </script>
+          }
+          tableRow += '</tr>';
+          $('#myTable tbody').append(tableRow);
+        }
+      }
+      $('#myTable').tablesorter({
+        sortList: [
+          [0, 0],
+          [1, 0]
+        ],
+        widgets: ["filter"],
+        widgetOptions: {
+          filter_columnFilters: true,
+          filter_columnAnyMatch: true,
+          filter_filteredRow: 'filtered',
+          filter_filterLabel: 'Filter "{{label}}" column by...',
+          filter_hideEmpty: true,
+          filter_hideFilters: true,
+          filter_ignoreCase: true,
+          filter_liveSearch: true,
+          filter_matchType: {
+            'input': 'exact',
+            'select': 'exact'
+          },
+          filter_onlyAvail: 'filter-onlyAvail',
+          filter_placeholder: {
+            search: '',
+            select: ''
+          },
+          filter_reset: 'button.reset',
+          filter_resetOnEsc: true,
+          filter_searchDelay: 300,
+          filter_searchFiltered: true,
+          filter_selectSource: null,
+          filter_serversideFiltering: false,
+          filter_startsWith: false,
+          filter_useParsedData: false,
+          filter_defaultAttrib: 'data-value',
+          filter_selectSourceSeparator: '|'
+        }
+      });
+    });
+    $('.resetsaved').click(function() {
+      $('.dextable').trigger('filterResetSaved');
+      var $message = $('<span class="results"> Reset</span>').insertAfter(this);
+      setTimeout(function() {
+        $message.remove()
+      }, 500);
+      return false
+    });
+    $('button[data-filter-column]').click(function() {
+      var filters = [],
+        $t = $(this),
+        col = $t.data('filter-column'),
+        txt = $t.data('filter-text') || $t.text();
+      filters[col] = txt;
+      $.tablesorter.setFilters($('.dextable'), filters, true);
+      return false;
+    });
+  });
+</script>
+
 
 <script defer>
   function replaceHd() {
