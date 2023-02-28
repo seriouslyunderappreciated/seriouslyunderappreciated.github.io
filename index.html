@@ -126,11 +126,15 @@
         });
     </script>
 
-                    <script defer>
-                        let html = document.body.innerHTML;
-                        html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
-                        document.body.innerHTML = html;
-                    </script>
+<script defer>
+  function replaceHd() {
+    let html = document.body.innerHTML;
+    html = html.replace(/\[hd\]/g, ' <img src="GamesCollection/remake.png" style="vertical-align:text-bottom"/>');
+    document.body.innerHTML = html;
+  }
+  document.addEventListener('DOMContentLoaded', replaceHd);
+</script>
+
                 </div>
         </div>
         </main>
