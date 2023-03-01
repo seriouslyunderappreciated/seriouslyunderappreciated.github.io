@@ -1431,7 +1431,7 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
 
     .tablesorter-default .header,
     .tablesorter-default .tablesorter-header {
-        background-image: url("../GamesCollection/sort.gif");
+        background-image: url("../resources/sort.gif");
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer
@@ -1440,13 +1440,13 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
     .tablesorter-default thead .headerSortUp,
     .tablesorter-default thead .tablesorter-headerAsc,
     .tablesorter-default thead .tablesorter-headerSortUp {
-        background-image: url("../GamesCollection/sortup.gif")
+        background-image: url("../resources/sortup.gif")
     }
 
     .tablesorter-default thead .headerSortDown,
     .tablesorter-default thead .tablesorter-headerDesc,
     .tablesorter-default thead .tablesorter-headerSortDown {
-        background-image: url("../GamesCollection/sortdown.gif")
+        background-image: url("../resources/sortdown.gif")
     }
 
     .fooevo {
@@ -1480,7 +1480,7 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
 @media(min-width:901px) {
 body,
 html {
-    cursor: url("../GamesCollection/cursor.png"), pointer;
+    cursor: url("../resources/cursor.png"), pointer;
     height: 100%
 }
 }
