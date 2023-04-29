@@ -7,44 +7,24 @@ Series,Release,Game,Platform,Done
 ,1998,Jade Cocoon: Story of the Tamamayu,Sony PS1,Yes
 ,1999,Planescape: Torment,Microsoft Windows,Yes
 ,2007,Super Stardust Delta,Sony PSV,Yes
-,2010,Ghost Trick: Phantom Detective,Nintendo DS,
 ,2010,Super Meat Boy,Sony PSV,Yes
-,2012,Cave Story,Nintendo 3DS,
-,2012,Fez,Sony PSV,
-,2016,Hyper Light Drifter,Nintendo Switch,
 ,2017,Battle Chasers: Nightwar,Microsoft Windows,Yes
 ,2017,Cuphead,Nintendo Switch,
-,2017,Dead Cells,Nintendo Switch,
 ,2017,Fight'N Rage,Nintendo Switch,
-,2018,Celeste,Nintendo Switch,
 ,2018,Chasm,Sony PSV,
-,2018,Dandara,Nintendo Switch,
-,2018,Into The Breach,Nintendo Switch,
 ,2018,Radiant Historia: Perfect Chronology,Nintendo 3DS,Yes
 ,2019,Astral Chain,Nintendo Switch,
 ,2019,Blasphemous,Nintendo Switch,
-,2019,Control,Microsoft Windows,
 ,2019,Disco Elysium,Microsoft Windows,Yes
-,2019,Indivisible,Nintendo Switch,
-,2019,Katana Zero,Nintendo Switch,
 ,2019,Micro Mages,Nintendo NES,
-,2019,Monster Sanctuary,Nintendo Switch,
 ,2019,WarGroove,Nintendo Switch,
 ,2019,Xeno Crisis,Sega Genesis,
-,2020,Cyber Shadow,Nintendo Switch,
-,2020,Ghostrunner,Microsoft Windows,
 ,2020,Hades,Nintendo Switch,
 ,2020,Helltaker,Sony PSV,Yes
-,2020,Panzer Paladin,Nintendo Switch,
-,2020,ScourgeBringer,Sony PSV,
-,2021,Flynn Son of Crimson,Nintendo Switch,
-,2021,Rising Hell,Nintendo Switch,
 ,2021,Steel Assault,Nintendo Switch,
 ,2021,Unsighted,Nintendo Switch,
-,2022,Chained Echoes,Nintendo Switch,
 ,2022,Jack Move,Nintendo Switch,
 ,2022,Triangle Strategy,Nintendo Switch,
-,2023,Lunark,Nintendo Switch,
 Ace Attorney Spin-Off,2015,The Great Ace Attorney: Adventures,Nintendo Switch,
 Ace Attorney Spin-Off,2017,The Great Ace Attorney: Resolve,Nintendo Switch,
 Ace Attorney,2001,Phoenix Wright: Ace Attorney,Nintendo 3DS,Yes
@@ -57,7 +37,6 @@ Ace Attorney,2013,Phoenix Wright: Ace Attorney Dual Destinies,Nintendo 3DS,
 Ace Attorney,2016,Phoenix Wright: Ace Attorney Spirit of Justice,Nintendo 3DS,
 Alien,1994,Alien vs Predator,Arcade,Yes
 Alien,2011,Aliens: Infestation,Nintendo DS,
-Alien,2014,Alien: Isolation,Microsoft Windows,
 Axiom Verge,2015,Axiom Verge,Nintendo Switch,
 Axiom Verge,2021,Axiom Verge 2,Nintendo Switch,
 Batman,2015,Batman: Arkham Knight,Microsoft Windows,Yes
@@ -65,19 +44,11 @@ Bayonetta,2009,Bayonetta,Nintendo Switch,
 Bayonetta,2014,Bayonetta 2,Nintendo Switch,
 Bayonetta,2022,Bayonetta 3,Nintendo Switch,
 Bayonetta,2023,Bayonetta Origins: Cereza and the Lost Demon,Nintendo Switch,
-Bloodstained,2018,Bloodstained: Curse Of The Moon,Nintendo 3DS,
-Bloodstained,2019,Bloodstained: Ritual of the Night,Microsoft Windows,Yes
-Bloodstained,2020,Bloodstained: Curse of the Moon 2,Nintendo Switch,
 Bravely,2014,Bravely Default,Nintendo 3DS,Yes
 Bravely,2016,Bravely Second: End Layer,Nintendo 3DS,Yes
 Bravely,2021,Bravely Default 2,Nintendo Switch,
 Breath of Fire,1997,Breath of Fire 3,Sony PS1,
 Breath of Fire,2000,Breath of Fire 4,Sony PS1,
-Castlevania,1986[hd],Super Castlevania,Nintendo SNES,
-Castlevania,1987,Castlevania: Simon's Quest,Nintendo NES,
-Castlevania,1989,Castlevania: Dracula's Curse,Nintendo NES,Yes
-Castlevania,1993,Castlevania: Rondo of Blood,NEC TurboGrafxCD,Yes
-Castlevania,1994,Castlevania: Bloodlines,Sega Genesis,
 Castlevania,1997,Castlevania: Symphony of the Night,Sony PS1,Yes
 Castlevania,2001,Castlevania: Circle of the Moon,Nintendo GBA,Yes
 Castlevania,2002,Castlevania: Harmony of Dissonance,Nintendo GBA,Yes
@@ -91,21 +62,11 @@ Crash Bandicoot,1996[hd],Crash Bandicoot,Microsoft Windows,Yes
 Crash Bandicoot,1997[hd],Crash Bandicoot 2: Cortex Strikes Back,Microsoft Windows,Yes
 Crash Bandicoot,1998[hd],Crash Bandicoot: Warped,Microsoft Windows,
 Crash Bandicoot,2020,Crash Bandicoot 4: It's About Time,Microsoft Windows,
-Darksiders,2010,Darksiders,Microsoft Windows,Yes
-Darksiders,2012,Darksiders 2,Microsoft Windows,Yes
-Darksiders,2018,Darksiders 3,Microsoft Windows,
-Darksiders,2019,Darksiders Genesis,Microsoft Windows,
 Darkstalkers,1997,Darkstalkers 3: Vampire Savior,Arcade,Yes
 Dead or Alive,1996,Dead or Alive,Sony PS1,Yes
 Dead or Alive,2012,Dead or Alive 5,Sony PSV,Yes
-Deus Ex,2016,Deus Ex: Mankind Divided,Microsoft Windows,Yes
-Devil May Cry,2019,Devil May Cry 5,Microsoft Windows,
-Diablo,1996,Diablo,Sony PS1,Yes
 Diablo,2000[hd],Diablo 2,Nintendo Switch,Yes
 Diablo,2012,Diablo 3,Nintendo Switch,Yes
-Disgaea Spin-Off,2004,La Pucelle Ragnarok,Sony PSP,
-Disgaea Spin-Off,2004,Phantom Brave,Sony PSP,
-Disgaea Spin-Off,2005,Phantom Kingdom,Sony PSP,
 Disgaea Spin-Off,2008,Prinny: Can I Really Be the Hero?,Sony PSP,
 Disgaea Spin-Off,2010,Prinny 2: Dawn of Operation Panties,Sony PSP,
 Disgaea,2003[hd],Disgaea,Nintendo Switch,Yes
@@ -113,65 +74,36 @@ Disgaea,2006,Disgaea 2: Dark Hero Days,Sony PSP,Yes
 Disgaea,2008,Disgaea 3: Absence of Detention,Sony PSV,
 Disgaea,2010,Disgaea Infinite,Sony PSP,
 Disgaea,2011,Disgaea 4,Nintendo Switch,
-Disgaea,2013,Disgaea D2: A Brighter Darkness,Sony PS3,
 Disgaea,2015,Disgaea 5,Nintendo Switch,
-Donkey Kong,2010,Donkey Kong Country Returns,Nintendo 3DS,
-Donkey Kong,2014,Donkey Kong Country: Tropical Freeze,Nintendo Switch,
 Doom,2020,DOOM Eternal,Microsoft Windows,
-Dragon Ball,2004,Dragon Ball: Advanced Adventure,Nintendo GBA,
-Dragon Ball,2008,Dragon Ball Z: Attack of the Saiyans,Nintendo DS,
-Dragon Ball,2009,Dragon Ball: Origins,Nintendo DS,
-Dragon Ball,2010,Dragon Ball: Origins 2,Nintendo DS,
 Dragon Ball,2018,Dragon Ball FighterZ,Microsoft Windows,Yes
 Drakengard,2010[hd],Nier Replicant,Microsoft Windows,Yes
 Drakengard,2017,Nier: Automata,Microsoft Windows,Yes
-Final Fantasy Spin-Off,2000,Vagrant Story,Sony PS1,
-Final Fantasy Spin-Off,2009,Final Fantasy: The 4 Heroes of Light,Nintendo DS,
 Final Fantasy Spin-Off,2011,Dissidia Duodecim,Sony PSP,Yes
 Final Fantasy Tactics,1997,Final Fantasy Tactics,Sony PS1,Yes
 Final Fantasy Tactics,2003,Final Fantasy Tactics Advance,Nintendo GBA,Yes
 Final Fantasy Tactics,2007,Final Fantasy Tactics A2: Grimoire of the Rift,Nintendo DS,Yes
-Final Fantasy,1990[hd],Final Fantasy 3,Nintendo DS,Yes
-Final Fantasy,1991[hd],Final Fantasy 4,Nintendo DS,Yes
-Final Fantasy,1994,Final Fantasy 6,Nintendo GBA,
 Final Fantasy,1997,Final Fantasy 7,Sony PS1,
-Final Fantasy,2001,Final Fantasy 10,Sony PSV,
-Final Fantasy,2003,Final Fantasy 10-2,Sony PSV,
 Final Fantasy,2006,Final Fantasy 12,Nintendo Switch,
 Final Fantasy,2007[hd],Crisis Core: Final Fantasy 7,Microsoft Windows,Yes
 Final Fantasy,2020,Final Fantasy 7 Remake,Microsoft Windows,Yes
-Fire Emblem,1990[hd],Fire Emblem: Shadow Dragon,Nintendo DS,
-Fire Emblem,1992[hd],Fire Emblem Echoes: Shadows of Valentia,Nintendo 3DS,
-Fire Emblem,1994[hd],Fire Emblem: New Mystery of the Emblem,Nintendo DS,
-Fire Emblem,1996,Fire Emblem: Genealogy of the Holy War,Nintendo SNES,
-Fire Emblem,1999,Fire Emblem: Thracia 776,Nintendo SNES,
-Fire Emblem,2002,Fire Emblem: The Binding Blade,Nintendo GBA,
-Fire Emblem,2003,Fire Emblem: The Blazing Blade,Nintendo GBA,
-Fire Emblem,2004,Fire Emblem: The Sacred Stones,Nintendo GBA,
 Fire Emblem,2013,Fire Emblem Awakening,Nintendo 3DS,Yes
 Fire Emblem,2016,Fire Emblem Fates,Nintendo 3DS,Yes
 Fire Emblem,2019,Fire Emblem Three Houses,Nintendo Switch,
 Fire Emblem,2023,Fire Emblem Engage,Nintendo Switch,
-Forgotten Realms,1994,D&D Tower of Doom,Arcade,Yes
-Forgotten Realms,1996,D&D Shadow over Mystara,Arcade,Yes
 Forgotten Realms,1998,Baldur's Gate,Microsoft Windows,Yes
 Forgotten Realms,2000,Baldur's Gate 2,Microsoft Windows,Yes
 Forza,2018,Forza Horizon 4,Microsoft Windows,Yes
 God of War,2005,God of War,Sony PSV,Yes
 God of War,2007,God of War 2,Sony PSV,Yes
 God of War,2008,God of War: Chains of Olympus,Sony PSP,Yes
-God of War,2010,God of War 3,Sony PS3,Yes
 God of War,2010,God of War: Ghost of Sparta,Sony PSP,Yes
-God of War,2013,God of War: Ascension,Sony PS3,Yes
 God of War,2018,God of War,Microsoft Windows,Yes
 Guardian Heroes,1996,Guardian Heroes,Sega Saturn,Yes
 Guilty Gear,2002,Guilty Gear XX Accent Core Plus,Sony PSP,Yes
 Guilty Gear,2014,Guilty Gear Xrd Rev 2,Microsoft Windows,Yes
 Guilty Gear,2021,Guilty Gear Strive,Microsoft Windows,Yes
 Hollow Knight,2017,Hollow Knight,Nintendo Switch,
-Hotel Dusk,2007,Hotel Dusk: Room 215,Nintendo DS,Yes
-Hotel Dusk,2010,Last Window: The Secret of Cape West,Nintendo DS,
-Hotel Dusk,2016,Chase: Cold Case Investigations,Nintendo 3DS,
 King of Fighters,2002,King of Fighters 2002,Arcade,Yes
 Kingdom Hearts,2002,Kingdom Hearts,Microsoft Windows,Yes
 Kingdom Hearts,2004,Kingdom Hearts: Chain of Memories,Nintendo GBA,Yes
@@ -186,31 +118,10 @@ Klonoa,2001,Klonoa: Empire of Dreams,Nintendo GBA,
 Klonoa,2002,Klonoa 2: Dream Champ Tournament,Nintendo GBA,
 League of Legends,2022,Ruined King,Microsoft Windows,
 Mario Kart,2014,Mario Kart 8,Nintendo Switch,Yes
-Mario,1985[hd],Super Mario Bros,Nintendo SNES,
-Mario,1986[hd],Super Mario Bros Lost Levels,Nintendo SNES,
-Mario,1988[hd],Super Mario Bros 2,Nintendo SNES,
-Mario,1988[hd],Super Mario Bros 3,Nintendo SNES,
-Mario,1990,Super Mario World,Nintendo SNES,
-Mario,1996,Super Mario 64,Nintendo DS,
-Mario,2005,Super Princess Peach,Nintendo DS,
-Mario,2006,New Super Mario Bros,Nintendo DS,
-Mario,2011,Super Mario 3D Land,Nintendo 3DS,Yes
-Mario,2012,New Super Mario Bros 2,Nintendo 3DS,
-Mario,2012,New Super Mario Bros U,Nintendo Switch,
-Mario,2013,Super Mario 3D World & Bowser's Fury,Nintendo Switch,
-Mario,2017,Super Mario Odyssey,Nintendo Switch,
 Marvel,1994,X-Men: Children of the Atom,Arcade,Yes
 Marvel,2011,Marvel vs Capcom 3,Sony PSV,Yes
 Marvel,2018,Spider-Man,Microsoft Windows,Yes
 Marvel,2020,Spider-Man: Miles Morales,Microsoft Windows,
-Metal Gear,1998,Metal Gear Solid,Sony PS1,Yes
-Metal Gear,2001,Metal Gear Solid 2: Sons of Liberty,Sony PSV,Yes
-Metal Gear,2004,Metal Gear Solid 3: Snake Eater,Sony PSV,Yes
-Metal Gear,2008,Metal Gear Solid 4: Guns of the Patriots,Sony PS3,Yes
-Metal Gear,2010,Metal Gear Solid: Peace Walker,Sony PSP,Yes
-Metal Gear,2013,Metal Gear Rising: Revengeance,Microsoft Windows,Yes
-Metal Gear,2014,Metal Gear Solid: Ground Zeroes,Microsoft Windows,Yes
-Metal Gear,2015,Metal Gear Solid 5: The Phantom Pain,Microsoft Windows,Yes
 Metroid Prime,2002[hd],Metroid Prime,Nintendo Switch,
 Metroid Prime,2004,Metroid Prime 2: Echoes,Nintendo Wii,
 Metroid Prime,2006,Metroid Prime Hunters,Nintendo DS,
@@ -220,20 +131,11 @@ Metroid,1991[hd],Metroid: Samus Returns,Nintendo 3DS,Yes
 Metroid,1994,Super Metroid,Nintendo SNES,Yes
 Metroid,2002,Metroid Fusion,Nintendo GBA,Yes
 Metroid,2021,Metroid Dread,Nintendo Switch,Yes
-Mighty,2011,Mighty Switch Force,Nintendo 3DS,
-Mighty,2013,Mighty Switch Force 2,Nintendo 3DS,
-Monster Hunter Spin-Off,2016,Monster Hunter Stories,Nintendo 3DS,Yes
-Monster Hunter Spin-Off,2021,Monster Hunter Stories 2: Wings of Ruin,Microsoft Windows,
 Octopath,2018,Octopath Traveler,Nintendo Switch,
 Octopath,2023,Octopath Traveler 2,Nintendo Switch,
-Okami,2007,Ōkami,Nintendo Switch,
-Okami,2010,Ōkamiden,Nintendo DS,
 Ori,2015,Ori & The Blind Forest,Nintendo Switch,
 Ori,2020,Ori & The Will Of The Wisps,Nintendo Switch,
 Panzer Dragoon,1995[hd],Panzer Dragoon,Microsoft Windows,Yes
-Parasite Eve,1998,Parasite Eve,Sony PS1,
-Parasite Eve,1999,Parasite Eve 2,Sony PS1,
-Parasite Eve,2010,The 3rd Birthday,Sony PSP,
 Persona Spin-Off,2012,Persona 4 Arena Ultimax,Nintendo Switch,
 Persona Spin-Off,2014,Persona Q: Shadow of the Labyrinth,Nintendo 3DS,
 Persona Spin-Off,2015,Persona 4: Dancing All Night,Sony PSV,
@@ -241,9 +143,6 @@ Persona Spin-Off,2018,Persona 3: Dancing in Moonlight,Sony PSV,
 Persona Spin-Off,2018,Persona 5: Dancing in Starlight,Sony PSV,
 Persona Spin-Off,2018,Persona Q2: New Cinema Labyrinth,Nintendo 3DS,
 Persona Spin-Off,2020,Persona 5 Strikers,Nintendo Switch,
-Persona,1996,Persona,Sony PSP,
-Persona,1999,Persona 2: Innocent Sin,Sony PSP,
-Persona,2000,Persona 2: Eternal Punishment,Sony PSP,
 Persona,2006,Persona 3,Sony PSP,Yes
 Persona,2008,Persona 4 Golden,Sony PSV,Yes
 Persona,2016,Persona 5 Royal,Nintendo Switch,
@@ -261,8 +160,6 @@ Pokemon,2018,Pokemon Let's Go Eevee,Nintendo Switch,Yes
 Pokemon,2019,Pokemon Sword,Nintendo Switch,Yes
 Pokemon,2022,Pokemon Legends: Arceus,Nintendo Switch,
 Pokemon,2022,Pokemon Scarlet,Nintendo Switch,
-Project X Zone,2012,Project X Zone,Nintendo 3DS,
-Project X Zone,2015,Project X Zone 2,Nintendo 3DS,
 Rayman,2011,Rayman Origins,Sony PSV,
 Rayman,2013,Rayman Legends,Sony PSV,
 Resident Evil,1998[hd],Resident Evil 2,Microsoft Windows,Yes
@@ -277,24 +174,10 @@ Shantae,2010,Shantae: Risky's Revenge,Nintendo DS,
 Shantae,2014,Shantae & The Pirate's Curse,Nintendo 3DS,Yes
 Shantae,2016,Shantae: Half-Genie Hero,Nintendo Switch,
 Shantae,2019,Shantae & The Seven Sirens,Nintendo Switch,
-Shin Megami Tensei Spin-Off,1994,Shin Megami Tensei If,Nintendo SNES,
 Shin Megami Tensei Spin-Off,1997,Devil Summoner: Soul Hackers,Nintendo 3DS,Yes
-Shin Megami Tensei Spin-Off,2009,Shin Megami Tensei: Devil Survivor Overclocked,Nintendo 3DS,
 Shin Megami Tensei Spin-Off,2009,Shin Megami Tensei: Strange Journey Redux,Nintendo 3DS,Yes
-Shin Megami Tensei Spin-Off,2011,Shin Megami Tensei: Devil Survivor 2 Record Breaker,Nintendo 3DS,
-Shin Megami Tensei Spin-Off,2015,Tokyo Mirage Sessions FE Encore,Nintendo Switch,
-Shin Megami Tensei,1987,Digital Devil Story: Megami Tensei,Nintendo SNES,
-Shin Megami Tensei,1990,Digital Devil Story: Megami Tensei 2,Nintendo SNES,
-Shin Megami Tensei,1992,Shin Megami Tensei,Nintendo SNES,
-Shin Megami Tensei,1994,Shin Megami Tensei 2,Nintendo SNES,
 Shin Megami Tensei,2003,Shin Megami Tensei 3: Nocturne,Nintendo Switch,Yes
-Shin Megami Tensei,2013,Shin Megami Tensei 4,Nintendo 3DS,
-Shin Megami Tensei,2016,Shin Megami Tensei 4: Apocalypse,Nintendo 3DS,
 Shin Megami Tensei,2021,Shin Megami Tensei 5,Nintendo Switch,Yes
-Shovel Knight,2014,Shovel Knight: Treasure Trove,Nintendo 3DS,
-Shovel Knight,2019,Shovel Knight Showdown,Nintendo Switch,Yes
-Shovel Knight,2021,Shovel Knight Pocket Dungeon,Nintendo Switch,
-Shovel Knight,2022,Shovel Knight Dig,Nintendo Switch,
 Smash Bros,2018,Super Smash Bros Ultimate,Nintendo Switch,Yes
 Sonic Spin-Off,2003,Sonic Battle,Nintendo GBA,Yes
 Sonic,1991,Sonic the Hedgehog,Sega Genesis,
@@ -305,16 +188,10 @@ Sonic,1995,Knuckles' Chaotix,Sega 32X,
 Sonic,2001,Sonic Advance,Nintendo GBA,
 Sonic,2002,Sonic Advance 2,Nintendo GBA,
 Sonic,2004,Sonic Advance 3,Nintendo GBA,
-Sonic,2005,Sonic Rush,Nintendo DS,
-Sonic,2007,Sonic Rush Adventure,Nintendo DS,
-Sonic,2010,Sonic Colors,Nintendo DS,
 Sonic,2011,Sonic Generations,Microsoft Windows,
 Sonic,2017,Sonic Mania,Nintendo Switch,
 Sonic,2022,Sonic Frontiers,Microsoft Windows,
 Soulcalibur,2009,Soulcalibur: Broken Destiny,Sony PSP,Yes
-Souls,2011,Dark Souls,Microsoft Windows,Yes
-Souls,2014,Dark Souls 2: Scholar of the First Sin,Microsoft Windows,
-Souls,2016,Dark Souls 3,Microsoft Windows,
 Souls,2019,Sekiro,Microsoft Windows,
 Souls,2022,Elden Ring,Microsoft Windows,
 Spyro,1998[hd],Spyro the Dragon,Microsoft Windows,Yes
@@ -330,60 +207,31 @@ Streets of Rage,1992,Streets of Rage 2,Sega Genesis,Yes
 Streets of Rage,1994,Streets of Rage 3,Sega Genesis,Yes
 Streets of Rage,2020,Streets of Rage 4,Nintendo Switch,Yes
 Sukeban,2016,VA-11 HALL-A,Sony PSV,Yes
-Super Robot Wars,2008,Endless Frontier,Nintendo DS,Yes
-Super Robot Wars,2010,Endless Frontier Exceed,Nintendo DS,
 Tales,2021,Tales of Arise,Microsoft Windows,Yes
-Teenage Mutant Ninja Turtles,1992,Teenage Mutant Ninja Turtles: The Hyperstone Heist,Sega Genesis,Yes
 Teenage Mutant Ninja Turtles,1992,Teenage Mutant Ninja Turtles: Turtles in Time,Nintendo SNES,Yes
 Teenage Mutant Ninja Turtles,1993,Teenage Mutant Ninja Turtles: Radical Rescue,Nintendo GB,Yes
 Teenage Mutant Ninja Turtles,2022,Teenage Mutant Ninja Turtles: Shredder's Revenge,Nintendo Switch,
 Tekken,1997,Tekken 3,Sony PS1,Yes
 Tekken,2007,Tekken 6,Sony PSP,Yes
-Tomb Raider,2013,Tomb Raider,Microsoft Windows,Yes
-Tomb Raider,2015,Rise of the Tomb Raider,Microsoft Windows,Yes
-Tomb Raider,2018,Shadow of the Tomb Raider,Microsoft Windows,
 Valkyrie Profile,1999,Valkyrie Profile,Sony PS1,Yes
 Valkyrie Profile,2008,Valkyrie Profile: Covenant of the Plume,Nintendo DS,Yes
 Vanillaware,2007,Odin Sphere,Sony PSV,
 Vanillaware,2009,Muramasa Rebirth,Sony PSV,
 Vanillaware,2013,Dragon's Crown,Sony PSV,
 Vanillaware,2019,13 Sentinels: Aegis Rim,Nintendo Switch,
-Wario,1994,Wario Land,Nintendo GB,
-Wario,1998,Wario Land 2,Nintendo GBC,
-Wario,2000,Wario Land 3,Nintendo GBC,
-Wario,2001,Wario Land 4,Nintendo GBA,
-White Wolf,2004,Vampire: The Masquerade Bloodlines,Microsoft Windows,Yes
-Wipeout,1995,Wipeout,Sony PS1,Yes
-Wipeout,1996,Wipeout 2097,Sony PS1,Yes
 Wipeout,1999,Wipeout 3,Sony PS1,Yes
-Wipeout,2005,Wipeout Pure,Sony PSP,Yes
-Wipeout,2007,Wipeout Pulse,Sony PSP,Yes
 Wipeout,2012,Wipeout 2048,Sony PSV,Yes
-Witcher,2015,The Witcher 3: Wild Hunt,Microsoft Windows,Yes
 Xeno,1998,Xenogears,Sony PS1,Yes
 Xeno,2010,Xenoblade Chronicles,Nintendo Switch,
-Xeno,2015,Xenoblade Chronicles X,Nintendo Wii U,Yes
 Xeno,2017,Xenoblade Chronicles 2,Nintendo Switch,Yes
 Xeno,2022,Xenoblade Chronicles 3,Nintendo Switch,
 Zelda,1991,The Legend of Zelda: A Link to the Past,Nintendo SNES,
 Zelda,1993[hd],The Legend of Zelda: Link's Awakening,Nintendo Switch,Yes
-Zelda,1998,The Legend of Zelda: Ocarina of Time,Nintendo 3DS,
-Zelda,2000,The Legend of Zelda: Majora's Mask,Nintendo 3DS,
 Zelda,2001,The Legend of Zelda: Oracle of Ages,Nintendo GBC,
 Zelda,2001,The Legend of Zelda: Oracle of Seasons,Nintendo GBC,
-Zelda,2002,The Legend of Zelda: The Wind Waker,Nintendo Wii U,
-Zelda,2004,The Legend of Zelda: Four Swords Adventures,Nintendo DS,
 Zelda,2004,The Legend of Zelda: The Minish Cap,Nintendo GBA,Yes
-Zelda,2006,The Legend of Zelda: Twilight Princess,Nintendo Wii U,
-Zelda,2007,The Legend of Zelda: Phantom Hourglass,Nintendo DS,
-Zelda,2009,The Legend of Zelda: Spirit Tracks,Nintendo DS,
-Zelda,2011,The Legend of Zelda: Skyward Sword,Nintendo Switch,
 Zelda,2013,The Legend of Zelda: A Link Between Worlds,Nintendo 3DS,Yes
-Zelda,2015,The Legend of Zelda: Tri Force Heroes,Nintendo 3DS,
 Zelda,2017,The Legend of Zelda: Breath of the Wild,Nintendo Switch,Yes
 Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch,
-Zero Escape,2009,999,Nintendo DS,Yes
-Zero Escape,2012,Virtue's Last Reward,Sony PSV,
-Zero Escape,2016,Zero Time Dilemma,Sony PSV,
 Zone of the Enders,2001,Zone of the Enders,Sony PS3,
 Zone of the Enders,2003,Zone of the Enders: The 2nd Runner,Sony PS3,
