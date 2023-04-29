@@ -11,14 +11,13 @@ Series,Release,Game,Platform,Done
 ,2017,Battle Chasers: Nightwar,Microsoft Windows,Yes
 ,2017,Cuphead,Nintendo Switch,
 ,2017,Fight'N Rage,Nintendo Switch,
-,2018,Chasm,Sony PSV,
 ,2018,Radiant Historia: Perfect Chronology,Nintendo 3DS,Yes
 ,2019,Astral Chain,Nintendo Switch,
 ,2019,Blasphemous,Nintendo Switch,
 ,2019,Disco Elysium,Microsoft Windows,Yes
-,2019,Micro Mages,Nintendo NES,
+,2019,Micro Mages,Nintendo NES,Yes
 ,2019,WarGroove,Nintendo Switch,
-,2019,Xeno Crisis,Sega Genesis,
+,2019,Xeno Crisis,Sega Genesis,Yes
 ,2020,Hades,Nintendo Switch,
 ,2020,Helltaker,Sony PSV,Yes
 ,2021,Steel Assault,Nintendo Switch,
@@ -35,8 +34,6 @@ Ace Attorney,2009,Ace Attorney Investigations: Miles Edgeworth,Nintendo DS,Yes
 Ace Attorney,2011,Ace Attorney Investigations 2: Prosecutor's Path,Nintendo DS,Yes
 Ace Attorney,2013,Phoenix Wright: Ace Attorney Dual Destinies,Nintendo 3DS,
 Ace Attorney,2016,Phoenix Wright: Ace Attorney Spirit of Justice,Nintendo 3DS,
-Alien,1994,Alien vs Predator,Arcade,Yes
-Alien,2011,Aliens: Infestation,Nintendo DS,
 Axiom Verge,2015,Axiom Verge,Nintendo Switch,
 Axiom Verge,2021,Axiom Verge 2,Nintendo Switch,
 Batman,2015,Batman: Arkham Knight,Microsoft Windows,Yes
@@ -214,11 +211,9 @@ Teenage Mutant Ninja Turtles,2022,Teenage Mutant Ninja Turtles: Shredder's Reven
 Tekken,1997,Tekken 3,Sony PS1,Yes
 Tekken,2007,Tekken 6,Sony PSP,Yes
 Valkyrie Profile,1999,Valkyrie Profile,Sony PS1,Yes
-Valkyrie Profile,2008,Valkyrie Profile: Covenant of the Plume,Nintendo DS,Yes
 Vanillaware,2007,Odin Sphere,Sony PSV,
 Vanillaware,2009,Muramasa Rebirth,Sony PSV,
 Vanillaware,2013,Dragon's Crown,Sony PSV,
-Vanillaware,2019,13 Sentinels: Aegis Rim,Nintendo Switch,
 Wipeout,1999,Wipeout 3,Sony PS1,Yes
 Wipeout,2012,Wipeout 2048,Sony PSV,Yes
 Xeno,1998,Xenogears,Sony PS1,Yes
