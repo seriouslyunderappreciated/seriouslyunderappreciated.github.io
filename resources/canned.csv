@@ -1,18 +1,47 @@
 Series,Release,Game,Platform,Done
+,2019,Control,Microsoft Windows,
 Ace Combat,2019,Ace Combat 7,Microsoft Windows,Yes
+Alien,2014,Alien: Isolation,Microsoft Windows,
 Batman,2015,Batman: Arkham Knight,Microsoft Windows,Yes
 Bioshock,2013,Bioshock Infinite,Microsoft Windows,Yes
+Bloodstained,2018,Bloodstained: Curse Of The Moon,Nintendo 3DS,
+Bloodstained,2019,Bloodstained: Ritual of the Night,Microsoft Windows,Yes
 Bloodstained,2020,Bloodstained: Curse of the Moon 2,Nintendo Switch,
+Darksiders,2010,Darksiders,Microsoft Windows,Yes
+Darksiders,2012,Darksiders 2,Microsoft Windows,Yes
+Darksiders,2018,Darksiders 3,Microsoft Windows,
+Darksiders,2019,Darksiders Genesis,Microsoft Windows,
+Dead or Alive,2019,Dead or Alive 6,Microsoft Windows,Yes
+Deus Ex,2016,Deus Ex: Mankind Divided,Microsoft Windows,Yes
+Devil May Cry,2019,Devil May Cry 5,Microsoft Windows,
+Disgaea,2013,Disgaea D2: A Brighter Darkness,Sony PS3,
 Dragon Age,2009,Dragon Age: Origins,Microsoft Windows,Yes
 Dragon Age,2011,Dragon Age 2,Microsoft Windows,Yes
 Dragon Age,2014,Dragon Age: Inquisition,Microsoft Windows,
 Dungeon & Fighter,2022,DNF Duel,Microsoft Windows,Yes
+Fire Emblem,2005,Fire Emblem: Path of Radiance,Nintendo Gamecube,
+Fire Emblem,2007,Fire Emblem: Radiant Dawn,Nintendo Wii,
 Forza,2018,Forza Horizon 4,Microsoft Windows,Yes
+God of War,2010,God of War 3,Sony PS3,Yes
+God of War,2013,God of War: Ascension,Sony PS3,Yes
 King of Fighters,2022,King of Fighters 15,Windows,Yes
+Marvel,2000,Marvel vs Capcom 2,Sega Dreamcast,Yes
 Mass Effect,2007,Mass Effect,Microsoft Windows,Yes
 Mass Effect,2010,Mass Effect 2,Microsoft Windows,Yes
 Mass Effect,2012,Mass Effect 3,Microsoft Windows,Yes
 Mass Effect,2017,Mass Effect: Andromeda,Microsoft Windows,
+Metal Gear,1998,Metal Gear Solid,Sony PS1,Yes
+Metal Gear,2001,Metal Gear Solid 2: Sons of Liberty,Sony PSV,Yes
+Metal Gear,2004,Metal Gear Solid 3: Snake Eater,Sony PSV,Yes
+Metal Gear,2008,Metal Gear Solid 4: Guns of the Patriots,Sony PS3,Yes
+Metal Gear,2010,Metal Gear Solid: Peace Walker,Sony PSP,Yes
+Metal Gear,2013,Metal Gear Rising: Revengeance,Microsoft Windows,Yes
+Metal Gear,2014,Metal Gear Solid: Ground Zeroes,Microsoft Windows,Yes
+Metal Gear,2015,Metal Gear Solid 5: The Phantom Pain,Microsoft Windows,Yes
+Metroid Prime,2004,Metroid Prime 2: Echoes,Nintendo Wii,
+Metroid Prime,2007,Metroid Prime 3: Corruption,Nintendo Wii,
+Monster Hunter Spin-Off,2016,Monster Hunter Stories,Nintendo 3DS,Yes
+Monster Hunter Spin-Off,2021,Monster Hunter Stories 2: Wings of Ruin,Microsoft Windows,
 Red Dead,2010,Red Dead Redemption,Sony PS3,Yes
 Red Dead,2018,Red Dead Redemption 2,Microsoft Windows,
 Resident Evil,1996[hd],Resident Evil,Microsoft Windows,Yes
@@ -24,17 +53,29 @@ Resident Evil,2012,Resident Evil 6,Microsoft Windows,
 Resident Evil,2015,Resident Evil: Revelations 2,Microsoft Windows,
 Resident Evil,2017,Resident Evil 7: Biohazard,Microsoft Windows,
 Resident Evil,2021,Resident Evil Village,Microsoft Windows,
+Shin Megami Tensei Spin-Off,2022,Soul Hackers 2,Microsoft Windows,
 Somnium,2019,AI: The Somnium Files,Nintendo Switch,Yes
 Somnium,2022,AI: The Somnium Files Nirvana Initiative,Nintendo Switch,
-Shin Megami Tensei Spin-Off,2022,Soul Hackers 2,Microsoft Windows,
+Sonic,1998,Sonic Adventure,Sega Dreamcast,
+Sonic,2001,Sonic Adventure 2,Sega Dreamcast,
+Soulcalibur,2018,SoulCalibur 6,Microsoft Windows,Yes
+Souls,2011,Dark Souls,Microsoft Windows,Yes
+Souls,2014,Dark Souls 2: Scholar of the First Sin,Microsoft Windows,
+Souls,2016,Dark Souls 3,Microsoft Windows,
 Star Wars,2019,Jedi: Fallen Order,Microsoft Windows,
 Star Wars,2023,Jedi: Survivor,Microsoft Windows,
+Street Fighter Spin-Off,2001,Capcom vs SNK 2,Sega Dreamcast,Yes
+Street Fighter,2008,Street Fighter 4,Microsoft Windows,Yes
+Tekken,2015,Tekken 7,Microsoft Windows,Yes
 Tenchu,1998,Tenchu: Stealth Assassins,Sony PS1,Yes
 Tenchu,2000,Tenchu 2: Birth of the Stealth Assassins,Sony PS1,Yes
 Tenchu,2003,Tenchu 3: Wrath of Heaven,Sony PSP,
 Tenchu,2004,Tenchu: Fatal Shadows,Sony PSP,
 Tenchu,2005,Tenchu: Time of the Assassins,Sony PSP,Yes
 Tenchu,2008,Tenchu: Shadow Assassins,Sony PSP,
+Tomb Raider,2013,Tomb Raider,Microsoft Windows,Yes
+Tomb Raider,2015,Rise of the Tomb Raider,Microsoft Windows,Yes
+Tomb Raider,2018,Shadow of the Tomb Raider,Microsoft Windows,
 Valkyrie Profile,2006,Valkyrie Profile 2,Sony PS2,
 Valkyrie Profile,2022,Valkyrie Elysium,Microsoft Windows,
 Witcher,2007[hd],The Witcher,Microsoft Windows,Yes
@@ -43,3 +84,7 @@ Witcher,2015,The Witcher 3: Wild Hunt,Microsoft Windows,Yes
 Xeno,2002,Xenosaga,Sony PS2,
 Xeno,2004,Xenosaga 2,Sony PS2,
 Xeno,2006,Xenosaga 3,Sony PS2,
+Xeno,2015,Xenoblade Chronicles X,Nintendo Wii U,Yes
+Zelda,2002,The Legend of Zelda: The Wind Waker,Nintendo Wii U,
+Zelda,2004,The Legend of Zelda: Four Swords Adventures,Nintendo Gamecube,
+Zelda,2006,The Legend of Zelda: Twilight Princess,Nintendo Wii U,
