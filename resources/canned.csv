@@ -1,11 +1,7 @@
 Series,Release,Game,Platform,Done
-,1996,Red Earth,Arcade,Yes
-,2007,Super Stardust Delta,Sony PSV,Yes
 ,2010,Super Meat Boy,Sony PSV,Yes
-,2018,Chasm,Sony PSV,
 ,2019,Control,Microsoft Windows,
 ,2019,Indivisible,Nintendo Switch,
-,2019,Monster Sanctuary,Nintendo Switch,
 ,2020,Helltaker,Sony PSV,Yes
 ,2020,ScourgeBringer,Sony PSV,
 ,2021,Steel Assault,Nintendo Switch,
@@ -30,8 +26,6 @@ Darksiders,2010,Darksiders,Microsoft Windows,Yes
 Darksiders,2012,Darksiders 2,Microsoft Windows,Yes
 Darksiders,2018,Darksiders 3,Microsoft Windows,
 Darksiders,2019,Darksiders Genesis,Microsoft Windows,
-Dead or Alive,1996,Dead or Alive,Sony PS1,Yes
-Dead or Alive,2012,Dead or Alive 5,Sony PSV,Yes
 Dead or Alive,2019,Dead or Alive 6,Microsoft Windows,Yes
 Deus Ex,2016,Deus Ex: Mankind Divided,Microsoft Windows,Yes
 Devil May Cry,2019,Devil May Cry 5,Microsoft Windows,
@@ -65,8 +59,6 @@ Fire Emblem,2003,Fire Emblem: The Blazing Blade,Nintendo GBA,
 Fire Emblem,2004,Fire Emblem: The Sacred Stones,Nintendo GBA,
 Fire Emblem,2005,Fire Emblem: Path of Radiance,Nintendo Gamecube,
 Fire Emblem,2007,Fire Emblem: Radiant Dawn,Nintendo Wii,
-Forgotten Realms,1994,D&D Tower of Doom,Arcade,Yes
-Forgotten Realms,1996,D&D Shadow over Mystara,Arcade,Yes
 Forza,2018,Forza Horizon 4,Microsoft Windows,Yes
 God of War,2010,God of War 3,Sony PS3,Yes
 God of War,2013,God of War: Ascension,Sony PS3,Yes
@@ -145,7 +137,6 @@ Sonic,2001,Sonic Adventure 2,Sega Dreamcast,
 Sonic,2005,Sonic Rush,Nintendo DS,
 Sonic,2007,Sonic Rush Adventure,Nintendo DS,
 Sonic,2010,Sonic Colors,Nintendo DS,
-Soulcalibur,2009,Soulcalibur: Broken Destiny,Sony PSP,Yes
 Soulcalibur,2018,SoulCalibur 6,Microsoft Windows,Yes
 Souls,2011,Dark Souls,Microsoft Windows,Yes
 Souls,2014,Dark Souls 2: Scholar of the First Sin,Microsoft Windows,
@@ -162,8 +153,6 @@ Sukeban,2016,VA-11 HALL-A,Sony PSV,Yes
 Super Robot Wars,2008,Endless Frontier,Nintendo DS,Yes
 Super Robot Wars,2010,Endless Frontier Exceed,Nintendo DS,
 Teenage Mutant Ninja Turtles,1992,Teenage Mutant Ninja Turtles: The Hyperstone Heist,Sega Genesis,Yes
-Tekken,2007,Tekken 6,Sony PSP,Yes
-Tekken,2015,Tekken 7,Microsoft Windows,Yes
 Tenchu,1998,Tenchu: Stealth Assassins,Sony PS1,Yes
 Tenchu,2000,Tenchu 2: Birth of the Stealth Assassins,Sony PS1,Yes
 Tenchu,2003,Tenchu 3: Wrath of Heaven,Sony PSP,
