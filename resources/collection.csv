@@ -108,7 +108,7 @@ Pokemon,2012,Pokemon White 2,Nintendo DS,Yes
 Pokemon,2013,Pokemon Y,Nintendo 3DS,Yes
 Pokemon,2017,Pokemon Ultra Sun,Nintendo 3DS,Yes
 Pokemon,2018,Pokemon Let's Go Eevee,Nintendo Switch,Yes
-Pokemon,2019,Pokemon Sword,Nintendo Switch,Yes
+Pokemon,2019,Pokemon Sword,Nintendo Switch,
 Pokemon,2022,Pokemon Legends: Arceus,Nintendo Switch,
 Pokemon,2022,Pokemon Scarlet,Nintendo Switch,
 Resident Evil,1998[hd],Resident Evil 2,Microsoft Windows,Yes
@@ -122,7 +122,7 @@ Shantae,2019,Shantae & The Seven Sirens,Nintendo Switch,
 Shin Megami Tensei Spin-Off,1997,Devil Summoner: Soul Hackers,Nintendo 3DS,Yes
 Shin Megami Tensei Spin-Off,2009,Shin Megami Tensei: Strange Journey Redux,Nintendo 3DS,Yes
 Shin Megami Tensei,2003,Shin Megami Tensei 3: Nocturne,Nintendo Switch,Yes
-Shin Megami Tensei,2021,Shin Megami Tensei 5,Nintendo Switch,Yes
+Shin Megami Tensei,2021,Shin Megami Tensei 5,Nintendo Switch,
 Smash Bros,2018,Super Smash Bros Ultimate,Nintendo Switch,Yes
 Sonic Spin-Off,2003,Sonic Battle,Nintendo GBA,Yes
 Sonic,1991,Sonic the Hedgehog,Sega Genesis,Yes
@@ -145,7 +145,7 @@ Street Fighter,1998,Street Fighter Alpha 3,Arcade,Yes
 Street Fighter,1999,Street Fighter 3: 3rd Strike,Arcade,Yes
 Street Fighter,2016,Street Fighter 5,Microsoft Windows,Yes
 Streets of Rage,2020,Streets of Rage 4,Nintendo Switch,Yes
-Tales,2021,Tales of Arise,Microsoft Windows,Yes
+Tales,2021,Tales of Arise,Microsoft Windows,
 Teenage Mutant Ninja Turtles,1992,Teenage Mutant Ninja Turtles: Turtles in Time,Nintendo SNES,Yes
 Teenage Mutant Ninja Turtles,1993,Teenage Mutant Ninja Turtles: Radical Rescue,Nintendo GB,Yes
 Teenage Mutant Ninja Turtles,2022,Teenage Mutant Ninja Turtles: Shredder's Revenge,Nintendo Switch,Yes
@@ -158,7 +158,7 @@ White Wolf,2004,Vampire: The Masquerade Bloodlines,Microsoft Windows,Yes
 Wipeout,1999,Wipeout 3,Sony PS1,Yes
 Xeno,1998,Xenogears,Sony PS1,Yes
 Xeno,2010,Xenoblade Chronicles,Nintendo Switch,
-Xeno,2017,Xenoblade Chronicles 2,Nintendo Switch,Yes
+Xeno,2017,Xenoblade Chronicles 2,Nintendo Switch,
 Xeno,2022,Xenoblade Chronicles 3,Nintendo Switch,
 Zelda,1991,The Legend of Zelda: A Link to the Past,Nintendo SNES,Yes
 Zelda,1993[hd],The Legend of Zelda: Link's Awakening,Nintendo Switch,Yes
