@@ -7,7 +7,7 @@ Series,Release,Game,Platform,Done
 ,1999,Planescape: Torment,Microsoft Windows,Yes
 ,2017,Battle Chasers: Nightwar,Microsoft Windows,Yes
 ,2017,Cuphead,Nintendo Switch,
-,2017,Fight'N Rage,Nintendo Switch,
+,2017,Fight'N Rage,Nintendo Switch,Yes
 ,2018,Radiant Historia: Perfect Chronology,Nintendo 3DS,Yes
 ,2019,Astral Chain,Nintendo Switch,
 ,2019,Disco Elysium,Microsoft Windows,Yes
@@ -15,7 +15,6 @@ Series,Release,Game,Platform,Done
 ,2019,Xeno Crisis,Sega Genesis,Yes
 ,2020,Hades,Nintendo Switch,
 ,2021,Unsighted,Nintendo Switch,
-,2022,Jack Move,Nintendo Switch,
 ,2022,Triangle Strategy,Nintendo Switch,
 Ace Attorney Spin-Off,2015,The Great Ace Attorney: Adventures,Nintendo Switch,
 Ace Attorney Spin-Off,2017,The Great Ace Attorney: Resolve,Nintendo Switch,
@@ -102,7 +101,6 @@ Marvel,1994,X-Men: Children of the Atom,Arcade,Yes
 Marvel,2018,Spider-Man,Microsoft Windows,Yes
 Marvel,2020,Spider-Man: Miles Morales,Microsoft Windows,
 Metroid Prime,2002[hd],Metroid Prime,Nintendo Switch,
-Metroid Prime,2006,Metroid Prime Hunters,Nintendo DS,
 Metroid,1986[hd],Metroid: Zero Mission,Nintendo GBA,Yes
 Metroid,1991[hd],Metroid: Samus Returns,Nintendo 3DS,Yes
 Metroid,1994,Super Metroid,Nintendo SNES,Yes
@@ -165,8 +163,6 @@ Valkyrie Profile,1999,Valkyrie Profile,Sony PS1,Yes
 Vanillaware,2007,Odin Sphere,Sony PSV,
 Vanillaware,2009,Muramasa Rebirth,Sony PSV,
 Vanillaware,2013,Dragon's Crown,Sony PSV,
-WarGroove,2019,WarGroove,Nintendo Switch,
-WarGroove,2023,WarGroove 2,Nintendo Switch,
 White Wolf,2004,Vampire: The Masquerade Bloodlines,Microsoft Windows,Yes
 Wipeout,1999,Wipeout 3,Sony PS1,Yes
 Xeno,1998,Xenogears,Sony PS1,Yes
@@ -181,11 +177,8 @@ Zelda,2001,The Legend of Zelda: Oracle of Ages,Nintendo GBC,
 Zelda,2001,The Legend of Zelda: Oracle of Seasons,Nintendo GBC,
 Zelda,2002,The Legend of Zelda: Four Swords,Nintendo DS,Yes
 Zelda,2004,The Legend of Zelda: The Minish Cap,Nintendo GBA,Yes
-Zelda,2007,The Legend of Zelda: Phantom Hourglass,Nintendo DS,
-Zelda,2009,The Legend of Zelda: Spirit Tracks,Nintendo DS,
 Zelda,2011,The Legend of Zelda: Skyward Sword,Nintendo Switch,
 Zelda,2013,The Legend of Zelda: A Link Between Worlds,Nintendo 3DS,Yes
-Zelda,2015,The Legend of Zelda: Tri Force Heroes,Nintendo 3DS,
 Zelda,2017,The Legend of Zelda: Breath of the Wild,Nintendo Switch,Yes
 Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch,
 Zone of the Enders,2001,Zone of the Enders,Sony PS3,Yes
