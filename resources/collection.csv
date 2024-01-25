@@ -12,8 +12,6 @@ Series,Release,Game,Platform,Done
 ,2022,Jack Move,Nintendo Switch,
 ,2022,Triangle Strategy,Nintendo Switch,
 ,2023,Sea of Stars,Nintendo Switch,
-Ace Attorney Spin-Off,2015,The Great Ace Attorney: Adventures,Nintendo Switch,
-Ace Attorney Spin-Off,2017,The Great Ace Attorney: Resolve,Nintendo Switch,
 Ace Attorney,2001,Phoenix Wright: Ace Attorney,Nintendo 3DS,Yes
 Ace Attorney,2002,Phoenix Wright: Ace Attorney Justice for All,Nintendo 3DS,Yes
 Ace Attorney,2004,Phoenix Wright: Ace Attorney Trials and Tribulations,Nintendo 3DS,Yes
@@ -21,7 +19,9 @@ Ace Attorney,2007,Apollo Justice: Ace Attorney,Nintendo 3DS,Yes
 Ace Attorney,2009,Ace Attorney Investigations: Miles Edgeworth,Nintendo DS,Yes
 Ace Attorney,2011,Ace Attorney Investigations 2: Prosecutor's Path,Nintendo DS,Yes
 Ace Attorney,2013,Phoenix Wright: Ace Attorney Dual Destinies,Nintendo 3DS,
+Ace Attorney,2015,The Great Ace Attorney: Adventures,Nintendo Switch,
 Ace Attorney,2016,Phoenix Wright: Ace Attorney Spirit of Justice,Nintendo 3DS,
+Ace Attorney,2017,The Great Ace Attorney: Resolve,Nintendo Switch,
 Bayonetta,2009,Bayonetta,Nintendo Switch,
 Bayonetta,2014,Bayonetta 2,Nintendo Switch,
 Bayonetta,2022,Bayonetta 3,Nintendo Switch,
@@ -52,12 +52,12 @@ Doom,2020,DOOM Eternal,Microsoft Windows,
 Dragon Ball,2018,Dragon Ball FighterZ,Microsoft Windows,Yes
 Drakengard,2010[hd],Nier Replicant,Microsoft Windows,Yes
 Drakengard,2017,Nier: Automata,Microsoft Windows,Yes
-Final Fantasy Spin-Off,2000,Vagrant Story,Sony PS1,
-Final Fantasy Tactics,1997,Final Fantasy Tactics,Sony PS1,Yes
-Final Fantasy Tactics,2003,Final Fantasy Tactics Advance,Nintendo GBA,Yes
-Final Fantasy Tactics,2007,Final Fantasy Tactics A2: Grimoire of the Rift,Nintendo DS,Yes
 Final Fantasy,1997,Final Fantasy 7,Sony PS1,
+Final Fantasy,1997,Final Fantasy Tactics,Sony PS1,Yes
+Final Fantasy,2000,Vagrant Story,Sony PS1,
+Final Fantasy,2003,Final Fantasy Tactics Advance,Nintendo GBA,Yes
 Final Fantasy,2006,Final Fantasy 12,Nintendo Switch,
+Final Fantasy,2007,Final Fantasy Tactics A2: Grimoire of the Rift,Nintendo DS,Yes
 Final Fantasy,2007[hd],Crisis Core: Final Fantasy 7,Microsoft Windows,Yes
 Final Fantasy,2020,Final Fantasy 7 Remake,Microsoft Windows,Yes
 Fire Emblem,2013,Fire Emblem Awakening,Nintendo 3DS,Yes
@@ -106,10 +106,16 @@ Prince of Persia,2024,Prince of Persia: The Lost Crown,Nintendo Switch,
 Resident Evil,1998[hd],Resident Evil 2,Microsoft Windows,Yes
 Resident Evil,1999[hd],Resident Evil 3,Microsoft Windows,Yes
 Resident Evil,2012,Resident Evil: Revelations,Nintendo 3DS,
-Shin Megami Tensei Spin-Off,1997,Devil Summoner: Soul Hackers,Nintendo 3DS,Yes
-Shin Megami Tensei Spin-Off,2009,Shin Megami Tensei: Strange Journey Redux,Nintendo 3DS,Yes
+Shin Megami Tensei,1997,Devil Summoner: Soul Hackers,Nintendo 3DS,Yes
 Shin Megami Tensei,2003,Shin Megami Tensei 3: Nocturne,Nintendo Switch,Yes
+Shin Megami Tensei,2006,Persona 3,Nintendo Switch,Yes
+Shin Megami Tensei,2008,Persona 4 Golden,Nintendo Switch,Yes
+Shin Megami Tensei,2009,Shin Megami Tensei: Strange Journey Redux,Nintendo 3DS,Yes
+Shin Megami Tensei,2012,Persona 4 Arena Ultimax,Nintendo Switch,
+Shin Megami Tensei,2016,Persona 5 Royal,Nintendo Switch,
+Shin Megami Tensei,2020,Persona 5 Strikers,Nintendo Switch,
 Shin Megami Tensei,2021,Shin Megami Tensei 5,Nintendo Switch,Yes
+Shin Megami Tensei,2023,Persona 5 Tactica,Nintendo Switch,
 Smash Bros,2018,Super Smash Bros Ultimate,Nintendo Switch,Yes
 Sonic,1991,Sonic the Hedgehog,Sega Genesis,Yes
 Sonic,1992,Sonic the Hedgehog 2,Sega Genesis,Yes
