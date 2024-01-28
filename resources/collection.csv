@@ -3,13 +3,11 @@ Series,Release,Game,Platform,Done
 ,1994,Policenauts,Sony PS1,Yes
 ,1999,Planescape: Torment,Nintendo Switch,Yes
 ,2017,Battle Chasers: Nightwar,Microsoft Windows,Yes
-,2017,Cuphead,Nintendo Switch,
 ,2017,Fight'N Rage,Nintendo Switch,Yes
 ,2018,Radiant Historia: Perfect Chronology,Nintendo 3DS,Yes
 ,2019,Astral Chain,Nintendo Switch,
 ,2019,Disco Elysium,Microsoft Windows,Yes
 ,2021,Unsighted,Nintendo Switch,
-,2022,Jack Move,Nintendo Switch,
 Ace Attorney,2001,Phoenix Wright: Ace Attorney,Nintendo 3DS,Yes
 Ace Attorney,2002,Phoenix Wright: Ace Attorney Justice for All,Nintendo 3DS,Yes
 Ace Attorney,2004,Phoenix Wright: Ace Attorney Trials and Tribulations,Nintendo 3DS,Yes
@@ -24,8 +22,6 @@ Bayonetta,2009,Bayonetta,Nintendo Switch,
 Bayonetta,2014,Bayonetta 2,Nintendo Switch,
 Bayonetta,2022,Bayonetta 3,Nintendo Switch,
 Bayonetta,2023,Bayonetta Origins: Cereza and the Lost Demon,Nintendo Switch,
-Blasphemous,2019,Blasphemous,Nintendo Switch,
-Blasphemous,2023,Blasphemous 2,Nintendo Switch,
 Bravely,2014,Bravely Default,Nintendo 3DS,Yes
 Bravely,2016,Bravely Second: End Layer,Nintendo 3DS,Yes
 Castlevania,1997,Castlevania: Symphony of the Night,Sony PS1,Yes
@@ -104,10 +100,6 @@ Pokemon,2013,Pokemon Y,Nintendo 3DS,Yes
 Pokemon,2017,Pokemon Ultra Sun,Nintendo 3DS,Yes
 Pokemon,2018,Pokemon Let's Go Eevee,Nintendo Switch,Yes
 Pokemon,2019,Pokemon Sword,Nintendo Switch,
-Pokemon,2022,Pokemon Legends: Arceus,Nintendo Switch,
-Pokemon,2022,Pokemon Scarlet,Nintendo Switch,
-Prince of Persia,2008,Prince of Persia,Sony PS3,
-Prince of Persia,2024,Prince of Persia: The Lost Crown,Nintendo Switch,
 Resident Evil,1998[hd],Resident Evil 2,Microsoft Windows,Yes
 Resident Evil,1999[hd],Resident Evil 3,Microsoft Windows,Yes
 Resident Evil,2012,Resident Evil: Revelations,Nintendo 3DS,
@@ -119,9 +111,9 @@ Sonic,1994,Sonic the Hedgehog 3 & Knuckles,Sega Genesis,Yes
 Sonic,2001,Sonic Advance,Nintendo GBA,Yes
 Sonic,2002,Sonic Advance 2,Nintendo GBA,Yes
 Sonic,2004,Sonic Advance 3,Nintendo GBA,Yes
-Sonic,2011,Sonic Generations,Microsoft Windows,
-Sonic,2017,Sonic Mania,Nintendo Switch,
-Sonic,2023,Sonic Superstars,Nintendo Switch,
+Sonic,2011,Sonic Generations,Microsoft Windows,Yes
+Sonic,2017,Sonic Mania,Nintendo Switch,Yes
+Sonic,2023,Sonic Superstars,Nintendo Switch,Yes
 Souls,2019,Sekiro,Microsoft Windows,
 Souls,2022,Elden Ring,Microsoft Windows,
 Spyro,1998[hd],Spyro the Dragon,Microsoft Windows,Yes
