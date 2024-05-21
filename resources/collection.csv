@@ -18,6 +18,7 @@ Bravely,2014,Bravely Default,Nintendo 3DS,Yes
 Bravely,2016,Bravely Second: End Layer,Nintendo 3DS,Yes
 Castlevania,1997,Castlevania: Symphony of the Night,Sony PS1,Yes
 Chrono,1995,Chrono Trigger,Nintendo DS,Yes
+Darkstalkers,1997,Darkstalkers: Vampire Savior,Arcade,Yes
 Diablo,2000[hd],Diablo 2,Nintendo Switch,Yes
 Diablo,2012,Diablo 3,Nintendo Switch,Yes
 Disgaea,2003[hd],Disgaea,Nintendo Switch,Yes
@@ -47,6 +48,7 @@ Guilty Gear,2014,Guilty Gear Xrd Rev 2,Microsoft Windows,Yes
 Hollow Knight,2017,Hollow Knight,Nintendo Switch,
 League of Legends,2022,Ruined King,Microsoft Windows,Yes
 Mario,2014,Mario Kart 8,Nintendo Switch,Yes
+Marvel,1994,X-Men: Children of the Atom,Arcade,Yes
 Marvel,2018,Spider-Man,Microsoft Windows,Yes
 Megami Tensei,2003,Shin Megami Tensei 3: Nocturne,Nintendo Switch,Yes
 Megami Tensei,2021,Shin Megami Tensei 5: Vengeance,Nintendo Switch,Yes
@@ -67,6 +69,8 @@ Resident Evil,1999[hd],Resident Evil 3,Microsoft Windows,Yes
 Smash Bros,2018,Super Smash Bros Ultimate,Nintendo Switch,Yes
 Souls,2019,Sekiro,Microsoft Windows,
 Souls,2022,Elden Ring,Microsoft Windows,
+Street Fighter,1998,Street Fighter Alpha 3,Arcade,Yes
+Street Fighter,1999,Street Fighter 3rd Strike,Arcade,Yes
 Street Fighter,2016,Street Fighter 5,Microsoft Windows,Yes
 Streets of Rage,2020,Streets of Rage 4,Nintendo Switch,Yes
 Teenage Mutant Ninja Turtles,2022,Teenage Mutant Ninja Turtles: Shredder's Revenge,Nintendo Switch,Yes
