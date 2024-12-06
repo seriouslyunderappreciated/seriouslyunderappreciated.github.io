@@ -1,0 +1,13 @@
+{
+  "name": "Game Collection",
+  "short_name": "Tracker",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "resources/biglogo.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
