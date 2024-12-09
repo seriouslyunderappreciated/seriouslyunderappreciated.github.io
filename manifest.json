@@ -5,7 +5,7 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "resources/biglogo.png",
+      "src": "resources/logo.png",
       "sizes": "128x128",
       "type": "image/png"
     }
