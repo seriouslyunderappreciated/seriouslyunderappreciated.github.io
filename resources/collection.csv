@@ -1,6 +1,5 @@
 Series,Release,Game,Platform,Done
 ,2019,Astral Chain,Nintendo Switch,
-,2021,Unsighted,Nintendo Switch,
 Ace Attorney,2001,Phoenix Wright: Ace Attorney,Nintendo Switch,Yes
 Ace Attorney,2002,Phoenix Wright: Ace Attorney Justice for All,Nintendo Switch,Yes
 Ace Attorney,2004,Phoenix Wright: Ace Attorney Trials and Tribulations,Nintendo Switch,Yes
@@ -8,12 +7,9 @@ Ace Attorney,2007,Apollo Justice: Ace Attorney,Nintendo Switch,Yes
 Ace Attorney,2009,Ace Attorney Investigations: Miles Edgeworth,Nintendo Switch,Yes
 Ace Attorney,2011,Ace Attorney Investigations 2: Prosecutor's Path,Nintendo Switch,Yes
 Ace Attorney,2013,Phoenix Wright: Ace Attorney Dual Destinies,Nintendo Switch,Yes
-Ace Attorney,2015,The Great Ace Attorney: Adventures,Nintendo Switch,
 Ace Attorney,2016,Phoenix Wright: Ace Attorney Spirit of Justice,Nintendo Switch,
-Ace Attorney,2017,The Great Ace Attorney: Resolve,Nintendo Switch,
 Castlevania,1997,Castlevania: Symphony of the Night,Sony PS1,Yes
 Desperados,2020,Desperados 3,Microsoft Windows,
-Diablo,2012,Diablo 3,Nintendo Switch,Yes
 Disgaea,2003[hd],Disgaea,Nintendo Switch,Yes
 Disgaea,2015,Disgaea 5,Nintendo Switch,
 Doom,2020,DOOM Eternal,Microsoft Windows,
@@ -29,7 +25,6 @@ Final Fantasy,2007[hd],Crisis Core: Final Fantasy 7,Microsoft Windows,Yes
 Final Fantasy,2020,Final Fantasy 7 Remake,Microsoft Windows,Yes
 Final Fantasy,2020,Final Fantasy 7 Rebirth,Microsoft Windows,
 Hollow Knight,2017,Hollow Knight,Nintendo Switch,Yes
-Mario Kart,2014,Mario Kart 8,Nintendo Switch,Yes
 Marvel,2018,Spider-Man,Microsoft Windows,Yes
 Metroid,1986[hd],Metroid: Zero Mission,Nintendo GBA,Yes
 Metroid,1991[hd],Metroid: Samus Returns,Nintendo 3DS,Yes
@@ -38,10 +33,8 @@ Metroid,2002,Metroid Fusion,Nintendo GBA,Yes
 Metroid,2002[hd],Metroid Prime,Nintendo Switch,
 Metroid,2021,Metroid Dread,Nintendo Switch,Yes
 Pokemon,2002,Pokemon Emerald,Nintendo GBA,Yes
-Pokemon,2019,Pokemon Sword,Nintendo Switch,Yes
 Resident Evil,1998[hd],Resident Evil 2,Microsoft Windows,Yes
 Resident Evil,1999[hd],Resident Evil 3,Microsoft Windows,Yes
-Smash Bros,2018,Super Smash Bros Ultimate,Nintendo Switch,Yes
 Shadow,2016,Shadow Tactics: Blades of the Shogun,Microsoft Windows,Yes
 Souls,2019,Sekiro,Microsoft Windows,
 Souls,2022,Elden Ring,Microsoft Windows,
@@ -56,4 +49,4 @@ Xeno,2022,Xenoblade 3,Nintendo Switch,Yes
 Zelda,1993[hd],The Legend of Zelda: Link's Awakening,Nintendo Switch,Yes
 Zelda,2004,The Legend of Zelda: The Minish Cap,Nintendo GBA,Yes
 Zelda,2017,The Legend of Zelda: Breath of the Wild,Nintendo Switch,Yes
-Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch,
+Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch 2,
