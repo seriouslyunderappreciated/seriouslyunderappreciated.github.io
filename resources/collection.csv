@@ -1,17 +1,17 @@
 Series,Release,Game,Device,Done
-Drakengard,2010,Nier Replicant [hd],Windows PC,Yes
-Drakengard,2017,Nier: Automata,Windows PC,Yes
-Dungeons & Dragons,2023,Baldur's Gate 3,Windows PC,Yes
-Final Fantasy,2020,Final Fantasy 7 Remake,Windows PC,Yes
-Final Fantasy,2020,Final Fantasy 7 Rebirth,Windows PC,Yes
+Drakengard,2010,Nier Replicant [hd],Computer,Yes
+Drakengard,2017,Nier: Automata,Computer,Yes
+Dungeons & Dragons,2023,Baldur's Gate 3,Computer,Yes
+Final Fantasy,2020,Final Fantasy 7 Remake,Computer,Yes
+Final Fantasy,2020,Final Fantasy 7 Rebirth,Computer,Yes
 Hollow Knight,2017,Hollow Knight,Steam Deck,Yes
-Marvel,2018,Spider-Man,Windows PC,Yes
+Marvel,2018,Spider-Man,Computer,Yes
 Metroid,2021,Metroid Dread,Nintendo Switch 2,Yes
-Resident Evil,1998,Resident Evil 2 [hd],Windows PC,Yes
-Resident Evil,1999,Resident Evil 3 [hd],Windows PC,Yes
+Resident Evil,1998,Resident Evil 2 [hd],Computer,Yes
+Resident Evil,1999,Resident Evil 3 [hd],Computer,Yes
 Shadow,2016,Shadow Tactics: Blades of the Shogun,Steam Deck,Yes
-Souls,2019,Sekiro,Windows PC,
-Souls,2022,Elden Ring,Windows PC,
+Souls,2019,Sekiro,Computer,
+Souls,2022,Elden Ring,Computer,
 Streets of Rage,2020,Streets of Rage 4,Steam Deck,Yes
 Xeno,2010,Xenoblade [hd],Nintendo Switch 2,Yes
 Xeno,2015,Xenoblade X,Nintendo Switch 2,Yes
@@ -19,5 +19,6 @@ Xeno,2017,Xenoblade 2,Nintendo Switch 2,Yes
 Xeno,2022,Xenoblade 3,Nintendo Switch 2,Yes
 Zelda,2017,The Legend of Zelda: Breath of the Wild,Nintendo Switch 2,Yes
 Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch 2,
+
 
 
