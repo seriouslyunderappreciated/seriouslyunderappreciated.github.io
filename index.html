@@ -65,10 +65,10 @@
                                                 cell = '[vv] ' + cell;
                                             }
 
-                                            // Replace [vv] with invisible Steam Deck image
-                                           // if (cell.includes('[vv]')) {
-                                           //     cell = cell.replace(/\[vv\]/g, '<img src="resources/steamdeck.png" style="vertical-align:text-bottom; opacity:0">');
-                                           // }
+                                            // Keep [vv] as text for sorting, but hide it visually
+                                            if (cell.includes('[vv]')) {
+                                                cell = cell.replace(/\[vv\]/g, '<span style="display:none">[vv]</span>');
+                                            }
 
                                             // Existing replacements
                                             if (cell.includes('[hd]')) {
@@ -176,4 +176,5 @@
 </body>
 
 </html>
+
 
