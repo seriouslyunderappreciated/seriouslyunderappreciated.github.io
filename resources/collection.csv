@@ -1,4 +1,4 @@
-Series,Release,Game,Device,Done
+Series,Release,Game,Platform,Done
 ,2012,Mark of the Ninja,PC [sd],Yes
 ,2018,Return of the Obra Dinn,PC [sd],Yes
 ,2019,Disco Elysium,PC [sd],Yes
@@ -26,12 +26,13 @@ Souls,2019,Sekiro,PC,
 Souls,2022,Elden Ring,PC,
 Streets of Rage,2020,Streets of Rage 4,PC [sd],Yes
 Strider,2014,Strider,PC [sd],
-Xeno,2010,Xenoblade [hd],Nintendo Switch 2,Yes
+Xeno,2010,Xenoblade [hd],Nintendo Switch,Yes
 Xeno,2015,Xenoblade X,Nintendo Switch,Yes
 Xeno,2017,Xenoblade 2,Nintendo Switch,Yes
 Xeno,2022,Xenoblade 3,Nintendo Switch,Yes
 Zelda,2017,The Legend of Zelda: Breath of the Wild,Nintendo Switch 2,Yes
 Zelda,2023,The Legend of Zelda: Tears of the Kingdom,Nintendo Switch 2,
+
 
 
 
