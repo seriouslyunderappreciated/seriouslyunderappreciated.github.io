@@ -59,12 +59,26 @@
                                         var tableRow = '<tr>';
                                         for (var j = 0; j < headers.length; j++) {
                                             var cell = row[j].trim();
+
+                                            // Prepend [vv] for Platform cells with [sd]
+                                            if (headers[j] === "Platform" && cell.includes('[sd]')) {
+                                                cell = '[vv] ' + cell;
+                                            }
+
+                                            // Replace [vv] with invisible Steam Deck image
+                                            if (cell.includes('[vv]')) {
+                                                cell = cell.replace(/\[vv\]/g, '<img src="resources/steamdeck.png" style="vertical-align:text-bottom; opacity:0">');
+                                            }
+
+                                            // Existing replacements
                                             if (cell.includes('[hd]')) {
                                                 cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png" style="vertical-align:text-bottom">');
                                             }
                                             if (cell.includes('[sd]')) {
                                                 cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png" style="vertical-align:text-bottom">');
                                             }
+
+                                            // Done column logic
                                             if (j == headers.length - 1) {
                                                 if (cell == 'Yes') {
                                                     tableRow += '<td class="cen">Yes</td>';
