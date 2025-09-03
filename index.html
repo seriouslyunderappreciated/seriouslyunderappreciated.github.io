@@ -64,13 +64,13 @@
                                             if (headers[j] === "Platform" && cell.includes('[sd]')) {
                                                 cell = '[vv] ' + cell;
                                             }
-
-                                            // Keep [vv] as text for sorting, but hide it visually
+                                            
+                                            // Keep [vv] as invisible 12px space for sorting
                                             if (cell.includes('[vv]')) {
-                                                cell = cell.replace(/\[vv\]/g, '<span style="display:none">[vv]</span>');
+                                                cell = cell.replace(/\[vv\]/g, '<span style="display:inline-block; width:12px; overflow:hidden; color:transparent">[vv]</span>');
                                             }
 
-                                            // Existing replacements
+                                            // Tag replacements
                                             if (cell.includes('[hd]')) {
                                                 cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png" style="vertical-align:text-bottom">');
                                             }
@@ -176,5 +176,6 @@
 </body>
 
 </html>
+
 
 
