@@ -60,7 +60,10 @@
                                         for (var j = 0; j < headers.length; j++) {
                                             var cell = row[j].trim();
                                             if (cell.includes('[hd]')) {
-                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" src="resources/remake.png" style="vertical-align:text-bottom">');
+                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png" style="vertical-align:text-bottom">');
+                                            }
+                                            if (cell.includes('[sd]')) {
+                                                cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png" style="vertical-align:text-bottom">');
                                             }
                                             if (j == headers.length - 1) {
                                                 if (cell == 'Yes') {
@@ -159,5 +162,3 @@
 </body>
 
 </html>
-
-
