@@ -6,12 +6,10 @@ Series,Release,Game,Platform,Done
 ,2022,Jack Move,PC [sd],
 ,2022,Signalis,PC [sd],Yes
 ,2023,Pseudoregalia,PC [sd],Yes
-Breath of Fire,2000,Breath of Fire 4,PSX [sd],
 Desperados,2020,Desperados 3,PC [sd],
 Drakengard,2010,Nier Replicant [hd],PC,Yes
 Drakengard,2017,Nier: Automata,PC,Yes
 Dungeons & Dragons,2023,Baldur's Gate 3,PC,Yes
-Final Fantasy,2000,Vagrant Story,PSX [sd],
 Final Fantasy,2006,Final Fantasy 12,PC [sd],Yes
 Final Fantasy,2020,Final Fantasy 7 Remake,PC,Yes
 Final Fantasy,2024,Final Fantasy 7 Rebirth,PC,Yes
@@ -22,25 +20,17 @@ Marvel,2018,Spider-Man,PC,Yes
 Metroid,2021,Metroid Dread,Switch,Yes
 Resident Evil,1998,Resident Evil 2 [hd],PC,Yes
 Resident Evil,1999,Resident Evil 3 [hd],PC,Yes
-Shadow Hearts,1999,Koudelka,PSX [sd],
-Shadow Hearts,2001,Shadow Hearts,PS2 [sd],
-Shadow Hearts,2004,Shadow Hearts: Covenant,PS2 [sd],
-Shadow,2016,Shadow Tactics: Blades of the Shogun,PC [sd],Yes
-Shadow,2021,Shadow Tactics: Aiko's Choice,PC [sd],
+Shadow Tactics,2016,Shadow Tactics: Blades of the Shogun,PC [sd],Yes
+Shadow Tactics,2021,Shadow Tactics: Aiko's Choice,PC [sd],
 Souls,2019,Sekiro,PC,
 Souls,2022,Elden Ring,PC,
 Streets of Rage,2020,Streets of Rage 4,PC [sd],Yes
 Strider,2014,Strider,PC [sd],
-Valkyrie Profile,1999,Valkyrie Profile,PSX [sd],Yes
-Xeno,1998,Xenogears,PSX [sd],Yes
-Xeno,2002,Xenosaga,PS2 [sd],
-Xeno,2004,Xenosaga 2,PS2 [sd],
-Xeno,2006,Xenosaga 3,PS2 [sd],
 Xeno,2010,Xenoblade [hd],Switch,Yes
 Xeno,2015,Xenoblade X,Switch,Yes
 Xeno,2017,Xenoblade 2,Switch,Yes
 Xeno,2022,Xenoblade 3,Switch,Yes
 Zelda,2017,Zelda: Breath of the Wild,Switch 2,Yes
 Zelda,2023,Zelda: Tears of the Kingdom,Switch 2,
-Zone of the Enders,2001,Zone of the Enders,PS2 [sd],Yes
-Zone of the Enders,2003,Zone of the Enders: 2nd Runner [hd],PC [sd],Yes
+Zone of the Enders,2001,Zone of the Enders,PS2,Yes
+Zone of the Enders,2003,Zone of the Enders: 2nd Runner [hd],PC,Yes
