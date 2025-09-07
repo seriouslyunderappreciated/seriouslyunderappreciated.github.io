@@ -1,3 +1,24 @@
+/* Default icon alignment and spacing */
+img[alt="Remake"],
+img[alt="Steam Deck"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  img[alt="Remake"],
+  img[alt="Steam Deck"] {
+    width: 6px;
+    height: auto;
+  }
+
+  .vv-spacer {
+    display: none !important;
+  }
+}
+
+
 // adjustments for mobile
 
 @media (max-width: 600px) {
