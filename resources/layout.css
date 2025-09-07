@@ -1,7 +1,13 @@
-/* Default icon alignment and spacing */
+/* Ensure remake.png and steamdeck.png are vertically centered in table cells */
 img[alt="Remake"],
 img[alt="Steam Deck"] {
   display: inline-block;
+  height: 1em; /* scale consistently with text */
+  vertical-align: middle; /* align with text center */
+  line-height: 1; /* removes extra vertical whitespace */
+}
+
+.dextable td {
   vertical-align: middle;
 }
 
