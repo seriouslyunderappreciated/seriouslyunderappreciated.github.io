@@ -17,6 +17,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+
+    <style>
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            img[alt="Remake"],
+            img[alt="Steam Deck"] {
+                width: 6px;
+                height: auto;
+                vertical-align: text-bottom;
+            }
+
+            .vv-spacer {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -49,8 +65,8 @@
                     <a id="button"></a>
 
                     <script>
-                        $(document).ready(function() {
-                            $.get('resources/collection.csv', function(data) {
+                        $(document).ready(function () {
+                            $.get('resources/collection.csv', function (data) {
                                 var lines = data.split('\n');
                                 var headers = lines[0].split(',');
                                 for (var i = 1; i < lines.length; i++) {
@@ -64,10 +80,10 @@
                                             if (headers[j] === "Platform" && cell.includes('[sd]')) {
                                                 cell = '[vv] ' + cell;
                                             }
-                                            
+
                                             // Keep [vv] as invisible 12px spacer for sorting, unaffected by hover
                                             if (cell.includes('[vv]')) {
-                                                cell = cell.replace(/\[vv\]/g, '<span style="display:inline-block; width:12px; pointer-events:none; user-select:none; text-shadow:none"></span>');
+                                                cell = cell.replace(/\[vv\]/g, '<span class="vv-spacer" style="display:inline-block; width:12px; pointer-events:none; user-select:none; text-shadow:none"></span>');
                                             }
 
                                             // Tag replacements
@@ -130,15 +146,15 @@
                                     }
                                 });
                             });
-                            $('.resetsaved').click(function() {
+                            $('.resetsaved').click(function () {
                                 $('.dextable').trigger('filterResetSaved');
                                 var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-                                setTimeout(function() {
+                                setTimeout(function () {
                                     $message.remove()
                                 }, 500);
                                 return false
                             });
-                            $('button[data-filter-column]').click(function() {
+                            $('button[data-filter-column]').click(function () {
                                 var filters = [],
                                     $t = $(this),
                                     col = $t.data('filter-column'),
@@ -158,14 +174,14 @@
     <script>
         // Scroll to top button
         var btn = $('#button');
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             if ($(window).scrollTop() > 300) {
                 btn.addClass('show');
             } else {
                 btn.removeClass('show');
             }
         });
-        btn.on('click', function(e) {
+        btn.on('click', function (e) {
             e.preventDefault();
             $('html, body').animate({
                 scrollTop: 0
@@ -176,8 +192,3 @@
 </body>
 
 </html>
-
-
-
-
-
