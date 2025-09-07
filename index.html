@@ -17,22 +17,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
-
-    <style>
-        /* Mobile adjustments */
-        @media (max-width: 600px) {
-            img[alt="Remake"],
-            img[alt="Steam Deck"] {
-                width: 6px;
-                height: auto;
-                vertical-align: text-bottom;
-            }
-
-            .vv-spacer {
-                display: none !important;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -45,7 +29,7 @@
                 <div style="text-align: center;"><img alt="Samus" src="resources/logo.png">
                     <h1>My Games</h1>
                     <p>This is purely how I figure out what to play next.</p>
-                    <p>Remakes <img alt="Remake" src="resources/remake.png" style="vertical-align:text-bottom"> and ports are listed under the release date of the original game for play order convenience.</p>
+                    <p>Remakes <img alt="Remake" src="resources/remake.png"> and ports are listed under the release date of the original game for play order convenience.</p>
                     <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
                     <table id="myTable" class="dextable">
                         <thead>
@@ -88,10 +72,10 @@
 
                                             // Tag replacements
                                             if (cell.includes('[hd]')) {
-                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png" style="vertical-align:text-bottom">');
+                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
                                             }
                                             if (cell.includes('[sd]')) {
-                                                cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png" style="vertical-align:text-bottom">');
+                                                cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png">');
                                             }
 
                                             // Done column logic
