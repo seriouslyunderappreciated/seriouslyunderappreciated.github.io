@@ -64,6 +64,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
 .foo, .fooinfo, .cen, .fooloc, .foobreinfo, .foohin, .fooben, .fooevo {
   border: 1px solid #383838;
   border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
 
 .foo, .footwo, .foothree, .foodet, .foopok, .footwoin, .fooevoin, .incen, .hubheader {
@@ -140,6 +142,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
 
 .attheader, .lochead, .pkmn {
   border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border: 1px solid #383838;
   text-align: center;
   font-size: 1em;
@@ -153,10 +157,14 @@ img[alt="Remake"], img[alt="Steam Deck"] {
 
 .pkmn {
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
 }
 
 .foo, .footwo, .foothree, .fooevo, .footop, .fooleft, .fooinfo, .cen, .fooloc, .foobreinfo, .foohin, .fooben, .attheader, .lochead, .footype, .foowhite, .fooblack, .foox, .fooy, .foosun, .foomoon, .foousun, .fooumoon, .foopika, .fooeevee, .foodet, .foopok, .footwoin, .fooevoin, .incen, .hubheader, .evochain, .dw, .pkmn, .curr, .ruby, .sapphire, .firered, .yellow, .ioa, .tct, .leafgreen, .colosseum, .xd, .emerald, .diamond, .pearl, .platinum, .heartgold, .soulsilver, .crystal, .pokewalker, .dun, .art, .tooltabhead, .tooltabcon, .alterdex, #REMOVEnn_lb1, #REMOVEnn_lb2 {
   border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
 
 .footype {
@@ -268,6 +276,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
   color: white;
   text-align: center;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
 }
 
 .ruby {
@@ -403,6 +413,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
   text-align: center;
   border: 1px solid #383838;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
 }
 
 .tooltab {
@@ -422,6 +434,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
   margin-bottom: 10px;
   border: 2px solid #383838;
   border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
   text-align: center;
 }
 
@@ -452,6 +466,8 @@ img[alt="Remake"], img[alt="Steam Deck"] {
   margin: 15px auto 10px;
   border: 2px solid #383838;
   border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
 }
 
 .anctab {
@@ -982,6 +998,7 @@ div.intro_intro--Ntqks .intro_description--3WeSb {
   }
   body {
     text-size-adjust: none;
+    -webkit-text-size-adjust: none;
   }
   .tooltab {
     width: 198px;
