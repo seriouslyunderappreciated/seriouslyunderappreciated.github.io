@@ -2,9 +2,9 @@
 img[alt="Remake"],
 img[alt="Steam Deck"] {
   display: inline-block;
-  height: 1em; /* scale consistently with text */
-  vertical-align: middle; /* align with text center */
-  line-height: 1; /* removes extra vertical whitespace */
+  height: 1em;
+  vertical-align: middle;
+  transform: translateY(-0.1em); /* tweak up/down as needed */
 }
 
 .dextable td {
