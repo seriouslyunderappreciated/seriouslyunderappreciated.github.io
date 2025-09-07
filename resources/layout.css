@@ -9,7 +9,7 @@ img[alt="Steam Deck"] {
 @media (max-width: 600px) {
   img[alt="Remake"],
   img[alt="Steam Deck"] {
-    width: 6px;
+    width: 10px;
     height: auto;
   }
 
