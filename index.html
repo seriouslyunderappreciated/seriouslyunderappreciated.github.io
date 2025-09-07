@@ -2,177 +2,111 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
     <title>Game Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="My Library">
     <meta property="og:description" content="Game collection tracker.">
     <meta property="og:image" content="https://raw.githubusercontent.com/seriouslyunderappreciated/seriouslyunderappreciated.github.io/master/resources/thumbnail.png">
     <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
-    <link rel="stylesheet" type="text/css" href="resources/layout.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="resources/layout.min.css">
     <link rel="shortcut icon" href="resources/favicon.ico">
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
 </head>
 
 <body>
-    <div id='stars'></div>
-    <div id='stars2'></div>
-    <div id='stars3'></div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
     <div id="wrapper">
         <main>
-            <div id="content">
-                <div style="text-align: center;"><img alt="Samus" src="resources/logo.png">
-                    <h1>My Games</h1>
-                    <p>This is purely how I figure out what to play next.</p>
-                    <p>Remakes <img alt="Remake" src="resources/remake.png"> and ports are listed under the release date of the original game for play order convenience.</p>
-                    <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
-                    <table id="myTable" class="dextable">
-                        <thead>
-                            <tr>
-                                <th class="fooevo">Series</th>
-                                <th class="fooevo">Release</th>
-                                <th class="fooevo">Game</th>
-                                <th class="fooevo">Platform</th>
-                                <th data-value="!Yes" class="fooevo">Done</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+            <div id="content" class="center">
+                <img src="resources/logo.png" alt="Samus">
+                <h1>My Games</h1>
+                <p>This is purely how I figure out what to play next.</p>
+                <p>Remakes <img src="resources/remake.png" alt="Remake"> and ports are listed under the release date of the original game for play order convenience.</p>
+                <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
 
-                    <!-- Scroll to top button -->
-                    <a id="button"></a>
+                <table id="myTable" class="dextable">
+                    <thead>
+                        <tr>
+                            <th class="fooevo">Series</th>
+                            <th class="fooevo">Release</th>
+                            <th class="fooevo">Game</th>
+                            <th class="fooevo">Platform</th>
+                            <th data-value="!Yes" class="fooevo">Done</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
 
-                    <script>
-                        $(document).ready(function () {
-                            $.get('resources/collection.csv', function (data) {
-                                var lines = data.split('\n');
-                                var headers = lines[0].split(',');
-                                for (var i = 1; i < lines.length; i++) {
-                                    var row = lines[i].split(',');
-                                    if (row.length == headers.length) {
-                                        var tableRow = '<tr>';
-                                        for (var j = 0; j < headers.length; j++) {
-                                            var cell = row[j].trim();
-
-                                            // Prepend [vv] for Platform cells with [sd]
-                                            if (headers[j] === "Platform" && cell.includes('[sd]')) {
-                                                cell = '[vv] ' + cell;
-                                            }
-
-                                            // Keep [vv] as invisible 12px spacer for sorting, unaffected by hover
-                                            if (cell.includes('[vv]')) {
-                                                cell = cell.replace(/\[vv\]/g, '<span class="vv-spacer" style="display:inline-block; width:12px; pointer-events:none; user-select:none; text-shadow:none"></span>');
-                                            }
-
-                                            // Tag replacements
-                                            if (cell.includes('[hd]')) {
-                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
-                                            }
-                                            if (cell.includes('[sd]')) {
-                                                cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png">');
-                                            }
-
-                                            // Done column logic
-                                            if (j == headers.length - 1) {
-                                                if (cell == 'Yes') {
-                                                    tableRow += '<td class="cen">Yes</td>';
-                                                } else {
-                                                    tableRow += '<td class="cen"></td>';
-                                                }
-                                            } else {
-                                                tableRow += '<td class="cen">' + cell + '</td>';
-                                            }
-                                        }
-                                        tableRow += '</tr>';
-                                        $('#myTable tbody').append(tableRow);
-                                    }
-                                }
-                                $('#myTable').tablesorter({
-                                    sortList: [
-                                        [0, 0],
-                                        [1, 0]
-                                    ],
-                                    widgets: ["filter"],
-                                    widgetOptions: {
-                                        filter_columnFilters: true,
-                                        filter_columnAnyMatch: true,
-                                        filter_filteredRow: 'filtered',
-                                        filter_filterLabel: 'Filter "{{label}}" column by...',
-                                        filter_hideEmpty: true,
-                                        filter_hideFilters: true,
-                                        filter_ignoreCase: true,
-                                        filter_liveSearch: true,
-                                        filter_matchType: {
-                                            'input': 'exact',
-                                            'select': 'exact'
-                                        },
-                                        filter_onlyAvail: 'filter-onlyAvail',
-                                        filter_placeholder: {
-                                            search: '',
-                                            select: ''
-                                        },
-                                        filter_reset: 'button.reset',
-                                        filter_resetOnEsc: true,
-                                        filter_searchDelay: 300,
-                                        filter_searchFiltered: true,
-                                        filter_selectSource: null,
-                                        filter_serversideFiltering: false,
-                                        filter_startsWith: false,
-                                        filter_useParsedData: false,
-                                        filter_defaultAttrib: 'data-value',
-                                        filter_selectSourceSeparator: '|'
-                                    }
-                                });
-                            });
-                            $('.resetsaved').click(function () {
-                                $('.dextable').trigger('filterResetSaved');
-                                var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-                                setTimeout(function () {
-                                    $message.remove()
-                                }, 500);
-                                return false
-                            });
-                            $('button[data-filter-column]').click(function () {
-                                var filters = [],
-                                    $t = $(this),
-                                    col = $t.data('filter-column'),
-                                    txt = $t.data('filter-text') || $t.text();
-                                filters[col] = txt;
-                                $.tablesorter.setFilters($('.dextable'), filters, true);
-                                return false;
-                            });
-                        });
-                    </script>
-
-                </div>
+                <!-- Scroll to top button -->
+                <a id="button"></a>
             </div>
         </main>
     </div>
 
     <script>
-        // Scroll to top button
-        var btn = $('#button');
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
-        btn.on('click', function (e) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: 0
-            }, '300');
+        // Load CSV and populate table
+        $(document).ready(function () {
+            $.get('resources/collection.csv', function (data) {
+                const lines = data.trim().split('\n');
+                const headers = lines.shift().split(',');
+
+                lines.forEach(line => {
+                    const row = line.split(',');
+                    if (row.length === headers.length) {
+                        let tableRow = '<tr>';
+                        row.forEach((cell, j) => {
+                            cell = cell.trim();
+                            if (headers[j] === "Platform" && cell.includes('[sd]')) cell = '[vv] ' + cell;
+                            if (cell.includes('[vv]')) cell = cell.replace(/\[vv\]/g, '<span class="vv-spacer"></span>');
+                            if (cell.includes('[hd]')) cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" src="resources/remake.png">');
+                            if (cell.includes('[sd]')) cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" src="resources/steamdeck.png">');
+                            tableRow += `<td class="cen">${j === headers.length - 1 && cell !== 'Yes' ? '' : cell}</td>`;
+                        });
+                        tableRow += '</tr>';
+                        $('#myTable tbody').append(tableRow);
+                    }
+                });
+
+                $('#myTable').tablesorter({
+                    sortList: [[0, 0], [1, 0]],
+                    widgets: ["filter"],
+                    widgetOptions: {
+                        filter_columnFilters: true,
+                        filter_columnAnyMatch: true,
+                        filter_filteredRow: 'filtered',
+                        filter_hideEmpty: true,
+                        filter_hideFilters: true,
+                        filter_ignoreCase: true,
+                        filter_liveSearch: true,
+                        filter_matchType: { input: 'exact', select: 'exact' },
+                        filter_resetOnEsc: true,
+                        filter_searchDelay: 300,
+                        filter_searchFiltered: true,
+                        filter_defaultAttrib: 'data-value'
+                    }
+                });
+            });
+
+            // Scroll to top button
+            const btn = $('#button');
+            $(window).scroll(() => btn.toggleClass('show', $(window).scrollTop() > 300));
+            btn.click(e => { e.preventDefault(); $('html, body').animate({ scrollTop: 0 }, 300); });
         });
     </script>
-
 </body>
-
 </html>
