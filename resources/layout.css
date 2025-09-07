@@ -1,3 +1,18 @@
+// adjustments for mobile
+
+@media (max-width: 600px) {
+  img[alt="Remake"],
+  img[alt="Steam Deck"] {
+    width: 6px;
+    height: auto;
+    vertical-align: text-bottom;
+  }
+
+  .vv-spacer {
+    display: none !important;
+  }
+}
+
 .dextable {
     border: 0;
     border-spacing: 2px;
