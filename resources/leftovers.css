@@ -1,55 +1,50 @@
-/* Table and cell styles not used in current HTML but might appear dynamically */
-.dextab, .dexitem, .dexitem2, .tabintab, .anctab {
-  border: 0;
-  border-spacing: 2px;
-  border-collapse: separate;
-  width: 100%;
-}
+.dextab { border: 0; border-spacing: 2px; border-collapse: seperate; width: 100% }
+.dextab td { font-size: 1em }
 
-.dexitem td, .dexitem2 td {
-  text-align: center;
-  vertical-align: middle;
-}
+.dexitem { border: 0; border-spacing: 2px; border-collapse: seperate; text-align: center }
+.dexitem td { width: 50%; text-align: center; vertical-align: middle }
 
-/* Misc table header/footer styles */
-.foo, .footwo, .foothree, .fooleft, .fooinfo, .fooblack, .foowhite,
-.foox, .fooy, .foosun, .foomoon, .foousun, .fooumoon, .foopika {
-  color: white;
-  font-weight: bold;
-  border: 1px solid #383838;
-  border-radius: 3px;
-}
+.dexitem2 { border: 0; border-spacing: 2px; border-collapse: seperate; text-align: center }
+.dexitem2 td { width: 33%; text-align: center; vertical-align: middle }
 
-.foowhite, .foox, .foosun, .foopika {
-  color: black;
-}
+.tabintab { font-size: 1em }
 
-.foodet, .foopok, .dw {
-  font-size: 10-11px;
-}
+.foo { background: #507c36; color: white; text-align: center; width: 20%; font-weight: bold; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.footwo { background: #507c36; color: white; text-align: center; width: 50%; font-weight: bold; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foothree { background: #507c36; color: white; text-align: center; width: 33%; font-weight: bold; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooleft { background: #507c36; color: white; text-align: left; font-weight: bold; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooinfo { background: #0f1733; color: white; border: 1px solid #1d2b62; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooblack { background: #222; color: white; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foowhite { background: #eee; color: black; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foox { background: #00d1f6; color: black; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooy { background: #9e2306; color: white; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foosun { background: #ff7b11; color: black; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foomoon { background: #7d09ff; color: white; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foousun { background: #ff8a45; color: black; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooumoon { background: #9c52ff; color: white; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foopika { background: #ffde00; color: black; font-weight: bold; width: 10%; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.foodet { font-size: 10px; font-weight: normal }
+.foopok { font-size: 10px }
+.footwoin { background: #507c36; color: white; text-align: center; width: 50%; font-weight: bold; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.fooevoin { background: #3e4872; color: white; text-align: center; font-weight: bold; border: 1px solid #1d2b62; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
+.incden { text-align: center }
+.hubheader { font-size: 1.1em; font-weight: bold; text-align: center; margin-top: 10px }
+.evochain { text-align: center; font-size: 0.9em; color: #ccc }
+.dw { font-size: 11px }
 
-/* Other helper or informational classes */
-.incden, .hubheader, .evochain {
-  text-align: center;
-}
+.tooltab { border: 1px solid #ccc; margin: 5px; padding: 5px }
+.tooltabhead { font-weight: bold }
+.tooltabcon { font-size: 0.9em }
 
-.hubheader { font-size: 1.1em; font-weight: bold; margin-top: 10px; }
-.evochain { font-size: 0.9em; color: #ccc; }
+.typeimg { width: 25px; height: 25px }
 
-/* Tool panel styles */
-.tooltab { border: 1px solid #ccc; margin: 5px; padding: 5px; }
-.tooltabhead { font-weight: bold; }
-.tooltabcon { font-size: 0.9em; }
+.alterdex { background: #eee; color: black; border: 1px solid #383838; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px }
 
-/* Small graphics */
-.typeimg { width: 25px; height: 25px; }
-.formpic { width: 100px; height: 100px; }
-.sprite { width: 32px; height: 32px; }
-.minisprite { width: 16px; height: 16px; }
+.anctab { border: 1px solid #383838; width: 100%; border-collapse: collapse }
 
-/* Alternative table style */
-.alterdex { background: #eee; color: black; border: 1px solid #383838; border-radius: 3px; }
+.formpic { width: 100px; height: 100px }
+.sprite { width: 32px; height: 32px }
+.minisprite { width: 16px; height: 16px }
 
-/* Unused IDs, kept in case scripts reference them */
-#lbar, #rbar, #header, #footer, #REMOVEnn_lb1, #REMOVEnn_lb2, 
-#tbar_backdrop, #tbar_sticky, #cookie-bar { display: block; }
+/* Unused IDs */
+#lbar, #rbar, #header, #footer, #REMOVEnn_lb1, #REMOVEnn_lb2, #tbar_backdrop, #tbar_sticky, #cookie-bar { display: block }
