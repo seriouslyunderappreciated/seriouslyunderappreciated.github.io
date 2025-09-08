@@ -1463,7 +1463,7 @@ body {
     radial-gradient(2px 2px at 25% 60%, white, transparent),
     radial-gradient(2px 2px at 80% 25%, white, transparent);
   background-size: 200px 200px;
-  animation: animStars 50s linear infinite;
+  animation: animStars 80s linear infinite; /* slowed down from 50s */
 }
 
 /* Mid layer stars */
@@ -1474,7 +1474,7 @@ body {
     radial-gradient(1px 1px at 60% 70%, #ccc, transparent),
     radial-gradient(1px 1px at 80% 90%, #ccc, transparent);
   background-size: 300px 300px;
-  animation: animStars2 100s linear infinite;
+  animation: animStars2 120s linear infinite; /* slowed down from 100s */
 }
 
 /* Foreground stars */
@@ -1485,7 +1485,7 @@ body {
     radial-gradient(1px 1px at 55% 50%, #eee, transparent),
     radial-gradient(1px 1px at 75% 30%, #eee, transparent);
   background-size: 150px 150px;
-  animation: animStars3 25s linear infinite;
+  animation: animStars3 50s linear infinite; /* slowed down from 25s */
 }
 
 @keyframes animStars {
