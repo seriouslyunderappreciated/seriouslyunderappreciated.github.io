@@ -1,0 +1,55 @@
+/* Table and cell styles not used in current HTML but might appear dynamically */
+.dextab, .dexitem, .dexitem2, .tabintab, .anctab {
+  border: 0;
+  border-spacing: 2px;
+  border-collapse: separate;
+  width: 100%;
+}
+
+.dexitem td, .dexitem2 td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Misc table header/footer styles */
+.foo, .footwo, .foothree, .fooleft, .fooinfo, .fooblack, .foowhite,
+.foox, .fooy, .foosun, .foomoon, .foousun, .fooumoon, .foopika {
+  color: white;
+  font-weight: bold;
+  border: 1px solid #383838;
+  border-radius: 3px;
+}
+
+.foowhite, .foox, .foosun, .foopika {
+  color: black;
+}
+
+.foodet, .foopok, .dw {
+  font-size: 10-11px;
+}
+
+/* Other helper or informational classes */
+.incden, .hubheader, .evochain {
+  text-align: center;
+}
+
+.hubheader { font-size: 1.1em; font-weight: bold; margin-top: 10px; }
+.evochain { font-size: 0.9em; color: #ccc; }
+
+/* Tool panel styles */
+.tooltab { border: 1px solid #ccc; margin: 5px; padding: 5px; }
+.tooltabhead { font-weight: bold; }
+.tooltabcon { font-size: 0.9em; }
+
+/* Small graphics */
+.typeimg { width: 25px; height: 25px; }
+.formpic { width: 100px; height: 100px; }
+.sprite { width: 32px; height: 32px; }
+.minisprite { width: 16px; height: 16px; }
+
+/* Alternative table style */
+.alterdex { background: #eee; color: black; border: 1px solid #383838; border-radius: 3px; }
+
+/* Unused IDs, kept in case scripts reference them */
+#lbar, #rbar, #header, #footer, #REMOVEnn_lb1, #REMOVEnn_lb2, 
+#tbar_backdrop, #tbar_sticky, #cookie-bar { display: block; }
