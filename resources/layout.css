@@ -155,7 +155,6 @@ img[alt="Steam Deck"] {
 @media only screen and (min-width: 600px) {
     .tablesorter-default .header,
     .tablesorter-default .tablesorter-header {
-        background-image: url("../resources/sort.gif");
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer;
