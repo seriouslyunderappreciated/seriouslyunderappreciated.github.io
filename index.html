@@ -51,37 +51,42 @@
                     $.get('resources/collection.csv', function(data) {
                         var lines = data.split('\n');
                         var headers = lines[0].split(',');
+
                         for (var i = 1; i < lines.length; i++) {
                             var row = lines[i].split(',');
                             if (row.length == headers.length) {
                                 var tableRow = '<tr>';
+
                                 for (var j = 0; j < headers.length; j++) {
                                     var cell = row[j].trim();
+                                    var displayCell = cell; // copy for display
+                                    var dataValue = cell;   // keep original for sorting
 
-                                    // Tag replacements
+                                    // Replace tags with images for display only
                                     if (cell.includes('[hd]')) {
-                                        cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
+                                        displayCell = displayCell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
                                     }
                                     if (cell.includes('[retro]')) {
-                                        cell = cell.replace(/\[retro\]/g, ' <img alt="Emulated" title="Emulated" src="resources/retro.png">');
+                                        displayCell = displayCell.replace(/\[retro\]/g, ' <img alt="Emulated" title="Emulated" src="resources/retro.png">');
                                     }
                                     if (cell.includes('[switch]')) {
-                                        cell = cell.replace(/\[switch\]/g, ' <img alt="Switch 1" title="Switch 1" src="resources/switch.png">');
+                                        displayCell = displayCell.replace(/\[switch\]/g, ' <img alt="Switch 1" title="Switch 1" src="resources/switch.png">');
                                     }
 
                                     // Hide Release and Done columns
-                                    if (j == 1) { // Release column
-                                        tableRow += '<td class="cen hide-column">' + cell + '</td>';
-                                    } else if (j == headers.length - 1) { // Done column
-                                        if (cell == 'Yes') {
-                                            tableRow += '<td class="cen hide-column">Yes</td>';
+                                    if (j === 1) { // Release column
+                                        tableRow += `<td class="cen hide-column" data-value="${dataValue}">${displayCell}</td>`;
+                                    } else if (j === headers.length - 1) { // Done column
+                                        if (cell === 'Yes') {
+                                            tableRow += `<td class="cen hide-column" data-value="Yes">Yes</td>`;
                                         } else {
-                                            tableRow += '<td class="cen hide-column"></td>';
+                                            tableRow += `<td class="cen hide-column" data-value=""></td>`;
                                         }
-                                    } else {
-                                        tableRow += '<td class="cen">' + cell + '</td>';
+                                    } else { // All other columns
+                                        tableRow += `<td class="cen" data-value="${dataValue}">${displayCell}</td>`;
                                     }
                                 }
+
                                 tableRow += '</tr>';
                                 $('#myTable tbody').append(tableRow);
                             }
@@ -95,20 +100,24 @@
                                 lockedOrder: 'asc'
                             }
                         }
-                        // disable header clicks for non-sortable columns
+
                         $('#myTable thead th').each(function(index) {
                             if (!$(this).hasClass('sortable')) {
                                 headersConfig[index].sorter = false;
                             }
                         });
 
+                        // Use data-value for sorting
                         $('#myTable').tablesorter({
                             sortList: [
                                 [0, 0], // Series
                                 [1, 0], // Release
-                                [2, 0] // Game
+                                [2, 0]  // Game
                             ],
                             headers: headersConfig,
+                            textExtraction: function(node) {
+                                return $(node).attr('data-value') || $(node).text();
+                            },
                             widgets: ["filter"],
                             widgetOptions: {
                                 filter_columnFilters: true,
@@ -141,14 +150,16 @@
                             }
                         });
                     });
+
+                    // Reset button
                     $('.resetsaved').click(function() {
                         $('.dextable').trigger('filterResetSaved');
                         var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-                        setTimeout(function() {
-                            $message.remove()
-                        }, 500);
-                        return false
+                        setTimeout(function() { $message.remove() }, 500);
+                        return false;
                     });
+
+                    // Column filter buttons
                     $('button[data-filter-column]').click(function() {
                         var filters = [],
                             $t = $(this),
@@ -185,5 +196,3 @@
 </body>
 
 </html>
-
-
