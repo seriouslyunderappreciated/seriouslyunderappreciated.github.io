@@ -62,25 +62,24 @@
                                     var displayCell = cell;
                                     var dataValue = cell;
 
+                                    // Clean data-value first for sorting (remove bracketed tags)
+                                    dataValue = dataValue.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
+
                                     // Replace tags with images for display only
                                     displayCell = displayCell
                                         .replace(/\[hd\]/g, ' <img alt="HD" title="HD" src="resources/hd.png" class="icon">')
                                         .replace(/\[retro\]/g, ' <img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
                                         .replace(/\[switch\]/g, ' <img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
 
-                                    // Remove tags from dataValue for correct sorting
-                                    dataValue = dataValue.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
-
-                                    // Hide Release and Done columns
                                     if (j == 1) { // Release column
                                         tableRow += `<td class="cen hide-column" data-value="${dataValue}">${displayCell}</td>`;
                                     } else if (j == headers.length - 1) { // Done column
-                                        if (cell == 'Yes') {
+                                        if (cell === 'Yes') {
                                             tableRow += `<td class="cen hide-column" data-value="Yes">Yes</td>`;
                                         } else {
                                             tableRow += `<td class="cen hide-column" data-value=""></td>`;
                                         }
-                                    } else {
+                                    } else { // All other columns
                                         tableRow += `<td class="cen" data-value="${dataValue}">${displayCell}</td>`;
                                     }
                                 }
@@ -93,7 +92,7 @@
                         var headerCount = $('#myTable thead th').length;
                         var headersConfig = {};
                         for (var c = 0; c < headerCount; c++) {
-                            headersConfig[c] = { lockedOrder: 'asc' }
+                            headersConfig[c] = { lockedOrder: 'asc' };
                         }
 
                         $('#myTable thead th').each(function (index) {
