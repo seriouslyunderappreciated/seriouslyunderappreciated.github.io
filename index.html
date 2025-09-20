@@ -32,11 +32,11 @@
             <table id="myTable" class="dextable">
                 <thead>
                     <tr>
-                        <th class="fooevo">Series</th>
+                        <th class="fooevo sortable">Series</th>
                         <th class="fooevo">Release</th>
                         <th class="fooevo">Game</th>
-                        <th class="fooevo">Device</th>
-                        <th data-value="!Yes" class="fooevo">Done</th>
+                        <th class="fooevo sortable">Device</th>
+                        <th class="fooevo hide-column" data-value="!Yes">Done</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,9 +69,9 @@
                                     // Done column logic
                                     if (j == headers.length - 1) {
                                         if (cell == 'Yes') {
-                                            tableRow += '<td class="cen">Yes</td>';
+                                            tableRow += '<td class="cen hide-column">Yes</td>';
                                         } else {
-                                            tableRow += '<td class="cen"></td>';
+                                            tableRow += '<td class="cen hide-column"></td>';
                                         }
                                     } else {
                                         tableRow += '<td class="cen">' + cell + '</td>';
@@ -88,17 +88,20 @@
                         for (var c = 0; c < headerCount; c++) {
                             headersConfig[c] = {
                                 lockedOrder: 'asc'
-                            };
+                            }
                         }
-                        // disable header clicks for Release (1) and Game (2),
-                        headersConfig[1].sorter = false;
-                        headersConfig[2].sorter = false;
+                        // disable header clicks for non-sortable columns
+                        $('#myTable thead th').each(function(index) {
+                            if (!$(this).hasClass('sortable')) {
+                                headersConfig[index].sorter = false;
+                            }
+                        });
 
                         $('#myTable').tablesorter({
                             sortList: [
                                 [0, 0], // Series
-                                [1, 0], // Release (still used for sorting on load)
-                                [2, 0] // Game (still used for sorting on load)
+                                [1, 0], // Release
+                                [2, 0] // Game
                             ],
                             headers: headersConfig,
                             widgets: ["filter"],
