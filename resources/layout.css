@@ -189,13 +189,8 @@ img {
    Media Queries
 ========================================= */
 @media (max-width: 600px) {
-    img[alt="Remake"],
-    img[alt="Steam Deck"] {
+    .icon {
         height: 0.8em;
-    }
-    
-    .vv-spacer {
-        display: none !important;
     }
 }
 
