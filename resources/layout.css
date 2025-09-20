@@ -152,31 +152,28 @@ img[alt="Steam Deck"] {
     display: none;
 }
 
+/* =========================================
+   Tablesorter: Only sortable headers show arrows
+========================================= */
 @media only screen and (min-width: 600px) {
-    .tablesorter-default .header,
-    .tablesorter-default .tablesorter-header {
-		/*
+    /* Base arrow for sortable headers */
+    .tablesorter-default thead th.sortable {
         background-image: url("../resources/sort.gif");
-		*/
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer;
     }
 
-    .tablesorter-default thead .headerSortUp,
-    .tablesorter-default thead .tablesorter-headerAsc,
-    .tablesorter-default thead .tablesorter-headerSortUp {
-		/*
+    /* Ascending state */
+    .tablesorter-default thead th.sortable.headerSortUp,
+    .tablesorter-default thead th.sortable.tablesorter-headerAsc {
         background-image: url("../resources/sortup.gif");
-		*/
     }
 
-    .tablesorter-default thead .headerSortDown,
-    .tablesorter-default thead .tablesorter-headerDesc,
-    .tablesorter-default thead .tablesorter-headerSortDown {
-		/*
+    /* Descending state */
+    .tablesorter-default thead th.sortable.headerSortDown,
+    .tablesorter-default thead th.sortable.tablesorter-headerDesc {
         background-image: url("../resources/sortdown.gif");
-		*/
     }
 
     .fooevo {
@@ -194,7 +191,7 @@ img[alt="Steam Deck"] {
     img[alt="Steam Deck"] {
         height: 0.8em;
     }
-	
+    
     .vv-spacer {
         display: none !important;
     }
@@ -204,7 +201,7 @@ img[alt="Steam Deck"] {
     .dextable {
         width: 100%;
     }
-	
+    
     .dextable td {
         font-size: 0.95em;
     }
