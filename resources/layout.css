@@ -204,10 +204,6 @@ img {
     .dextable {
         width: 100%;
     }
-   .dextable th.recalc {
-        width: auto; /* let the browser recalc */
-    }
-    
     .dextable td {
         font-size: 0.95em;
     }
