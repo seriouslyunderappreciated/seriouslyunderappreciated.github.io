@@ -58,16 +58,6 @@
                                         for (var j = 0; j < headers.length; j++) {
                                             var cell = row[j].trim();
 
-                                            // Prepend [vv] for Device cells with [sd]
-                                            if (headers[j] === "Device" && cell.includes('[sd]')) {
-                                                cell = '[vv] ' + cell;
-                                            }
-
-                                            // Keep [vv] as invisible 12px spacer for sorting, unaffected by hover
-                                            if (cell.includes('[vv]')) {
-                                                cell = cell.replace(/\[vv\]/g, '<span class="vv-spacer" style="display:inline-block; width:12px; pointer-events:none; user-select:none; text-shadow:none"></span>');
-                                            }
-
                                             // Tag replacements
                                             if (cell.includes('[hd]')) {
                                                 cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
@@ -172,4 +162,5 @@
 </body>
 
 </html>
+
 
