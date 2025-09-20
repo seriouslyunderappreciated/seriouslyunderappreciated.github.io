@@ -89,7 +89,7 @@ img {
 ========================================= */
 .icon {
     display: inline-block;
-    height: 1em;
+    height: 0.8em;
     vertical-align: middle;
     transform: translateY(-0.1em);
 }
