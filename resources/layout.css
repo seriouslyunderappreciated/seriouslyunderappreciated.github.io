@@ -87,9 +87,7 @@ img {
 /* =========================================
    Image Styles
 ========================================= */
-img[alt="Remake"],
-img[alt="Switch"],
-img[alt="Emulated"] {
+.icon {
     display: inline-block;
     height: 1em;
     vertical-align: middle;
