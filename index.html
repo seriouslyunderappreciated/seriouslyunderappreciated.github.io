@@ -73,18 +73,15 @@
                                     var cell = row[j].trim();
                                     var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
                                     var displayCell = cell;
-                                        .replace(/\[hd\]/g, '<img alt="Remake" title="Remake" src="resources/hd.png" class="icon">')
-                                        .replace(/\[retro\]/g, '<img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
-                                        .replace(/\[switch\]/g, '<img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
 
                                     // Hide Release and Done columns
                                     if (j == 1) { // Release column
                                         tableRow += `<td class="cen hide-column" data-value="${dataValue}">${displayCell}</td>`;
                                     } else if (j == headers.length - 1) { // Done column
                                         tableRow += `<td class="cen hide-column" data-value="${cell === 'Yes' ? 'Yes' : ''}">${cell === 'Yes' ? 'Yes' : ''}</td>`;
-                                    } else if (j == 0 || j == 3) { // Series (0) or Device (3) columns
+                                    } else if (j == 0 || j == 3) { // Series or Device columns
                                         tableRow += `<td class="cen nowrap" data-value="${dataValue}">${displayCell}</td>`;
-                                    } else { // All other columns (including Game)
+                                    } else { // All other columns
                                         tableRow += `<td class="cen" data-value="${dataValue}">${displayCell}</td>`;
                                     }
                                 }
