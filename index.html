@@ -57,22 +57,6 @@
                             if (row.length == headers.length) {
                                 var tableRow = '<tr>';
 
-                                for (var j = 0; j < headers.length; j++) {
-                                    var cell = row[j].trim();
-                                    var displayCell = cell; // copy for display
-                                    var dataValue = cell;   // keep original for sorting
-
-                                    // Replace tags with images for display only
-                                    if (cell.includes('[hd]')) {
-                                        displayCell = displayCell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
-                                    }
-                                    if (cell.includes('[retro]')) {
-                                        displayCell = displayCell.replace(/\[retro\]/g, ' <img alt="Emulated" title="Emulated" src="resources/retro.png">');
-                                    }
-                                    if (cell.includes('[switch]')) {
-                                        displayCell = displayCell.replace(/\[switch\]/g, ' <img alt="Switch 1" title="Switch 1" src="resources/switch.png">');
-                                    }
-
                                     // Hide Release and Done columns
                                     if (j === 1) { // Release column
                                         tableRow += `<td class="cen hide-column" data-value="${dataValue}">${displayCell}</td>`;
@@ -196,3 +180,4 @@
 </body>
 
 </html>
+
