@@ -23,144 +23,150 @@
     <div id='stars'></div>
     <div id='stars2'></div>
     <div id='stars3'></div>
-        <main>
-                <div style="text-align: center;"><img alt="Samus" src="resources/logo.png">
-                    <h1>My Games</h1>
-                    <p>This is purely how I figure out what to play next.</p>
-                    <p>Remakes <img alt="Remake" src="resources/remake.png"> and ports are listed under the release date of the original game for play order convenience.</p>
-                    <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
-                    <table id="myTable" class="dextable">
-                        <thead>
-                            <tr>
-                                <th class="fooevo">Series</th>
-                                <th class="fooevo">Release</th>
-                                <th class="fooevo">Game</th>
-                                <th class="fooevo">Device</th>
-                                <th data-value="!Yes" class="fooevo">Done</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+    <main>
+        <div style="text-align: center;"><img alt="Samus" src="resources/logo.png">
+            <h1>My Games</h1>
+            <p>This is purely how I figure out what to play next.</p>
+            <p>Remakes <img alt="Remake" src="resources/remake.png"> and ports are listed under the release date of the original game for play order convenience.</p>
+            <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
+            <table id="myTable" class="dextable">
+                <thead>
+                    <tr>
+                        <th class="fooevo">Series</th>
+                        <th class="fooevo">Release</th>
+                        <th class="fooevo">Game</th>
+                        <th class="fooevo">Device</th>
+                        <th data-value="!Yes" class="fooevo">Done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
 
-                    <!-- Scroll to top button -->
-                    <a id="button"></a>
+            <!-- Scroll to top button -->
+            <a id="button"></a>
 
-                    <script>
-                        $(document).ready(function () {
-                            $.get('resources/collection.csv', function (data) {
-                                var lines = data.split('\n');
-                                var headers = lines[0].split(',');
-                                for (var i = 1; i < lines.length; i++) {
-                                    var row = lines[i].split(',');
-                                    if (row.length == headers.length) {
-                                        var tableRow = '<tr>';
-                                        for (var j = 0; j < headers.length; j++) {
-                                            var cell = row[j].trim();
+            <script>
+                $(document).ready(function() {
+                    $.get('resources/collection.csv', function(data) {
+                        var lines = data.split('\n');
+                        var headers = lines[0].split(',');
+                        for (var i = 1; i < lines.length; i++) {
+                            var row = lines[i].split(',');
+                            if (row.length == headers.length) {
+                                var tableRow = '<tr>';
+                                for (var j = 0; j < headers.length; j++) {
+                                    var cell = row[j].trim();
 
-                                            // Tag replacements
-                                            if (cell.includes('[hd]')) {
-                                                cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
-                                            }
-                                            if (cell.includes('[sd]')) {
-                                                cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png">');
-                                            }
+                                    // Tag replacements
+                                    if (cell.includes('[hd]')) {
+                                        cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
+                                    }
+                                    if (cell.includes('[sd]')) {
+                                        cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png">');
+                                    }
 
-                                            // Done column logic
-                                            if (j == headers.length - 1) {
-                                                if (cell == 'Yes') {
-                                                    tableRow += '<td class="cen">Yes</td>';
-                                                } else {
-                                                    tableRow += '<td class="cen"></td>';
-                                                }
-                                            } else {
-                                                tableRow += '<td class="cen">' + cell + '</td>';
-                                            }
+                                    // Done column logic
+                                    if (j == headers.length - 1) {
+                                        if (cell == 'Yes') {
+                                            tableRow += '<td class="cen">Yes</td>';
+                                        } else {
+                                            tableRow += '<td class="cen"></td>';
                                         }
-                                        tableRow += '</tr>';
-                                        $('#myTable tbody').append(tableRow);
+                                    } else {
+                                        tableRow += '<td class="cen">' + cell + '</td>';
                                     }
                                 }
+                                tableRow += '</tr>';
+                                $('#myTable tbody').append(tableRow);
+                            }
+                        }
 
-                                // tablesorter setup: always ascending
-                                var headerCount = $('#myTable thead th').length;
-                                var headersConfig = {};
-                                for (var c = 0; c < headerCount; c++) {
-                                    headersConfig[c] = { lockedOrder: 'asc' };
-                                }
+                        // tablesorter setup: always ascending
+                        var headerCount = $('#myTable thead th').length;
+                        var headersConfig = {};
+                        for (var c = 0; c < headerCount; c++) {
+                            headersConfig[c] = {
+                                lockedOrder: 'asc'
+                            };
+                        }
+                        // disable header clicks for Release (1) and Game (2),
+                        headersConfig[1].sorter = false;
+                        headersConfig[2].sorter = false;
 
-                                $('#myTable').tablesorter({
-                                    sortList: [
-                                        [0, 0],
-                                        [1, 0]
-                                    ],
-                                    headers: headersConfig,
-                                    widgets: ["filter"],
-                                    widgetOptions: {
-                                        filter_columnFilters: true,
-                                        filter_columnAnyMatch: true,
-                                        filter_filteredRow: 'filtered',
-                                        filter_filterLabel: 'Filter "{{label}}" column by...',
-                                        filter_hideEmpty: true,
-                                        filter_hideFilters: true,
-                                        filter_ignoreCase: true,
-                                        filter_liveSearch: true,
-                                        filter_matchType: {
-                                            'input': 'exact',
-                                            'select': 'exact'
-                                        },
-                                        filter_onlyAvail: 'filter-onlyAvail',
-                                        filter_placeholder: {
-                                            search: '',
-                                            select: ''
-                                        },
-                                        filter_reset: 'button.reset',
-                                        filter_resetOnEsc: true,
-                                        filter_searchDelay: 300,
-                                        filter_searchFiltered: true,
-                                        filter_selectSource: null,
-                                        filter_serversideFiltering: false,
-                                        filter_startsWith: false,
-                                        filter_useParsedData: false,
-                                        filter_defaultAttrib: 'data-value',
-                                        filter_selectSourceSeparator: '|'
-                                    }
-                                });
-                            });
-                            $('.resetsaved').click(function () {
-                                $('.dextable').trigger('filterResetSaved');
-                                var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-                                setTimeout(function () {
-                                    $message.remove()
-                                }, 500);
-                                return false
-                            });
-                            $('button[data-filter-column]').click(function () {
-                                var filters = [],
-                                    $t = $(this),
-                                    col = $t.data('filter-column'),
-                                    txt = $t.data('filter-text') || $t.text();
-                                filters[col] = txt;
-                                $.tablesorter.setFilters($('.dextable'), filters, true);
-                                return false;
-                            });
+                        $('#myTable').tablesorter({
+                            sortList: [
+                                [0, 0], // Series
+                                [1, 0], // Release (still used for sorting on load)
+                                [2, 0] // Game (still used for sorting on load)
+                            ],
+                            headers: headersConfig,
+                            widgets: ["filter"],
+                            widgetOptions: {
+                                filter_columnFilters: true,
+                                filter_columnAnyMatch: true,
+                                filter_filteredRow: 'filtered',
+                                filter_filterLabel: 'Filter "{{label}}" column by...',
+                                filter_hideEmpty: true,
+                                filter_hideFilters: true,
+                                filter_ignoreCase: true,
+                                filter_liveSearch: true,
+                                filter_matchType: {
+                                    'input': 'exact',
+                                    'select': 'exact'
+                                },
+                                filter_onlyAvail: 'filter-onlyAvail',
+                                filter_placeholder: {
+                                    search: '',
+                                    select: ''
+                                },
+                                filter_reset: 'button.reset',
+                                filter_resetOnEsc: true,
+                                filter_searchDelay: 300,
+                                filter_searchFiltered: true,
+                                filter_selectSource: null,
+                                filter_serversideFiltering: false,
+                                filter_startsWith: false,
+                                filter_useParsedData: false,
+                                filter_defaultAttrib: 'data-value',
+                                filter_selectSourceSeparator: '|'
+                            }
                         });
-                    </script>
+                    });
+                    $('.resetsaved').click(function() {
+                        $('.dextable').trigger('filterResetSaved');
+                        var $message = $('<span class="results"> Reset</span>').insertAfter(this);
+                        setTimeout(function() {
+                            $message.remove()
+                        }, 500);
+                        return false
+                    });
+                    $('button[data-filter-column]').click(function() {
+                        var filters = [],
+                            $t = $(this),
+                            col = $t.data('filter-column'),
+                            txt = $t.data('filter-text') || $t.text();
+                        filters[col] = txt;
+                        $.tablesorter.setFilters($('.dextable'), filters, true);
+                        return false;
+                    });
+                });
+            </script>
 
-                </div>
-        </main>
+        </div>
+    </main>
 
     <script>
         // Scroll to top button
         var btn = $('#button');
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             if ($(window).scrollTop() > 300) {
                 btn.addClass('show');
             } else {
                 btn.removeClass('show');
             }
         });
-        btn.on('click', function (e) {
+        btn.on('click', function(e) {
             e.preventDefault();
             $('html, body').animate({
                 scrollTop: 0
