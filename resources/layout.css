@@ -155,6 +155,9 @@ img[alt="Steam Deck"] {
 @media only screen and (min-width: 600px) {
     .tablesorter-default .header,
     .tablesorter-default .tablesorter-header {
+		/*
+        background-image: url("../resources/sort.gif");
+		*/
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer;
@@ -163,13 +166,17 @@ img[alt="Steam Deck"] {
     .tablesorter-default thead .headerSortUp,
     .tablesorter-default thead .tablesorter-headerAsc,
     .tablesorter-default thead .tablesorter-headerSortUp {
+		/*
         background-image: url("../resources/sortup.gif");
+		*/
     }
 
     .tablesorter-default thead .headerSortDown,
     .tablesorter-default thead .tablesorter-headerDesc,
     .tablesorter-default thead .tablesorter-headerSortDown {
+		/*
         background-image: url("../resources/sortdown.gif");
+		*/
     }
 
     .fooevo {
