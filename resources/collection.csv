@@ -1,4 +1,7 @@
 Series,Release,Game,Platform,Done
+,1988,Snatcher,SCD [sd],Yes
+,1991,Metal Slader Glory,SNES [sd],Yes
+,1994,Policenauts,PSX [sd],Yes
 ,2012,Mark of the Ninja,PC [sd],Yes
 ,2018,Return of the Obra Dinn,PC [sd],Yes
 ,2019,Disco Elysium,PC [sd],Yes
@@ -16,8 +19,8 @@ Hollow Knight,2017,Hollow Knight,PC [sd],Yes
 Hollow Knight,2025,Hollow Knight: Silksong,PC [sd],
 League of Legends,2021,Ruined King,PC [sd],Yes
 Marvel,2018,Spider-Man,PC,Yes
-Metroid Prime,2002,Metroid Prime Remastered [hd],Switch,
-Metroid,2021,Metroid Dread,Switch,Yes
+Metroid Prime,2002,Metroid Prime Remastered [hd],NSW,
+Metroid,2021,Metroid Dread,NSW,Yes
 Pokemon,2004,Pokemon Emerald,GBA [sd],Yes
 Resident Evil,1998,Resident Evil 2 [hd],PC,Yes
 Resident Evil,1999,Resident Evil 3 [hd],PC,Yes
@@ -27,14 +30,15 @@ Souls,2019,Sekiro,PC,
 Souls,2022,Elden Ring,PC,
 Streets of Rage,2020,Streets of Rage 4,PC [sd],Yes
 Strider,2014,Strider,PC [sd],
+TMNT,2022,Shredder's Revenge,PC [sd],Yes
 Valkyrie Profile,1999,Valkyrie Profile,PSX [sd],Yes
 Xeno,1998,Xenogears,PSX [sd],Yes
-Xeno,2010,Xenoblade [hd],Switch,Yes
-Xeno,2015,Xenoblade X,Switch,Yes
-Xeno,2017,Xenoblade 2,Switch,Yes
-Xeno,2022,Xenoblade 3,Switch,Yes
-Zelda,1993,Zelda: Link's Awakening [hd],Switch 2,Yes
-Zelda,2017,Zelda: Breath of the Wild,Switch 2,Yes
-Zelda,2023,Zelda: Tears of the Kingdom,Switch 2,
+Xeno,2010,Xenoblade [hd],NSW,Yes
+Xeno,2015,Xenoblade X,NSW,Yes
+Xeno,2017,Xenoblade 2,NSW,Yes
+Xeno,2022,Xenoblade 3,NSW,Yes
+Zelda,1993,Zelda: Link's Awakening [hd],NSW2,Yes
+Zelda,2017,Zelda: Breath of the Wild,NSW2,Yes
+Zelda,2023,Zelda: Tears of the Kingdom,NSW2,
 Zone of the Enders,2001,Zone of the Enders,PS2,Yes
 Zone of the Enders,2003,Zone of the Enders: 2nd Runner [hd],PC,Yes
