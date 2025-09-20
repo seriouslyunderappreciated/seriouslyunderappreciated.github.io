@@ -17,6 +17,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+
+    <style>
+      /* Hide all tablesorter sort arrows */
+      table.tablesorter thead .tablesorter-header-inner::after {
+        content: none !important;
+      }
+    </style>
 </head>
 
 <body>
@@ -81,11 +88,20 @@
                                         $('#myTable tbody').append(tableRow);
                                     }
                                 }
+
+                                // tablesorter setup: always ascending
+                                var headerCount = $('#myTable thead th').length;
+                                var headersConfig = {};
+                                for (var c = 0; c < headerCount; c++) {
+                                    headersConfig[c] = { lockedOrder: 'asc' };
+                                }
+
                                 $('#myTable').tablesorter({
                                     sortList: [
                                         [0, 0],
                                         [1, 0]
                                     ],
+                                    headers: headersConfig,
                                     widgets: ["filter"],
                                     widgetOptions: {
                                         filter_columnFilters: true,
@@ -162,5 +178,3 @@
 </body>
 
 </html>
-
-
