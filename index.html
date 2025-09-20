@@ -62,8 +62,11 @@
                                     if (cell.includes('[hd]')) {
                                         cell = cell.replace(/\[hd\]/g, ' <img alt="Remake" title="Remake" src="resources/remake.png">');
                                     }
-                                    if (cell.includes('[sd]')) {
-                                        cell = cell.replace(/\[sd\]/g, ' <img alt="Steam Deck" title="Steam Deck" src="resources/steamdeck.png">');
+                                    if (cell.includes('[retro]')) {
+                                        cell = cell.replace(/\[sd\]/g, ' <img alt="Emulated" title="Emulated" src="resources/retro.png">');
+                                    }
+                                    if (cell.includes('[switch]')) {
+                                        cell = cell.replace(/\[sd\]/g, ' <img alt="Switch 1" title="Switch 1" src="resources/switch.png">');
                                     }
 
                                     // Hide Release and Done columns
@@ -182,3 +185,4 @@
 </body>
 
 </html>
+
