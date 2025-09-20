@@ -73,9 +73,9 @@
                                     var cell = row[j].trim();
                                     var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
                                     var displayCell = cell
-                                        .replace(/\[hd\]/g, '<img alt="Remake" title="Remake" src="resources/hd.png" class="icon">')
-                                        .replace(/\[retro\]/g, '<img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
-                                        .replace(/\[switch\]/g, '<img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
+                                       // .replace(/\[hd\]/g, '<img alt="Remake" title="Remake" src="resources/hd.png" class="icon">')
+                                       // .replace(/\[retro\]/g, '<img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
+                                       // .replace(/\[switch\]/g, '<img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
 
                                     // Hide Release and Done columns
                                     if (j == 1) { // Release column
@@ -162,4 +162,5 @@
 </body>
 
 </html>
+
 
