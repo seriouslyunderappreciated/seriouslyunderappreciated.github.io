@@ -142,12 +142,15 @@ img[alt="Steam Deck"] {
 /* =========================================
    Tablesorter
 ========================================= */
+
+/* Fade rows for completed games */
 .tablesorter .filtered {
     opacity: 0.7;
 }
 
-.tablesorter-default td:nth-child(5),
-.tablesorter-default th:nth-child(5),
+/* Hide columns marked with hide-column */
+.tablesorter-default td.hide-column,
+.tablesorter-default th.hide-column,
 .tablesorter-filter-row {
     display: none;
 }
