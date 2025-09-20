@@ -35,7 +35,7 @@
                                 <th class="fooevo">Series</th>
                                 <th class="fooevo">Release</th>
                                 <th class="fooevo">Game</th>
-                                <th class="fooevo">Platform</th>
+                                <th class="fooevo">Device</th>
                                 <th data-value="!Yes" class="fooevo">Done</th>
                             </tr>
                         </thead>
@@ -58,8 +58,8 @@
                                         for (var j = 0; j < headers.length; j++) {
                                             var cell = row[j].trim();
 
-                                            // Prepend [vv] for Platform cells with [sd]
-                                            if (headers[j] === "Platform" && cell.includes('[sd]')) {
+                                            // Prepend [vv] for Device cells with [sd]
+                                            if (headers[j] === "Device" && cell.includes('[sd]')) {
                                                 cell = '[vv] ' + cell;
                                             }
 
@@ -172,3 +172,4 @@
 </body>
 
 </html>
+
