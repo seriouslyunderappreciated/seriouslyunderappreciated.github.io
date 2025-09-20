@@ -53,6 +53,7 @@
                     $.get('resources/collection.csv', function (data) {
                         var lines = data.split('\n');
                         var headers = lines[0].split(',');
+
                         for (var i = 1; i < lines.length; i++) {
                             var row = lines[i].split(',');
                             if (row.length == headers.length) {
@@ -60,10 +61,7 @@
                                 for (var j = 0; j < headers.length; j++) {
                                     var cell = row[j].trim();
                                     var displayCell = cell;
-                                    var dataValue = cell;
-
-                                    // Clean data-value first for sorting (remove bracketed tags)
-                                    dataValue = dataValue.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
+                                    var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
 
                                     // Replace tags with images for display only
                                     displayCell = displayCell
@@ -74,12 +72,8 @@
                                     if (j == 1) { // Release column
                                         tableRow += `<td class="cen hide-column" data-value="${dataValue}">${displayCell}</td>`;
                                     } else if (j == headers.length - 1) { // Done column
-                                        if (cell === 'Yes') {
-                                            tableRow += `<td class="cen hide-column" data-value="Yes">Yes</td>`;
-                                        } else {
-                                            tableRow += `<td class="cen hide-column" data-value=""></td>`;
-                                        }
-                                    } else { // All other columns
+                                        tableRow += `<td class="cen hide-column" data-value="${cell === 'Yes' ? 'Yes' : ''}">${cell === 'Yes' ? 'Yes' : ''}</td>`;
+                                    } else {
                                         tableRow += `<td class="cen" data-value="${dataValue}">${displayCell}</td>`;
                                     }
                                 }
@@ -88,7 +82,7 @@
                             }
                         }
 
-                        // tablesorter setup: always ascending
+                        // tablesorter setup
                         var headerCount = $('#myTable thead th').length;
                         var headersConfig = {};
                         for (var c = 0; c < headerCount; c++) {
@@ -102,38 +96,17 @@
                         });
 
                         $('#myTable').tablesorter({
-                            sortList: [
-                                [0, 0], // Series
-                                [1, 0], // Release
-                                [2, 0]  // Game
-                            ],
+                            sortList: [[0, 0], [1, 0], [2, 0]],
                             headers: headersConfig,
                             textExtraction: function (node) {
+                                // ALWAYS use data-value for sorting
                                 return $(node).attr('data-value') || $(node).text();
                             },
                             widgets: ["filter"],
                             widgetOptions: {
-                                filter_columnFilters: true,
-                                filter_columnAnyMatch: true,
-                                filter_filteredRow: 'filtered',
-                                filter_filterLabel: 'Filter "{{label}}" column by...',
-                                filter_hideEmpty: true,
-                                filter_hideFilters: true,
-                                filter_ignoreCase: true,
-                                filter_liveSearch: true,
-                                filter_matchType: { 'input': 'exact', 'select': 'exact' },
-                                filter_onlyAvail: 'filter-onlyAvail',
-                                filter_placeholder: { search: '', select: '' },
-                                filter_reset: 'button.reset',
-                                filter_resetOnEsc: true,
-                                filter_searchDelay: 300,
-                                filter_searchFiltered: true,
-                                filter_selectSource: null,
-                                filter_serversideFiltering: false,
-                                filter_startsWith: false,
-                                filter_useParsedData: false,
                                 filter_defaultAttrib: 'data-value',
-                                filter_selectSourceSeparator: '|'
+                                filter_columnFilters: true,
+                                filter_columnAnyMatch: true
                             }
                         });
                     });
