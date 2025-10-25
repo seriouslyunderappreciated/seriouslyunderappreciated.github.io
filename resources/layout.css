@@ -215,6 +215,9 @@ img {
    Media Queries
 ========================================= */
 @media (max-width: 600px) {
+   #nowPlayingContainer {
+    max-width: 100%;
+}
     .icon {
         height: 0.6em;
     }
