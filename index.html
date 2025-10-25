@@ -27,21 +27,13 @@
     <main>
         <div style="text-align: center;">
             <img alt="Samus" src="resources/logo.png">
-            <h1>My Games</h1>
-            <p>This is purely how I figure out what to play next.</p>
             <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
 
-            <!-- Now Playing Section -->
-<!-- Now Playing Label -->
-<p style="text-align: center; margin-top: 20px;"><strong>Now Playing:</strong></p>
-
-<!-- Now Playing Container -->
-<div id="nowPlayingContainer" class="cen"
-    style="margin: 0 auto 20px auto; padding: 10px; border: 1px solid #5a68a6; border-radius: 5px; background: #1f2450; max-width: 40%;">
-    <div id="nowPlayingList">Loading...</div>
-</div>
-
-
+            <p class="sectionLabel"><strong>Now Playing:</strong></p>
+            
+            <div id="nowPlayingContainer" class="cen">
+                <div id="nowPlayingList">Loading...</div>
+            </div>
 
             <table id="myTable" class="dextable">
                 <thead>
@@ -62,20 +54,18 @@
 
             <script>
                 $(document).ready(function () {
-// -------------------------
-// Load Now Playing
-// -------------------------
-$.get('resources/atm.txt', function (data) {
-    var lines = data.trim().split('\n').filter(line => line.trim() !== '');
-    if (lines.length === 0) {
-        $('#nowPlayingList').text('Nothing!');
-    } else {
-        $('#nowPlayingList').html(lines.join('<br>'));
-    }
-});
 
-
-
+                    // -------------------------
+                    // Load Now Playing
+                    // -------------------------
+                    $.get('resources/atm.txt', function (data) {
+                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+                        if (lines.length === 0) {
+                            $('#nowPlayingList').text('Nothing!');
+                        } else {
+                            $('#nowPlayingList').html(lines.join('<br>'));
+                        }
+                    });
 
                     // -------------------------
                     // Table population and sorting
@@ -145,22 +135,6 @@ $.get('resources/atm.txt', function (data) {
                             }
                         });
                     });
-
-                    // Reset button
-                    $('.resetsaved').click(function () {
-                        $('.dextable').trigger('filterResetSaved');
-                        var $message = $('<span class="results"> Reset</span>').insertAfter(this);
-                        setTimeout(function () { $message.remove() }, 500);
-                        return false;
-                    });
-
-                    // Column filter buttons
-                    $('button[data-filter-column]').click(function () {
-                        var filters = [], $t = $(this), col = $t.data('filter-column'), txt = $t.data('filter-text') || $t.text();
-                        filters[col] = txt;
-                        $.tablesorter.setFilters($('.dextable'), filters, true);
-                        return false;
-                    });
                 });
             </script>
 
@@ -186,6 +160,3 @@ $.get('resources/atm.txt', function (data) {
 </body>
 
 </html>
-
-
-
