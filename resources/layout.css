@@ -20,8 +20,9 @@
 
 
 #nowPlayingList {
-    margin: 5px;
+    margin: 0 5px;
     text-align: center;
+    line-height: 2;
 }
 
 
