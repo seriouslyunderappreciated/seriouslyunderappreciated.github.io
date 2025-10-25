@@ -25,10 +25,19 @@
     <div id='stars2'></div>
     <div id='stars3'></div>
     <main>
-        <div style="text-align: center;"><img alt="Samus" src="resources/logo.png">
+        <div style="text-align: center;">
+            <img alt="Samus" src="resources/logo.png">
             <h1>My Games</h1>
             <p>This is purely how I figure out what to play next.</p>
             <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
+
+            <!-- Now Playing Section -->
+            <div id="nowPlayingContainer" class="cen"
+                style="margin: 20px auto; padding: 10px; border: 1px solid #5a68a6; border-radius: 5px; background: #1f2450; max-width: 40%;">
+                <strong>Now Playing:</strong>
+                <span id="nowPlayingList">Loading...</span>
+            </div>
+
             <table id="myTable" class="dextable">
                 <thead>
                     <tr>
@@ -48,7 +57,21 @@
 
             <script>
                 $(document).ready(function () {
-                    // Custom parser for Device column
+                    // -------------------------
+                    // Load Now Playing
+                    // -------------------------
+                    $.get('resources/atm.txt', function (data) {
+                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+                        if (lines.length === 0) {
+                            $('#nowPlayingList').text('Nothing!');
+                        } else {
+                            $('#nowPlayingList').text(lines.join(', '));
+                        }
+                    });
+
+                    // -------------------------
+                    // Table population and sorting
+                    // -------------------------
                     $.tablesorter.addParser({
                         id: 'deviceParser',
                         is: function () { return false; },
@@ -64,11 +87,10 @@
                         var headers = lines[0].split(',');
 
                         for (var i = 1; i < lines.length; i++) {
-                            if (!lines[i].trim()) continue; // skip empty lines
+                            if (!lines[i].trim()) continue;
                             var row = lines[i].split(',');
                             if (row.length === headers.length) {
                                 var tableRow = '<tr>';
-
                                 for (var j = 0; j < headers.length; j++) {
                                     var cell = row[j].trim();
                                     var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
@@ -77,23 +99,21 @@
                                         .replace(/\[retro\]/g, '<img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
                                         .replace(/\[switch\]/g, '<img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
 
-                                    if (j === 1) { // Release
+                                    if (j === 1) {
                                         tableRow += '<td class="cen hide-column" data-value="' + dataValue + '">' + displayCell + '</td>';
-                                    } else if (j === (headers.length - 1)) { // Done
+                                    } else if (j === (headers.length - 1)) {
                                         tableRow += '<td class="cen hide-column" data-value="' + (cell === 'Yes' ? 'Yes' : '') + '">' + (cell === 'Yes' ? 'Yes' : '') + '</td>';
-                                    } else if (j === 0 || j === 3) { // Series or Device
+                                    } else if (j === 0 || j === 3) {
                                         tableRow += '<td class="cen nowrap" data-value="' + dataValue + '">' + displayCell + '</td>';
-                                    } else { // All other columns
+                                    } else {
                                         tableRow += '<td class="cen" data-value="' + dataValue + '">' + displayCell + '</td>';
                                     }
                                 }
-
                                 tableRow += '</tr>';
                                 $('#myTable tbody').append(tableRow);
                             }
                         }
 
-                        // Build headersConfig
                         var headerCount = $('#myTable thead th').length;
                         var headersConfig = {};
                         for (var c = 0; c < headerCount; c++) {
@@ -104,13 +124,10 @@
                                 headersConfig[index].sorter = false;
                             }
                         });
-
-                        // Assign custom parser to Device
                         headersConfig[3].sorter = 'deviceParser';
 
-                        // Initialize tablesorter with multi-column initial sort
                         $('#myTable').tablesorter({
-                            sortList: [[0, 0], [1, 0], [2, 0], [3, 0]], // Series > Release > Game > Device
+                            sortList: [[0, 0], [1, 0], [2, 0], [3, 0]],
                             headers: headersConfig,
                             widgets: ["filter"],
                             widgetOptions: {
