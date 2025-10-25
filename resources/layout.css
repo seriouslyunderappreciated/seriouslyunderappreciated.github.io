@@ -1,4 +1,31 @@
 /* =========================================
+   Now Playing Section
+========================================= */
+.sectionLabel {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#nowPlayingContainer {
+    display: inline-block; /* shrink to fit content */
+    margin: 20px auto;
+    max-width: 40%;
+    min-width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5a68a6;
+    background: #1f2450;
+    text-align: center;
+}
+
+
+#nowPlayingList {
+    margin-top: 5px;
+    text-align: left;
+}
+
+
+/* =========================================
    Base Styles
 ========================================= */
 body, html {
@@ -267,26 +294,4 @@ img {
 @keyframes animStars3 {
     from { transform: translateY(0); }
     to   { transform: translateY(-150%); }
-}
-
-/* =========================================
-   Now Playing Section
-========================================= */
-.sectionLabel {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#nowPlayingContainer {
-    display: inline-block; /* shrink to fit content */
-    max-width: 40%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #5a68a6;
-    background: #1f2450;
-}
-
-#nowPlayingList {
-    margin-top: 5px;
-    text-align: left;
 }
