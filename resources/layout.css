@@ -3,12 +3,10 @@
 ========================================= */
 .sectionLabel {
     text-align: center;
-    margin-top: 20px;
 }
 
 #nowPlayingContainer {
     display: inline-block;
-    margin: 0 auto 12px;
     max-width: 40%;
     min-width: 20%;
     padding: 10px;
