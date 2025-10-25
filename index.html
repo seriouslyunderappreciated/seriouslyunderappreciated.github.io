@@ -32,11 +32,12 @@
             <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
 
             <!-- Now Playing Section -->
-            <div id="nowPlayingContainer" class="cen"
-                style="margin: 20px auto; padding: 10px; border: 1px solid #5a68a6; border-radius: 5px; background: #1f2450; max-width: 40%;">
-                <strong>Now Playing:</strong>
-                <span id="nowPlayingList">Loading...</span>
-            </div>
+<div id="nowPlayingContainer" class="cen"
+    style="margin: 20px auto; padding: 10px; border: 1px solid #5a68a6; border-radius: 5px; background: #1f2450; max-width: 40%;">
+    <strong>Now Playing:</strong>
+    <div id="nowPlayingList" style="margin-top: 5px;">Loading...</div>
+</div>
+
 
             <table id="myTable" class="dextable">
                 <thead>
@@ -63,12 +64,14 @@
 $.get('resources/atm.txt', function (data) {
     var lines = data.trim().split('\n').filter(line => line.trim() !== '');
     if (lines.length === 0) {
+        // Show Nothing! on the same line as the label
         $('#nowPlayingList').text('Nothing!');
     } else {
-        // Join each game with <br> for separate lines
+        // Always break after "Now Playing:", then one game per line
         $('#nowPlayingList').html(lines.join('<br>'));
     }
 });
+
 
 
                     // -------------------------
@@ -180,4 +183,5 @@ $.get('resources/atm.txt', function (data) {
 </body>
 
 </html>
+
 
