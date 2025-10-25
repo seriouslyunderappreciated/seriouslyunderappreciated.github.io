@@ -8,7 +8,7 @@
 
 #nowPlayingContainer {
     display: inline-block; /* shrink to fit content */
-    margin: 20px auto;
+    margin-bottom: 20px auto;
     max-width: 40%;
     min-width: 20%;
     padding: 10px;
@@ -20,8 +20,9 @@
 
 
 #nowPlayingList {
-    margin-top: 5px;
+    margin: 5px;
     text-align: left;
+    text-align: center;
 }
 
 
