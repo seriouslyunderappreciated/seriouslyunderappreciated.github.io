@@ -164,26 +164,20 @@ img {
    Tablesorter: Only sortable headers show arrows
 ========================================= */
 @media only screen and (min-width: 600px) {
-    /* Base arrow for sortable headers */
     .tablesorter-default thead th.sortable {
         background-image: url("../resources/sort.gif");
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer;
     }
-
-    /* Ascending state */
     .tablesorter-default thead th.sortable.headerSortUp,
     .tablesorter-default thead th.sortable.tablesorter-headerAsc {
         background-image: url("../resources/sortup.gif");
     }
-
-    /* Descending state */
     .tablesorter-default thead th.sortable.headerSortDown,
     .tablesorter-default thead th.sortable.tablesorter-headerDesc {
         background-image: url("../resources/sortdown.gif");
     }
-
     .fooevo {
         padding: 3px;
         cursor: pointer;
@@ -273,4 +267,26 @@ img {
 @keyframes animStars3 {
     from { transform: translateY(0); }
     to   { transform: translateY(-150%); }
+}
+
+/* =========================================
+   Now Playing Section
+========================================= */
+.sectionLabel {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#nowPlayingContainer {
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border: 1px solid #5a68a6;
+    border-radius: 5px;
+    background: #1f2450;
+    max-width: 40%;
+}
+
+#nowPlayingList {
+    margin-top: 5px;
+    text-align: left;
 }
