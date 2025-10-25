@@ -57,17 +57,19 @@
 
             <script>
                 $(document).ready(function () {
-                    // -------------------------
-                    // Load Now Playing
-                    // -------------------------
-                    $.get('resources/atm.txt', function (data) {
-                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
-                        if (lines.length === 0) {
-                            $('#nowPlayingList').text('Nothing!');
-                        } else {
-                            $('#nowPlayingList').text(lines.join(', '));
-                        }
-                    });
+// -------------------------
+// Load Now Playing
+// -------------------------
+$.get('resources/atm.txt', function (data) {
+    var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+    if (lines.length === 0) {
+        $('#nowPlayingList').text('Nothing!');
+    } else {
+        // Join each game with <br> for separate lines
+        $('#nowPlayingList').html(lines.join('<br>'));
+    }
+});
+
 
                     // -------------------------
                     // Table population and sorting
@@ -178,3 +180,4 @@
 </body>
 
 </html>
+
