@@ -2,7 +2,7 @@ name: Steam Build Scraper
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # runs every 24h at midnight UTC
+    - cron: "0 0 * * *"  # runs daily at midnight UTC
   workflow_dispatch:
 
 permissions:
@@ -21,29 +21,18 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install DepotDownloader
-        run: |
-          echo "Downloading DepotDownloader binary..."
-          curl -sLO https://github.com/SteamRE/DepotDownloader/releases/latest/download/DepotDownloader-linux-x64.zip
-          unzip -o DepotDownloader-linux-x64.zip
-          chmod +x DepotDownloader
-          ./DepotDownloader -help || true   # ✅ prevents failure
-
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          pip install pandas requests beautifulsoup4 steam
+          pip install pandas requests
 
       - name: Run Steam build scraper
-        env:
-          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         run: python .github/scripts/steam_build_scraper.py
 
       - name: Commit and push results
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add resources/temp.csv
-          git commit -m "Update Steam build IDs" || echo "No changes to commit"
+          git add resources/temp.json
+          git commit -m "Update Steam patch notes JSON" || echo "No changes to commit"
           git push
