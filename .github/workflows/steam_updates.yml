@@ -1,42 +1,38 @@
-name: Check Steam Updates
+name: Steam Build Scraper
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # once every 24h at midnight UTC
-  workflow_dispatch:      # allows manual runs
+    - cron: "0 0 * * *"  # runs every 24 hours at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  update:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install .NET 8 (for DepotDownloader)
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Download DepotDownloader
-      run: |
-        mkdir depotdownloader
-        cd depotdownloader
-        wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.5.0/DepotDownloader-linux-x64.zip
-        unzip DepotDownloader-linux-x64.zip
+      - name: Install dependencies
+        run: pip install pandas requests python-steam[client]
 
-    - name: Run update checker
-      env:
-        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-      run: |
-        pip install requests
-        python3 resources/check_updates.py
+      - name: Run scraper
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+        run: python .github/scripts/steam_build_scraper.py
 
-    - name: Commit updates.json
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git add resources/updates.json
-        git commit -m "Update Steam patch-build info" || echo "No changes to commit"
-        git push
+      - name: Commit results
+        run: |
+          git config --global user.name "gh-actions"
+          git config --global user.email "actions@github.com"
+          git add resources/temp.csv
+          git commit -m "Update Steam build IDs" || echo "No changes"
+          git push
