@@ -16,35 +16,5 @@
     "steamdburl": "https://steamdb.info/app/367520/patchnotes/",
     "buildid": "20231655",
     "date": "October 3rd, 2025"
-  },
-  "1245620": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1245620/header.jpg",
-    "steamdburl": "https://steamdb.info/app/1245620/patchnotes/",
-    "buildid": "19493300",
-    "date": "August 21st, 2025"
-  },
-  "1462040": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1462040/header.jpg",
-    "steamdburl": "https://steamdb.info/app/1462040/patchnotes/",
-    "buildid": "16791625",
-    "date": "December 24th, 2024"
-  },
-  "1113560": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1113560/header.jpg",
-    "steamdburl": "https://steamdb.info/app/1113560/patchnotes/",
-    "buildid": "7396468",
-    "date": "October 20th, 2021"
-  },
-  "524220": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/524220/header.jpg",
-    "steamdburl": "https://steamdb.info/app/524220/patchnotes/",
-    "buildid": "7020666",
-    "date": "July 15th, 2021"
-  },
-  "814380": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/814380/header.jpg",
-    "steamdburl": "https://steamdb.info/app/814380/patchnotes/",
-    "buildid": "5794815",
-    "date": "November 20th, 2020"
   }
 }
