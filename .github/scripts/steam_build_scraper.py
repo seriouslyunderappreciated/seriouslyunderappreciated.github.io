@@ -31,6 +31,11 @@ def is_patch_note(item):
         return True
     return False
 
+def is_steamcommunity_post(item, appid):
+    """Return True if the news URL is a Steam Community announcement for this app."""
+    url = item.get("url", "")
+    return url.startswith(f"https://steamcommunity.com/games/{appid}/announcements/")
+
 def fetch_latest_patch(appid):
     url = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
     try:
@@ -41,10 +46,10 @@ def fetch_latest_patch(appid):
         print(f"[Steam News error] {appid}: {e}")
         return None
 
-    # Filter patch-note-like news hosted on Steam only
+    # Filter for patch-note-like news posted on Steam Community
     patches = [
         item for item in newsitems
-        if not item.get("is_external_url", True) and is_patch_note(item)
+        if is_patch_note(item) and is_steamcommunity_post(item, appid)
     ]
 
     if not patches:
@@ -72,7 +77,7 @@ for appid in appids:
         results[str(appid)] = patch_data
         print(f"  Latest patch: {patch_data['title']} ({patch_data['date']})")
     else:
-        print("  No Steam-hosted patch-note-style news found")
+        print("  No Steam Community patch-note-style news found")
         results[str(appid)] = {
             "title": None,
             "url": None,
