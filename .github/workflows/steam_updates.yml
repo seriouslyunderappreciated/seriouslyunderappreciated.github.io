@@ -1,0 +1,42 @@
+name: Check Steam Updates
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # once every 24h at midnight UTC
+  workflow_dispatch:      # allows manual runs
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install .NET 8 (for DepotDownloader)
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Download DepotDownloader
+      run: |
+        mkdir depotdownloader
+        cd depotdownloader
+        wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.5.0/DepotDownloader-linux-x64.zip
+        unzip DepotDownloader-linux-x64.zip
+
+    - name: Run update checker
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+      run: |
+        pip install requests
+        python3 scripts/check_updates.py
+
+    - name: Commit updates.json
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add resources/updates.json
+        git commit -m "Update Steam patch-build info" || echo "No changes to commit"
+        git push
