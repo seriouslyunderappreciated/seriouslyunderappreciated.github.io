@@ -1,20 +1,17 @@
 {
-  "1086940": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1086940/header.jpg",
-    "steamdburl": "https://steamdb.info/app/1086940/patchnotes/",
-    "buildid": "20875335",
-    "date": "November 20th, 2025"
-  },
-  "2909400": {
-    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/2909400/header.jpg",
-    "steamdburl": "https://steamdb.info/app/2909400/patchnotes/",
-    "buildid": "20553787",
-    "date": "November 4th, 2025"
+  "1245620": {
+    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1245620/header.jpg",
+    "steamdburl": "https://steamdb.info/app/1245620/",
+    "date": "2025-08-21"
   },
   "367520": {
     "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/367520/header.jpg",
-    "steamdburl": "https://steamdb.info/app/367520/patchnotes/",
-    "buildid": "20231655",
-    "date": "October 3rd, 2025"
+    "steamdburl": "https://steamdb.info/app/367520/",
+    "date": "2025-10-03"
+  },
+  "1086940": {
+    "steamheader": "https://steamcdn-a.akamaihd.net/steam/apps/1086940/header.jpg",
+    "steamdburl": "https://steamdb.info/app/1086940/",
+    "date": "2025-11-20"
   }
 }
