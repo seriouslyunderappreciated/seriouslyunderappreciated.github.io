@@ -1,139 +1,84 @@
 import os
-import subprocess
-import requests
+import json
 import pandas as pd
+import requests
 from datetime import datetime
 
 # --- CONFIG ---
 CSV_SOURCE = "resources/builds.csv"
-CSV_OUT = "resources/temp.csv"
-DEPOTDOWNLOADER = "DepotDownloader"  # binary installed by workflow
+JSON_OUT = "resources/temp.json"
 
-STEAM_USER = os.environ["STEAM_USERNAME"]
-STEAM_PASS = os.environ["STEAM_PASSWORD"]
+PATCH_KEYWORDS = ["patch", "version", "hotfix"]
 
-PATCH_KEYWORDS = [
-    "patch", "fix", "hotfix", "update", "changelog", "notes",
-    "bug", "improved", "resolved", "balance", "gameplay",
-    "version", "steam deck", "crash", "stability", "performance"
-]
+def format_date_ordinal(ts):
+    dt = datetime.utcfromtimestamp(ts)
+    day = dt.day
+    suffix = 'th' if 11 <= day <= 13 else {1:'st',2:'nd',3:'rd'}.get(day % 10, 'th')
+    return dt.strftime(f"%B {day}{suffix}, %Y")
 
-def get_build_ids_via_depotdownloader(appid: int):
+def is_patch_note(item):
+    """Return True if this news item looks like a patch note."""
+    title = (item.get("title") or "").lower()
+    feedlabel = (item.get("feedlabel") or "").lower()
+    contents = (item.get("contents") or "").lower()
+
+    # Check feedlabel, title keywords, or "patch notes" in contents
+    if any(k in feedlabel for k in PATCH_KEYWORDS):
+        return True
+    if any(k in title for k in PATCH_KEYWORDS):
+        return True
+    if "patch notes" in contents:
+        return True
+    return False
+
+def fetch_latest_patch(appid):
+    url = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
     try:
-        cmd = [
-            "./" + DEPOTDOWNLOADER,
-            "-app", str(appid),
-            "-username", STEAM_USER,
-            "-password", STEAM_PASS,
-            "-list"
-        ]
-        out = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT).lower()
-    except subprocess.CalledProcessError as e:
-        print(f"[DepotDownloader error] {appid}: {e.output}")
-        return []
-
-    builds = []
-    for line in out.splitlines():
-        if "buildid" in line or "build id" in line:
-            digits = "".join(c for c in line if c.isdigit())
-            if digits:
-                builds.append((int(digits), None))
-    return builds
-
-def get_patch_notes_from_steam_news(appid: int):
-    try:
-        r = requests.get(
-            "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/",
-            params={"appid": appid, "count": 50}
-        )
-        items = r.json().get("appnews", {}).get("newsitems", [])
+        r = requests.get(url, params={"appid": appid, "count": 50}, timeout=15)
+        r.raise_for_status()
+        newsitems = r.json().get("appnews", {}).get("newsitems", [])
     except Exception as e:
         print(f"[Steam News error] {appid}: {e}")
-        return []
+        return None
 
-    patches = []
-    for item in items:
-        text = (item.get("contents") or "").lower()
-        title = (item.get("title") or "").lower()
-        ts = item.get("date")
-        if not ts:
-            continue
+    # Filter patch-note-like news
+    patches = [item for item in newsitems if is_patch_note(item)]
+    if not patches:
+        return None
 
-        post_date = datetime.utcfromtimestamp(ts).date()
-
-        if not any(k in text or k in title for k in PATCH_KEYWORDS):
-            continue
-
-        buildid = None
-        nums = "".join(c if c.isdigit() else " " for c in text).split()
-        for n in nums:
-            if len(n) >= 8:
-                buildid = int(n)
-                break
-
-        patches.append((post_date, buildid, item.get("url")))
-
-    return patches
+    # Pick the latest by date
+    latest = max(patches, key=lambda x: x.get("date", 0))
+    return {
+        "title": latest.get("title"),
+        "url": latest.get("url"),
+        "date": format_date_ordinal(latest.get("date")),
+        "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+    }
 
 # --- MAIN EXECUTION ---
 df = pd.read_csv(CSV_SOURCE)
 appids = df["appid"].dropna().astype(int).unique()
 
-results = []
+results = {}
 
 for appid in appids:
     print(f"Checking app {appid}")
+    patch_data = fetch_latest_patch(appid)
+    if patch_data:
+        results[str(appid)] = patch_data
+        print(f"  Latest patch: {patch_data['title']} ({patch_data['date']})")
+    else:
+        print("  No patch-note-style news found")
+        results[str(appid)] = {
+            "title": None,
+            "url": None,
+            "date": None,
+            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+        }
 
-    builds = get_build_ids_via_depotdownloader(appid)
-    if not builds:
-        print("  No builds found")
-        continue
+# --- Write JSON output ---
+os.makedirs(os.path.dirname(JSON_OUT), exist_ok=True)
+with open(JSON_OUT, "w", encoding="utf-8") as f:
+    json.dump(results, f, ensure_ascii=False, indent=2)
 
-    bdf = pd.DataFrame(builds, columns=["buildid", "date"])
-    bdf = bdf.drop_duplicates("buildid")
-    bdf = bdf.sort_values("buildid", ascending=False)
-
-    announcements = get_patch_notes_from_steam_news(appid)
-    adf = pd.DataFrame(announcements, columns=["post_date", "mentioned_build", "url"])
-    if adf.empty:
-        print("  No patch-note style announcements")
-        continue
-
-    adf = adf.sort_values("post_date", ascending=False)
-    target_date = adf.iloc[0]["post_date"]
-
-    chosen = None
-
-    for _, build in bdf.iterrows():
-        for _, ann in adf.iterrows():
-            # ✅ Correct match logic
-            if ann["mentioned_build"] == build["buildid"]:
-                chosen = (build["buildid"], ann["post_date"], ann["url"])
-                break
-            elif ann["post_date"] == target_date:
-                chosen = (build["buildid"], ann["post_date"], ann["url"])
-                break
-        if chosen:
-            break
-
-    if not chosen:
-        # ✅ Only fall back if no valid match found
-        fallback_build = bdf.iloc[0]["buildid"]
-        chosen = (fallback_build, target_date, adf.iloc[0]["url"])
-        print(f"  Falling back to newest build: {fallback_build}")
-
-    buildid, date, url = chosen
-    print(f"  Selected Build: {buildid} ({date})")
-
-    results.append({
-        "appid": appid,
-        "buildid": int(buildid),
-        "date": date.isoformat(),
-        "announcement": url
-    })
-
-# ✅ Write only the columns you care about
-out = pd.DataFrame(results)
-out = out[["appid", "buildid", "date"]]
-out.to_csv(CSV_OUT, index=False)
-print("Wrote temp.csv")
+print(f"Wrote {JSON_OUT}")
