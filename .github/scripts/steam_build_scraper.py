@@ -13,7 +13,7 @@ PATCH_KEYWORDS = ["patch", "version", "hotfix"]
 def format_date_ordinal(ts):
     dt = datetime.utcfromtimestamp(ts)
     day = dt.day
-    suffix = 'th' if 11 <= day <= 13 else {1:'st',2:'nd',3:'rd'}.get(day % 10, 'th')
+    suffix = 'th' if 11 <= day <= 13 else {1:'st', 2:'nd', 3:'rd'}.get(day % 10, 'th')
     return dt.strftime(f"%B {day}{suffix}, %Y")
 
 def is_patch_note(item):
@@ -40,13 +40,12 @@ def fetch_latest_patch(appid):
     except Exception as e:
         print(f"[Steam News error] {appid}: {e}")
         return None
-        
-# --- Step 1: keep only Steam Community posts ---
-community_posts = [
-    item for item in newsitems
-    if "steam_community_announcements" in (item.get("feedname") or "").lower()
-]
 
+    # --- Step 1: keep only Steam Community posts ---
+    community_posts = [
+        item for item in newsitems
+        if "steam_community_announcements" in (item.get("feedname") or "").lower()
+    ]
 
     if not community_posts:
         return None
