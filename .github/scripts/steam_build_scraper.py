@@ -41,8 +41,12 @@ def fetch_latest_patch(appid):
         print(f"[Steam News error] {appid}: {e}")
         return None
 
-    # Filter patch-note-like news
-    patches = [item for item in newsitems if is_patch_note(item)]
+    # Filter patch-note-like news hosted on Steam only
+    patches = [
+        item for item in newsitems
+        if not item.get("is_external_url", True) and is_patch_note(item)
+    ]
+
     if not patches:
         return None
 
@@ -68,7 +72,7 @@ for appid in appids:
         results[str(appid)] = patch_data
         print(f"  Latest patch: {patch_data['title']} ({patch_data['date']})")
     else:
-        print("  No patch-note-style news found")
+        print("  No Steam-hosted patch-note-style news found")
         results[str(appid)] = {
             "title": None,
             "url": None,
