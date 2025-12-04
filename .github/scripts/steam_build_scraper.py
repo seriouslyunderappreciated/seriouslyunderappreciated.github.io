@@ -22,7 +22,7 @@ def is_patch_note(item):
     title = (item.get("title") or "").lower()
     feedlabel = (item.get("feedlabel") or "").lower()
     contents = (item.get("contents") or "").lower()
-    tags = [t.lower() for t in item.get("tags", [])]  # <-- new patchnotes tag check
+    tags = [t.lower() for t in item.get("tags", [])]
 
     # Check feedlabel, title keywords, "patch notes" in contents, or tags
     if any(k in feedlabel for k in PATCH_KEYWORDS):
@@ -31,7 +31,7 @@ def is_patch_note(item):
         return True
     if "patch notes" in contents:
         return True
-    if "patchnotes" in tags:  # <-- new check
+    if "patchnotes" in tags:
         return True
     return False
 
@@ -67,8 +67,9 @@ def fetch_latest_patch(appid):
         "title": latest.get("title"),
         "url": latest.get("url"),
         "date": format_date_ordinal(timestamp),
-        "timestamp": timestamp,  # <-- store raw timestamp for sorting
-        "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+        "timestamp": timestamp,
+        "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/",
+        "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg"
     }
 
 # --- MAIN EXECUTION ---
@@ -80,6 +81,7 @@ results = {}
 for appid in appids:
     print(f"Checking app {appid}")
     patch_data = fetch_latest_patch(appid)
+
     if patch_data:
         results[str(appid)] = patch_data
         print(f"  Latest patch: {patch_data['title']} ({patch_data['date']})")
@@ -89,8 +91,9 @@ for appid in appids:
             "title": None,
             "url": None,
             "date": None,
-            "timestamp": 0,  # ensure sortable
-            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+            "timestamp": 0,
+            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/",
+            "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg"
         }
 
 # --- Sort results by timestamp descending (newest first) ---
