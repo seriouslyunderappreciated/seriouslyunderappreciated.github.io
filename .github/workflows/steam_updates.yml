@@ -31,7 +31,7 @@ jobs:
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
       run: |
         pip install requests
-        python3 scripts/check_updates.py
+        python3 resources/check_updates.py
 
     - name: Commit updates.json
       run: |
