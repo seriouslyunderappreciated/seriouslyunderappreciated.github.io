@@ -1,4 +1,22 @@
 {
+  "610370": {
+    "title": "A Feast for the Vultures: New Desperados III DLC adds Full New Mission",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/3819570936611375984",
+    "date": "September 2nd, 2020",
+    "steamdburl": "https://steamdb.info/app/610370/patchnotes/"
+  },
+  "632470": {
+    "title": "Patch Notes [27/11/24]",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1784506358976367",
+    "date": "November 27th, 2024",
+    "steamdburl": "https://steamdb.info/app/632470/patchnotes/"
+  },
+  "595520": {
+    "title": "Notice regarding the release of Patch 1.0.4.0",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/3112493747269307484",
+    "date": "April 24th, 2020",
+    "steamdburl": "https://steamdb.info/app/595520/patchnotes/"
+  },
   "1462040": {
     "title": "Announcing the release of version 1.005",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1786573930772523",
@@ -11,11 +29,29 @@
     "date": "November 4th, 2025",
     "steamdburl": "https://steamdb.info/app/2909400/patchnotes/"
   },
+  "1245620": {
+    "title": "ELDEN RING - Patch Notes Version 1.16.1",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1808601382443022",
+    "date": "August 21st, 2025",
+    "steamdburl": "https://steamdb.info/app/1245620/patchnotes/"
+  },
+  "367520": {
+    "title": null,
+    "url": null,
+    "date": null,
+    "steamdburl": "https://steamdb.info/app/367520/patchnotes/"
+  },
   "1086940": {
     "title": "Hotfix #35 Now Live!",
     "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002010720",
     "date": "November 20th, 2025",
     "steamdburl": "https://steamdb.info/app/1086940/patchnotes/"
+  },
+  "524220": {
+    "title": "Notice about the planned release of the Steam patch",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/4036897704069972895",
+    "date": "July 13th, 2021",
+    "steamdburl": "https://steamdb.info/app/524220/patchnotes/"
   },
   "1113560": {
     "title": "Notice about the planned release of the Steam patch version 1.0.3 (6/16/2021)",
@@ -23,10 +59,58 @@
     "date": "June 16th, 2021",
     "steamdburl": "https://steamdb.info/app/1113560/patchnotes/"
   },
-  "524220": {
-    "title": "Notice about the planned release of the Steam patch",
-    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/4036897704069972895",
-    "date": "July 13th, 2021",
-    "steamdburl": "https://steamdb.info/app/524220/patchnotes/"
+  "1276790": {
+    "title": "Ruined King Patch v1.8",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/5143714207947725784",
+    "date": "March 29th, 2023",
+    "steamdburl": "https://steamdb.info/app/1276790/patchnotes/"
+  },
+  "653530": {
+    "title": null,
+    "url": null,
+    "date": null,
+    "steamdburl": "https://steamdb.info/app/653530/patchnotes/"
+  },
+  "814380": {
+    "title": null,
+    "url": null,
+    "date": null,
+    "steamdburl": "https://steamdb.info/app/814380/patchnotes/"
+  },
+  "1579380": {
+    "title": null,
+    "url": null,
+    "date": null,
+    "steamdburl": "https://steamdb.info/app/1579380/patchnotes/"
+  },
+  "418240": {
+    "title": "Shadow Tactics Patch v2.2.10 is now available!",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/2431262152930934386",
+    "date": "June 6th, 2018",
+    "steamdburl": "https://steamdb.info/app/418240/patchnotes/"
+  },
+  "740130": {
+    "title": null,
+    "url": null,
+    "date": null,
+    "steamdburl": "https://steamdb.info/app/740130/patchnotes/"
+  },
+  "1817070": {
+    "title": "AMD FSR 3.1 is now available in Marvel's Spider-Man Remastered",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/5842939267309823501",
+    "date": "June 27th, 2024",
+    "steamdburl": "https://steamdb.info/app/1817070/patchnotes/"
+  },
+  "985890": {
+    "title": "STREETS OF RAGE 4 - GAME STABILITY PATCH",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/4224936849665415806",
+    "date": "December 13th, 2021",
+    "steamdburl": "https://steamdb.info/app/985890/patchnotes/"
+  },
+  "1062110": {
+    "title": "Update Notes for patch 1.1.4",
+    "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/4224939386884432744",
+    "date": "January 8th, 2022",
+    "steamdburl": "https://steamdb.info/app/1062110/patchnotes/"
   }
 }
