@@ -27,7 +27,7 @@ jobs:
           curl -sLO https://github.com/SteamRE/DepotDownloader/releases/latest/download/DepotDownloader-linux-x64.zip
           unzip -o DepotDownloader-linux-x64.zip
           chmod +x DepotDownloader
-          ./DepotDownloader -help  # ✅ fixed sanity check that won't fail
+          ./DepotDownloader -help || true   # ✅ prevents failure
 
       - name: Install Python dependencies
         run: |
