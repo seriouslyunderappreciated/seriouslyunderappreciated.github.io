@@ -40,12 +40,13 @@ def fetch_latest_patch(appid):
     except Exception as e:
         print(f"[Steam News error] {appid}: {e}")
         return None
+        
+# --- Step 1: keep only Steam Community posts ---
+community_posts = [
+    item for item in newsitems
+    if "steam_community_announcements" in (item.get("feedname") or "").lower()
+]
 
-    # --- Step 1: keep only Steam Community posts ---
-    community_posts = [
-        item for item in newsitems
-        if "steam_community_announcements" in item.get("url", "")
-    ]
 
     if not community_posts:
         return None
