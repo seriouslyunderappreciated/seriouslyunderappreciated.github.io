@@ -1,38 +1,93 @@
-name: Steam Build Scraper
+import os
+import json
+import pandas as pd
+import requests
+from datetime import datetime
 
-on:
-  schedule:
-    - cron: "0 0 * * *"  # runs daily at midnight UTC
-  workflow_dispatch:
+# --- CONFIG ---
+CSV_SOURCE = "resources/builds.csv"
+JSON_OUT = "resources/temp.json"
 
-permissions:
-  contents: write
+PATCH_KEYWORDS = ["patch", "version", "hotfix"]
 
-jobs:
-  scrape:
-    runs-on: ubuntu-latest
+def format_date_ordinal(ts):
+    dt = datetime.utcfromtimestamp(ts)
+    day = dt.day
+    suffix = 'th' if 11 <= day <= 13 else {1:'st',2:'nd',3:'rd'}.get(day % 10, 'th')
+    return dt.strftime(f"%B {day}{suffix}, %Y")
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+def is_patch_note(item):
+    """Return True if this news item looks like a patch note."""
+    title = (item.get("title") or "").lower()
+    feedlabel = (item.get("feedlabel") or "").lower()
+    contents = (item.get("contents") or "").lower()
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+    # Check feedlabel, title keywords, or "patch notes" in contents
+    if any(k in feedlabel for k in PATCH_KEYWORDS):
+        return True
+    if any(k in title for k in PATCH_KEYWORDS):
+        return True
+    if "patch notes" in contents:
+        return True
+    return False
 
-      - name: Install Python dependencies
-        run: |
-          pip install --upgrade pip
-          pip install pandas requests
+def is_steamcommunity_post(item, appid):
+    """Return True if the news URL is a Steam Community announcement for this app."""
+    url = item.get("url", "")
+    return url.startswith(f"https://steamcommunity.com/games/{appid}/announcements/")
 
-      - name: Run Steam build scraper
-        run: python .github/scripts/steam_build_scraper.py
+def fetch_latest_patch(appid):
+    url = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
+    try:
+        r = requests.get(url, params={"appid": appid, "count": 50}, timeout=15)
+        r.raise_for_status()
+        newsitems = r.json().get("appnews", {}).get("newsitems", [])
+    except Exception as e:
+        print(f"[Steam News error] {appid}: {e}")
+        return None
 
-      - name: Commit and push results
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add resources/temp.json
-          git commit -m "Update Steam patch notes JSON" || echo "No changes to commit"
-          git push
+    # Filter for patch-note-like news posted on Steam Community
+    patches = [
+        item for item in newsitems
+        if is_patch_note(item) and is_steamcommunity_post(item, appid)
+    ]
+
+    if not patches:
+        return None
+
+    # Pick the latest by date
+    latest = max(patches, key=lambda x: x.get("date", 0))
+    return {
+        "title": latest.get("title"),
+        "url": latest.get("url"),
+        "date": format_date_ordinal(latest.get("date")),
+        "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+    }
+
+# --- MAIN EXECUTION ---
+df = pd.read_csv(CSV_SOURCE)
+appids = df["appid"].dropna().astype(int).unique()
+
+results = {}
+
+for appid in appids:
+    print(f"Checking app {appid}")
+    patch_data = fetch_latest_patch(appid)
+    if patch_data:
+        results[str(appid)] = patch_data
+        print(f"  Latest patch: {patch_data['title']} ({patch_data['date']})")
+    else:
+        print("  No Steam Community patch-note-style news found")
+        results[str(appid)] = {
+            "title": None,
+            "url": None,
+            "date": None,
+            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
+        }
+
+# --- Write JSON output ---
+os.makedirs(os.path.dirname(JSON_OUT), exist_ok=True)
+with open(JSON_OUT, "w", encoding="utf-8") as f:
+    json.dump(results, f, ensure_ascii=False, indent=2)
+
+print(f"Wrote {JSON_OUT}")
