@@ -16,13 +16,11 @@
     text-align: center;
 }
 
-
 #nowPlayingList {
     margin: 0 5px;
     text-align: center;
     line-height: 2;
 }
-
 
 /* =========================================
    Base Styles
@@ -299,89 +297,64 @@ img {
 }
 
 /* =========================================
-   Latest Patch Notes (new)
+   Latest Patch Notes / Builds
 ========================================= */
 
-/* container */
+/* container for all builds */
 .latest-patches {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
     margin: 8px auto 12px;
-    max-width: 900px;
-    width: 90%;
-    text-align: left;
 }
 
-/* single row */
+/* single clickable build card */
 .patch-entry {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px;
-    border-radius: 4px;
-    background: rgba(15, 23, 51, 0.6); /* matches existing dark palette */
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #0f1733;
     border: 1px solid #1d2b62;
+    text-align: center;
+    user-select: none;
+    transition: transform 0.15s ease;
 }
 
-/* small header image */
-.patch-entry .patch-header {
-    width: 120px; /* reduced size */
-    height: auto;
-    border-radius: 3px;
-    flex-shrink: 0;
+.patch-entry:hover {
+    transform: scale(1.03);
+}
+
+/* image inside card */
+.patch-entry img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-/* title + date stack */
-.patch-links {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 0;
-}
-
-/* title link */
-.patch-title {
+/* date overlay at bottom of image */
+.patch-date-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    font-size: 0.98rem;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    line-height: 1.2;
-}
-
-.patch-title:hover {
-    text-decoration: underline;
-}
-
-/* date link */
-.patch-date {
-    color: #cfcfcf;
     font-size: 0.85rem;
-    margin-top: 4px;
-    text-decoration: none;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    pointer-events: none;
 }
 
-.patch-date:hover {
-    text-decoration: underline;
-}
-
-/* loading / fallback */
-.latest-patches .loading {
-    color: #cfcfcf;
-    padding: 6px 10px;
-}
-
-/* responsive: collapse image on extra small screens */
+/* responsive: smaller cards on small screens */
 @media (max-width: 480px) {
     .patch-entry {
-        gap: 8px;
-    }
-    .patch-entry .patch-header {
-        width: 90px;
-    }
-    .latest-patches {
-        width: 100%;
+        width: 140px;
+        height: 70px;
     }
 }
