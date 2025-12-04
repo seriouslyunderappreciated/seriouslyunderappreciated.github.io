@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import requests
 from datetime import datetime
+from collections import OrderedDict
 
 # --- CONFIG ---
 CSV_SOURCE = "resources/builds.csv"
@@ -21,13 +22,16 @@ def is_patch_note(item):
     title = (item.get("title") or "").lower()
     feedlabel = (item.get("feedlabel") or "").lower()
     contents = (item.get("contents") or "").lower()
+    tags = [t.lower() for t in item.get("tags", [])]  # <-- new patchnotes tag check
 
-    # Check feedlabel, title keywords, or "patch notes" in contents
+    # Check feedlabel, title keywords, "patch notes" in contents, or tags
     if any(k in feedlabel for k in PATCH_KEYWORDS):
         return True
     if any(k in title for k in PATCH_KEYWORDS):
         return True
     if "patch notes" in contents:
+        return True
+    if "patchnotes" in tags:  # <-- new check
         return True
     return False
 
@@ -58,10 +62,12 @@ def fetch_latest_patch(appid):
 
     # Pick the latest by date
     latest = max(patches, key=lambda x: x.get("date", 0))
+    timestamp = latest.get("date", 0)
     return {
         "title": latest.get("title"),
         "url": latest.get("url"),
-        "date": format_date_ordinal(latest.get("date")),
+        "date": format_date_ordinal(timestamp),
+        "timestamp": timestamp,  # <-- store raw timestamp for sorting
         "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
     }
 
@@ -83,12 +89,21 @@ for appid in appids:
             "title": None,
             "url": None,
             "date": None,
+            "timestamp": 0,  # ensure sortable
             "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/"
         }
+
+# --- Sort results by timestamp descending (newest first) ---
+sorted_results = sorted(
+    results.items(),
+    key=lambda x: x[1]["timestamp"] or 0,
+    reverse=True
+)
+ordered_results = OrderedDict(sorted_results)
 
 # --- Write JSON output ---
 os.makedirs(os.path.dirname(JSON_OUT), exist_ok=True)
 with open(JSON_OUT, "w", encoding="utf-8") as f:
-    json.dump(results, f, ensure_ascii=False, indent=2)
+    json.dump(ordered_results, f, ensure_ascii=False, indent=2)
 
 print(f"Wrote {JSON_OUT}")
