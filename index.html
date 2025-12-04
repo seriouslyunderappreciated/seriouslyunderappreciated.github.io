@@ -27,16 +27,16 @@
     <main>
         <div style="text-align: center;">
             <img alt="Samus" src="resources/logo.png">
-            
+
             <p class="sectionLabel"><strong>Now Playing:</strong></p>
-            
+
             <div id="nowPlayingContainer" class="cen">
                 <div id="nowPlayingList">Loading...</div>
             </div>
 
-            <!-- NEW: Latest Patch Notes (inserted below Now Playing, above the explanatory paragraph) -->
+            <!-- NEW: Latest Steam Builds -->
             <section id="latestPatchesSection" style="margin-top:12px;">
-                <p class="sectionLabel"><strong>Latest Patch Notes</strong></p>
+                <p class="sectionLabel"><strong>Latest Steam Builds</strong></p>
                 <div id="latest-patches" class="latest-patches">
                     <!-- Entries populated dynamically -->
                     <div class="loading">Loading...</div>
@@ -44,7 +44,7 @@
             </section>
 
             <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
-            
+
             <table id="myTable" class="dextable">
                 <thead>
                     <tr>
@@ -148,23 +148,21 @@
                 });
             </script>
 
-            <!-- Latest patches render script -->
+            <!-- Latest Steam Builds render script -->
             <script>
                 (function () {
-                    // Load JSON and render compact patch list
-                    function renderPatches(data) {
+                    function renderBuilds(data) {
                         var container = document.getElementById('latest-patches');
                         container.innerHTML = ''; // clear loading text
 
-                        // data is expected to be an object keyed by appid, already sorted in file
                         var values = Object.values(data || {});
                         if (!values.length) {
-                            container.innerHTML = '<div class="loading">No patch notes found.</div>';
+                            container.innerHTML = '<div class="loading">No builds found.</div>';
                             return;
                         }
 
-                        values.forEach(function (entry) {
-                            if (!entry || !entry.title) return; // skip entries without title
+                        values.forEach(function(entry) {
+                            if (!entry || !entry.steamheader) return;
 
                             // create entry wrapper
                             var row = document.createElement('div');
@@ -176,18 +174,14 @@
                             headerLink.target = '_blank';
                             headerLink.rel = 'noopener noreferrer';
                             var img = document.createElement('img');
-                            img.alt = entry.title || 'Header';
+                            img.alt = 'Steam Header';
                             img.src = entry.steamheader || '';
                             img.className = 'patch-header';
                             headerLink.appendChild(img);
 
-                            // title (linked to entry.url)
-                            var titleLink = document.createElement('a');
-                            titleLink.href = entry.url || '#';
-                            titleLink.target = '_blank';
-                            titleLink.rel = 'noopener noreferrer';
-                            titleLink.className = 'patch-title';
-                            titleLink.textContent = entry.title;
+                            // right: date + buildid stacked
+                            var right = document.createElement('div');
+                            right.className = 'patch-links';
 
                             // date (linked to steamdburl)
                             var dateLink = document.createElement('a');
@@ -197,15 +191,16 @@
                             dateLink.className = 'patch-date';
                             dateLink.textContent = entry.date || '';
 
-                            // left: header image
-                            row.appendChild(headerLink);
+                            // buildid (plain text)
+                            var buildIdSpan = document.createElement('span');
+                            buildIdSpan.className = 'patch-date';
+                            buildIdSpan.style.fontWeight = 'bold';
+                            buildIdSpan.textContent = 'Build ID: ' + (entry.buildid || '');
 
-                            // right: title + date stacked
-                            var right = document.createElement('div');
-                            right.className = 'patch-links';
-                            right.appendChild(titleLink);
                             right.appendChild(dateLink);
+                            right.appendChild(buildIdSpan);
 
+                            row.appendChild(headerLink);
                             row.appendChild(right);
 
                             container.appendChild(row);
@@ -214,15 +209,15 @@
 
                     // Fetch the JSON
                     fetch('resources/temp.json', {cache: "no-store"})
-                        .then(function (resp) {
+                        .then(function(resp) {
                             if (!resp.ok) throw new Error('Network response was not ok');
                             return resp.json();
                         })
-                        .then(renderPatches)
-                        .catch(function (err) {
+                        .then(renderBuilds)
+                        .catch(function(err) {
                             var container = document.getElementById('latest-patches');
-                            container.innerHTML = '<div class="loading">Unable to load patch notes.</div>';
-                            console.error('Failed to load patch notes:', err);
+                            container.innerHTML = '<div class="loading">Unable to load build info.</div>';
+                            console.error('Failed to load build info:', err);
                         });
                 })();
             </script>
