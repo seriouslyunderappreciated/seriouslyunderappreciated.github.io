@@ -34,6 +34,15 @@
                 <div id="nowPlayingList">Loading...</div>
             </div>
 
+            <!-- NEW: Latest Patch Notes (inserted below Now Playing, above the explanatory paragraph) -->
+            <section id="latestPatchesSection" style="margin-top:12px;">
+                <p class="sectionLabel"><strong>Latest Patch Notes</strong></p>
+                <div id="latest-patches" class="latest-patches">
+                    <!-- Entries populated dynamically -->
+                    <div class="loading">Loading...</div>
+                </div>
+            </section>
+
             <p>Full DLC and expansions are to be assumed, even if they are standalone releases.</p>
             
             <table id="myTable" class="dextable">
@@ -94,18 +103,18 @@
                                     var cell = row[j].trim();
                                     var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
                                     var displayCell = cell
-                                        .replace(/\[hd\]/g, '<img alt="Remake" title="Remake" src="resources/hd.png" class="icon">')
-                                        .replace(/\[retro\]/g, '<img alt="Emulated" title="Emulated" src="resources/retro.png" class="icon">')
-                                        .replace(/\[switch\]/g, '<img alt="Switch" title="Switch" src="resources/switch.png" class="icon">');
+                                        .replace(/\[hd\]/g, '<img alt=\"Remake\" title=\"Remake\" src=\"resources/hd.png\" class=\"icon\">')
+                                        .replace(/\[retro\]/g, '<img alt=\"Emulated\" title=\"Emulated\" src=\"resources/retro.png\" class=\"icon\">')
+                                        .replace(/\[switch\]/g, '<img alt=\"Switch\" title=\"Switch\" src=\"resources/switch.png\" class=\"icon\">');
 
                                     if (j === 1) {
-                                        tableRow += '<td class="cen hide-column" data-value="' + dataValue + '">' + displayCell + '</td>';
+                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
                                     } else if (j === (headers.length - 1)) {
-                                        tableRow += '<td class="cen hide-column" data-value="' + (cell === 'Yes' ? 'Yes' : '') + '">' + (cell === 'Yes' ? 'Yes' : '') + '</td>';
+                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + (cell === 'Yes' ? 'Yes' : '') + '\">' + (cell === 'Yes' ? 'Yes' : '') + '</td>';
                                     } else if (j === 0 || j === 3) {
-                                        tableRow += '<td class="cen nowrap" data-value="' + dataValue + '">' + displayCell + '</td>';
+                                        tableRow += '<td class=\"cen nowrap\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
                                     } else {
-                                        tableRow += '<td class="cen" data-value="' + dataValue + '">' + displayCell + '</td>';
+                                        tableRow += '<td class=\"cen\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
                                     }
                                 }
                                 tableRow += '</tr>';
@@ -139,6 +148,85 @@
                 });
             </script>
 
+            <!-- Latest patches render script -->
+            <script>
+                (function () {
+                    // Load JSON and render compact patch list
+                    function renderPatches(data) {
+                        var container = document.getElementById('latest-patches');
+                        container.innerHTML = ''; // clear loading text
+
+                        // data is expected to be an object keyed by appid, already sorted in file
+                        var values = Object.values(data || {});
+                        if (!values.length) {
+                            container.innerHTML = '<div class="loading">No patch notes found.</div>';
+                            return;
+                        }
+
+                        values.forEach(function (entry) {
+                            if (!entry || !entry.title) return; // skip entries without title
+
+                            // create entry wrapper
+                            var row = document.createElement('div');
+                            row.className = 'patch-entry';
+
+                            // header image (linked to steamdburl)
+                            var headerLink = document.createElement('a');
+                            headerLink.href = entry.steamdburl || '#';
+                            headerLink.target = '_blank';
+                            headerLink.rel = 'noopener noreferrer';
+                            var img = document.createElement('img');
+                            img.alt = entry.title || 'Header';
+                            img.src = entry.steamheader || '';
+                            img.className = 'patch-header';
+                            headerLink.appendChild(img);
+
+                            // title (linked to entry.url)
+                            var titleLink = document.createElement('a');
+                            titleLink.href = entry.url || '#';
+                            titleLink.target = '_blank';
+                            titleLink.rel = 'noopener noreferrer';
+                            titleLink.className = 'patch-title';
+                            titleLink.textContent = entry.title;
+
+                            // date (linked to steamdburl)
+                            var dateLink = document.createElement('a');
+                            dateLink.href = entry.steamdburl || '#';
+                            dateLink.target = '_blank';
+                            dateLink.rel = 'noopener noreferrer';
+                            dateLink.className = 'patch-date';
+                            dateLink.textContent = entry.date || '';
+
+                            // left: header image
+                            row.appendChild(headerLink);
+
+                            // right: title + date stacked
+                            var right = document.createElement('div');
+                            right.className = 'patch-links';
+                            right.appendChild(titleLink);
+                            right.appendChild(dateLink);
+
+                            row.appendChild(right);
+
+                            container.appendChild(row);
+                        });
+                    }
+
+                    // Fetch the JSON
+                    fetch('resources/temp.json', {cache: "no-store"})
+                        .then(function (resp) {
+                            if (!resp.ok) throw new Error('Network response was not ok');
+                            return resp.json();
+                        })
+                        .then(renderPatches)
+                        .catch(function (err) {
+                            var container = document.getElementById('latest-patches');
+                            container.innerHTML = '<div class="loading">Unable to load patch notes.</div>';
+                            console.error('Failed to load patch notes:', err);
+                        });
+                })();
+            </script>
+
         </div>
     </main>
 
@@ -161,4 +249,3 @@
 </body>
 
 </html>
-
