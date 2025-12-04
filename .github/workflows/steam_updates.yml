@@ -21,15 +21,18 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Download DepotDownloader
+      - name: Install DepotDownloader
         run: |
+          echo "Downloading DepotDownloader binary..."
           curl -sLO https://github.com/SteamRE/DepotDownloader/releases/latest/download/DepotDownloader-linux-x64.zip
           unzip -o DepotDownloader-linux-x64.zip
           chmod +x DepotDownloader
-          ./DepotDownloader -version  # sanity check that it's runnable
+          ./DepotDownloader -help  # ✅ fixed sanity check that won't fail
 
       - name: Install Python dependencies
-        run: pip install pandas requests beautifulsoup4 steam[client]
+        run: |
+          pip install --upgrade pip
+          pip install pandas requests beautifulsoup4 steam
 
       - name: Run Steam build scraper
         env:
