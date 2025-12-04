@@ -19,37 +19,52 @@ def format_date_ordinal(ts):
 def fetch_app_info(appid):
     """Fetch app info from SteamCMD API and return relevant data."""
     url = f"https://api.steamcmd.net/v1/info/{appid}"
+    print(f"\nFetching info for app {appid} from {url}")
+    
     try:
         r = requests.get(url, timeout=15)
         r.raise_for_status()
-        data = r.json().get("data", {})
+        full_json = r.json()
+        print(f"Raw JSON fetched for {appid}:\n{json.dumps(full_json, indent=2)[:1000]}...")  # preview first 1000 chars
+        data = full_json.get("data", {})
     except Exception as e:
         print(f"[SteamCMD API error] {appid}: {e}")
         return None
 
-    app_data = data.get(str(appid), {})
-    public_branch = app_data.get("branches", {}).get("public", {})
+    app_data = data.get(str(appid))
+    if not app_data:
+        print(f"[DEBUG] App {appid} not found inside 'data' key")
+        return None
 
+    branches = app_data.get("branches")
+    if not branches:
+        print(f"[DEBUG] App {appid} has no 'branches' key")
+        return None
+
+    public_branch = branches.get("public")
     if not public_branch:
-        print(f"No public build info found for {appid}")
+        print(f"[DEBUG] App {appid} has no 'public' branch")
         return None
 
     buildid = public_branch.get("buildid")
     timeupdated = public_branch.get("timeupdated")
 
-    if buildid is None or timeupdated is None:
-        print(f"Incomplete public build info for {appid}")
+    if not buildid or not timeupdated:
+        print(f"[DEBUG] App {appid} missing 'buildid' or 'timeupdated'")
         return None
 
     timeupdated = int(timeupdated)
 
-    return {
+    result = {
         "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg",
         "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/",
         "buildid": str(buildid),
         "date": format_date_ordinal(timeupdated),
-        "timestamp": timeupdated  # for sorting
+        "timestamp": timeupdated  # used for sorting
     }
+    
+    print(f"[SUCCESS] App {appid} data: {result}")
+    return result
 
 # --- MAIN EXECUTION ---
 df = pd.read_csv(CSV_SOURCE)
@@ -58,7 +73,6 @@ appids = df["appid"].dropna().astype(int).unique()
 results = {}
 
 for appid in appids:
-    print(f"Checking app {appid}")
     info = fetch_app_info(appid)
     if info:
         results[str(appid)] = info
@@ -79,4 +93,4 @@ with open(JSON_OUT, "w", encoding="utf-8") as f:
                for k, v in ordered_results.items()},
               f, ensure_ascii=False, indent=2)
 
-print(f"Wrote {JSON_OUT}")
+print(f"\nWrote {JSON_OUT} with {len(ordered_results)} apps.")
