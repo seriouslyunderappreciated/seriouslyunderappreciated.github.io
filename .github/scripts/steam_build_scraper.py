@@ -1,75 +1,75 @@
-import os
+import csv
 import json
-import pandas as pd
 import requests
 from datetime import datetime
-from collections import OrderedDict
 
-# --- CONFIG ---
-CSV_SOURCE = "resources/builds.csv"
-JSON_OUT = "resources/temp.json"
-
-def format_date_ordinal(ts: int) -> str:
-    dt = datetime.utcfromtimestamp(ts)
-    day = dt.day
-    suffix = 'th' if 11 <= day <= 13 else {1:'st', 2:'nd', 3:'rd'}.get(day % 10, 'th')
-    return dt.strftime(f"%B {day}{suffix}, %Y")
-
-def get_latest_public_build(appid: int) -> dict | None:
-    """Fetch latest public build info from SteamCMD API."""
+def get_latest_public_buildid(appid: int) -> str | None:
+    """
+    Fetches the latest public branch build ID for a given Steam AppID
+    using the unofficial public API endpoint.
+    """
     url = f"https://api.steamcmd.net/v1/info/{appid}"
     try:
-        r = requests.get(url, timeout=10)
-        r.raise_for_status()
-        data = r.json()
-    except requests.RequestException:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+    except requests.exceptions.RequestException:
         return None
 
-    appid_str = str(appid)
     try:
-        public_branch = data['data'][appid_str]['depots']['branches']['public']
-        buildid = public_branch['buildid']
-        timeupdated = int(public_branch['timeupdated'])
-        return {
-            "buildid": str(buildid),
-            "date": format_date_ordinal(timeupdated)
-        }
+        return data['data'][str(appid)]['depots']['branches']['public']['buildid']
     except KeyError:
         return None
 
-# --- MAIN EXECUTION ---
-df = pd.read_csv(CSV_SOURCE)
-appids = df["appid"].dropna().astype(int).unique()
+def get_latest_public_timeupdated(appid: int) -> str | None:
+    """
+    Fetches the latest public branch 'timeupdated' value and formats it
+    the same way as in the current script.
+    """
+    url = f"https://api.steamcmd.net/v1/info/{appid}"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+    except requests.exceptions.RequestException:
+        return None
 
-results = {}
+    try:
+        timestamp = int(data['data'][str(appid)]['depots']['branches']['public']['timeupdated'])
+        # Keep your current formatting method (example: YYYY-MM-DD)
+        return datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
+    except KeyError:
+        return None
 
-for appid in appids:
-    build_info = get_latest_public_build(appid)
-    
-    if build_info:
-        results[str(appid)] = {
-            "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg",
-            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/",
-            "buildid": build_info["buildid"],
-            "date": build_info["date"]
-        }
-    else:
-        results[str(appid)] = {
-            "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg",
-            "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes/",
-            "buildid": None,
-            "date": None
-        }
+# Load builds.csv into a dictionary mapping appid -> buildid
+builds_csv = {}
+with open('resources/builds.csv', newline='', encoding='utf-8') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        builds_csv[row['appid']] = row['buildid']
 
-# --- Sort results by newest build date (timestamp descending) ---
-sorted_results = sorted(
-    results.items(),
-    key=lambda x: pd.to_datetime(x[1]["date"]) if x[1]["date"] else pd.Timestamp(0),
-    reverse=True
-)
-ordered_results = OrderedDict(sorted_results)
+# Example list of appids to check (use the keys from builds.csv)
+app_ids = list(builds_csv.keys())
 
-# --- Write JSON output ---
-os.makedirs(os.path.dirname(JSON_OUT), exist_ok=True)
-with open(JSON_OUT, "w", encoding="utf-8") as f:
-    json.dump(ordered_results, f, ensure_ascii=False, indent=2)
+temp_data = {}
+
+for appid in app_ids:
+    latest_buildid = get_latest_public_buildid(int(appid))
+    if latest_buildid is None:
+        continue  # skip if no buildid found
+
+    # Skip if the latest buildid matches the one in builds.csv
+    if latest_buildid == builds_csv.get(appid):
+        continue
+
+    # Only add if buildid is new
+    date = get_latest_public_timeupdated(int(appid)) or ''
+    temp_data[appid] = {
+        "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg",
+        "steamdburl": f"https://steamdb.info/app/{appid}/",
+        "date": date
+    }
+
+# Write the JSON
+with open('resources/temp.json', 'w', encoding='utf-8') as f:
+    json.dump(temp_data, f, indent=2)
