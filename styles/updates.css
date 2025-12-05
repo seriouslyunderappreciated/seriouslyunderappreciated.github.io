@@ -53,23 +53,40 @@
     top: 0;
     width: 50%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    transition: background 0.2s ease;
     pointer-events: auto;
+    background: transparent;
 }
 
 .left-zone {
     left: 0;
-    clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
 }
 
 .right-zone {
     right: 0;
-    clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%);
 }
 
-.left-zone:hover,
-.right-zone:hover {
+.left-zone::before,
+.right-zone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    transition: background 0.2s ease;
+}
+
+.left-zone::before {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.right-zone::before {
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.left-zone:hover::before,
+.right-zone:hover::before {
     background: rgba(0, 0, 0, 0.6);
 }
 
