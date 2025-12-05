@@ -33,6 +33,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add resources/temp.json
+          git add data/temp.json
           git commit -m "Update Steam patch notes JSON" || echo "No changes to commit"
           git push
