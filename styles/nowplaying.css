@@ -1,6 +1,3 @@
-/* =========================================
-   Now Playing Section
-========================================= */
 .sectionLabel {
     text-align: center;
 }
@@ -22,7 +19,6 @@
     line-height: 2;
 }
 
-/* Responsive adjustments for now playing */
 @media (max-width: 600px) {
     #nowPlayingContainer {
         max-width: 100%;
