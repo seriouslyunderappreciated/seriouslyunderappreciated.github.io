@@ -190,18 +190,18 @@ img {
 ========================================= */
 @media only screen and (min-width: 600px) {
     .tablesorter-default thead th.sortable {
-        background-image: url("../resources/sort.gif");
+        background-image: url("../images/sort.gif");
         background-position: center right;
         background-repeat: no-repeat;
         cursor: pointer;
     }
     .tablesorter-default thead th.sortable.headerSortUp,
     .tablesorter-default thead th.sortable.tablesorter-headerAsc {
-        background-image: url("../resources/sortup.gif");
+        background-image: url("../images/sortup.gif");
     }
     .tablesorter-default thead th.sortable.headerSortDown,
     .tablesorter-default thead th.sortable.tablesorter-headerDesc {
-        background-image: url("../resources/sortdown.gif");
+        background-image: url("../images/sortdown.gif");
     }
     .fooevo {
         padding: 3px;
@@ -233,7 +233,7 @@ img {
 
 @media (min-width: 901px) {
     body, html {
-        cursor: url("../resources/cursor.png"), pointer;
+        cursor: url("../images/cursor.png"), pointer;
     }
 }
 
