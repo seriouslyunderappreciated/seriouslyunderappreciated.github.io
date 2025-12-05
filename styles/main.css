@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     margin: 0;
     height: 100%;
     background: black;
@@ -47,7 +48,9 @@ img {
 }
 
 @media (min-width: 901px) {
-    body, html {
+
+    body,
+    html {
         cursor: url("../images/cursor.png"), pointer;
     }
 }
