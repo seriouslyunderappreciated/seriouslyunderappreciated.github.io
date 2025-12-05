@@ -1,8 +1,3 @@
-/* =========================================
-   Latest Patch Notes / Builds
-========================================= */
-
-/* container for all builds */
 .latest-patches {
     display: flex;
     flex-wrap: wrap;
@@ -11,7 +6,6 @@
     margin: 8px auto 12px;
 }
 
-/* single clickable build card */
 .patch-entry {
     position: relative;
     display: inline-block;
@@ -27,7 +21,6 @@
     transition: transform 0.15s ease;
 }
 
-/* image inside card */
 .patch-entry img {
     width: 100%;
     height: 100%;
@@ -35,7 +28,6 @@
     display: block;
 }
 
-/* date overlay at bottom of image */
 .patch-date-overlay {
     position: absolute;
     bottom: 0;
@@ -49,7 +41,6 @@
     pointer-events: none;
 }
 
-/* responsive: smaller cards on small screens */
 @media (max-width: 480px) {
     .patch-entry {
         width: 140px;
