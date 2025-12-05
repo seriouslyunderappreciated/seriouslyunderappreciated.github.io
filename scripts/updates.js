@@ -10,11 +10,8 @@ $(document).ready(function() {
         Object.values(data || {}).forEach(function(entry) {
             if (!entry || !entry.steamheader) return;
 
-            var card = document.createElement('a');
+            var card = document.createElement('div');
             card.className = 'patch-entry';
-            card.href = entry.steamdburl || '#';
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
 
             var img = document.createElement('img');
             img.src = entry.steamheader || '';
@@ -27,6 +24,22 @@ $(document).ready(function() {
                 overlay.textContent = entry.date;
                 card.appendChild(overlay);
             }
+
+            var leftLink = document.createElement('a');
+            leftLink.className = 'hover-zone left-zone';
+            leftLink.href = entry.steamdburl || '#';
+            leftLink.target = '_blank';
+            leftLink.rel = 'noopener noreferrer';
+            leftLink.textContent = "Patch Notes";
+            card.appendChild(leftLink);
+
+            var rightLink = document.createElement('a');
+            rightLink.className = 'hover-zone right-zone';
+            rightLink.href = entry.rinurl || '#';
+            rightLink.target = '_blank';
+            rightLink.rel = 'noopener noreferrer';
+            rightLink.textContent = "Download";
+            card.appendChild(rightLink);
 
             container.appendChild(card);
         });
