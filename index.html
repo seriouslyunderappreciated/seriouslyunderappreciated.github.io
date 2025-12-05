@@ -18,6 +18,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+
+    <style>
+        /* Small styles for the latest-patches cards and larger date overlay */
+        .patch-entry {
+            display: inline-block;
+            position: relative;
+            margin: 6px;
+            vertical-align: top;
+        }
+        .patch-entry img {
+            display: block;
+            max-width: 220px;
+            height: auto;
+            border-radius: 6px;
+        }
+        .patch-main-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Larger, more visible date overlay as a clickable link */
+        .patch-date-overlay {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.78);
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+            line-height: 1;
+        }
+        .patch-date-overlay:hover {
+            background: rgba(0, 0, 0, 0.88);
+        }
+    </style>
 </head>
 
 <body>
@@ -167,25 +206,34 @@
                         Object.values(data || {}).forEach(function(entry) {
                             if (!entry || !entry.steamheader) return;
 
-                            // create clickable card
-                            var card = document.createElement('a');
+                            // card container (not an anchor) so we can have independent links inside
+                            var card = document.createElement('div');
                             card.className = 'patch-entry';
-                            card.href = entry.steamdburl || '#';
-                            card.target = '_blank';
-                            card.rel = 'noopener noreferrer';
+
+                            // main clickable area (everything but the date) -> rinurl
+                            var mainLink = document.createElement('a');
+                            mainLink.className = 'patch-main-link';
+                            mainLink.href = entry.rinurl || '#';
+                            mainLink.target = '_blank';
+                            mainLink.rel = 'noopener noreferrer';
 
                             // image
                             var img = document.createElement('img');
                             img.src = entry.steamheader || '';
                             img.alt = entry.title || 'Steam Build';
-                            card.appendChild(img);
+                            mainLink.appendChild(img);
+                            card.appendChild(mainLink);
 
-                            // date overlay
+                            // date overlay as its own clickable link -> steamdburl
                             if (entry.date) {
-                                var overlay = document.createElement('div');
-                                overlay.className = 'patch-date-overlay';
-                                overlay.textContent = entry.date;
-                                card.appendChild(overlay);
+                                var dateLink = document.createElement('a');
+                                dateLink.className = 'patch-date-overlay';
+                                dateLink.href = entry.steamdburl || '#';
+                                dateLink.target = '_blank';
+                                dateLink.rel = 'noopener noreferrer';
+                                dateLink.textContent = entry.date;
+                                dateLink.title = 'View on SteamDB';
+                                card.appendChild(dateLink);
                             }
 
                             container.appendChild(card);
@@ -236,4 +284,3 @@
 </body>
 
 </html>
-
