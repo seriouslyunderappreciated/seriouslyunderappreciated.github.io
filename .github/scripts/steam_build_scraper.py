@@ -103,7 +103,7 @@ for appid in app_ids:
 
     # Construct rinurl
     rinurl = (
-        "https://example.com/forum/search.php?"
+        "https://https://cs.rin.ru//forum/search.php?"
         f"st=0&sk=t&sd=d&sr=topics&keywords={keywords}"
         "&terms=all&fid[]=10&sf=titleonly"
     )
