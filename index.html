@@ -26,15 +26,17 @@
     <div id='stars3'></div>
     <main>
         <div style="text-align: center;">
-            <img alt="Samus" src="resources/logo.png">
 
-            <div id="nowPlayingSection">
+            <!-- Now Playing Section -->
+            <div id="nowPlayingSection" style="margin-bottom:12px;">
                 <p class="sectionLabel"><strong>Now Playing:</strong></p>
-                <div id="nowPlayingContainer" class="cen">
-                    <div id="nowPlayingList">Loading...</div>
+                <div id="logoContainer">
+                    <img id="logo" alt="Samus" src="resources/logo.png">
+                    <div id="nowPlayingList"></div>
                 </div>
             </div>
 
+            <!-- Latest Patches Section -->
             <section id="latestPatchesSection" style="margin-top:12px;">
                 <p class="sectionLabel"><strong>Updates:</strong></p>
                 <div id="latest-patches" class="latest-patches">
@@ -42,6 +44,7 @@
                 </div>
             </section>
 
+            <!-- Collection Table -->
             <table id="myTable" class="dextable">
                 <thead>
                     <tr>
@@ -52,19 +55,15 @@
                         <th class="fooevo hide-column" data-value="!Yes">Done</th>
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody></tbody>
             </table>
 
             <!-- Scroll to top button -->
             <a id="button"></a>
 
+            <!-- Now Playing Script -->
             <script>
                 $(document).ready(function () {
-
-                    // -------------------------
-                    // Helper: hide section if content is empty
-                    // -------------------------
                     function hideSectionIfEmpty(sectionSelector, content) {
                         if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
                             $(sectionSelector).hide();
@@ -73,81 +72,48 @@
                         return false;
                     }
 
-                    // -------------------------
-                    // Load Now Playing
-                    // -------------------------
+                    // Load Now Playing with diamond layout
                     $.get('resources/atm.txt', function (data) {
                         var lines = data.trim().split('\n').filter(line => line.trim() !== '');
                         if (hideSectionIfEmpty('#nowPlayingSection', lines)) return;
-                        $('#nowPlayingList').html(lines.join('<br>'));
-                    });
 
-                    // -------------------------
-                    // Table population and sorting
-                    // -------------------------
-                    $.tablesorter.addParser({
-                        id: 'deviceParser',
-                        is: function () { return false; },
-                        format: function (s, table, cell) {
-                            return $(cell).attr('data-value') || '';
-                        },
-                        type: 'text'
-                    });
+                        var container = $('#nowPlayingList');
+                        container.empty();
 
-                    $.get('resources/collection.csv', function (data) {
-                        var lines = data.split('\n');
-                        if (!lines || lines.length === 0) return;
-                        var headers = lines[0].split(',');
+                        var logo = $('#logo');
+                        var logoWidth = logo.width();
+                        var logoHeight = logo.height();
+                        var centerX = logoWidth / 2;
+                        var centerY = logoHeight / 2;
 
-                        for (var i = 1; i < lines.length; i++) {
-                            if (!lines[i].trim()) continue;
-                            var row = lines[i].split(',');
-                            if (row.length === headers.length) {
-                                var tableRow = '<tr>';
-                                for (var j = 0; j < headers.length; j++) {
-                                    var cell = row[j].trim();
-                                    var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
-                                    var displayCell = cell
-                                        .replace(/\[hd\]/g, '<img alt=\"Remake\" title=\"Remake\" src=\"resources/hd.png\" class=\"icon\">')
-                                        .replace(/\[retro\]/g, '<img alt=\"Emulated\" title=\"Emulated\" src=\"resources/retro.png\" class=\"icon\">')
-                                        .replace(/\[switch\]/g, '<img alt=\"Switch\" title=\"Switch\" src=\"resources/switch.png\" class=\"icon\">');
+                        var total = lines.length;
+                        var maxRadius = Math.min(logoWidth, logoHeight) / 1.5; // max distance from center
+                        var layerStep = maxRadius / Math.ceil(total / 2);
 
-                                    if (j === 1) {
-                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    } else if (j === (headers.length - 1)) {
-                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + (cell === 'Yes' ? 'Yes' : '') + '\">' + (cell === 'Yes' ? 'Yes' : '') + '</td>';
-                                    } else if (j === 0 || j === 3) {
-                                        tableRow += '<td class=\"cen nowrap\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    } else {
-                                        tableRow += '<td class=\"cen\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    }
-                                }
-                                tableRow += '</tr>';
-                                $('#myTable tbody').append(tableRow);
+                        lines.forEach(function (game, index) {
+                            var span = $('<span class="now-playing-game"></span>').text(game);
+
+                            var layer = Math.floor(index / 2) + 1;
+                            var angle = (index % 2 === 0 ? -1 : 1) * Math.PI / 4 * layer; // 45 degree increments
+
+                            var radius = layer * layerStep * 0.8; // scale radius slightly inward
+
+                            var x = radius * Math.sin(angle);
+                            var y = radius * Math.cos(angle);
+
+                            // Center element if odd count
+                            if (total % 2 === 1 && index === Math.floor(total / 2)) {
+                                x = 0;
+                                y = 0;
                             }
-                        }
 
-                        var headerCount = $('#myTable thead th').length;
-                        var headersConfig = {};
-                        for (var c = 0; c < headerCount; c++) {
-                            headersConfig[c] = { lockedOrder: 'asc' };
-                        }
-                        $('#myTable thead th').each(function (index) {
-                            if (!$(this).hasClass('sortable')) {
-                                headersConfig[index].sorter = false;
-                            }
-                        });
-                        headersConfig[3].sorter = 'deviceParser';
+                            span.css({
+                                left: `calc(50% + ${x}px)`,
+                                top: `calc(50% + ${y}px)`,
+                                transform: 'translate(-50%, -50%)'
+                            });
 
-                        $('#myTable').tablesorter({
-                            sortList: [[0, 0], [1, 0], [2, 0], [3, 0]],
-                            headers: headersConfig,
-                            widgets: ["filter"],
-                            widgetOptions: {
-                                filter_defaultAttrib: 'data-value',
-                                filter_columnFilters: true,
-                                filter_columnAnyMatch: true
-                            }
+                            container.append(span);
                         });
                     });
                 });
@@ -160,27 +126,24 @@
                         var section = document.getElementById('latestPatchesSection');
                         var container = document.getElementById('latest-patches');
 
-                        if (hideSectionIfEmpty(section, data)) return;
+                        if (!data || Object.keys(data).length === 0) { $(section).hide(); return; }
 
-                        container.innerHTML = ''; // clear loading text
+                        container.innerHTML = '';
 
-                        Object.values(data || {}).forEach(function(entry) {
+                        Object.values(data).forEach(function(entry) {
                             if (!entry || !entry.steamheader) return;
 
-                            // create clickable card
                             var card = document.createElement('a');
                             card.className = 'patch-entry';
                             card.href = entry.steamdburl || '#';
                             card.target = '_blank';
                             card.rel = 'noopener noreferrer';
 
-                            // image
                             var img = document.createElement('img');
                             img.src = entry.steamheader || '';
                             img.alt = entry.title || 'Steam Build';
                             card.appendChild(img);
 
-                            // date overlay
                             if (entry.date) {
                                 var overlay = document.createElement('div');
                                 overlay.className = 'patch-date-overlay';
@@ -192,23 +155,11 @@
                         });
                     }
 
-                    // Shared helper function for hiding
-                    function hideSectionIfEmpty(section, content) {
-                        if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
-                            $(section).hide();
-                            return true;
-                        }
-                        return false;
-                    }
-
                     fetch('resources/temp.json', { cache: "no-store" })
-                        .then(function (resp) {
-                            if (!resp.ok) throw new Error('Network response was not ok');
-                            return resp.json();
-                        })
+                        .then(resp => resp.ok ? resp.json() : Promise.reject('Network error'))
                         .then(renderBuilds)
-                        .catch(function (err) {
-                            hideSectionIfEmpty('#latestPatchesSection', {});
+                        .catch(err => {
+                            $('#latestPatchesSection').hide();
                             console.error('Failed to load build info:', err);
                         });
                 })();
@@ -217,15 +168,12 @@
         </div>
     </main>
 
+    <!-- Scroll to top button -->
     <script>
-        // Scroll to top button
         var btn = $('#button');
         $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
+            if ($(window).scrollTop() > 300) btn.addClass('show');
+            else btn.removeClass('show');
         });
         btn.on('click', function (e) {
             e.preventDefault();
@@ -234,6 +182,4 @@
     </script>
 
 </body>
-
 </html>
-
