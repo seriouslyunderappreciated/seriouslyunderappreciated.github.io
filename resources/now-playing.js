@@ -14,7 +14,7 @@
 
   async function fetchLines() {
     try {
-      const res = await fetch('/atm.txt', {cache: "no-store"});
+      const res = await fetch('resources/atm.txt', {cache: "no-store"});
       if (!res.ok) return [];
       const text = await res.text();
       // split on newlines, trim and filter out empties
