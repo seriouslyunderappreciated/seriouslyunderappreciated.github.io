@@ -1,4 +1,4 @@
-(function () {
+$(document).ready(function() {
     function renderBuilds(data) {
         var section = document.getElementById('latestPatchesSection');
         var container = document.getElementById('latest-patches');
@@ -10,20 +10,17 @@
         Object.values(data || {}).forEach(function(entry) {
             if (!entry || !entry.steamheader) return;
 
-            // create clickable card
             var card = document.createElement('a');
             card.className = 'patch-entry';
             card.href = entry.steamdburl || '#';
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
 
-            // image
             var img = document.createElement('img');
             img.src = entry.steamheader || '';
             img.alt = entry.title || 'Steam Build';
             card.appendChild(img);
 
-            // date overlay
             if (entry.date) {
                 var overlay = document.createElement('div');
                 overlay.className = 'patch-date-overlay';
@@ -43,14 +40,16 @@
         return false;
     }
 
-    fetch('data/temp.json', { cache: "no-store" })
-        .then(function (resp) {
+    fetch('data/temp.json', {
+            cache: "no-store"
+        })
+        .then(function(resp) {
             if (!resp.ok) throw new Error('Network response was not ok');
             return resp.json();
         })
         .then(renderBuilds)
-        .catch(function (err) {
+        .catch(function(err) {
             hideSectionIfEmpty('#latestPatchesSection', {});
             console.error('Failed to load build info:', err);
         });
-})();
+});
