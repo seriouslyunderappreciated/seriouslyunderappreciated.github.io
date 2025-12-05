@@ -1,4 +1,4 @@
-.dextable {
+.gametable {
     border: 0;
     border-spacing: 2px;
     border-collapse: separate;
@@ -7,7 +7,7 @@
     margin-top: 12px;
 }
 
-.dextable td {
+.gametable td {
     vertical-align: middle;
     padding: 3px;
     font-size: 1em;
@@ -39,7 +39,7 @@
     font-size: 0.95em;
 }
 
-.dextable tr:not(thead *):hover {
+.gametable tr:not(thead *):hover {
     text-shadow:
         0 0 3px rgba(255, 255, 255, 0.9),
         0 0 5px rgba(255, 255, 255, 0.7),
@@ -87,11 +87,11 @@
 }
 
 @media (max-width: 900px) {
-    .dextable {
+    .gametable {
         width: 100%;
     }
 
-    .dextable td {
+    .gametable td {
         font-size: 0.95em;
     }
 }
