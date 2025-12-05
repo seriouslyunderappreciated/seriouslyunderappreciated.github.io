@@ -8,17 +8,22 @@ $(document).ready(function() {
         return false;
     }
 
-    $.get('data/atm.txt', function(data) {
-        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
-        if (hideSectionIfEmpty('#nowPlayingSection', lines)) return;
+    $('.nowPlayingSection').each(function() {
+        var section = $(this);
+        var listContainer = section.find('.nowPlayingList');
 
-        $('#nowPlayingList').empty();
+        $.get('data/atm.txt', function(data) {
+            var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+            if (hideSectionIfEmpty(section, lines)) return;
 
-        lines.forEach(function(line) {
-            var gameDiv = $('<div class="nowPlayingItem"></div>').text(line);
-            $('#nowPlayingList').append(gameDiv);
+            listContainer.empty();
+            lines.forEach(function(line) {
+                var gameDiv = $('<div class="nowPlayingItem"></div>').text(line);
+                listContainer.append(gameDiv);
+            });
+        }).fail(function() {
+            hideSectionIfEmpty(section, {});
         });
-    }).fail(function() {
-        hideSectionIfEmpty('#nowPlayingSection', {});
     });
+
 });
