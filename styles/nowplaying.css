@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-#nowPlayingContainer {
+.nowPlayingContainer {
     display: inline-block;
     max-width: 40%;
     min-width: 20%;
@@ -13,14 +13,28 @@
     text-align: center;
 }
 
-#nowPlayingList {
+.nowPlayingList {
     margin: 0 5px;
     text-align: center;
-    line-height: 2;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.nowPlayingItem {
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: #1a234d;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 0.95em;
 }
 
 @media (max-width: 600px) {
-    #nowPlayingContainer {
+    .nowPlayingContainer {
         max-width: 100%;
     }
 }
