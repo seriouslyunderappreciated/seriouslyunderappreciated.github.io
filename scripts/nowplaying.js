@@ -11,7 +11,13 @@ $(document).ready(function() {
     $.get('data/atm.txt', function(data) {
         var lines = data.trim().split('\n').filter(line => line.trim() !== '');
         if (hideSectionIfEmpty('#nowPlayingSection', lines)) return;
-        $('#nowPlayingList').html(lines.join('<br>'));
+
+        $('#nowPlayingList').empty();
+
+        lines.forEach(function(line) {
+            var gameDiv = $('<div class="nowPlayingItem"></div>').text(line);
+            $('#nowPlayingList').append(gameDiv);
+        });
     }).fail(function() {
         hideSectionIfEmpty('#nowPlayingSection', {});
     });
