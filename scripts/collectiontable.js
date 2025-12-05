@@ -1,15 +1,17 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     $.tablesorter.addParser({
         id: 'deviceParser',
-        is: function () { return false; },
-        format: function (s, table, cell) {
+        is: function() {
+            return false;
+        },
+        format: function(s, table, cell) {
             return $(cell).attr('data-value') || '';
         },
         type: 'text'
     });
 
-    $.get('data/collection.csv', function (data) {
+    $.get('data/collection.csv', function(data) {
         var lines = data.split('\n');
         if (!lines || lines.length === 0) return;
         var headers = lines[0].split(',');
@@ -45,9 +47,11 @@ $(document).ready(function () {
         var headerCount = $('#myTable thead th').length;
         var headersConfig = {};
         for (var c = 0; c < headerCount; c++) {
-            headersConfig[c] = { lockedOrder: 'asc' };
+            headersConfig[c] = {
+                lockedOrder: 'asc'
+            };
         }
-        $('#myTable thead th').each(function (index) {
+        $('#myTable thead th').each(function(index) {
             if (!$(this).hasClass('sortable')) {
                 headersConfig[index].sorter = false;
             }
@@ -55,7 +59,12 @@ $(document).ready(function () {
         headersConfig[3].sorter = 'deviceParser';
 
         $('#myTable').tablesorter({
-            sortList: [[0, 0], [1, 0], [2, 0], [3, 0]],
+            sortList: [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0]
+            ],
             headers: headersConfig,
             widgets: ["filter"],
             widgetOptions: {
@@ -64,7 +73,7 @@ $(document).ready(function () {
                 filter_columnAnyMatch: true
             }
         });
-    }).fail(function () {
+    }).fail(function() {
         console.error('Failed to load collection.csv');
     });
 });
