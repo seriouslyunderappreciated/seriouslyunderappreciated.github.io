@@ -1,0 +1,30 @@
+/* =========================================
+   Now Playing Section
+========================================= */
+.sectionLabel {
+    text-align: center;
+}
+
+#nowPlayingContainer {
+    display: inline-block;
+    max-width: 40%;
+    min-width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5a68a6;
+    background: #0f1733;
+    text-align: center;
+}
+
+#nowPlayingList {
+    margin: 0 5px;
+    text-align: center;
+    line-height: 2;
+}
+
+/* Responsive adjustments for now playing */
+@media (max-width: 600px) {
+    #nowPlayingContainer {
+        max-width: 100%;
+    }
+}

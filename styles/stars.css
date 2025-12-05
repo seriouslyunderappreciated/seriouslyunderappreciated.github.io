@@ -1,0 +1,59 @@
+/* =========================================
+   Star Layers / Parallax
+========================================= */
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-repeat: repeat;
+    z-index: 0;
+}
+
+#stars {
+    background: 
+        radial-gradient(1px 1px at 10% 20%, white, transparent),
+        radial-gradient(1px 1px at 30% 40%, white, transparent),
+        radial-gradient(1px 1px at 70% 80%, white, transparent),
+        radial-gradient(1px 1px at 90% 10%, white, transparent),
+        radial-gradient(2px 2px at 25% 60%, white, transparent),
+        radial-gradient(2px 2px at 80% 25%, white, transparent);
+    background-size: 200px 200px;
+    animation: animStars 80s linear infinite;
+}
+
+#stars2 {
+    background: 
+        radial-gradient(1px 1px at 20% 10%, #ccc, transparent),
+        radial-gradient(1px 1px at 40% 30%, #ccc, transparent),
+        radial-gradient(1px 1px at 60% 70%, #ccc, transparent),
+        radial-gradient(1px 1px at 80% 90%, #ccc, transparent);
+    background-size: 300px 300px;
+    animation: animStars2 120s linear infinite;
+}
+
+#stars3 {
+    background: 
+        radial-gradient(1px 1px at 15% 80%, #eee, transparent),
+        radial-gradient(1px 1px at 35% 20%, #eee, transparent),
+        radial-gradient(1px 1px at 55% 50%, #eee, transparent),
+        radial-gradient(1px 1px at 75% 30%, #eee, transparent);
+    background-size: 150px 150px;
+    animation: animStars3 50s linear infinite;
+}
+
+@keyframes animStars {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-100%); }
+}
+
+@keyframes animStars2 {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+}
+
+@keyframes animStars3 {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-150%); }
+}
