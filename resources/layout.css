@@ -325,10 +325,6 @@ img {
     transition: transform 0.15s ease;
 }
 
-.patch-entry:hover {
-    transform: scale(1.03);
-}
-
 /* image inside card */
 .patch-entry img {
     width: 100%;
