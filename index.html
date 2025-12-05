@@ -18,7 +18,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
-    <script src="resources/now-playing.js" defer></script>
 </head>
 
 <body>
@@ -27,15 +26,14 @@
     <div id='stars3'></div>
     <main>
         <div style="text-align: center;">
+            <img alt="Samus" src="resources/logo.png">
 
-            <div id="now-playing-component" class="now-playing-component" aria-hidden="true">
-  <div class="now-playing-label" id="now-playing-label">Now Playing:</div>
-
-  <div class="now-playing-stage" id="now-playing-stage" role="img" aria-label="Now Playing Logo">
-    <img id="now-playing-logo" src="resources/logo.png" alt="" draggable="false" />
-    <div id="now-playing-items" class="now-playing-items"></div>
-  </div>
-</div>
+            <div id="nowPlayingSection">
+                <p class="sectionLabel"><strong>Now Playing:</strong></p>
+                <div id="nowPlayingContainer" class="cen">
+                    <div id="nowPlayingList">Loading...</div>
+                </div>
+            </div>
 
             <section id="latestPatchesSection" style="margin-top:12px;">
                 <p class="sectionLabel"><strong>Updates:</strong></p>
@@ -238,5 +236,4 @@
 </body>
 
 </html>
-
 
