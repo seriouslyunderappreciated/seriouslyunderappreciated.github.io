@@ -1,25 +1,56 @@
+.unselectable-content {
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+    pointer-events: none;      /* Prevents pointer events (like selection) */
+}
+
+
 /* =========================================
-   Now Playing Section
+   Now Playing Section - NEW WAVE/DIAMOND
 ========================================= */
 .sectionLabel {
     text-align: center;
 }
 
-#nowPlayingContainer {
-    display: inline-block;
-    max-width: 40%;
-    min-width: 20%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #5a68a6;
-    background: #0f1733;
-    text-align: center;
+/* This container is sized and positioned by JS, it is the relative parent */
+#logoContainer {
+    position: relative; 
+    margin: 0 auto;
 }
 
-#nowPlayingList {
-    margin: 0 5px;
-    text-align: center;
-    line-height: 2;
+.now-playing-game {
+    position: absolute;
+    color: white; 
+    font-family: 'Merriweather', serif; 
+    background: rgba(15, 23, 51, 0.8); /* #0f1733 with 80% opacity */
+    border: 1px solid #5a68a6; 
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    
+    /* Apply wave effect: slight vertical translation for visual movement */
+    animation: waveMotion 4s ease-in-out infinite alternate;
+}
+
+/* Specific styling for the center-placed game (if odd count) */
+.now-playing-game.center-game {
+    /* Overlays the logo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    animation: none; /* No wave animation for the central game */
+    z-index: 20; 
+}
+
+/* Wave motion keyframes */
+@keyframes waveMotion {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
 }
 
 /* =========================================
