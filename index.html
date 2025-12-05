@@ -167,34 +167,25 @@
                         Object.values(data || {}).forEach(function(entry) {
                             if (!entry || !entry.steamheader) return;
 
-                            // card container (not an anchor) so we can have independent links inside
-                            var card = document.createElement('div');
+                            // create clickable card
+                            var card = document.createElement('a');
                             card.className = 'patch-entry';
-
-                            // main clickable area (everything but the date) -> rinurl
-                            var mainLink = document.createElement('a');
-                            mainLink.className = 'patch-main-link';
-                            mainLink.href = entry.rinurl || '#';
-                            mainLink.target = '_blank';
-                            mainLink.rel = 'noopener noreferrer';
+                            card.href = entry.steamdburl || '#';
+                            card.target = '_blank';
+                            card.rel = 'noopener noreferrer';
 
                             // image
                             var img = document.createElement('img');
                             img.src = entry.steamheader || '';
                             img.alt = entry.title || 'Steam Build';
-                            mainLink.appendChild(img);
-                            card.appendChild(mainLink);
+                            card.appendChild(img);
 
-                            // date overlay as its own clickable link -> steamdburl
+                            // date overlay
                             if (entry.date) {
-                                var dateLink = document.createElement('a');
-                                dateLink.className = 'patch-date-overlay';
-                                dateLink.href = entry.steamdburl || '#';
-                                dateLink.target = '_blank';
-                                dateLink.rel = 'noopener noreferrer';
-                                dateLink.textContent = entry.date;
-                                dateLink.title = 'View on SteamDB';
-                                card.appendChild(dateLink);
+                                var overlay = document.createElement('div');
+                                overlay.className = 'patch-date-overlay';
+                                overlay.textContent = entry.date;
+                                card.appendChild(overlay);
                             }
 
                             container.appendChild(card);
