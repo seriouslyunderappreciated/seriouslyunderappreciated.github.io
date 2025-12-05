@@ -2,238 +2,281 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Game Collection</title>
-    <meta property="og:title" content="My Library">
-    <meta property="og:description" content="Game collection tracker.">
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/seriouslyunderappreciated/seriouslyunderappreciated.github.io/master/resources/thumbnail.png">
-    <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
-    <link rel="stylesheet" type="text/css" href="resources/layout.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta">
-    <link rel="shortcut icon" href="resources/favicon.ico">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Game Collection</title>
+    <meta property="og:title" content="My Library">
+    <meta property="og:description" content="Game collection tracker.">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/seriouslyunderappreciated/seriouslyunderappreciated.github.io/master/resources/thumbnail.png">
+    <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
+    <link rel="stylesheet" type="text/css" href="resources/layout.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta">
+    <link rel="shortcut icon" href="resources/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
 </head>
 
 <body>
-    <div id='stars'></div>
-    <div id='stars2'></div>
-    <div id='stars3'></div>
-    <main>
-        <div style="text-align: center;">
-            <img alt="Samus" src="resources/logo.png">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <main>
+        <div style="text-align: center;">
 
-            <div id="nowPlayingSection">
-                <p class="sectionLabel"><strong>Now Playing:</strong></p>
-                <div id="nowPlayingContainer" class="cen">
-                    <div id="nowPlayingList">Loading...</div>
-                </div>
-            </div>
+                        <p class="sectionLabel unselectable-content" id="nowPlayingLabel"><strong>Now Playing:</strong></p>
 
-            <section id="latestPatchesSection" style="margin-top:12px;">
-                <p class="sectionLabel"><strong>Updates:</strong></p>
-                <div id="latest-patches" class="latest-patches">
-                    <div class="loading">Loading...</div>
-                </div>
-            </section>
+                        <div id="logoContainer" class="unselectable-content">
+                <img alt="Samus" src="resources/logo.png">
+            </div>
 
-            <table id="myTable" class="dextable">
-                <thead>
-                    <tr>
-                        <th class="fooevo sortable" style="width:15%;">Series</th>
-                        <th class="fooevo hide-column">Release</th>
-                        <th class="fooevo" style="width:50%;">Game</th>
-                        <th class="fooevo sortable nowrap" style="min-width: 80px; width:15%;">Device</th>
-                        <th class="fooevo hide-column" data-value="!Yes">Done</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+                        <section id="latestPatchesSection" style="margin-top:12px;">
+                <p class="sectionLabel"><strong>Updates:</strong></p>
+                <div id="latest-patches" class="latest-patches">
+                    <div class="loading">Loading...</div>
+                </div>
+            </section>
 
-            <!-- Scroll to top button -->
-            <a id="button"></a>
+            <table id="myTable" class="dextable">
+                <thead>
+                    <tr>
+                        <th class="fooevo sortable" style="width:15%;">Series</th>
+                        <th class="fooevo hide-column">Release</th>
+                        <th class="fooevo" style="width:50%;">Game</th>
+                        <th class="fooevo sortable nowrap" style="min-width: 80px; width:15%;">Device</th>
+                        <th class="fooevo hide-column" data-value="!Yes">Done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
 
-            <script>
-                $(document).ready(function () {
+                        <a id="button"></a>
 
-                    // -------------------------
-                    // Helper: hide section if content is empty
-                    // -------------------------
-                    function hideSectionIfEmpty(sectionSelector, content) {
-                        if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
-                            $(sectionSelector).hide();
-                            return true;
-                        }
-                        return false;
-                    }
+            <script>
+                $(document).ready(function () {
 
-                    // -------------------------
-                    // Load Now Playing
-                    // -------------------------
-                    $.get('resources/atm.txt', function (data) {
-                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
-                        if (hideSectionIfEmpty('#nowPlayingSection', lines)) return;
-                        $('#nowPlayingList').html(lines.join('<br>'));
-                    });
+                    // -------------------------
+                    // Helper: hide section if content is empty
+                    // -------------------------
+                    function hideSectionIfEmpty(sectionSelector, content) {
+                        if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
+                            $(sectionSelector).hide();
+                            return true;
+                        }
+                        return false;
+                    }
 
-                    // -------------------------
-                    // Table population and sorting
-                    // -------------------------
-                    $.tablesorter.addParser({
-                        id: 'deviceParser',
-                        is: function () { return false; },
-                        format: function (s, table, cell) {
-                            return $(cell).attr('data-value') || '';
-                        },
-                        type: 'text'
-                    });
+                    // -------------------------
+                    // Load Now Playing - NEW LOGIC FOR WAVE/DIAMOND
+                    // -------------------------
+                    $.get('resources/atm.txt', function (data) {
+                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+                        var $logoContainer = $('#logoContainer');
+                        var $label = $('#nowPlayingLabel');
 
-                    $.get('resources/collection.csv', function (data) {
-                        var lines = data.split('\n');
-                        if (!lines || lines.length === 0) return;
-                        var headers = lines[0].split(',');
+                        // Hide both the label and the container if data is empty
+                        if (hideSectionIfEmpty($logoContainer.add($label), lines)) return;
 
-                        for (var i = 1; i < lines.length; i++) {
-                            if (!lines[i].trim()) continue;
-                            var row = lines[i].split(',');
-                            if (row.length === headers.length) {
-                                var tableRow = '<tr>';
-                                for (var j = 0; j < headers.length; j++) {
-                                    var cell = row[j].trim();
-                                    var dataValue = cell.replace(/\[hd\]|\[retro\]|\[switch\]/g, '').trim();
-                                    var displayCell = cell
-                                        .replace(/\[hd\]/g, '<img alt=\"Remake\" title=\"Remake\" src=\"resources/hd.png\" class=\"icon\">')
-                                        .replace(/\[retro\]/g, '<img alt=\"Emulated\" title=\"Emulated\" src=\"resources/retro.png\" class=\"icon\">')
-                                        .replace(/\[switch\]/g, '<img alt=\"Switch\" title=\"Switch\" src=\"resources/switch.png\" class=\"icon\">');
+                        var numGames = lines.length;
+                        var peripheralGames = numGames;
+                        var startGameIndex = 0;
+                        var logoSize = 150; // Estimated max width/height of the logo
+                        var containerSize = 400; // Size of the container for the wave orbit
+                        
+                        // Set up container size for absolute positioning and center the container
+                        $logoContainer.css({
+                            position: 'relative',
+                            width: containerSize + 'px',
+                            height: containerSize + 'px',
+                            margin: '0 auto'
+                        });
+                        
+                        // Center the logo image within the container
+                        $logoContainer.find('img').css({
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            maxWidth: logoSize + 'px',
+                            maxHeight: logoSize + 'px',
+                            zIndex: 5 // Logo sits behind peripheral games
+                        });
+                        
+                        var gamesHtml = '';
 
-                                    if (j === 1) {
-                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    } else if (j === (headers.length - 1)) {
-                                        tableRow += '<td class=\"cen hide-column\" data-value=\"' + (cell === 'Yes' ? 'Yes' : '') + '\">' + (cell === 'Yes' ? 'Yes' : '') + '</td>';
-                                    } else if (j === 0 || j === 3) {
-                                        tableRow += '<td class=\"cen nowrap\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    } else {
-                                        tableRow += '<td class=\"cen\" data-value=\"' + dataValue + '\">' + displayCell + '</td>';
-                                    }
-                                }
-                                tableRow += '</tr>';
-                                $('#myTable tbody').append(tableRow);
-                            }
-                        }
+                        if (numGames % 2 !== 0) {
+                            // Odd number of games: center the first one overlaying the logo
+                            gamesHtml += `<div class="now-playing-game center-game">${lines[0]}</div>`;
+                            startGameIndex = 1;
+                            peripheralGames = numGames - 1;
+                        }
 
-                        var headerCount = $('#myTable thead th').length;
-                        var headersConfig = {};
-                        for (var c = 0; c < headerCount; c++) {
-                            headersConfig[c] = { lockedOrder: 'asc' };
-                        }
-                        $('#myTable thead th').each(function (index) {
-                            if (!$(this).hasClass('sortable')) {
-                                headersConfig[index].sorter = false;
-                            }
-                        });
-                        headersConfig[3].sorter = 'deviceParser';
+                        // Positioning Logic for Wave/Diamond
+                        var baseRadius = logoSize * 0.7; // Base distance from center
+                        var maxRadiusIncrease = 60; // Max push-out for the "diamond corners"
 
-                        $('#myTable').tablesorter({
-                            sortList: [[0, 0], [1, 0], [2, 0], [3, 0]],
-                            headers: headersConfig,
-                            widgets: ["filter"],
-                            widgetOptions: {
-                                filter_defaultAttrib: 'data-value',
-                                filter_columnFilters: true,
-                                filter_columnAnyMatch: true
-                            }
-                        });
-                    });
-                });
-            </script>
+                        for (var i = startGameIndex; i < numGames; i++) {
+                            var gameText = lines[i];
+                            var gameIndex = i - startGameIndex; 
+                            var numPeripheral = peripheralGames;
 
-            <!-- Latest Steam Builds Script -->
-            <script>
-                (function () {
-                    function renderBuilds(data) {
-                        var section = document.getElementById('latestPatchesSection');
-                        var container = document.getElementById('latest-patches');
+                            var angle = (2 * Math.PI / numPeripheral) * gameIndex;
+                            
+                            // Diamond Effect: Modulate radius based on absolute cosine, creating 4-fold symmetry
+                            var radiusMod = Math.abs(Math.cos(angle * 2));
+                            var currentRadius = baseRadius + (maxRadiusIncrease * radiusMod); 
 
-                        if (hideSectionIfEmpty(section, data)) return;
+                            var x = (containerSize / 2) + currentRadius * Math.cos(angle);
+                            var y = (containerSize / 2) + currentRadius * Math.sin(angle);
+                            
+                            // Rotation for Wave Look: Rotate text to align with the angle
+                            var rotationDeg = angle * (180 / Math.PI) + 90; 
 
-                        container.innerHTML = ''; // clear loading text
+                            gamesHtml += `<div class="now-playing-game peripheral-game" 
+                                           style="top:${y}px; left:${x}px; 
+                                                  transform:translate(-50%, -50%) rotate(${rotationDeg}deg); 
+                                                  z-index: 10;">
+                                           ${gameText}
+                                      </div>`;
+                        }
 
-                        Object.values(data || {}).forEach(function(entry) {
-                            if (!entry || !entry.steamheader) return;
+                        $logoContainer.append(gamesHtml);
+                    });
 
-                            // create clickable card
-                            var card = document.createElement('a');
-                            card.className = 'patch-entry';
-                            card.href = entry.steamdburl || '#';
-                            card.target = '_blank';
-                            card.rel = 'noopener noreferrer';
 
-                            // image
-                            var img = document.createElement('img');
-                            img.src = entry.steamheader || '';
-                            img.alt = entry.title || 'Steam Build';
-                            card.appendChild(img);
+                    // -------------------------
+                    // Table population and sorting (Restored original code)
+                    // -------------------------
+                    $.get('resources/games.json', function (data) {
+                        var html = '';
+                        for (var i = 0; i < data.length; i++) {
+                            var game = data[i];
+                            var completedClass = game.done == 'Yes' ? 'filtered' : '';
+                            html += `<tr class="${completedClass}">
+                                <td class="cen nowrap">${game.series}</td>
+                                <td class="cen hide-column" data-value="${game.release}">${game.release}</td>
+                                <td class="cen" style="text-align: left;">
+                                    <a href="${game.link}" target="_blank">${game.game}</a>
+                                </td>
+                                <td class="cen systems">${game.device}</td>
+                                <td class="cen hide-column">${game.done}</td>
+                            </tr>`;
+                        }
+                        $('#myTable tbody').html(html);
 
-                            // date overlay
-                            if (entry.date) {
-                                var overlay = document.createElement('div');
-                                overlay.className = 'patch-date-overlay';
-                                overlay.textContent = entry.date;
-                                card.appendChild(overlay);
-                            }
+                        // Tablesorter initialization
+                        $('#myTable').tablesorter({
+                            theme: 'default',
+                            widgets: ['zebra', 'filter'],
+                            widgetOptions: {
+                                filter_cssFilter: 'tablesorter-filter',
+                                filter_childRows: false,
+                                filter_hideEmpty: true,
+                                filter_ignoreCase: true,
+                                filter_saveFilters: true,
+                                filter_searchDelay: 300,
+                                filter_startsWith: false,
+                                filter_selectSource: {
+                                    0: 'filter-only'
+                                }
+                            },
+                            headers: {
+                                2: { sorter: false },
+                                4: { filter: 'select' }
+                            },
+                            sortList: [
+                                [4, 1], // Sort by "Done" ascending (Yes/No)
+                                [1, 0] // Then by "Release" ascending (Oldest first)
+                            ]
+                        });
+                    });
 
-                            container.appendChild(card);
-                        });
-                    }
+                });
+            </script>
 
-                    // Shared helper function for hiding
-                    function hideSectionIfEmpty(section, content) {
-                        if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
-                            $(section).hide();
-                            return true;
-                        }
-                        return false;
-                    }
+                        <script>
+                (function () {
+                    function renderBuilds(data) {
+                        var section = document.getElementById('latestPatchesSection');
+                        var container = document.getElementById('latest-patches');
 
-                    fetch('resources/temp.json', { cache: "no-store" })
-                        .then(function (resp) {
-                            if (!resp.ok) throw new Error('Network response was not ok');
-                            return resp.json();
-                        })
-                        .then(renderBuilds)
-                        .catch(function (err) {
-                            hideSectionIfEmpty('#latestPatchesSection', {});
-                            console.error('Failed to load build info:', err);
-                        });
-                })();
-            </script>
+                        if (hideSectionIfEmpty(section, data)) return;
 
-        </div>
-    </main>
+                        container.innerHTML = ''; // clear loading text
 
-    <script>
-        // Scroll to top button
-        var btn = $('#button');
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
-        btn.on('click', function (e) {
-            e.preventDefault();
-            $('html, body').animate({ scrollTop: 0 }, '300');
-        });
-    </script>
+                        Object.values(data || {}).forEach(function(entry) {
+                            if (!entry || !entry.steamheader) return;
+
+                            // create clickable card
+                            var card = document.createElement('a');
+                            card.className = 'patch-entry';
+                            card.href = entry.steamdburl || '#';
+                            card.target = '_blank';
+                            card.rel = 'noopener noreferrer';
+
+                            // image
+                            var img = document.createElement('img');
+                            img.src = entry.steamheader || '';
+                            img.alt = entry.title || 'Steam Build';
+                            card.appendChild(img);
+
+                            // date overlay
+                            if (entry.date) {
+                                var overlay = document.createElement('div');
+                                overlay.className = 'patch-date-overlay';
+                                overlay.textContent = entry.date;
+                                card.appendChild(overlay);
+                            }
+
+                            container.appendChild(card);
+                        });
+                    }
+
+                    // Shared helper function for hiding
+                    function hideSectionIfEmpty(section, content) {
+                        if (!content || (Array.isArray(content) && content.length === 0) || (typeof content === 'object' && Object.keys(content).length === 0)) {
+                            $(section).hide();
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    fetch('resources/temp.json', { cache: "no-store" })
+                        .then(function (resp) {
+                            if (!resp.ok) throw new Error('Network response was not ok');
+                            return resp.json();
+                        })
+                        .then(renderBuilds)
+                        .catch(function (err) {
+                            hideSectionIfEmpty('#latestPatchesSection', {});
+                            console.error('Failed to load build info:', err);
+                        });
+                })();
+            </script>
+
+        </div>
+    </main>
+
+    <script>
+        // Scroll to top button (Restored original code)
+        var btn = $('#button');
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+        btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, '300');
+        });
+    </script>
 
 </body>
 
 </html>
-
