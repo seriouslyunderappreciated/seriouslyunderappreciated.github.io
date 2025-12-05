@@ -30,7 +30,6 @@ $(document).ready(function() {
             leftLink.href = entry.steamdburl || '#';
             leftLink.target = '_blank';
             leftLink.rel = 'noopener noreferrer';
-            leftLink.textContent = "Patch Notes";
             card.appendChild(leftLink);
 
             var rightLink = document.createElement('a');
@@ -38,8 +37,17 @@ $(document).ready(function() {
             rightLink.href = entry.rinurl || '#';
             rightLink.target = '_blank';
             rightLink.rel = 'noopener noreferrer';
-            rightLink.textContent = "Download";
             card.appendChild(rightLink);
+
+            var leftText = document.createElement('div');
+            leftText.className = 'hover-text left';
+            leftText.textContent = 'Patch Notes';
+            card.appendChild(leftText);
+
+            var rightText = document.createElement('div');
+            rightText.className = 'hover-text right';
+            rightText.textContent = 'Download';
+            card.appendChild(rightText);
 
             container.appendChild(card);
         });
