@@ -1,47 +1,25 @@
 /* =========================================
-   Now Playing / Diamond Layout
+   Now Playing Section
 ========================================= */
-
-/* Logo Container */
-#logoContainer {
-    position: relative;
-    display: inline-block;
-    margin: 0 auto;
+.sectionLabel {
     text-align: center;
-    user-select: none; /* prevent selection */
 }
 
-#logo {
-    display: block;
-    pointer-events: none; /* make logo unselectable */
-    margin: 0 auto;
+#nowPlayingContainer {
+    display: inline-block;
+    max-width: 40%;
+    min-width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5a68a6;
+    background: #0f1733;
+    text-align: center;
 }
 
-/* Wavy game text */
 #nowPlayingList {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* non-selectable */
-}
-
-.now-playing-game {
-    position: absolute;
-    font-family: 'Merriweather', Verdana, sans-serif;
-    color: #fff;
-    font-weight: 400;
-    font-size: 1em;
-    white-space: nowrap;
-    user-select: none;
-    animation: wave 2s infinite ease-in-out;
-}
-
-/* Wave animation */
-@keyframes wave {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    margin: 0 5px;
+    text-align: center;
+    line-height: 2;
 }
 
 /* =========================================
