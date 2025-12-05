@@ -336,25 +336,32 @@ img {
    - Non-selectable and non-interactive.
 */
 
-.now-playing-component {
-  --np-max-radius: 140px; /* max diamond radius; adjust if needed */
-  --np-base-radius: 90px; /* base diamond radius */
+:root{
+  /* Tunables (override in your theme if desired) */
+  --np-stage-size: 320px;
+  --np-base-radius: 90px;
+  --np-max-radius: 180px;
+  --np-radius-step: 28px;
   --np-item-font-size: clamp(12px, 1.2vw, 18px);
-  --np-wave-distance: 10px;
-  --np-wave-duration: 2.6s;
+  --np-wave-distance: 8px;          /* vertical amplitude for per-letter wave */
+  --np-wave-duration: 2.6s;         /* base duration for a full wave cycle */
+  --np-letter-delay: 0.06s;         /* stagger per-letter phase shift */
   --np-label-gap: 10px;
+  --np-item-max-width: 160px;
+  --np-center-opacity: 0.96;
+}
 
+.now-playing-component {
   display: inline-block;
   text-align: center;
-  font-family: inherit; /* keep your site's font */
-  color: inherit;       /* keep your site's color scheme */
+  font-family: inherit;
+  color: inherit;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   pointer-events: none;
 }
 
-/* Label above the logo; hidden if no items via JS */
 .now-playing-label {
   font-weight: 600;
   margin-bottom: var(--np-label-gap);
@@ -363,14 +370,12 @@ img {
   color: inherit;
   display: block;
   user-select: none;
-  -webkit-user-select: none;
 }
 
-/* Stage that contains logo and surrounding items */
 .now-playing-stage {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: var(--np-stage-size);
+  height: var(--np-stage-size);
   margin: 0 auto;
   display: block;
   touch-action: none;
@@ -379,7 +384,6 @@ img {
   pointer-events: none;
 }
 
-/* Logo sits centered */
 #now-playing-logo {
   position: absolute;
   left: 50%;
@@ -390,11 +394,9 @@ img {
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
-  image-rendering: auto;
   display: block;
 }
 
-/* Container for generated items */
 .now-playing-items {
   position: absolute;
   left: 0;
@@ -405,29 +407,32 @@ img {
   user-select: none;
 }
 
-/* Individual game items */
+/* Item wrapper positioning (keeps baseline placement via margins so per-letter transform-only animations don't interfere) */
 .now-playing-item {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform-origin: 0 0;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* baseline centering */
   white-space: nowrap;
   font-size: var(--np-item-font-size);
   color: inherit;
   opacity: 0.98;
   padding: 2px 6px;
   border-radius: 4px;
-  background: transparent; /* keep transparent unless you want a subtle backdrop */
+  background: transparent;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
   transition: transform 300ms ease, opacity 300ms ease;
   will-change: transform;
   text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+  max-width: var(--np-item-max-width);
+  overflow: visible;
+  display: inline-block;
+  text-align: left;
 }
 
-/* center overlay item (when odd count) */
+/* center overlay */
 .now-playing-item.center {
   z-index: 3;
   font-weight: 700;
@@ -435,29 +440,59 @@ img {
   max-width: 60%;
   text-align: center;
   pointer-events: none;
+  opacity: var(--np-center-opacity);
 }
 
-/* Wave animation: subtle vertical movement with phase offsets applied inline */
-@keyframes np-wave {
-  0% { transform: translate(-50%, calc(-50% - var(--np-wave-distance))); }
-  50% { transform: translate(-50%, calc(-50% + var(--np-wave-distance))); }
-  100% { transform: translate(-50%, calc(-50% - var(--np-wave-distance))); }
+/* Container for inline characters */
+.now-playing-item .np-chars {
+  display: inline-block;
+  line-height: 1;
+  pointer-events: none;
 }
 
-/* Fallback for browsers not using the per-item inline transform positioning */
-.now-playing-item.fallback {
-  opacity: 0.9;
+/* Each character is an inline-block so transform affects only that char */
+.now-playing-item .np-chars .np-char {
+  display: inline-block;
+  white-space: pre; /* preserve spaces where we use non-breaking spaces */
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  font: inherit;
+  color: inherit;
+  /* animation applied inline for precise per-char delays, but define keyframes and default here */
+  animation-name: np-letter-wave;
+  animation-duration: var(--np-wave-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+/* Slight fade/scale for center item characters to help legibility when overlaying the logo */
+.now-playing-item.center .np-char {
+  font-weight: 700;
+}
+
+/* Keyframes: translateY up / down using CSS variable amplitude */
+@keyframes np-letter-wave {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(calc(-1 * var(--np-wave-distance))); }
+  50%  { transform: translateY(0); }
+  75%  { transform: translateY(var(--np-wave-distance)); }
+  100% { transform: translateY(0); }
+}
+
+/* Visual/truncation behavior: clamp with ellipsis if too long */
+.now-playing-item .np-chars {
+  display: inline-block;
+  max-width: var(--np-item-max-width);
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Responsive adjustments */
 @media (max-width: 480px) {
-  .now-playing-stage {
-    width: 220px;
-    height: 220px;
-  }
-  #now-playing-logo {
-    max-width: 56%;
-    max-height: 56%;
-  }
-  .now-playing-component { --np-base-radius: 60px; --np-max-radius: 110px; }
+  :root { --np-stage-size: 220px; --np-base-radius: 60px; --np-max-radius: 110px; --np-item-max-width: 110px; }
+  #now-playing-logo { max-width: 56%; max-height: 56%; }
 }
