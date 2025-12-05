@@ -13,19 +13,19 @@
     font-size: 1em;
 }
 
-.fooevo, .cen {
+.colle, .cen {
     text-align: center;
     border-radius: 3px;
     border: 1px solid #1d2b62;
     color: white;
 }
 
-.fooevo {
+.colle {
     background: #3e4872;
     font-weight: bold;
 }
 
-.fooevo:hover {
+.colle:hover {
     background: #5a68a6;
 }
 
@@ -46,30 +46,20 @@
     transition: 0.1s ease;
 }
 
-/* Prevent wrapping in certain columns */
 .nowrap {
     white-space: nowrap;
 }
 
-/* =========================================
-   Tablesorter
-========================================= */
-
-/* Fade rows for completed games */
 .tablesorter .filtered {
     opacity: 0.7;
 }
 
-/* Hide columns marked with hide-column */
 .tablesorter-default td.hide-column,
 .tablesorter-default th.hide-column,
 .tablesorter-filter-row {
     display: none;
 }
 
-/* =========================================
-   Tablesorter: Only sortable headers show arrows
-========================================= */
 @media only screen and (min-width: 600px) {
     .tablesorter-default thead th.sortable {
         background-image: url("../images/sort.gif");
@@ -85,16 +75,13 @@
     .tablesorter-default thead th.sortable.tablesorter-headerDesc {
         background-image: url("../images/sortdown.gif");
     }
-    .fooevo {
+    .colle {
         padding: 3px;
         cursor: pointer;
         min-width: 90px;
     }
 }
 
-/* =========================================
-   Responsive table tweaks
-========================================= */
 @media (max-width: 900px) {
     .dextable {
         width: 100%;
