@@ -18,6 +18,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
+
+    <!-- Styles for the Now Playing rolling animation -->
+    <style>
+        /* container that shows exactly one line */
+        #nowPlayingContainer {
+            display: inline-block;
+            overflow: hidden;
+            height: 1.8em; /* single line height; adjust if needed */
+            line-height: 1.8em;
+            vertical-align: middle;
+        }
+
+        /* the list that will be animated */
+        #nowPlayingList {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: block;
+        }
+
+        #nowPlayingList li {
+            height: 1.8em;
+            line-height: 1.8em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        /* fallback: if JS disabled, #nowPlayingList can contain text with <br> and remain readable */
+    </style>
 </head>
 
 <body>
@@ -37,7 +67,7 @@
 
             <section id="nowPlayingSection">
                 <p class="sectionLabel"><strong>Now Playing:</strong></p>
-                <div id="nowPlayingContainer" class="cen">
+                <div id="nowPlayingContainer" class="cen" aria-live="polite" aria-atomic="true">
                     <div id="nowPlayingList">Loading...</div>
                 </div>
             </section>
@@ -74,12 +104,51 @@
                     }
 
                     // -------------------------
-                    // Load Now Playing
+                    // Load Now Playing - show one line at a time with rolling animation
                     // -------------------------
                     $.get('resources/atm.txt', function (data) {
-                        var lines = data.trim().split('\n').filter(line => line.trim() !== '');
+                        var lines = data.trim().split('\n').map(function(l){ return l.trim(); }).filter(function(line){ return line !== ''; });
                         if (hideSectionIfEmpty('#nowPlayingSection', lines)) return;
-                        $('#nowPlayingList').html(lines.join('<br>'));
+
+                        var container = $('#nowPlayingList');
+                        container.empty();
+
+                        // If only one line, just show it plainly (no animation)
+                        if (lines.length === 1) {
+                            container.text(lines[0]);
+                            return;
+                        }
+
+                        // Build a <ul> with <li> entries
+                        var ul = $('<ul></ul>');
+                        lines.forEach(function(line) {
+                            ul.append($('<li></li>').html(line));
+                        });
+
+                        // Insert the list into the container
+                        container.append(ul);
+
+                        // Prepare dynamic keyframes and animation based on number of lines
+                        var n = lines.length;
+                        // translate percent needed to move to last item: (n-1)/n * 100%
+                        var translatePercent = ((n - 1) / n) * 100;
+                        var animationName = 'nowPlayingRoll_' + n;
+
+                        // Remove any existing dynamic style for 'nowPlayingList'
+                        $('#nowPlayingDynamicStyles').remove();
+
+                        // Create a new style element with computed keyframes
+                        var styleContent = '';
+                        styleContent += '@keyframes ' + animationName + ' {';
+                        styleContent += '  0% { transform: translateY(0%); }';
+                        styleContent += '  100% { transform: translateY(-' + translatePercent + '%); }';
+                        styleContent += '}';
+                        styleContent += '#nowPlayingList ul { margin:0; padding:0; }';
+                        // duration: 3s per line (adjustable). Use steps(n) to jump line-by-line.
+                        var durationSeconds = n * 3;
+                        styleContent += '#nowPlayingList ul { animation: ' + animationName + ' ' + durationSeconds + 's steps(' + n + ') infinite; }';
+
+                        $('<style id="nowPlayingDynamicStyles"></style>').text(styleContent).appendTo('head');
                     });
 
                     // -------------------------
@@ -236,5 +305,3 @@
 </body>
 
 </html>
-
-
