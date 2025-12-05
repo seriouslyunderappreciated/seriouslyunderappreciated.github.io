@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Game Collection</title>
     <meta property="og:title" content="My Library">
     <meta property="og:description" content="Game collection tracker.">
-    <meta property="og:image" content="https://seriouslyunderappreciated.github.io/images/thumbnail.png"">
-	<meta property=" og:url" content="https://seriouslyunderappreciated.github.io/">
+    <meta property="og:image" content="https://seriouslyunderappreciated.github.io/images/thumbnail.png">
+    <meta property="og:url" content="https://seriouslyunderappreciated.github.io/">
     <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta">
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="manifest" href="/manifest.json">
@@ -21,59 +22,58 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.widgets.min.js"></script>
-  </head>
-  <body>
-      
+</head>
+
+<body>
+
     <div id='stars'></div>
     <div id='stars2'></div>
     <div id='stars3'></div>
-      
+
     <main>
         <img alt="Samus" src="images/logo.png">
-          
-        <section id="latestPatchesSection">
-          <p class="sectionLabel">
-            <strong>Updates:</strong>
-          </p>
-          <div id="latest-patches" class="latest-patches">
-            <div class="loading">Loading...</div>
-          </div>
-        </section>
-          
-        <section id="nowPlayingSection">
-          <p class="sectionLabel">
-            <strong>Now Playing:</strong>
-          </p>
-          <div id="nowPlayingContainer" class="cen">
-            <div id="nowPlayingList">Loading...</div>
-          </div>
-        </section>
-          
+
+        <div class="latestPatchesSection">
+            <p class="sectionLabel">
+                <strong>Updates:</strong>
+            </p>
+            <div class="latest-patches">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <div class="nowPlayingSection">
+            <p class="sectionLabel">
+                <strong>Now Playing:</strong>
+            </p>
+            <div class="nowPlayingContainer cen">
+                <div class="nowPlayingList">Loading...</div>
+            </div>
+        </div>
+
+
         <table id="myTable" class="gametable">
-          <thead>
-            <tr>
-              <th class="colle sortable" style="width:15%;">Series</th>
-              <th class="colle hide-column">Release</th>
-              <th class="colle" style="width:50%;">Game</th>
-              <th class="colle sortable nowrap" style="min-width: 80px; width:15%;">Device</th>
-              <th class="colle hide-column" data-value="!Yes">Done</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
+            <thead>
+                <tr>
+                    <th class="colle sortable" style="width:15%;">Series</th>
+                    <th class="colle hide-column">Release</th>
+                    <th class="colle" style="width:50%;">Game</th>
+                    <th class="colle sortable nowrap" style="min-width: 80px; width:15%;">Device</th>
+                    <th class="colle hide-column" data-value="!Yes">Done</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
         </table>
 
         <!-- Scroll to top -->
         <a id="button"></a>
-		
+
         <script src="scripts/steambuilds.js"></script>
         <script src="scripts/nowplaying.js"></script>
         <script src="scripts/collectiontable.js"></script>
         <script src="scripts/scrolltop.js"></script>
-          
+
     </main>
-  </body>
+</body>
+
 </html>
-
-
-
-
