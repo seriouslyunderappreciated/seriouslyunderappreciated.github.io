@@ -88,8 +88,8 @@
     transform: translate(-50%, -50%);
     color: white;
     font-weight: bold;
-    font-size: 1rem;
-    text-shadow: 0 0 4px black;
+    font-size: 1.4rem;
+    text-shadow:0 0 2px black, 0 0 4px black, 0 0 4px black;
     opacity: 0;
     transition: opacity 0.2s ease;
     pointer-events: none;
