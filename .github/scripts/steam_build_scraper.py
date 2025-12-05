@@ -68,7 +68,7 @@ def get_latest_public_timeupdated(appid: int) -> tuple[int, str] | None:
 
 # Load builds.csv → dict: appid -> {buildid, game}
 builds_csv = {}
-with open('resources/builds.csv', newline='', encoding='utf-8') as f:
+with open('data/builds.csv', newline='', encoding='utf-8') as f:
     reader = csv.DictReader(f)
     for row in reader:
         builds_csv[row['appid']] = {
@@ -103,7 +103,7 @@ for appid in app_ids:
 
     # Construct rinurl
     rinurl = (
-        "https://https://cs.rin.ru//forum/search.php?"
+        "https://cs.rin.ru//forum/search.php?"
         f"st=0&sk=t&sd=d&sr=topics&keywords={keywords}"
         "&terms=all&fid[]=10&sf=titleonly"
     )
@@ -126,5 +126,5 @@ temp_data_with_ts.sort(reverse=True, key=lambda x: x[0])
 temp_data = {appid: data for _, appid, data in temp_data_with_ts}
 
 # Write output JSON
-with open('resources/temp.json', 'w', encoding='utf-8') as f:
+with open('data/temp.json', 'w', encoding='utf-8') as f:
     json.dump(temp_data, f, indent=2)
