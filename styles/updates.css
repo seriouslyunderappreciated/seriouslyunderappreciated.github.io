@@ -48,47 +48,48 @@
     }
 }
 
-/* Full hover zone covering entire patch */
 .hover-zone {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%; /* full width */
+    width: 50%;
     height: 100%;
     pointer-events: auto;
+    background: transparent;
 }
 
-/* Left and right slanted overlays inside the hover zone */
+.left-zone {
+    left: 0;
+}
+
+.right-zone {
+    right: 0;
+}
+
 .left-zone::before,
 .right-zone::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.45);
     transition: background 0.2s ease;
-    pointer-events: none; /* only visual */
 }
 
 .left-zone::before {
-    left: 0;
-    width: 50%;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
 .right-zone::before {
-    right: 0;
-    width: 50%;
     clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-/* Darken overlays on hover */
 .left-zone:hover::before,
 .right-zone:hover::before {
     background: rgba(0, 0, 0, 0.6);
 }
 
-/* Hover text */
 .hover-text {
     position: absolute;
     top: 50%;
@@ -103,7 +104,6 @@
     pointer-events: none;
 }
 
-/* Show hover text when corresponding zone is hovered */
 .left-zone:hover ~ .hover-text.left,
 .right-zone:hover ~ .hover-text.right {
     opacity: 1;
