@@ -1,20 +1,20 @@
 body,
 html {
-    margin: 0;
-    height: 100%;
     background: black;
     color: #fff;
     font-family: Verdana, sans-serif;
     font-size: 11px;
+    height: 100%;
+    margin: 0;
 }
 
 main {
     display: block;
     margin: 1em;
-    position: relative;
-    z-index: 1;
     padding-bottom: 60px;
+    position: relative;
     text-align: center;
+    z-index: 1;
 }
 
 .center {
@@ -37,8 +37,8 @@ img {
 .icon {
     display: inline-block;
     height: 0.8em;
-    vertical-align: middle;
     transform: translateY(-0.2em);
+    vertical-align: middle;
 }
 
 @media (max-width: 600px) {
