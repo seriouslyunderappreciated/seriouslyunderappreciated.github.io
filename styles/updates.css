@@ -47,3 +47,43 @@
         height: 70px;
     }
 }
+
+.hover-zone {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+    text-shadow: 0 0 4px black;
+}
+
+.patch-entry:hover .hover-zone {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.left-zone {
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
+}
+
+.right-zone {
+    right: 0;
+    background: rgba(0, 0, 0, 0.45);
+    clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%);
+}
+
+.left-zone:hover,
+.right-zone:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
