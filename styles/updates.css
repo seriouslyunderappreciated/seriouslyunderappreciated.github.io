@@ -82,3 +82,8 @@
     background: rgba(0, 0, 0, 0.45);
     clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%);
 }
+
+.left-zone:hover,
+.right-zone:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
