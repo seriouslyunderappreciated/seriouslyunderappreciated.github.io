@@ -68,6 +68,7 @@ img {
     border-collapse: separate;
     width: 70%;
     margin: auto;
+    margin-top: 12px;
 }
 
 .dextable td {
