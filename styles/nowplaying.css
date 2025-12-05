@@ -3,24 +3,34 @@
 }
 
 #nowPlayingContainer {
-    display: inline-block;
-    max-width: 40%;
-    min-width: 20%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #5a68a6;
-    background: #0f1733;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 #nowPlayingList {
-    margin: 0 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.nowPlayingCard {
+    background: #0f1733;
+    border: 1px solid #5a68a6;
+    padding: 12px 18px;
+    border-radius: 8px;
+    min-width: 120px;
     text-align: center;
-    line-height: 2;
+    font-size: 1rem;
+    line-height: 1.4;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
-    #nowPlayingContainer {
-        max-width: 100%;
+    .nowPlayingCard {
+        min-width: 100%;
     }
 }
