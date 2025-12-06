@@ -2,11 +2,6 @@
     text-align: center;
 }
 
-#nowPlayingSection {
-    display: flex;
-    justify-content: center;
-}
-
 #nowPlayingContainer {
     display: flex;
     justify-content: center;
