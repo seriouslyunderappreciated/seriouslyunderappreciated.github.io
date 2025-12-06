@@ -2,6 +2,13 @@
     text-align: center;
 }
 
+#nowPlayingSection {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    max-width: 80%;
+}
+
 #nowPlayingContainer {
     display: flex;
     justify-content: center;
