@@ -4,6 +4,7 @@
     justify-content: center;
     gap: 8px;
     margin: 8px auto 12px;
+    max-width: 80%;
 }
 
 .patch-entry {
