@@ -1,5 +1,4 @@
 Series,Release,Game,Device,Done
-,1991,Metal Slader Glory,Steam Deck [retro],
 ,2012,Mark of the Ninja,Steam Deck,Yes
 ,2018,Return of the Obra Dinn,Steam Deck,Yes
 ,2019,13 Sentinels: Aegis Rim,Switch 2 [switch],
@@ -14,14 +13,12 @@ Ace Attorney,2009,Ace Investigations: Miles Edgeworth,Switch 2 [switch],Yes
 Ace Attorney,2011,Ace Investigations: Prosecutor's Gambit,Switch 2 [switch],Yes
 Ace Attorney,2013,Ace Attorney: Dual Destinies,Switch 2 [switch],Yes
 Ace Attorney,2016,Ace Attorney: Spirit of Justice,Switch 2 [switch],
-Breath of Fire,2000,Breath of Fire 4,Steam Deck [retro],
 DC,2015,Batman: Arkham Knight,Steam Deck,Yes
 Desperados,2020,Desperados 3,Steam Deck,
 Dragon Ball,2018,Dragon Ball FighterZ,Computer,Yes
 Drakengard,2010,Nier Replicant [hd],Computer,Yes
 Drakengard,2017,Nier: Automata,Computer,Yes
 Dungeons & Dragons,2023,Baldur's Gate 3,Computer,Yes
-Final Fantasy,2000,Vagrant Story,Steam Deck [retro],
 Final Fantasy,2006,Final Fantasy 12,Steam Deck,Yes
 Final Fantasy,2020,Final Fantasy 7 Remake,Computer,Yes
 Final Fantasy,2024,Final Fantasy 7 Rebirth,Computer,Yes
@@ -31,7 +28,6 @@ League of Legends,2021,Ruined King,Steam Deck,Yes
 Marvel,2018,Spider-Man,Computer,Yes
 Metroid Prime,2002,Metroid Prime Remastered [hd],Switch 2 [switch],
 Metroid,2021,Metroid Dread,Switch 2 [switch],Yes
-Pokemon,2004,Pokemon Emerald,Steam Deck [retro],Yes
 ROM,2015,2064: Read Only Memories,Switch 2 [switch],
 ROM,2024,Read Only Memories: Neurodiver,Switch 2 [switch],
 Resident Evil,1998,Resident Evil 2 [hd],Computer,Yes
@@ -43,8 +39,6 @@ Souls,2022,Elden Ring,Computer,
 Streets of Rage,2020,Streets of Rage 4,Steam Deck,Yes
 Strider,2014,Strider,Steam Deck,
 Tales,2021,Tales of Arise,Computer,Yes
-Valkyrie Profile,1999,Valkyrie Profile,Steam Deck [retro],Yes
-Xeno,1998,Xenogears,Steam Deck [retro],Yes
 Xeno,2010,Xenoblade [hd],Switch 2 [switch],Yes
 Xeno,2015,Xenoblade X,Switch 2 [switch],Yes
 Xeno,2017,Xenoblade 2,Switch 2 [switch],Yes
@@ -52,4 +46,3 @@ Xeno,2022,Xenoblade 3,Switch 2 [switch],Yes
 Zelda,1993,Zelda: Link's Awakening [hd],Switch 2,Yes
 Zelda,2017,Zelda: Breath of the Wild,Switch 2,Yes
 Zelda,2023,Zelda: Tears of the Kingdom,Switch 2,
-
