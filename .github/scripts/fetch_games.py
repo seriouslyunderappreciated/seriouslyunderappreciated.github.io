@@ -1,13 +1,12 @@
 import os
 import requests
-import time
 import json
 
-def fetch_games():
-    # 1️⃣ Auth
+def fetch_single_game():
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
+    # 1️⃣ Get OAuth token
     auth = requests.post(
         f"https://id.twitch.tv/oauth2/token"
         f"?client_id={client_id}"
@@ -22,24 +21,12 @@ def fetch_games():
         "Authorization": f"Bearer {token}",
     }
 
-    # 2️⃣ Time window: last 30 days
-    now = int(time.time())
-    thirty_days_ago = now - 30 * 86400
+    # 2️⃣ Query a single game by ID
+    # Example game: Hades (replace with any ID you like)
+    game_id = 113112
 
-    # 3️⃣ Query
-    query = (
-        "fields id, name, first_release_date, platforms.id, platforms.name, "
-        "cover.url, follows, rating, rating_count, aggregated_rating, aggregated_rating_count; "
-        f"where first_release_date > {thirty_days_ago} "
-        f"& first_release_date <= {now} "
-        "& platforms = (6,130,438) "
-        "& category = (0) "
-        "& (follows > 3 | rating_count > 10 | aggregated_rating_count > 5); "
-        "sort first_release_date desc; "
-        "limit 50;"
-    )
+    query = f"fields *; where id = {game_id};"
 
-    # 4️⃣ Request
     res = requests.post(
         "https://api.igdb.com/v4/games",
         headers=headers,
@@ -47,14 +34,14 @@ def fetch_games():
     )
     res.raise_for_status()
 
-    games = res.json()
+    game = res.json()
 
-    # 5️⃣ Save JSON
+    # 3️⃣ Save JSON so we can inspect it
     os.makedirs("data", exist_ok=True)
-    with open("data/igdb.json", "w", encoding="utf-8") as f:
-        json.dump(games, f, indent=2, ensure_ascii=False)
+    with open("data/single_game.json", "w", encoding="utf-8") as f:
+        json.dump(game, f, indent=2, ensure_ascii=False)
 
-    print(f"Wrote {len(games)} games to data/igdb.json")
+    print(f"Fetched {len(game)} game(s). Check data/single_game.json")
 
 if __name__ == "__main__":
-    fetch_games()
+    fetch_single_game()
