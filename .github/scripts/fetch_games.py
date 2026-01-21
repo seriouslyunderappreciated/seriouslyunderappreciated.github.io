@@ -2,10 +2,11 @@ import os
 import requests
 import json
 
-def fetch_single_game():
+def fetch_game_by_id():
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
+    # 1️⃣ Get OAuth token
     auth = requests.post(
         f"https://id.twitch.tv/oauth2/token"
         f"?client_id={client_id}"
@@ -20,24 +21,25 @@ def fetch_single_game():
         "Authorization": f"Bearer {token}",
     }
 
-    game_id = 374450
-
-    query = f"fields *; where id = {game_id};"
+    # 2️⃣ Query game by ID
+    query = "fields *; where id = 1942;"
 
     res = requests.post(
         "https://api.igdb.com/v4/games",
         headers=headers,
-        data=query,
+        data=query
     )
     res.raise_for_status()
 
-    game = res.json()
+    games = res.json()
 
+    # 3️⃣ Save to JSON
+    import os
     os.makedirs("data", exist_ok=True)
-    with open("data/single_game.json", "w", encoding="utf-8") as f:
-        json.dump(game, f, indent=2, ensure_ascii=False)
+    with open("data/igdb.json", "w", encoding="utf-8") as f:
+        json.dump(games, f, indent=2, ensure_ascii=False)
 
-    print(f"Fetched {len(game)} game(s). Check data/single_game.json")
+    print(f"Fetched {len(games)} game(s). Saved to data/igdb.json")
 
 if __name__ == "__main__":
-    fetch_single_game()
+    fetch_game_by_id()
