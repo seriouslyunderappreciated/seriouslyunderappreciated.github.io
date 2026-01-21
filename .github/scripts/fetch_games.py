@@ -3,11 +3,10 @@ import requests
 import time
 import json
 
-def fetch_debug():
+def fetch_games():
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
-    # Auth
     auth = requests.post(
         f"https://id.twitch.tv/oauth2/token"
         f"?client_id={client_id}"
@@ -29,25 +28,23 @@ def fetch_debug():
         "fields name, first_release_date; "
         f"where first_release_date > {thirty_days_ago} "
         f"& first_release_date <= {now}; "
-        "limit 10;"
+        "limit 50;"
     )
-
-    print("\nQUERY:")
-    print(query)
 
     res = requests.post(
         "https://api.igdb.com/v4/games",
         headers=headers,
         data=query,
     )
-
-    print("\nSTATUS:", res.status_code)
-    print("\nBODY:")
-    print(res.text)
-
     res.raise_for_status()
 
-    print("\nSUCCESS")
+    games = res.json()
+
+    os.makedirs("data", exist_ok=True)
+    with open("data/igdb.json", "w") as f:
+        json.dump(games, f, indent=2)
+
+    print(f"Wrote {len(games)} games to data/igdb.json")
 
 if __name__ == "__main__":
-    fetch_debug()
+    fetch_games()
