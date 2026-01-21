@@ -6,7 +6,6 @@ def fetch_game_by_id():
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
-    # 1️⃣ Get OAuth token
     auth = requests.post(
         f"https://id.twitch.tv/oauth2/token"
         f"?client_id={client_id}"
@@ -21,7 +20,6 @@ def fetch_game_by_id():
         "Authorization": f"Bearer {token}",
     }
 
-    # 2️⃣ Query game by ID
     query = "fields *; where id = 1942;"
 
     res = requests.post(
@@ -33,7 +31,6 @@ def fetch_game_by_id():
 
     games = res.json()
 
-    # 3️⃣ Save to JSON
     import os
     os.makedirs("data", exist_ok=True)
     with open("data/igdb.json", "w", encoding="utf-8") as f:
