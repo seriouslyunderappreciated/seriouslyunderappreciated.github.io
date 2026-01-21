@@ -24,13 +24,12 @@ def fetch_games():
     now = int(time.time())
     thirty_days_ago = now - 30 * 86400
 
-query = (
-    "fields id, name, first_release_date, platforms.id, platforms.name; "
-    f"where first_release_date > {thirty_days_ago} "
-    f"& first_release_date <= {now} "
-    "& platforms = (6,130,438); "
-    "limit 50;"
-)
+    query = (
+        "fields id, name, first_release_date; "
+        f"where first_release_date > {thirty_days_ago} "
+        f"& first_release_date <= {now}; "
+        "limit 50;"
+    )
 
     res = requests.post(
         "https://api.igdb.com/v4/games",
@@ -42,7 +41,7 @@ query = (
     games = res.json()
 
     os.makedirs("data", exist_ok=True)
-    with open("data/igdb.json", "w") as f:
+    with open("data/igdb.json", "w", encoding="utf-8") as f:
         json.dump(games, f, indent=2)
 
     print(f"Wrote {len(games)} games to data/igdb.json")
