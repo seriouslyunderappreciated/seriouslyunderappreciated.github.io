@@ -25,40 +25,9 @@ def fetch_game_data(game_id, access_token, client_id):
         "Accept": "application/json"
     }
     
-    # Request all available fields for the game
-    # Using * to get all fields and expanding related entities
+    # Request ALL available fields - IGDB will return everything
     query = f"""
-    fields *,
-        age_ratings.*,
-        alternative_names.*,
-        artworks.*,
-        bundles.*,
-        collection.*,
-        cover.*,
-        dlcs.*,
-        expansions.*,
-        external_games.*,
-        franchise.*,
-        franchises.*,
-        game_engines.*,
-        game_modes.*,
-        genres.*,
-        involved_companies.company.*,
-        involved_companies.*,
-        keywords.*,
-        multiplayer_modes.*,
-        parent_game.*,
-        platforms.*,
-        player_perspectives.*,
-        release_dates.*,
-        remakes.*,
-        remasters.*,
-        screenshots.*,
-        similar_games.*,
-        standalone_expansions.*,
-        themes.*,
-        videos.*,
-        websites.*;
+    fields *;
     where id = {game_id};
     """
     
