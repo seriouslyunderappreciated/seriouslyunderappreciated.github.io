@@ -4,6 +4,7 @@ import time
 import json
 
 def fetch_games():
+    # 1️⃣ Auth
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
@@ -21,17 +22,24 @@ def fetch_games():
         "Authorization": f"Bearer {token}",
     }
 
+    # 2️⃣ Time window: last 30 days
     now = int(time.time())
     thirty_days_ago = now - 30 * 86400
 
+    # 3️⃣ Query
     query = (
-        "fields id, name, first_release_date, platforms.id, platforms.name; "
+        "fields id, name, first_release_date, platforms.id, platforms.name, "
+        "cover.url, follows, rating, rating_count, aggregated_rating, aggregated_rating_count; "
         f"where first_release_date > {thirty_days_ago} "
         f"& first_release_date <= {now} "
-        "& platforms = (6,130,438); "
+        "& platforms = (6,130,438) "
+        "& category = (0) "
+        "& (follows > 3 | rating_count > 10 | aggregated_rating_count > 5); "
+        "sort first_release_date desc; "
         "limit 50;"
     )
 
+    # 4️⃣ Request
     res = requests.post(
         "https://api.igdb.com/v4/games",
         headers=headers,
@@ -41,6 +49,7 @@ def fetch_games():
 
     games = res.json()
 
+    # 5️⃣ Save JSON
     os.makedirs("data", exist_ok=True)
     with open("data/igdb.json", "w", encoding="utf-8") as f:
         json.dump(games, f, indent=2, ensure_ascii=False)
