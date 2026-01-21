@@ -6,7 +6,6 @@ def fetch_single_game():
     client_id = os.environ["IGDB_CLIENT_ID"]
     client_secret = os.environ["IGDB_CLIENT_SECRET"]
 
-    # 1️⃣ Get OAuth token
     auth = requests.post(
         f"https://id.twitch.tv/oauth2/token"
         f"?client_id={client_id}"
@@ -21,9 +20,7 @@ def fetch_single_game():
         "Authorization": f"Bearer {token}",
     }
 
-    # 2️⃣ Query a single game by ID
-    # Example game: Hades (replace with any ID you like)
-    game_id = 113112
+    game_id = 374450
 
     query = f"fields *; where id = {game_id};"
 
@@ -36,7 +33,6 @@ def fetch_single_game():
 
     game = res.json()
 
-    # 3️⃣ Save JSON so we can inspect it
     os.makedirs("data", exist_ok=True)
     with open("data/single_game.json", "w", encoding="utf-8") as f:
         json.dump(game, f, indent=2, ensure_ascii=False)
