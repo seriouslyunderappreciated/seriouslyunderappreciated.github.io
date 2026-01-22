@@ -3,6 +3,13 @@ import json
 import requests
 from datetime import datetime, timedelta
 
+# =========================
+# CONFIGURABLE CONSTANTS
+# =========================
+DAYS_AGO = 30           # How many days back to consider games from
+TOP_N = 5               # Number of top games for each list
+# =========================
+
 def get_access_token(client_id, client_secret):
     """Get OAuth access token from Twitch."""
     url = "https://id.twitch.tv/oauth2/token"
@@ -11,7 +18,6 @@ def get_access_token(client_id, client_secret):
         "client_secret": client_secret,
         "grant_type": "client_credentials"
     }
-    
     response = requests.post(url, params=params)
     response.raise_for_status()
     return response.json()["access_token"]
@@ -24,21 +30,14 @@ def make_igdb_request(endpoint, query, access_token, client_id):
         "Authorization": f"Bearer {access_token}",
         "Accept": "application/json"
     }
-    
     response = requests.post(url, headers=headers, data=query)
     response.raise_for_status()
     return response.json()
 
 def fetch_candidate_games(access_token, client_id):
-    """Fetch games matching our criteria (without sorting by popularity yet)."""
-    game_age = int((datetime.now() - timedelta(days=30)).timestamp())
+    """Fetch games matching our criteria."""
+    game_age = int((datetime.now() - timedelta(days=DAYS_AGO)).timestamp())
     current_time = int(datetime.now().timestamp())
-    
-    # Platform IDs: 6 = PC (Windows), 130 = Nintendo Switch, 471 = Nintendo Switch 2
-    # Game modes: 1 = Single player
-    # Game type: 0 = main_game
-    # Genres to exclude: 14 = Sport, 26 = Quiz/Trivia, 13 = Simulator
-    # Themes to exclude: 19 = Horror
     
     query = f"""
     fields id, name, platforms, cover, genres, themes;
@@ -51,28 +50,19 @@ def fetch_candidate_games(access_token, client_id):
       & themes != (19);
     limit 500;
     """
-    
     return make_igdb_request("games", query, access_token, client_id)
 
 def get_popularity_scores(game_ids, access_token, client_id):
-    """Fetch popularity scores for given game IDs (types 2 and 6)."""
+    """Fetch popularity scores for given game IDs (type 2)."""
     ids_string = ",".join(map(str, game_ids))
-    
-    # Fetch popularity_type 2
-    query_type2 = f"""
+    query = f"""
     fields game_id, value;
     where game_id = ({ids_string}) & popularity_type = 2;
     """
-    results_type2 = make_igdb_request("popularity_primitives", query_type2, access_token, client_id)
-    
-    # Store scores separately
+    results = make_igdb_request("popularity_primitives", query, access_token, client_id)
     popularity_data = {}
-    for item in results_type2:
-        game_id = item["game_id"]
-        if game_id not in popularity_data:
-            popularity_data[game_id] = {"type_2": 0, "total": 0}
-        popularity_data[game_id]["type_2"] = item["value"]
-    
+    for item in results:
+        popularity_data[item["game_id"]] = item["value"]
     return popularity_data
 
 def get_steam_app_ids(game_ids, access_token, client_id):
@@ -83,151 +73,123 @@ def get_steam_app_ids(game_ids, access_token, client_id):
     where game = ({ids_string}) & external_game_source = 1;
     """
     results = make_igdb_request("external_games", query, access_token, client_id)
-    
-    # Map IGDB game ID → Steam App ID
-    steam_map = {}
-    for item in results:
-        steam_map[item["game"]] = item["uid"]
+    steam_map = {item["game"]: item["uid"] for item in results}
     return steam_map
 
 def get_platforms_data(platform_ids, access_token, client_id):
-    """Fetch platform names for given platform IDs."""
     ids_string = ",".join(map(str, platform_ids))
-    query = f"""
-    fields name;
-    where id = ({ids_string});
-    """
-    
+    query = f"fields name; where id = ({ids_string});"
     platforms = make_igdb_request("platforms", query, access_token, client_id)
     return {p["id"]: p["name"] for p in platforms}
 
 def get_covers_data(cover_ids, access_token, client_id):
-    """Fetch cover image data for given cover IDs."""
     ids_string = ",".join(map(str, cover_ids))
-    query = f"""
-    fields image_id;
-    where id = ({ids_string});
-    """
-    
+    query = f"fields image_id; where id = ({ids_string});"
     covers = make_igdb_request("covers", query, access_token, client_id)
     return {c["id"]: c["image_id"] for c in covers}
 
 def get_all_genres(access_token, client_id):
-    """Fetch all genres with their IDs and names."""
     query = "fields id, name; limit 500;"
     genres = make_igdb_request("genres", query, access_token, client_id)
     return {g["id"]: g["name"] for g in genres}
 
 def get_all_themes(access_token, client_id):
-    """Fetch all themes with their IDs and names."""
     query = "fields id, name; limit 500;"
     themes = make_igdb_request("themes", query, access_token, client_id)
     return {t["id"]: t["name"] for t in themes}
 
+def format_game_data(game, genres_map, themes_map, platforms_map, covers_map):
+    genres_list = [{"id": gid, "name": genres_map.get(gid, "Unknown")} for gid in game.get("genres", [])]
+    themes_list = [{"id": tid, "name": themes_map.get(tid, "Unknown")} for tid in game.get("themes", [])]
+    
+    game_data = {
+        "name": game.get("name"),
+        "platforms": [platforms_map.get(pid) for pid in game.get("platforms", [])],
+        "cover_url": None,
+        "genres": genres_list,
+        "themes": themes_list,
+        "popularity_type_2": game.get("popularity_type_2", 0),
+        "steam_appid": game.get("steam_appid")
+    }
+    
+    cover_id = game.get("cover")
+    if cover_id and cover_id in covers_map:
+        image_id = covers_map[cover_id]
+        game_data["cover_url"] = f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
+    
+    return game_data
+
 def main():
-    # Get credentials from environment variables
     client_id = os.environ.get("IGDB_CLIENT_ID")
     client_secret = os.environ.get("IGDB_CLIENT_SECRET")
     
     if not client_id or not client_secret:
         raise ValueError("IGDB_CLIENT_ID and IGDB_CLIENT_SECRET must be set")
     
-    # Get access token
     print("Getting access token...")
     access_token = get_access_token(client_id, client_secret)
     
-    # Fetch all genres and themes
-    print("Fetching all genres...")
+    print("Fetching genres and themes...")
     genres_map = get_all_genres(access_token, client_id)
-    print("Fetching all themes...")
     themes_map = get_all_themes(access_token, client_id)
     
-    # Step 1: Fetch candidate games
     print("Fetching candidate games...")
     games = fetch_candidate_games(access_token, client_id)
-    
     if not games:
         print("No games found matching criteria")
         return
     
-    print(f"Found {len(games)} candidate games")
-    
-    # Step 2: Get popularity scores
     print("Fetching popularity scores...")
     game_ids = [game["id"] for game in games]
     popularity_data = get_popularity_scores(game_ids, access_token, client_id)
     
-    # Step 2.5: Get Steam App IDs
     print("Fetching Steam App IDs...")
     steam_map = get_steam_app_ids(game_ids, access_token, client_id)
     
-    # Attach popularity and Steam App IDs to games
     for game in games:
-        game_popularity = popularity_data.get(game["id"], {"type_2": 0})
-        game["popularity_type_2"] = game_popularity["type_2"]
-        game["steam_appid"] = steam_map.get(game["id"])
+        game["popularity_type_2"] = popularity_data.get(game["id"], 0)
+        game["steam_appid"] = steam_map.get(game["id"])  # None if non-Steam
     
-    # Step 3: Sort by popularity and take top 10
-    games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
-    top_games = games[:10]
+    # Separate games into Steam and Non-Steam
+    steam_games = [g for g in games if g["steam_appid"]]
+    non_steam_games = [g for g in games if not g["steam_appid"]]
     
-    # Step 4: Collect unique platform IDs and cover IDs
+    # Sort by popularity
+    steam_games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
+    non_steam_games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
+    
+    # Take top N from each
+    top_steam = steam_games[:TOP_N]
+    top_non_steam = non_steam_games[:TOP_N]
+    
+    # Collect platform and cover IDs
     all_platform_ids = set()
     all_cover_ids = []
+    for g in top_steam + top_non_steam:
+        if "platforms" in g:
+            all_platform_ids.update(g["platforms"])
+        if "cover" in g:
+            all_cover_ids.append(g["cover"])
     
-    for game in top_games:
-        if "platforms" in game:
-            all_platform_ids.update(game["platforms"])
-        if "cover" in game:
-            all_cover_ids.append(game["cover"])
-    
-    # Step 5: Fetch platform names
-    print("Fetching platform names...")
     platforms_map = get_platforms_data(list(all_platform_ids), access_token, client_id)
-    
-    # Step 6: Fetch cover image IDs
-    print("Fetching cover data...")
     covers_map = get_covers_data(all_cover_ids, access_token, client_id)
     
-    # Step 7: Format final output
-    formatted_games = []
-    for game in top_games:
-        genres_list = [{"id": gid, "name": genres_map.get(gid, "Unknown")} for gid in game.get("genres", [])]
-        themes_list = [{"id": tid, "name": themes_map.get(tid, "Unknown")} for tid in game.get("themes", [])]
-        
-        game_data = {
-            "name": game.get("name"),
-            "platforms": [platforms_map.get(pid) for pid in game.get("platforms", [])],
-            "cover_url": None,
-            "genres": genres_list,
-            "themes": themes_list,
-            "popularity_type_2": game.get("popularity_type_2", 0),
-            "steam_appid": game.get("steam_appid")
-        }
-        
-        # Build cover URL
-        cover_id = game.get("cover")
-        if cover_id and cover_id in covers_map:
-            image_id = covers_map[cover_id]
-            game_data["cover_url"] = f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
-        
-        formatted_games.append(game_data)
+    # Format games
+    formatted_steam = [format_game_data(g, genres_map, themes_map, platforms_map, covers_map) for g in top_steam]
+    formatted_non_steam = [format_game_data(g, genres_map, themes_map, platforms_map, covers_map) for g in top_non_steam]
     
     # Ensure data directory exists
     os.makedirs("data", exist_ok=True)
     
-    # Write to file
-    output_path = "data/igdb.json"
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(formatted_games, f, indent=2, ensure_ascii=False)
+    # Write outputs
+    with open("data/steam_top.json", "w", encoding="utf-8") as f:
+        json.dump(formatted_steam, f, indent=2, ensure_ascii=False)
     
-    print(f"Successfully wrote {len(formatted_games)} games to {output_path}")
-    for i, game in enumerate(formatted_games, 1):
-        print(f"  {i}. {game['name']}")
-        print(f"     Genres: {[g['name'] for g in game['genres']]}")
-        print(f"     Themes: {[t['name'] for t in game['themes']]}")
-        print(f"     Popularity (Type 2): {game['popularity_type_2']}")
-        print(f"     Steam App ID: {game['steam_appid']}")
+    with open("data/igdb_top.json", "w", encoding="utf-8") as f:
+        json.dump(formatted_non_steam, f, indent=2, ensure_ascii=False)
+    
+    print(f"Successfully wrote {len(formatted_steam)} Steam games to data/steam_top.json")
+    print(f"Successfully wrote {len(formatted_non_steam)} Non-Steam games to data/igdb_top.json")
 
 if __name__ == "__main__":
     main()
