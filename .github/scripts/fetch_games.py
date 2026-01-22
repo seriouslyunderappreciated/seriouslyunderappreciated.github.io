@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import time
 from datetime import datetime, timedelta, UTC
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -23,6 +24,40 @@ STEAM_REVIEW_URL = (
     "{appid}?json=1&language=all&num_per_page=0"
 )
 
+# IGDB rate limiting: 4 requests per second
+IGDB_RATE_LIMIT = 4
+IGDB_RATE_WINDOW = 1.0  # seconds
+
+# ============================================================
+# ------------------- RATE LIMITER ----------------------------
+# ============================================================
+
+class RateLimiter:
+    def __init__(self, max_calls, time_window):
+        self.max_calls = max_calls
+        self.time_window = time_window
+        self.calls = []
+    
+    def wait_if_needed(self):
+        now = time.time()
+        # Remove calls outside the time window
+        self.calls = [call_time for call_time in self.calls if now - call_time < self.time_window]
+        
+        if len(self.calls) >= self.max_calls:
+            # Need to wait
+            oldest_call = self.calls[0]
+            wait_time = self.time_window - (now - oldest_call)
+            if wait_time > 0:
+                time.sleep(wait_time)
+            # Clean up again after waiting
+            now = time.time()
+            self.calls = [call_time for call_time in self.calls if now - call_time < self.time_window]
+        
+        self.calls.append(time.time())
+
+# Global rate limiter for IGDB
+igdb_limiter = RateLimiter(IGDB_RATE_LIMIT, IGDB_RATE_WINDOW)
+
 # ============================================================
 # ------------------- IGDB HELPERS ----------------------------
 # ============================================================
@@ -39,6 +74,7 @@ def get_access_token(client_id, client_secret):
     return r.json()["access_token"]
 
 def igdb_request(endpoint, query, access_token, client_id):
+    igdb_limiter.wait_if_needed()
     url = f"https://api.igdb.com/v4/{endpoint}"
     headers = {
         "Client-ID": client_id,
