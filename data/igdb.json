@@ -35,7 +35,8 @@
         "name": "Sandbox"
       }
     ],
-    "popularity_type_2": 0.000466766422783
+    "popularity_type_2": 0.000466766422783,
+    "steam_appid": null
   },
   {
     "name": "2XKO",
@@ -57,7 +58,8 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 0.000134459463353
+    "popularity_type_2": 0.000134459463353,
+    "steam_appid": null
   },
   {
     "name": "Arknights: Endfield",
@@ -96,7 +98,8 @@
         "name": "Open world"
       }
     ],
-    "popularity_type_2": 9.2200774871e-05
+    "popularity_type_2": 9.2200774871e-05,
+    "steam_appid": null
   },
   {
     "name": "AiliA",
@@ -128,7 +131,8 @@
         "name": "Mystery"
       }
     ],
-    "popularity_type_2": 5.762548429e-06
+    "popularity_type_2": 5.762548429e-06,
+    "steam_appid": "1677100"
   },
   {
     "name": "No One Survived",
@@ -147,7 +151,8 @@
       }
     ],
     "themes": [],
-    "popularity_type_2": 5.762548429e-06
+    "popularity_type_2": 5.762548429e-06,
+    "steam_appid": null
   },
   {
     "name": "Past Fate",
@@ -171,7 +176,8 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 3.841698953e-06
+    "popularity_type_2": 3.841698953e-06,
+    "steam_appid": "1028510"
   },
   {
     "name": "Tatari",
@@ -190,7 +196,8 @@
       }
     ],
     "themes": [],
-    "popularity_type_2": 3.841698953e-06
+    "popularity_type_2": 3.841698953e-06,
+    "steam_appid": null
   },
   {
     "name": "Hank: Drowning on Dry Land",
@@ -209,7 +216,8 @@
       }
     ],
     "themes": [],
-    "popularity_type_2": 3.841698953e-06
+    "popularity_type_2": 3.841698953e-06,
+    "steam_appid": "1937880"
   },
   {
     "name": "The Dark Heart of Balor",
@@ -233,7 +241,8 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 1.920849476e-06
+    "popularity_type_2": 1.920849476e-06,
+    "steam_appid": null
   },
   {
     "name": "Rogue Masters",
@@ -253,6 +262,7 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 1.920849476e-06
+    "popularity_type_2": 1.920849476e-06,
+    "steam_appid": "1063590"
   }
 ]
