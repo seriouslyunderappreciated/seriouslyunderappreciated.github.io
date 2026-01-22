@@ -39,3 +39,4 @@ jobs:
           else
             git commit -m "Automated update: IGDB data files"
             git push
+          fi
