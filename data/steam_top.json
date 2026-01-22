@@ -1,0 +1,126 @@
+[
+  {
+    "name": "AiliA",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg",
+    "genres": [
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 9,
+        "name": "Puzzle"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 43,
+        "name": "Mystery"
+      }
+    ],
+    "popularity_type_2": 5.762548429e-06,
+    "steam_appid": "1677100"
+  },
+  {
+    "name": "Past Fate",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co6v5x.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "popularity_type_2": 3.841698953e-06,
+    "steam_appid": "1028510"
+  },
+  {
+    "name": "Hank: Drowning on Dry Land",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5e2s.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [],
+    "popularity_type_2": 3.841698953e-06,
+    "steam_appid": "1937880"
+  },
+  {
+    "name": "Rogue Masters",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7f1t.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "popularity_type_2": 1.920849476e-06,
+    "steam_appid": "1063590"
+  },
+  {
+    "name": "Pazing By",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co474h.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "popularity_type_2": 0,
+    "steam_appid": "1597820"
+  }
+]
