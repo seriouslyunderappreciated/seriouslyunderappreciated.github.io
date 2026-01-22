@@ -35,7 +35,7 @@ def fetch_candidate_games(access_token, client_id):
     
     # Platform IDs: 6 = PC (Windows), 130 = Nintendo Switch, 471 = Nintendo Switch 2
     # Game modes: 1 = Single player
-    # Category: 0 = main_game
+    # Game type: 0 = main_game
     # Genres to exclude: 14 = Sport, 26 = Quiz/Trivia, 13 = Simulator
     # Themes to exclude: 19 = Horror
     
@@ -44,7 +44,7 @@ def fetch_candidate_games(access_token, client_id):
     where first_release_date >= {ninety_days_ago}
       & platforms = (6, 130, 471)
       & game_modes = 1
-      & category = 0
+      & game_type = 0
       & genres != (14, 26, 13)
       & themes != 19;
     limit 500;
