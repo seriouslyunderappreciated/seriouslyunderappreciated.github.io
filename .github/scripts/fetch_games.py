@@ -55,15 +55,37 @@ def fetch_candidate_games(access_token, client_id):
     return make_igdb_request("games", query, access_token, client_id)
 
 def get_popularity_scores(game_ids, access_token, client_id):
-    """Fetch popularity scores for given game IDs."""
+    """Fetch popularity scores for given game IDs (types 1 and 6)."""
     ids_string = ",".join(map(str, game_ids))
-    query = f"""
+    
+    # Fetch popularity_type 1
+    query_type1 = f"""
     fields game_id, value;
     where game_id = ({ids_string}) & popularity_type = 1;
     """
+    results_type1 = make_igdb_request("popularity_primitives", query_type1, access_token, client_id)
     
-    results = make_igdb_request("popularity_primitives", query, access_token, client_id)
-    return {item["game_id"]: item["value"] for item in results}
+    # Fetch popularity_type 6
+    query_type6 = f"""
+    fields game_id, value;
+    where game_id = ({ids_string}) & popularity_type = 6;
+    """
+    results_type6 = make_igdb_request("popularity_primitives", query_type6, access_token, client_id)
+    
+    # Sum the values for each game
+    popularity_scores = {}
+    for item in results_type1:
+        game_id = item["game_id"]
+        popularity_scores[game_id] = item["value"]
+    
+    for item in results_type6:
+        game_id = item["game_id"]
+        if game_id in popularity_scores:
+            popularity_scores[game_id] += item["value"]
+        else:
+            popularity_scores[game_id] = item["value"]
+    
+    return popularity_scores
 
 def get_platforms_data(platform_ids, access_token, client_id):
     """Fetch platform names for given platform IDs."""
