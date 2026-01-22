@@ -9,10 +9,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # ---------------------- CONFIG ------------------------------
 # ============================================================
 
-DAYS_BACK = 30
-
-TOP_N_HYPES = 20   # shortlist after IGDB hypes
-TOP_FINAL = 6      # final list after Steam reviews
+DAYS_BACK = 30        # Look for games released in the last X days
+TOP_FINAL = 6         # Final top N games based on Steam total_positive
 
 PC_PLATFORM_ID = 6
 SINGLE_PLAYER_MODE_ID = 1
@@ -21,7 +19,7 @@ EXCLUDED_GENRES = {13, 14, 26}   # Simulator, Sport, Quiz/Trivia
 EXCLUDED_THEMES = {19}           # Horror
 
 STEAM_EXTERNAL_SOURCE = 1
-STEAM_WEBSITE_TYPE = 13          # Modern way to filter websites for Steam
+STEAM_WEBSITE_TYPE = 13          # Steam website type in IGDB
 
 STEAM_REVIEW_URL = (
     "https://store.steampowered.com/appreviews/"
@@ -66,7 +64,7 @@ def fetch_games(access_token, client_id):
     end_ts = int(now_utc.timestamp())
 
     query = f"""
-    fields id, name, platforms, game_modes, genres, themes, cover, hypes;
+    fields id, name, platforms, game_modes, genres, themes, cover;
     where
       first_release_date >= {start_ts}
       & first_release_date <= {end_ts}
@@ -195,9 +193,6 @@ def main():
 
     games = [g for g in games if g.get("steam_appid")]
     print(f"Steam games remaining: {len(games)}")
-
-    games.sort(key=lambda g: g.get("hypes", 0), reverse=True)
-    games = games[:TOP_N_HYPES]
 
     print("Fetching Steam review counts (parallel)...")
     with ThreadPoolExecutor(max_workers=8) as executor:
