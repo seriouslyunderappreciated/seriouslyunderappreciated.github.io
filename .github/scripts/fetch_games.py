@@ -29,29 +29,12 @@ def make_igdb_request(endpoint, query, access_token, client_id):
     response.raise_for_status()
     return response.json()
 
-def get_recent_release_game_ids(access_token, client_id):
-    """Get game IDs from release_dates for our target platforms in last 90 days."""
+def fetch_candidate_games(access_token, client_id):
+    """Fetch games matching our criteria (without sorting by popularity yet)."""
     ninety_days_ago = int((datetime.now() - timedelta(days=90)).timestamp())
     current_time = int(datetime.now().timestamp())
     
     # Platform IDs: 6 = PC (Windows), 130 = Nintendo Switch, 471 = Nintendo Switch 2
-    # Only get releases that have actually happened (date <= now)
-    query = f"""
-    fields game;
-    where platform = (6, 130, 471)
-      & date >= {ninety_days_ago}
-      & date <= {current_time};
-    limit 500;
-    """
-    
-    release_dates = make_igdb_request("release_dates", query, access_token, client_id)
-    # Extract unique game IDs
-    return list(set(rd["game"] for rd in release_dates if "game" in rd))
-
-def fetch_candidate_games(game_ids, access_token, client_id):
-    """Fetch games by IDs and apply our filters."""
-    ids_string = ",".join(map(str, game_ids))
-    
     # Game modes: 1 = Single player
     # Game type: 0 = main_game
     # Genres to exclude: 14 = Sport, 26 = Quiz/Trivia, 13 = Simulator
@@ -59,11 +42,14 @@ def fetch_candidate_games(game_ids, access_token, client_id):
     
     query = f"""
     fields id, name, platforms, cover;
-    where id = ({ids_string})
+    where first_release_date >= {ninety_days_ago}
+      & first_release_date <= {current_time}
+      & platforms = (6, 130, 471)
       & game_modes = 1
       & game_type = 0
       & genres != (14, 26, 13)
       & themes != 19;
+    limit 500;
     """
     
     return make_igdb_request("games", query, access_token, client_id)
@@ -113,32 +99,22 @@ def main():
     print("Getting access token...")
     access_token = get_access_token(client_id, client_secret)
     
-    # Step 1: Get game IDs from release_dates for our platforms in last 90 days
-    print("Fetching recent releases for target platforms...")
-    game_ids = get_recent_release_game_ids(access_token, client_id)
-    
-    if not game_ids:
-        print("No releases found for target platforms in last 90 days")
-        return
-    
-    print(f"Found {len(game_ids)} games with recent releases")
-    
-    # Step 2: Fetch games by those IDs and apply our filters
-    print("Applying filters to games...")
-    games = fetch_candidate_games(game_ids, access_token, client_id)
+    # Step 1: Fetch candidate games matching our filters
+    print("Fetching candidate games...")
+    games = fetch_candidate_games(access_token, client_id)
     
     if not games:
-        print("No games found matching all criteria")
+        print("No games found matching criteria")
         return
     
-    print(f"Found {len(games)} games matching all criteria")
+    print(f"Found {len(games)} candidate games")
     
-    # Step 3: Get popularity scores for all candidate games
+    # Step 2: Get popularity scores for all candidate games
     print("Fetching popularity scores...")
-    filtered_game_ids = [game["id"] for game in games]
-    popularity_scores = get_popularity_scores(filtered_game_ids, access_token, client_id)
+    game_ids = [game["id"] for game in games]
+    popularity_scores = get_popularity_scores(game_ids, access_token, client_id)
     
-    # Step 4: Attach popularity to games and sort
+    # Step 3: Attach popularity to games and sort
     for game in games:
         game["popularity"] = popularity_scores.get(game["id"], 0)
     
@@ -148,7 +124,7 @@ def main():
     
     print(f"Top 10 most popular games selected")
     
-    # Step 5: Collect all unique platform IDs and cover IDs from top 10
+    # Step 4: Collect all unique platform IDs and cover IDs from top 10
     all_platform_ids = set()
     all_cover_ids = []
     
@@ -158,15 +134,15 @@ def main():
         if "cover" in game:
             all_cover_ids.append(game["cover"])
     
-    # Step 6: Fetch platform names
+    # Step 5: Fetch platform names
     print("Fetching platform names...")
     platforms_map = get_platforms_data(list(all_platform_ids), access_token, client_id)
     
-    # Step 7: Fetch cover image IDs
+    # Step 6: Fetch cover image IDs
     print("Fetching cover data...")
     covers_map = get_covers_data(all_cover_ids, access_token, client_id)
     
-    # Step 8: Format the final output
+    # Step 7: Format the final output
     formatted_games = []
     for game in top_games:
         game_data = {
