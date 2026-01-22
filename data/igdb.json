@@ -31,6 +31,49 @@
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9uqe.jpg"
   },
   {
+    "name": "Lort",
+    "steam_appid": "2956680",
+    "total_positive": 158,
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "genres": [
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coavrs.jpg"
+  },
+  {
+    "name": "Mochi-O",
+    "steam_appid": "3596670",
+    "total_positive": 84,
+    "platforms": [
+      "Android",
+      "PC (Microsoft Windows)",
+      "iOS"
+    ],
+    "genres": [
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9o56.jpg"
+  },
+  {
     "name": "Ghetto Zombies: Graffiti Squad",
     "steam_appid": "3047820",
     "total_positive": 52,
@@ -109,71 +152,5 @@
       }
     ],
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hzg.jpg"
-  },
-  {
-    "name": "Elengard: Ascension",
-    "steam_appid": "2017480",
-    "total_positive": 29,
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      },
-      {
-        "id": 15,
-        "name": "Strategy"
-      },
-      {
-        "id": 31,
-        "name": "Adventure"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      },
-      {
-        "id": 17,
-        "name": "Fantasy"
-      }
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9y44.jpg"
-  },
-  {
-    "name": "AiliA",
-    "steam_appid": "1677100",
-    "total_positive": 27,
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "genres": [
-      {
-        "id": 8,
-        "name": "Platform"
-      },
-      {
-        "id": 9,
-        "name": "Puzzle"
-      },
-      {
-        "id": 31,
-        "name": "Adventure"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 43,
-        "name": "Mystery"
-      }
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
   }
 ]
