@@ -1,5 +1,104 @@
 [
   {
+    "name": "Hytale",
+    "platforms": [
+      "Linux",
+      "PC (Microsoft Windows)",
+      "Mac"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cobbwu.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 17,
+        "name": "Fantasy"
+      },
+      {
+        "id": 33,
+        "name": "Sandbox"
+      }
+    ],
+    "popularity_type_2": 0.000466766422783
+  },
+  {
+    "name": "2XKO",
+    "platforms": [
+      "Xbox Series X|S",
+      "PC (Microsoft Windows)",
+      "PlayStation 5"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coamzd.jpg",
+    "genres": [
+      {
+        "id": 4,
+        "name": "Fighting"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "popularity_type_2": 0.000134459463353
+  },
+  {
+    "name": "Arknights: Endfield",
+    "platforms": [
+      "Android",
+      "PC (Microsoft Windows)",
+      "iOS",
+      "PlayStation 5"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coaw23.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 38,
+        "name": "Open world"
+      }
+    ],
+    "popularity_type_2": 9.2200774871e-05
+  },
+  {
     "name": "AiliA",
     "platforms": [
       "PC (Microsoft Windows)"
@@ -29,16 +128,38 @@
         "name": "Mystery"
       }
     ],
-    "popularity_type_2": 5.762548429e-06,
-    "popularity_type_6": 0
+    "popularity_type_2": 5.762548429e-06
   },
   {
-    "name": "Velaster",
+    "name": "No One Survived",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hzg.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5jt4.jpg",
     "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [],
+    "popularity_type_2": 5.762548429e-06
+  },
+  {
+    "name": "Past Fate",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co6v5x.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
       {
         "id": 32,
         "name": "Indie"
@@ -50,103 +171,45 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 5.762548429e-06,
-    "popularity_type_6": 0
+    "popularity_type_2": 3.841698953e-06
   },
   {
-    "name": "It Consumes",
+    "name": "Tatari",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7hgb.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5jea.jpg",
     "genres": [
-      {
-        "id": 5,
-        "name": "Shooter"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      }
-    ],
-    "popularity_type_2": 3.841698953e-06,
-    "popularity_type_6": 0
-  },
-  {
-    "name": "Elengard: Ascension",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9y44.jpg",
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      },
-      {
-        "id": 15,
-        "name": "Strategy"
-      },
       {
         "id": 31,
         "name": "Adventure"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
       },
       {
-        "id": 17,
-        "name": "Fantasy"
+        "id": 32,
+        "name": "Indie"
       }
     ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
+    "themes": [],
+    "popularity_type_2": 3.841698953e-06
   },
   {
-    "name": "Entity: The Black Day",
+    "name": "Hank: Drowning on Dry Land",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob66b.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5e2s.jpg",
     "genres": [
-      {
-        "id": 5,
-        "name": "Shooter"
-      },
       {
         "id": 31,
         "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
       }
     ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      },
-      {
-        "id": 19,
-        "name": "Horror"
-      },
-      {
-        "id": 20,
-        "name": "Thriller"
-      },
-      {
-        "id": 21,
-        "name": "Survival"
-      },
-      {
-        "id": 43,
-        "name": "Mystery"
-      }
-    ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
+    "themes": [],
+    "popularity_type_2": 3.841698953e-06
   },
   {
     "name": "The Dark Heart of Balor",
@@ -170,83 +233,15 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
+    "popularity_type_2": 1.920849476e-06
   },
   {
-    "name": "Raindrop Umbrella",
+    "name": "Rogue Masters",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co66bz.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7f1t.jpg",
     "genres": [
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      }
-    ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
-  },
-  {
-    "name": "Summer Beach",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7bxq.jpg",
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      }
-    ],
-    "themes": [
-      {
-        "id": 42,
-        "name": "Erotic"
-      }
-    ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
-  },
-  {
-    "name": "Reach to Tsukuyomi",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7fzt.jpg",
-    "genres": [
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      }
-    ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
-  },
-  {
-    "name": "Wacambria Island",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7tlq.jpg",
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      },
       {
         "id": 31,
         "name": "Adventure"
@@ -258,7 +253,6 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 1.920849476e-06,
-    "popularity_type_6": 0
+    "popularity_type_2": 1.920849476e-06
   }
 ]
