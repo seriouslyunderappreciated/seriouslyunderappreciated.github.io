@@ -16,73 +16,72 @@ def get_access_token(client_id, client_secret):
     response.raise_for_status()
     return response.json()["access_token"]
 
-def fetch_popular_games(access_token, client_id):
-    """Fetch top 10 popular single-player games from last 90 days."""
-    url = "https://api.igdb.com/v4/games"
-    
+def make_igdb_request(endpoint, query, access_token, client_id):
+    """Make a request to an IGDB endpoint."""
+    url = f"https://api.igdb.com/v4/{endpoint}"
     headers = {
         "Client-ID": client_id,
         "Authorization": f"Bearer {access_token}",
         "Accept": "application/json"
     }
     
-    # Calculate date 90 days ago (Unix timestamp)
+    response = requests.post(url, headers=headers, data=query)
+    response.raise_for_status()
+    return response.json()
+
+def get_popular_game_ids(access_token, client_id):
+    """Get game IDs sorted by popularity using popularity_primitives."""
     ninety_days_ago = int((datetime.now() - timedelta(days=90)).timestamp())
     
-    # Platform IDs:
-    # 6 = PC (Windows)
-    # 130 = Nintendo Switch
-    # 471 = Nintendo Switch 2
-    
-    # Game modes:
-    # 1 = Single player
-    
-    # Genres to exclude:
-    # 4 = Fighting (not needed but keeping note)
-    # 5 = Shooter (not needed)
-    # 14 = Sport
-    # 16 = Turn-based strategy (not needed)
-    # 26 = Quiz/Trivia
-    # 19 = Horror (actually called "Horror" but ID might be different)
-    # 14 = Sport
-    # 13 = Simulator
-    
-    # Game category:
-    # 0 = main_game
-    # (1 = dlc, 2 = expansion, 3 = bundle, etc.)
-    
+    # Platform IDs: 6 = PC (Windows), 130 = Nintendo Switch, 471 = Nintendo Switch 2
+    # Query popularity_primitives for recently released games
     query = f"""
-    fields name, platforms.name, cover.image_id, cover.url;
-    where first_release_date >= {ninety_days_ago}
-      & platforms = (6, 130, 471)
-      & game_modes = (1)
-      & category = 0
-      & genres != (14, 26, 13, 19);
-    sort popularity desc;
+    fields game_id, value;
+    where popularity_type = 1
+      & game_id.first_release_date >= {ninety_days_ago}
+      & game_id.platforms = (6, 130, 471)
+      & game_id.game_modes = 1
+      & game_id.category = 0
+      & game_id.genres != (14, 26, 13)
+      & game_id.themes != 19;
+    sort value desc;
     limit 10;
     """
     
-    response = requests.post(url, headers=headers, data=query)
-    response.raise_for_status()
-    games = response.json()
+    results = make_igdb_request("popularity_primitives", query, access_token, client_id)
+    return [item["game_id"] for item in results]
+
+def get_games_data(game_ids, access_token, client_id):
+    """Fetch game data for given game IDs."""
+    ids_string = ",".join(map(str, game_ids))
+    query = f"""
+    fields name, platforms, cover;
+    where id = ({ids_string});
+    """
     
-    # Format the data with proper cover URLs
-    formatted_games = []
-    for game in games:
-        game_data = {
-            "name": game.get("name"),
-            "platforms": [p.get("name") for p in game.get("platforms", [])],
-            "cover_url": None
-        }
-        
-        # Build cover URL (using t_cover_big which is 264x374px - closest to 320px height)
-        if game.get("cover") and game["cover"].get("image_id"):
-            image_id = game["cover"]["image_id"]
-            game_data["cover_url"] = f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
-        
-        formatted_games.append(game_data)
+    return make_igdb_request("games", query, access_token, client_id)
+
+def get_platforms_data(platform_ids, access_token, client_id):
+    """Fetch platform names for given platform IDs."""
+    ids_string = ",".join(map(str, platform_ids))
+    query = f"""
+    fields name;
+    where id = ({ids_string});
+    """
     
-    return formatted_games
+    platforms = make_igdb_request("platforms", query, access_token, client_id)
+    return {p["id"]: p["name"] for p in platforms}
+
+def get_covers_data(cover_ids, access_token, client_id):
+    """Fetch cover image data for given cover IDs."""
+    ids_string = ",".join(map(str, cover_ids))
+    query = f"""
+    fields image_id;
+    where id = ({ids_string});
+    """
+    
+    covers = make_igdb_request("covers", query, access_token, client_id)
+    return {c["id"]: c["image_id"] for c in covers}
 
 def main():
     # Get credentials from environment variables (GitHub secrets)
@@ -96,9 +95,53 @@ def main():
     print("Getting access token...")
     access_token = get_access_token(client_id, client_secret)
     
-    # Fetch popular games
-    print("Fetching popular games from last 90 days...")
-    games = fetch_popular_games(access_token, client_id)
+    # Step 1: Get popular game IDs from popularity_primitives
+    print("Fetching popular game IDs...")
+    game_ids = get_popular_game_ids(access_token, client_id)
+    
+    if not game_ids:
+        print("No games found matching criteria")
+        return
+    
+    # Step 2: Get game data
+    print("Fetching game details...")
+    games = get_games_data(game_ids, access_token, client_id)
+    
+    # Step 3: Collect all unique platform IDs and cover IDs
+    all_platform_ids = set()
+    all_cover_ids = []
+    
+    for game in games:
+        if "platforms" in game:
+            all_platform_ids.update(game["platforms"])
+        if "cover" in game:
+            all_cover_ids.append(game["cover"])
+    
+    # Step 4: Fetch platform names
+    print("Fetching platform names...")
+    platforms_map = get_platforms_data(list(all_platform_ids), access_token, client_id)
+    
+    # Step 5: Fetch cover image IDs
+    print("Fetching cover data...")
+    covers_map = get_covers_data(all_cover_ids, access_token, client_id)
+    
+    # Step 6: Format the final output
+    formatted_games = []
+    for game in games:
+        game_data = {
+            "name": game.get("name"),
+            "platforms": [platforms_map.get(pid) for pid in game.get("platforms", [])],
+            "cover_url": None
+        }
+        
+        # Build cover URL using t_cover_small (90x128) or t_cover_big (264x374)
+        # t_cover_big is 374px tall, closest to your 320px requirement
+        cover_id = game.get("cover")
+        if cover_id and cover_id in covers_map:
+            image_id = covers_map[cover_id]
+            game_data["cover_url"] = f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
+        
+        formatted_games.append(game_data)
     
     # Ensure data directory exists
     os.makedirs("data", exist_ok=True)
@@ -106,10 +149,10 @@ def main():
     # Write to file
     output_path = "data/igdb.json"
     with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(games, f, indent=2, ensure_ascii=False)
+        json.dump(formatted_games, f, indent=2, ensure_ascii=False)
     
-    print(f"Successfully wrote {len(games)} games to {output_path}")
-    for game in games:
+    print(f"Successfully wrote {len(formatted_games)} games to {output_path}")
+    for game in formatted_games:
         print(f"  - {game['name']}")
 
 if __name__ == "__main__":
