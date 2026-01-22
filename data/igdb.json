@@ -1,25 +1,11 @@
 [
   {
-    "name": "The Perfect Tower II",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coawmq.jpg"
-  },
-  {
     "name": "Metroid Prime 4: Beyond",
     "platforms": [
       "Nintendo Switch 2",
       "Nintendo Switch"
     ],
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob85d.jpg"
-  },
-  {
-    "name": "Elengard: Ascension",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9y44.jpg"
   },
   {
     "name": "Routine",
@@ -31,18 +17,13 @@
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coay6e.jpg"
   },
   {
-    "name": "Velaster",
+    "name": "Dead Static Drive",
     "platforms": [
-      "PC (Microsoft Windows)"
+      "Xbox Series X|S",
+      "PC (Microsoft Windows)",
+      "Xbox One"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hzg.jpg"
-  },
-  {
-    "name": "AiliA",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coarcc.jpg"
   },
   {
     "name": "Simon the Sorcerer Origins",
@@ -59,6 +40,13 @@
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5l7f.jpg"
   },
   {
+    "name": "The Perfect Tower II",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coawmq.jpg"
+  },
+  {
     "name": "GigaSword",
     "platforms": [
       "Xbox Series X|S",
@@ -70,18 +58,27 @@
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5doa.jpg"
   },
   {
-    "name": "Demonschool",
+    "name": "The Use of Life",
     "platforms": [
-      "Xbox Series X|S",
-      "PlayStation 4",
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co38zm.jpg"
+  },
+  {
+    "name": "AiliA",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
+  },
+  {
+    "name": "Scrabdackle",
+    "platforms": [
       "Linux",
       "PC (Microsoft Windows)",
-      "PlayStation 5",
-      "Mac",
-      "Xbox One",
-      "Nintendo Switch"
+      "Mac"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coacd2.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coajg1.jpg"
   },
   {
     "name": "SpaceVenture",
