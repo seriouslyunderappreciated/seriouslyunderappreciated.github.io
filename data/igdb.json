@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Hank: Drowning on Dry Land",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5e2s.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [],
+    "hypes": 2,
+    "steam_appid": "1937880",
+    "total_positive": 92
+  },
+  {
+    "name": "Rogue Masters",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7f1t.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "hypes": 0,
+    "steam_appid": "1063590",
+    "total_positive": 76
+  },
+  {
+    "name": "Furry House",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co400r.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      },
+      {
+        "id": 34,
+        "name": "Visual Novel"
+      }
+    ],
+    "themes": [
+      {
+        "id": 42,
+        "name": "Erotic"
+      }
+    ],
+    "hypes": 0,
+    "steam_appid": "1407140",
+    "total_positive": 53
+  },
+  {
+    "name": "AiliA",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg",
+    "genres": [
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 9,
+        "name": "Puzzle"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 43,
+        "name": "Mystery"
+      }
+    ],
+    "hypes": 2,
+    "steam_appid": "1677100",
+    "total_positive": 27
+  },
+  {
+    "name": "Past Fate",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co6v5x.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "hypes": 1,
+    "steam_appid": "1028510",
+    "total_positive": 23
+  },
+  {
+    "name": "Monster Path",
+    "platforms": [
+      "PC (Microsoft Windows)",
+      "Mac"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co78m5.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "hypes": 0,
+    "steam_appid": "1907660",
+    "total_positive": 12
+  }
+]
