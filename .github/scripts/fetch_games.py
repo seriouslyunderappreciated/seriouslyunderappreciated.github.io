@@ -65,9 +65,8 @@ def get_popularity_scores(game_ids, access_token, client_id):
     """
     results_type2 = make_igdb_request("popularity_primitives", query_type2, access_token, client_id)
     
-    # Store scores separately and calculate total
+    # Store scores separately
     popularity_data = {}
-    
     for item in results_type2:
         game_id = item["game_id"]
         if game_id not in popularity_data:
@@ -75,6 +74,21 @@ def get_popularity_scores(game_ids, access_token, client_id):
         popularity_data[game_id]["type_2"] = item["value"]
     
     return popularity_data
+
+def get_steam_app_ids(game_ids, access_token, client_id):
+    """Fetch Steam App IDs for given IGDB game IDs."""
+    ids_string = ",".join(map(str, game_ids))
+    query = f"""
+    fields game, uid;
+    where game = ({ids_string}) & external_game_source = 1;
+    """
+    results = make_igdb_request("external_games", query, access_token, client_id)
+    
+    # Map IGDB game ID → Steam App ID
+    steam_map = {}
+    for item in results:
+        steam_map[item["game"]] = item["uid"]
+    return steam_map
 
 def get_platforms_data(platform_ids, access_token, client_id):
     """Fetch platform names for given platform IDs."""
@@ -111,7 +125,7 @@ def get_all_themes(access_token, client_id):
     return {t["id"]: t["name"] for t in themes}
 
 def main():
-    # Get credentials from environment variables (GitHub secrets)
+    # Get credentials from environment variables
     client_id = os.environ.get("IGDB_CLIENT_ID")
     client_secret = os.environ.get("IGDB_CLIENT_SECRET")
     
@@ -122,14 +136,13 @@ def main():
     print("Getting access token...")
     access_token = get_access_token(client_id, client_secret)
     
-    # Fetch all genres and themes for mapping
+    # Fetch all genres and themes
     print("Fetching all genres...")
     genres_map = get_all_genres(access_token, client_id)
-    
     print("Fetching all themes...")
     themes_map = get_all_themes(access_token, client_id)
     
-    # Step 1: Fetch candidate games matching our filters
+    # Step 1: Fetch candidate games
     print("Fetching candidate games...")
     games = fetch_candidate_games(access_token, client_id)
     
@@ -139,23 +152,26 @@ def main():
     
     print(f"Found {len(games)} candidate games")
     
-    # Step 2: Get popularity scores for all candidate games
+    # Step 2: Get popularity scores
     print("Fetching popularity scores...")
     game_ids = [game["id"] for game in games]
     popularity_data = get_popularity_scores(game_ids, access_token, client_id)
     
-    # Step 3: Attach popularity to games and sort
+    # Step 2.5: Get Steam App IDs
+    print("Fetching Steam App IDs...")
+    steam_map = get_steam_app_ids(game_ids, access_token, client_id)
+    
+    # Attach popularity and Steam App IDs to games
     for game in games:
         game_popularity = popularity_data.get(game["id"], {"type_2": 0})
         game["popularity_type_2"] = game_popularity["type_2"]
+        game["steam_appid"] = steam_map.get(game["id"])
     
-    # Sort by popularity and take top 10
+    # Step 3: Sort by popularity and take top 10
     games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
     top_games = games[:10]
     
-    print(f"Top 10 most popular games selected")
-    
-    # Step 4: Collect all unique platform IDs and cover IDs from top 10
+    # Step 4: Collect unique platform IDs and cover IDs
     all_platform_ids = set()
     all_cover_ids = []
     
@@ -173,24 +189,11 @@ def main():
     print("Fetching cover data...")
     covers_map = get_covers_data(all_cover_ids, access_token, client_id)
     
-    # Step 7: Format the final output
+    # Step 7: Format final output
     formatted_games = []
     for game in top_games:
-        # Build genres list with IDs and names
-        genres_list = []
-        for genre_id in game.get("genres", []):
-            genres_list.append({
-                "id": genre_id,
-                "name": genres_map.get(genre_id, "Unknown")
-            })
-        
-        # Build themes list with IDs and names
-        themes_list = []
-        for theme_id in game.get("themes", []):
-            themes_list.append({
-                "id": theme_id,
-                "name": themes_map.get(theme_id, "Unknown")
-            })
+        genres_list = [{"id": gid, "name": genres_map.get(gid, "Unknown")} for gid in game.get("genres", [])]
+        themes_list = [{"id": tid, "name": themes_map.get(tid, "Unknown")} for tid in game.get("themes", [])]
         
         game_data = {
             "name": game.get("name"),
@@ -198,10 +201,11 @@ def main():
             "cover_url": None,
             "genres": genres_list,
             "themes": themes_list,
-            "popularity_type_2": game.get("popularity_type_2", 0)
+            "popularity_type_2": game.get("popularity_type_2", 0),
+            "steam_appid": game.get("steam_appid")
         }
         
-        # Build cover URL using t_cover_big (264x374px)
+        # Build cover URL
         cover_id = game.get("cover")
         if cover_id and cover_id in covers_map:
             image_id = covers_map[cover_id]
@@ -223,6 +227,7 @@ def main():
         print(f"     Genres: {[g['name'] for g in game['genres']]}")
         print(f"     Themes: {[t['name'] for t in game['themes']]}")
         print(f"     Popularity (Type 2): {game['popularity_type_2']}")
+        print(f"     Steam App ID: {game['steam_appid']}")
 
 if __name__ == "__main__":
     main()
