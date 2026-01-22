@@ -58,10 +58,10 @@ def get_popularity_scores(game_ids, access_token, client_id):
     """Fetch popularity scores for given game IDs (types 1 and 6)."""
     ids_string = ",".join(map(str, game_ids))
     
-    # Fetch popularity_type 1
+    # Fetch popularity_type 2
     query_type1 = f"""
     fields game_id, value;
-    where game_id = ({ids_string}) & popularity_type = 1;
+    where game_id = ({ids_string}) & popularity_type = 2;
     """
     results_type1 = make_igdb_request("popularity_primitives", query_type1, access_token, client_id)
     
