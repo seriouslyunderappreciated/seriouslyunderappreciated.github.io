@@ -41,7 +41,7 @@ def fetch_candidate_games(access_token, client_id):
     # Themes to exclude: 19 = Horror
     
     query = f"""
-    fields id, name, platforms, cover;
+    fields id, name, platforms, cover, genres, themes;
     where first_release_date >= {ninety_days_ago}
       & first_release_date <= {current_time}
       & platforms = (6, 130, 471)
@@ -55,15 +55,15 @@ def fetch_candidate_games(access_token, client_id):
     return make_igdb_request("games", query, access_token, client_id)
 
 def get_popularity_scores(game_ids, access_token, client_id):
-    """Fetch popularity scores for given game IDs (types 1 and 6)."""
+    """Fetch popularity scores for given game IDs (types 2 and 6)."""
     ids_string = ",".join(map(str, game_ids))
     
     # Fetch popularity_type 2
-    query_type1 = f"""
+    query_type2 = f"""
     fields game_id, value;
     where game_id = ({ids_string}) & popularity_type = 2;
     """
-    results_type1 = make_igdb_request("popularity_primitives", query_type1, access_token, client_id)
+    results_type2 = make_igdb_request("popularity_primitives", query_type2, access_token, client_id)
     
     # Fetch popularity_type 6
     query_type6 = f"""
@@ -72,20 +72,24 @@ def get_popularity_scores(game_ids, access_token, client_id):
     """
     results_type6 = make_igdb_request("popularity_primitives", query_type6, access_token, client_id)
     
-    # Sum the values for each game
-    popularity_scores = {}
-    for item in results_type1:
+    # Store scores separately and calculate total
+    popularity_data = {}
+    
+    for item in results_type2:
         game_id = item["game_id"]
-        popularity_scores[game_id] = item["value"]
+        if game_id not in popularity_data:
+            popularity_data[game_id] = {"type_2": 0, "type_6": 0, "total": 0}
+        popularity_data[game_id]["type_2"] = item["value"]
+        popularity_data[game_id]["total"] += item["value"]
     
     for item in results_type6:
         game_id = item["game_id"]
-        if game_id in popularity_scores:
-            popularity_scores[game_id] += item["value"]
-        else:
-            popularity_scores[game_id] = item["value"]
+        if game_id not in popularity_data:
+            popularity_data[game_id] = {"type_2": 0, "type_6": 0, "total": 0}
+        popularity_data[game_id]["type_6"] = item["value"]
+        popularity_data[game_id]["total"] += item["value"]
     
-    return popularity_scores
+    return popularity_data
 
 def get_platforms_data(platform_ids, access_token, client_id):
     """Fetch platform names for given platform IDs."""
@@ -109,6 +113,18 @@ def get_covers_data(cover_ids, access_token, client_id):
     covers = make_igdb_request("covers", query, access_token, client_id)
     return {c["id"]: c["image_id"] for c in covers}
 
+def get_all_genres(access_token, client_id):
+    """Fetch all genres with their IDs and names."""
+    query = "fields id, name; limit 500;"
+    genres = make_igdb_request("genres", query, access_token, client_id)
+    return {g["id"]: g["name"] for g in genres}
+
+def get_all_themes(access_token, client_id):
+    """Fetch all themes with their IDs and names."""
+    query = "fields id, name; limit 500;"
+    themes = make_igdb_request("themes", query, access_token, client_id)
+    return {t["id"]: t["name"] for t in themes}
+
 def main():
     # Get credentials from environment variables (GitHub secrets)
     client_id = os.environ.get("IGDB_CLIENT_ID")
@@ -120,6 +136,13 @@ def main():
     # Get access token
     print("Getting access token...")
     access_token = get_access_token(client_id, client_secret)
+    
+    # Fetch all genres and themes for mapping
+    print("Fetching all genres...")
+    genres_map = get_all_genres(access_token, client_id)
+    
+    print("Fetching all themes...")
+    themes_map = get_all_themes(access_token, client_id)
     
     # Step 1: Fetch candidate games matching our filters
     print("Fetching candidate games...")
@@ -134,14 +157,17 @@ def main():
     # Step 2: Get popularity scores for all candidate games
     print("Fetching popularity scores...")
     game_ids = [game["id"] for game in games]
-    popularity_scores = get_popularity_scores(game_ids, access_token, client_id)
+    popularity_data = get_popularity_scores(game_ids, access_token, client_id)
     
     # Step 3: Attach popularity to games and sort
     for game in games:
-        game["popularity"] = popularity_scores.get(game["id"], 0)
+        game_popularity = popularity_data.get(game["id"], {"type_2": 0, "type_6": 0, "total": 0})
+        game["popularity_total"] = game_popularity["total"]
+        game["popularity_type_2"] = game_popularity["type_2"]
+        game["popularity_type_6"] = game_popularity["type_6"]
     
     # Sort by popularity and take top 10
-    games.sort(key=lambda x: x["popularity"], reverse=True)
+    games.sort(key=lambda x: x["popularity_total"], reverse=True)
     top_games = games[:10]
     
     print(f"Top 10 most popular games selected")
@@ -167,10 +193,30 @@ def main():
     # Step 7: Format the final output
     formatted_games = []
     for game in top_games:
+        # Build genres list with IDs and names
+        genres_list = []
+        for genre_id in game.get("genres", []):
+            genres_list.append({
+                "id": genre_id,
+                "name": genres_map.get(genre_id, "Unknown")
+            })
+        
+        # Build themes list with IDs and names
+        themes_list = []
+        for theme_id in game.get("themes", []):
+            themes_list.append({
+                "id": theme_id,
+                "name": themes_map.get(theme_id, "Unknown")
+            })
+        
         game_data = {
             "name": game.get("name"),
             "platforms": [platforms_map.get(pid) for pid in game.get("platforms", [])],
-            "cover_url": None
+            "cover_url": None,
+            "genres": genres_list,
+            "themes": themes_list,
+            "popularity_type_2": game.get("popularity_type_2", 0),
+            "popularity_type_6": game.get("popularity_type_6", 0)
         }
         
         # Build cover URL using t_cover_big (264x374px)
@@ -192,6 +238,9 @@ def main():
     print(f"Successfully wrote {len(formatted_games)} games to {output_path}")
     for i, game in enumerate(formatted_games, 1):
         print(f"  {i}. {game['name']}")
+        print(f"     Genres: {[g['name'] for g in game['genres']]}")
+        print(f"     Themes: {[t['name'] for t in game['themes']]}")
+        print(f"     Popularity (Type 2): {game['popularity_type_2']}, (Type 6): {game['popularity_type_6']}")
 
 if __name__ == "__main__":
     main()
