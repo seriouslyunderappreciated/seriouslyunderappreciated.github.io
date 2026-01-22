@@ -44,11 +44,11 @@ def fetch_candidate_games(access_token, client_id):
     fields id, name, platforms, cover, genres, themes;
     where first_release_date >= {ninety_days_ago}
       & first_release_date <= {current_time}
-      & platforms = (6, 130, 471)
-      & game_modes = 1
+      & platforms = [6, 130, 471]
+      & game_modes = [1]
       & game_type = 0
-      & genres != (14, 26, 13)
-      & themes != 19;
+      & genres != [14, 26, 13]
+      & themes != [19];
     limit 500;
     """
     
