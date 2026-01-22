@@ -40,7 +40,7 @@ def fetch_candidate_games(access_token, client_id):
     current_time = int(datetime.now().timestamp())
     
     query = f"""
-    fields id, name, platforms, cover, genres, themes;
+    fields id, name, platforms, cover, genres, themes, hypes;
     where first_release_date >= {game_age}
       & first_release_date <= {current_time}
       & platforms = (6)
@@ -51,19 +51,6 @@ def fetch_candidate_games(access_token, client_id):
     limit 500;
     """
     return make_igdb_request("games", query, access_token, client_id)
-
-def get_popularity_scores(game_ids, access_token, client_id):
-    """Fetch popularity scores for given game IDs (type 2)."""
-    ids_string = ",".join(map(str, game_ids))
-    query = f"""
-    fields game_id, value;
-    where game_id = ({ids_string}) & popularity_type = 2;
-    """
-    results = make_igdb_request("popularity_primitives", query, access_token, client_id)
-    popularity_data = {}
-    for item in results:
-        popularity_data[item["game_id"]] = item["value"]
-    return popularity_data
 
 def get_steam_app_ids(game_ids, access_token, client_id):
     """Fetch Steam App IDs for given IGDB game IDs."""
@@ -108,7 +95,7 @@ def format_game_data(game, genres_map, themes_map, platforms_map, covers_map):
         "cover_url": None,
         "genres": genres_list,
         "themes": themes_list,
-        "popularity_type_2": game.get("popularity_type_2", 0),
+        "hypes": game.get("hypes", 0),
         "steam_appid": game.get("steam_appid")
     }
     
@@ -139,24 +126,21 @@ def main():
         print("No games found matching criteria")
         return
     
-    print("Fetching popularity scores...")
-    game_ids = [game["id"] for game in games]
-    popularity_data = get_popularity_scores(game_ids, access_token, client_id)
-    
     print("Fetching Steam App IDs...")
+    game_ids = [game["id"] for game in games]
     steam_map = get_steam_app_ids(game_ids, access_token, client_id)
     
     for game in games:
-        game["popularity_type_2"] = popularity_data.get(game["id"], 0)
-        game["steam_appid"] = steam_map.get(game["id"])  # None if non-Steam
+        game["steam_appid"] = steam_map.get(game["id"])
+        game["hypes"] = game.get("hypes", 0)
     
-    # Separate games into Steam and Non-Steam
+    # Separate into Steam and Non-Steam
     steam_games = [g for g in games if g["steam_appid"]]
     non_steam_games = [g for g in games if not g["steam_appid"]]
     
-    # Sort by popularity
-    steam_games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
-    non_steam_games.sort(key=lambda x: x["popularity_type_2"], reverse=True)
+    # Sort by hypes
+    steam_games.sort(key=lambda x: x["hypes"], reverse=True)
+    non_steam_games.sort(key=lambda x: x["hypes"], reverse=True)
     
     # Take top N from each
     top_steam = steam_games[:TOP_N]
