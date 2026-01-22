@@ -25,19 +25,17 @@ jobs:
         env:
           IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
           IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
-        # Executes the script from your specific scripts folder
         run: python .github/scripts/fetch_games.py
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Stage only the generated data file
-          git add data/igdb.json
-          # Only commit if the file actually changed to avoid empty runs
+          # Stage both generated data files
+          git add data/igdb_top.json data/steam_top.json
+          # Only commit if files actually changed
           if git diff --staged --quiet; then
             echo "No changes detected in IGDB data."
           else
-            git commit -m "Automated update: data/igdb.json"
+            git commit -m "Automated update: IGDB data files"
             git push
-          fi
