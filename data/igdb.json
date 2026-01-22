@@ -1,121 +1,18 @@
 [
   {
-    "name": "Terra Invicta",
+    "name": "Big Hops",
+    "steam_appid": "1221480",
+    "total_positive": 163,
     "platforms": [
-      "PC (Microsoft Windows)"
+      "PC (Microsoft Windows)",
+      "PlayStation 5",
+      "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9fgo.jpg",
     "genres": [
       {
-        "id": 13,
-        "name": "Simulator"
+        "id": 8,
+        "name": "Platform"
       },
-      {
-        "id": 15,
-        "name": "Strategy"
-      },
-      {
-        "id": 24,
-        "name": "Tactical"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 18,
-        "name": "Science fiction"
-      },
-      {
-        "id": 39,
-        "name": "Warfare"
-      }
-    ],
-    "hypes": 2,
-    "steam_appid": "1176470",
-    "total_positive": 6184
-  },
-  {
-    "name": "Solargene",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3h9k.jpg",
-    "genres": [
-      {
-        "id": 13,
-        "name": "Simulator"
-      },
-      {
-        "id": 15,
-        "name": "Strategy"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 18,
-        "name": "Science fiction"
-      },
-      {
-        "id": 33,
-        "name": "Sandbox"
-      }
-    ],
-    "hypes": 0,
-    "steam_appid": "1638300",
-    "total_positive": 505
-  },
-  {
-    "name": "Serial Lover",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cobapq.jpg",
-    "genres": [
-      {
-        "id": 7,
-        "name": "Music"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      },
-      {
-        "id": 34,
-        "name": "Visual Novel"
-      }
-    ],
-    "themes": [
-      {
-        "id": 19,
-        "name": "Horror"
-      },
-      {
-        "id": 43,
-        "name": "Mystery"
-      },
-      {
-        "id": 44,
-        "name": "Romance"
-      }
-    ],
-    "hypes": 0,
-    "steam_appid": "1245220",
-    "total_positive": 88
-  },
-  {
-    "name": "Furry House",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co400r.jpg",
-    "genres": [
       {
         "id": 31,
         "name": "Adventure"
@@ -123,28 +20,136 @@
       {
         "id": 32,
         "name": "Indie"
-      },
-      {
-        "id": 34,
-        "name": "Visual Novel"
       }
     ],
     "themes": [
       {
-        "id": 42,
-        "name": "Erotic"
+        "id": 1,
+        "name": "Action"
       }
     ],
-    "hypes": 0,
-    "steam_appid": "1407140",
-    "total_positive": 53
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9uqe.jpg"
   },
   {
-    "name": "AiliA",
+    "name": "Ghetto Zombies: Graffiti Squad",
+    "steam_appid": "3047820",
+    "total_positive": 52,
+    "platforms": [
+      "Xbox Series X|S",
+      "PlayStation 4",
+      "PC (Microsoft Windows)",
+      "PlayStation 5",
+      "Xbox One",
+      "Nintendo Switch"
+    ],
+    "genres": [
+      {
+        "id": 5,
+        "name": "Shooter"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 21,
+        "name": "Survival"
+      }
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob091.jpg"
+  },
+  {
+    "name": "Gah!",
+    "steam_appid": "2471090",
+    "total_positive": 41,
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coaz9p.jpg"
+  },
+  {
+    "name": "Velaster",
+    "steam_appid": "1897060",
+    "total_positive": 33,
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "genres": [
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hzg.jpg"
+  },
+  {
+    "name": "Elengard: Ascension",
+    "steam_appid": "2017480",
+    "total_positive": 29,
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 17,
+        "name": "Fantasy"
+      }
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9y44.jpg"
+  },
+  {
+    "name": "AiliA",
+    "steam_appid": "1677100",
+    "total_positive": 27,
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
     "genres": [
       {
         "id": 8,
@@ -169,38 +174,6 @@
         "name": "Mystery"
       }
     ],
-    "hypes": 2,
-    "steam_appid": "1677100",
-    "total_positive": 27
-  },
-  {
-    "name": "Run TavernQuest",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3yrg.jpg",
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      },
-      {
-        "id": 31,
-        "name": "Adventure"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 27,
-        "name": "Comedy"
-      }
-    ],
-    "hypes": 0,
-    "steam_appid": "808610",
-    "total_positive": 0
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
   }
 ]
