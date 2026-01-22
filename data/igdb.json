@@ -5,7 +5,33 @@
       "Nintendo Switch 2",
       "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob85d.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob85d.jpg",
+    "genres": [
+      {
+        "id": 5,
+        "name": "Shooter"
+      },
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Science fiction"
+      }
+    ],
+    "popularity_type_2": 0.000443716229065,
+    "popularity_type_6": 0
   },
   {
     "name": "Routine",
@@ -14,7 +40,37 @@
       "PC (Microsoft Windows)",
       "Xbox One"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coay6e.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coay6e.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 19,
+        "name": "Horror"
+      },
+      {
+        "id": 21,
+        "name": "Survival"
+      }
+    ],
+    "popularity_type_2": 0.000186322399218,
+    "popularity_type_6": 0
   },
   {
     "name": "Dead Static Drive",
@@ -23,7 +79,33 @@
       "PC (Microsoft Windows)",
       "Xbox One"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coarcc.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coarcc.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 19,
+        "name": "Horror"
+      },
+      {
+        "id": 21,
+        "name": "Survival"
+      }
+    ],
+    "popularity_type_2": 5.9546333771e-05,
+    "popularity_type_6": 0
   },
   {
     "name": "Simon the Sorcerer Origins",
@@ -37,14 +119,58 @@
       "Xbox One",
       "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5l7f.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5l7f.jpg",
+    "genres": [
+      {
+        "id": 2,
+        "name": "Point-and-click"
+      },
+      {
+        "id": 9,
+        "name": "Puzzle"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 17,
+        "name": "Fantasy"
+      },
+      {
+        "id": 27,
+        "name": "Comedy"
+      }
+    ],
+    "popularity_type_2": 2.8812742147e-05,
+    "popularity_type_6": 0
   },
   {
     "name": "The Perfect Tower II",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coawmq.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coawmq.jpg",
+    "genres": [
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "popularity_type_2": 0,
+    "popularity_type_6": 2.8015417249e-05
   },
   {
     "name": "GigaSword",
@@ -55,21 +181,95 @@
       "PlayStation 5",
       "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5doa.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5doa.jpg",
+    "genres": [
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 9,
+        "name": "Puzzle"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 17,
+        "name": "Fantasy"
+      }
+    ],
+    "popularity_type_2": 1.9208494765e-05,
+    "popularity_type_6": 0
   },
   {
     "name": "The Use of Life",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co38zm.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co38zm.jpg",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 17,
+        "name": "Fantasy"
+      }
+    ],
+    "popularity_type_2": 5.762548429e-06,
+    "popularity_type_6": 0
   },
   {
     "name": "AiliA",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg",
+    "genres": [
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 9,
+        "name": "Puzzle"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 43,
+        "name": "Mystery"
+      }
+    ],
+    "popularity_type_2": 5.762548429e-06,
+    "popularity_type_6": 0
   },
   {
     "name": "Scrabdackle",
@@ -78,13 +278,53 @@
       "PC (Microsoft Windows)",
       "Mac"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coajg1.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coajg1.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 17,
+        "name": "Fantasy"
+      }
+    ],
+    "popularity_type_2": 5.762548429e-06,
+    "popularity_type_6": 0
   },
   {
     "name": "SpaceVenture",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9ljv.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9ljv.jpg",
+    "genres": [
+      {
+        "id": 31,
+        "name": "Adventure"
+      }
+    ],
+    "themes": [
+      {
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 27,
+        "name": "Comedy"
+      }
+    ],
+    "popularity_type_2": 3.841698953e-06,
+    "popularity_type_6": 0
   }
 ]
