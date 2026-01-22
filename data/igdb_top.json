@@ -35,7 +35,7 @@
         "name": "Sandbox"
       }
     ],
-    "popularity_type_2": 0.000466766422783,
+    "hypes": 132,
     "steam_appid": null
   },
   {
@@ -58,7 +58,46 @@
         "name": "Action"
       }
     ],
-    "popularity_type_2": 0.000134459463353,
+    "hypes": 56,
+    "steam_appid": null
+  },
+  {
+    "name": "Mio: Memories in Orbit",
+    "platforms": [
+      "Xbox Series X|S",
+      "PlayStation 4",
+      "Nintendo Switch 2",
+      "PC (Microsoft Windows)",
+      "PlayStation 5",
+      null,
+      "Nintendo Switch"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co8tkh.jpg",
+    "genres": [
+      {
+        "id": 8,
+        "name": "Platform"
+      },
+      {
+        "id": 31,
+        "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      }
+    ],
+    "themes": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Science fiction"
+      }
+    ],
+    "hypes": 50,
     "steam_appid": null
   },
   {
@@ -98,47 +137,38 @@
         "name": "Open world"
       }
     ],
-    "popularity_type_2": 9.2200774871e-05,
+    "hypes": 49,
     "steam_appid": null
   },
   {
-    "name": "No One Survived",
+    "name": "No Rest for the Wicked",
     "platforms": [
-      "PC (Microsoft Windows)"
+      "Xbox Series X|S",
+      "PC (Microsoft Windows)",
+      "PlayStation 5"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5jt4.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7h9r.jpg",
     "genres": [
+      {
+        "id": 12,
+        "name": "Role-playing (RPG)"
+      },
       {
         "id": 31,
         "name": "Adventure"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
       }
     ],
-    "themes": [],
-    "popularity_type_2": 5.762548429e-06,
-    "steam_appid": null
-  },
-  {
-    "name": "Tatari",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5jea.jpg",
-    "genres": [
+    "themes": [
       {
-        "id": 31,
-        "name": "Adventure"
+        "id": 1,
+        "name": "Action"
       },
       {
-        "id": 32,
-        "name": "Indie"
+        "id": 17,
+        "name": "Fantasy"
       }
     ],
-    "themes": [],
-    "popularity_type_2": 3.841698953e-06,
+    "hypes": 27,
     "steam_appid": null
   }
 ]
