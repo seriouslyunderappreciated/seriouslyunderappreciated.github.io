@@ -21,7 +21,7 @@ EXCLUDED_GENRES = {13, 14, 26}   # Simulator, Sport, Quiz/Trivia
 EXCLUDED_THEMES = {19}           # Horror
 
 STEAM_EXTERNAL_SOURCE = 1
-STEAM_WEBSITE_CATEGORY = 13
+STEAM_WEBSITE_TYPE = 13          # Modern way to filter websites for Steam
 
 STEAM_REVIEW_URL = (
     "https://store.steampowered.com/appreviews/"
@@ -78,7 +78,6 @@ def fetch_games(access_token, client_id):
 def fetch_steam_appids_external(game_ids, access_token, client_id):
     if not game_ids:
         return {}
-
     ids = ",".join(map(str, game_ids))
     query = f"""
     fields game, uid;
@@ -90,11 +89,10 @@ def fetch_steam_appids_external(game_ids, access_token, client_id):
 def fetch_steam_appids_websites(game_ids, access_token, client_id):
     if not game_ids:
         return {}
-
     ids = ",".join(map(str, game_ids))
     query = f"""
     fields game, url;
-    where game = ({ids}) & category = {STEAM_WEBSITE_CATEGORY};
+    where game = ({ids}) & type = {STEAM_WEBSITE_TYPE};
     """
     results = igdb_request("websites", query, access_token, client_id)
 
@@ -103,7 +101,6 @@ def fetch_steam_appids_websites(game_ids, access_token, client_id):
         match = STEAM_APPID_REGEX.search(row.get("url", ""))
         if match:
             steam_ids[row["game"]] = match.group(1)
-
     return steam_ids
 
 def fetch_platforms(platform_ids, access_token, client_id):
@@ -171,7 +168,6 @@ def fetch_steam_total_positive(appid):
 def main():
     client_id = os.getenv("IGDB_CLIENT_ID")
     client_secret = os.getenv("IGDB_CLIENT_SECRET")
-
     if not client_id or not client_secret:
         raise RuntimeError("Missing IGDB credentials")
 
@@ -189,9 +185,8 @@ def main():
     print("Resolving Steam AppIDs...")
     steam_external = fetch_steam_appids_external(game_ids, access_token, client_id)
     steam_websites = fetch_steam_appids_websites(game_ids, access_token, client_id)
-
     print(
-        f"Steam IDs: {len(steam_external)} via external_games, "
+        f"Steam IDs found: {len(steam_external)} via external_games, "
         f"{len(steam_websites)} via websites"
     )
 
@@ -217,6 +212,7 @@ def main():
     games.sort(key=lambda g: g.get("total_positive", 0), reverse=True)
     games = games[:TOP_FINAL]
 
+    # Metadata
     platform_ids = {pid for g in games for pid in g.get("platforms", [])}
     cover_ids = [g["cover"] for g in games if "cover" in g]
 
@@ -236,14 +232,11 @@ def main():
             "themes": [{"id": tid, "name": themes_map.get(tid)} for tid in g.get("themes", [])],
             "cover_url": None,
         }
-
         cover_id = g.get("cover")
         if cover_id in covers_map:
             entry["cover_url"] = (
-                f"https://images.igdb.com/igdb/image/upload/"
-                f"t_cover_big/{covers_map[cover_id]}.jpg"
+                f"https://images.igdb.com/igdb/image/upload/t_cover_big/{covers_map[cover_id]}.jpg"
             )
-
         output.append(entry)
 
     os.makedirs("data", exist_ok=True)
