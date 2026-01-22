@@ -1,46 +1,113 @@
 [
   {
-    "name": "Hank: Drowning on Dry Land",
+    "name": "Terra Invicta",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5e2s.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9fgo.jpg",
     "genres": [
       {
-        "id": 31,
-        "name": "Adventure"
+        "id": 13,
+        "name": "Simulator"
+      },
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 24,
+        "name": "Tactical"
       },
       {
         "id": 32,
         "name": "Indie"
       }
     ],
-    "themes": [],
+    "themes": [
+      {
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 39,
+        "name": "Warfare"
+      }
+    ],
     "hypes": 2,
-    "steam_appid": "1937880",
-    "total_positive": 92
+    "steam_appid": "1176470",
+    "total_positive": 6184
   },
   {
-    "name": "Rogue Masters",
+    "name": "Solargene",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7f1t.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3h9k.jpg",
     "genres": [
       {
-        "id": 31,
-        "name": "Adventure"
+        "id": 13,
+        "name": "Simulator"
+      },
+      {
+        "id": 15,
+        "name": "Strategy"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
       }
     ],
     "themes": [
       {
-        "id": 1,
-        "name": "Action"
+        "id": 18,
+        "name": "Science fiction"
+      },
+      {
+        "id": 33,
+        "name": "Sandbox"
       }
     ],
     "hypes": 0,
-    "steam_appid": "1063590",
-    "total_positive": 76
+    "steam_appid": "1638300",
+    "total_positive": 505
+  },
+  {
+    "name": "Serial Lover",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cobapq.jpg",
+    "genres": [
+      {
+        "id": 7,
+        "name": "Music"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
+      },
+      {
+        "id": 34,
+        "name": "Visual Novel"
+      }
+    ],
+    "themes": [
+      {
+        "id": 19,
+        "name": "Horror"
+      },
+      {
+        "id": 43,
+        "name": "Mystery"
+      },
+      {
+        "id": 44,
+        "name": "Romance"
+      }
+    ],
+    "hypes": 0,
+    "steam_appid": "1245220",
+    "total_positive": 88
   },
   {
     "name": "Furry House",
@@ -107,38 +174,11 @@
     "total_positive": 27
   },
   {
-    "name": "Past Fate",
+    "name": "Run TavernQuest",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co6v5x.jpg",
-    "genres": [
-      {
-        "id": 12,
-        "name": "Role-playing (RPG)"
-      },
-      {
-        "id": 32,
-        "name": "Indie"
-      }
-    ],
-    "themes": [
-      {
-        "id": 1,
-        "name": "Action"
-      }
-    ],
-    "hypes": 1,
-    "steam_appid": "1028510",
-    "total_positive": 23
-  },
-  {
-    "name": "Monster Path",
-    "platforms": [
-      "PC (Microsoft Windows)",
-      "Mac"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co78m5.jpg",
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3yrg.jpg",
     "genres": [
       {
         "id": 12,
@@ -147,16 +187,20 @@
       {
         "id": 31,
         "name": "Adventure"
+      },
+      {
+        "id": 32,
+        "name": "Indie"
       }
     ],
     "themes": [
       {
-        "id": 1,
-        "name": "Action"
+        "id": 27,
+        "name": "Comedy"
       }
     ],
     "hypes": 0,
-    "steam_appid": "1907660",
-    "total_positive": 12
+    "steam_appid": "808610",
+    "total_positive": 0
   }
 ]
