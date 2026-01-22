@@ -71,6 +71,20 @@ def get_all_themes(access_token, client_id):
     themes = make_igdb_request("themes", query, access_token, client_id)
     return {t["id"]: t["name"] for t in themes}
 
+def get_steam_uids(game_ids, access_token, client_id):
+    if not game_ids:
+        return {}
+    ids_string = ",".join(map(str, game_ids))
+    query = f"""
+    fields game, uid;
+    where game = ({ids_string}) & external_game_source = 1;
+    """
+    results = make_igdb_request("external_games", query, access_token, client_id)
+    steam_map = {}
+    for item in results:
+        steam_map[item["game"]] = item["uid"]
+    return steam_map
+
 def main():
     client_id = os.environ.get("IGDB_CLIENT_ID")
     client_secret = os.environ.get("IGDB_CLIENT_SECRET")
@@ -91,8 +105,10 @@ def main():
 
     all_platform_ids = set()
     all_cover_ids = []
+    game_ids = []
 
     for game in games:
+        game_ids.append(game["id"])
         if "platforms" in game:
             all_platform_ids.update(game["platforms"])
         if "cover" in game:
@@ -100,6 +116,9 @@ def main():
 
     platforms_map = get_platforms_data(list(all_platform_ids), access_token, client_id)
     covers_map = get_covers_data(all_cover_ids, access_token, client_id)
+
+    # Fetch Steam UIDs
+    steam_map = get_steam_uids(game_ids, access_token, client_id)
 
     formatted_games = []
     for game in games:
@@ -111,7 +130,8 @@ def main():
             "platforms": [platforms_map.get(pid) for pid in game.get("platforms", [])],
             "cover_url": None,
             "genres": genres_list,
-            "themes": themes_list
+            "themes": themes_list,
+            "steam_appid": steam_map.get(game["id"])
         }
 
         cover_id = game.get("cover")
@@ -131,6 +151,7 @@ def main():
         print(f"  {i}. {game['name']}")
         print(f"     Genres: {[g['name'] for g in game['genres']]}" )
         print(f"     Themes: {[t['name'] for t in game['themes']]}" )
+        print(f"     Steam AppID: {game.get('steam_appid')}")
 
 if __name__ == "__main__":
     main()
