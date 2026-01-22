@@ -39,16 +39,18 @@ def fetch_candidate_games(access_token, client_id):
     """Fetch candidate games from IGDB."""
     game_age = int((datetime.now() - timedelta(days=DAYS_AGO)).timestamp())
     current_time = int(datetime.now().timestamp())
-
+ 
     query = f"""
     fields id, name, platforms, cover, genres, themes, hypes;
     where first_release_date >= {game_age}
       & first_release_date <= {current_time}
-      & platforms = (6)
-      & game_modes = (1)
+      & platforms = 6
+      & game_modes = 1
       & game_type = 0
-      & genres != (14, 26, 13)
-      & themes != (19);
+      & genres != 14
+      & genres != 26
+      & genres != 13
+      & themes != 19;
     limit 500;
     """
     return make_igdb_request("games", query, access_token, client_id)
