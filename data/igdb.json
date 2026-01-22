@@ -7,7 +7,59 @@
     "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coawmq.jpg"
   },
   {
-    "name": "Viewfinder",
+    "name": "Metroid Prime 4: Beyond",
+    "platforms": [
+      "Nintendo Switch 2",
+      "Nintendo Switch"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/cob85d.jpg"
+  },
+  {
+    "name": "Elengard: Ascension",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9y44.jpg"
+  },
+  {
+    "name": "Routine",
+    "platforms": [
+      "Xbox Series X|S",
+      "PC (Microsoft Windows)",
+      "Xbox One"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coay6e.jpg"
+  },
+  {
+    "name": "Velaster",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hzg.jpg"
+  },
+  {
+    "name": "AiliA",
+    "platforms": [
+      "PC (Microsoft Windows)"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4aii.jpg"
+  },
+  {
+    "name": "Simon the Sorcerer Origins",
+    "platforms": [
+      "Xbox Series X|S",
+      "PlayStation 4",
+      "Linux",
+      "PC (Microsoft Windows)",
+      "PlayStation 5",
+      "Mac",
+      "Xbox One",
+      "Nintendo Switch"
+    ],
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5l7f.jpg"
+  },
+  {
+    "name": "GigaSword",
     "platforms": [
       "Xbox Series X|S",
       "PlayStation 4",
@@ -15,69 +67,27 @@
       "PlayStation 5",
       "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coaev1.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5doa.jpg"
   },
   {
-    "name": "The Cold White",
+    "name": "Demonschool",
     "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co434e.jpg"
-  },
-  {
-    "name": "Hero Tactics",
-    "platforms": [
+      "Xbox Series X|S",
+      "PlayStation 4",
+      "Linux",
       "PC (Microsoft Windows)",
-      "Mac"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coatl5.jpg"
-  },
-  {
-    "name": "Red Siren: Space Defense",
-    "platforms": [
-      "Android",
-      "PC (Microsoft Windows)",
-      "iOS",
+      "PlayStation 5",
+      "Mac",
       "Xbox One",
       "Nintendo Switch"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1hbn.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coacd2.jpg"
   },
   {
-    "name": "Deathbringer",
-    "platforms": [
-      "PC (Microsoft Windows)",
-      "Amiga"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/fakyhb02yzkrbpniye5i.jpg"
-  },
-  {
-    "name": "School of Magic",
+    "name": "SpaceVenture",
     "platforms": [
       "PC (Microsoft Windows)"
     ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/coakr5.jpg"
-  },
-  {
-    "name": "That Level Again 2",
-    "platforms": [
-      "Android",
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2uux.jpg"
-  },
-  {
-    "name": "Hand Cannon: Janky Reality",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5e2n.jpg"
-  },
-  {
-    "name": "The 7th Sign Project",
-    "platforms": [
-      "PC (Microsoft Windows)"
-    ],
-    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co5cwn.jpg"
+    "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9ljv.jpg"
   }
 ]
