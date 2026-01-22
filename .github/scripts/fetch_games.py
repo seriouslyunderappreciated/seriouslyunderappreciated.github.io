@@ -44,11 +44,11 @@ def fetch_candidate_games(access_token, client_id):
     fields id, name, platforms, cover, genres, themes;
     where first_release_date >= {game_age}
       & first_release_date <= {current_time}
-      & platforms = 6
-      & game_modes = 1
+      & platforms = (6)
+      & game_modes = (1)
       & game_type = 0
       & genres != (14, 26, 13)
-      & themes != 19;
+      & themes != (19);
     limit 500;
     """
     
@@ -198,8 +198,7 @@ def main():
             "cover_url": None,
             "genres": genres_list,
             "themes": themes_list,
-            "popularity_type_2": game.get("popularity_type_2", 0),
-            "popularity_type_6": game.get("popularity_type_6", 0)
+            "popularity_type_2": game.get("popularity_type_2", 0)
         }
         
         # Build cover URL using t_cover_big (264x374px)
@@ -223,7 +222,7 @@ def main():
         print(f"  {i}. {game['name']}")
         print(f"     Genres: {[g['name'] for g in game['genres']]}")
         print(f"     Themes: {[t['name'] for t in game['themes']]}")
-        print(f"     Popularity (Type 2): {game['popularity_type_2']}, (Type 6): {game['popularity_type_6']}")
+        print(f"     Popularity (Type 2): {game['popularity_type_2']}")
 
 if __name__ == "__main__":
     main()
