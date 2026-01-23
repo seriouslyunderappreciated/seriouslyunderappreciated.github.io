@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies
         run: pip install requests
 
-      - name: Fetch IGDB Data
+      - name: Fetch Game Data
         env:
           IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
           IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
@@ -36,7 +36,7 @@ jobs:
           git add data/top_recent.json
           # Only commit if the file actually changed to avoid empty runs
           if git diff --staged --quiet; then
-            echo "No changes detected in IGDB data."
+            echo "No changes detected."
           else
             git commit -m "Automated update: data/top_recent.json"
             git push
