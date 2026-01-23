@@ -10,6 +10,7 @@ TOP_N_GAMES = 6
 INITIAL_POOL_SIZE = 40
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
+MIN_RATIO = 0.75  # Minimum 75% positive ratio to be considered
 SEARCH_URL = (
     "https://store.steampowered.com/search/results/"
     "?sort_by=Released_DESC"
@@ -85,37 +86,61 @@ def main():
         print(f"❌ Error: {e}")
         return
 
-    # Step 2: Fetch reviews
+    # Step 2: Fetch reviews and calculate weighted scores
+    print(f"\n📊 Fetching reviews for {len(items)} games...")
     games_with_reviews = []
     for i, item in enumerate(items, 1):
         appid = extract_appid_from_logo(item.get("logo", ""))
-        if not appid: continue
+        name = item.get("name", "Unknown")
         
+        if not appid:
+            print(f"  [{i}/{len(items)}] ⚠️  Skipping {name} (no AppID)")
+            continue
+        
+        print(f"  [{i}/{len(items)}] Fetching reviews for: {name}")
         pos, neg = get_review_data(appid)
         total = pos + neg
-        ratio = pos / total if total >= 200 else 0
+        
+        # Skip games with no reviews
+        if total == 0:
+            print(f"            ❌ No reviews")
+            continue
+            
+        ratio = pos / total
+        
+        # Filter out games below 75% positive ratio
+        if ratio < MIN_RATIO:
+            print(f"            ❌ {ratio:.1%} rating (below {MIN_RATIO:.0%} threshold)")
+            continue
+        
+        # Calculate weighted rank: total reviews × ratio
+        weighted_rank = total * ratio
+        
+        print(f"            ✅ {ratio:.1%} with {total} reviews → rank: {weighted_rank:.0f}")
         
         games_with_reviews.append({
             "appid": appid,
-            "name": item.get("name", "Unknown"),
+            "name": name,
+            "total_reviews": total,
             "total_positive": pos,
-            "ratio": ratio
+            "ratio": ratio,
+            "weighted_rank": weighted_rank
         })
         time.sleep(REQUEST_DELAY)
 
-    # Step 3 & 4: Sort and Slice
-    games_with_reviews.sort(key=lambda x: x["ratio"], reverse=True)
+    # Step 3 & 4: Sort by weighted rank and slice
+    games_with_reviews.sort(key=lambda x: x["weighted_rank"], reverse=True)
     top_games = games_with_reviews[:TOP_N_GAMES]
 
-    # NEW STEP: Fetch Cover URLs for Top N
+    # Step 5: Fetch Cover URLs for Top N
     print(f"\n🖼️  Fetching cover art for Top {TOP_N_GAMES} games...")
     for game in top_games:
-        print(f"  Fetching cover for: {game['name']}")
+        print(f"  Fetching cover for: {game['name']} (rank: {game['weighted_rank']:.0f})")
         cover_url = get_steamcmd_cover(game['appid'])
         game['cover_url'] = cover_url
         time.sleep(STEAMCMD_DELAY)
 
-    # Step 5: Save to JSON
+    # Step 6: Save to JSON
     output_dir = Path("data")
     output_dir.mkdir(exist_ok=True)
     output_file = output_dir / "top_recent.json"
@@ -124,6 +149,9 @@ def main():
         json.dump(top_games, f, indent=2, ensure_ascii=False)
     
     print(f"\n✅ Saved to {output_file}")
+    print(f"\nTop {TOP_N_GAMES} games by weighted rank:")
+    for i, game in enumerate(top_games, 1):
+        print(f"  {i}. {game['name']}: {game['ratio']:.1%} ({game['total_reviews']} reviews) → rank: {game['weighted_rank']:.0f}")
 
 if __name__ == "__main__":
     main()
