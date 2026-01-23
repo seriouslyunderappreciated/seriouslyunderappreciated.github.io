@@ -7,7 +7,7 @@ from pathlib import Path
 
 # ============ CONFIGURATION ============
 TOP_N_GAMES = 6
-INITIAL_POOL_SIZE = 40
+INITIAL_POOL_SIZE = 36
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
 MIN_RATIO = 0.75  # Minimum 75% positive ratio to be considered
@@ -17,7 +17,7 @@ SEARCH_URL = (
     "&json=1"
     "&untags=599,701,5055,1667,3978,1100689,24904,3799,1666,1663,10437,21978,"
     "615955,10383,1084988,1100687,255534,699,4102,1665,4885,4255,5395,5537,1664,"
-    "493,1770,353880,597,1718, 1754"
+    "493,1770,353880,597,1718,1645,1754"
     "&category1=998"
     "&category3=2"
     "&controllersupport=18"
