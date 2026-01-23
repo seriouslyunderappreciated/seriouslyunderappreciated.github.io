@@ -7,13 +7,12 @@ from pathlib import Path
 
 # ============ CONFIGURATION ============
 TOP_N_GAMES = 3
-INITIAL_POOL_SIZE = 100
+INITIAL_POOL_SIZE = 100 # Bigger number = older games in the pool
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
 APPDETAILS_DELAY = 0.5  # Delay for appdetails API
-MIN_REVIEWS = 1600  # Minimum total reviews to be considered
-MIN_RATIO = 0.90  # Minimum positive ratio to be considered
-MAX_REVIEW_COUNT = 2000  # Cap for review count in weighted score calculation
+MIN_REVIEWS = 300  # Minimum total reviews to be considered
+MIN_RATIO = 0.90  # Minimum ratio to be considered
 
 # Excluded genres and categories (by description)
 EXCLUDED_GENRES = ["Early Access"]
@@ -165,9 +164,8 @@ def main():
             print(f"            ❌ {ratio:.1%} rating (below {MIN_RATIO:.0%} threshold)")
             continue
         
-        # Calculate weighted score: min(total reviews, cap) × ratio
-        capped_reviews = min(total, MAX_REVIEW_COUNT)
-        weighted_score = capped_reviews * ratio
+        # Calculate weighted score: total reviews × ratio
+        weighted_score = total * ratio
         
         print(f"            ✅ {ratio:.1%} with {total} reviews → score: {weighted_score:.0f}")
         
