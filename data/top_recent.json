@@ -5,7 +5,7 @@
     "total_reviews": 1958,
     "total_positive": 1499,
     "ratio": 0.7655771195097038,
-    "weighted_rank": 1499.0,
+    "weighted_score": 1499.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3014320/eabd14c65d16a083157aaca508b21be11c3f1977/library_600x900.jpg"
   },
   {
@@ -14,7 +14,7 @@
     "total_reviews": 1730,
     "total_positive": 1420,
     "ratio": 0.8208092485549133,
-    "weighted_rank": 1420.0,
+    "weighted_score": 1420.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2313700/cca9198fde88ead4e3bb74482e1e3d4c14429721/library_600x900.jpg"
   },
   {
@@ -23,7 +23,7 @@
     "total_reviews": 1188,
     "total_positive": 996,
     "ratio": 0.8383838383838383,
-    "weighted_rank": 996.0,
+    "weighted_score": 996.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1718460/30c491f6e252d8234d61432284deafaa4413bde5/library_600x900.jpg"
   },
   {
@@ -32,7 +32,7 @@
     "total_reviews": 1204,
     "total_positive": 907,
     "ratio": 0.7533222591362126,
-    "weighted_rank": 907.0,
+    "weighted_score": 907.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3639650/3c5f60147287ab20d0d55fd05cf8d396e7491e0f/library_capsule.jpg"
   },
   {
@@ -41,7 +41,7 @@
     "total_reviews": 795,
     "total_positive": 643,
     "ratio": 0.8088050314465409,
-    "weighted_rank": 643.0,
+    "weighted_score": 643.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070270/327f237ed8884cc85a83a3fff165244c75944964/library_capsule.jpg"
   },
   {
@@ -50,7 +50,7 @@
     "total_reviews": 474,
     "total_positive": 461,
     "ratio": 0.9725738396624473,
-    "weighted_rank": 461.0,
+    "weighted_score": 461.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2393920/9cb8948c0a35a2f2b4bc55ad2d8b54baad523a70/library_600x900.jpg"
   }
 ]
