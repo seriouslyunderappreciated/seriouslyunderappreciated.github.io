@@ -7,10 +7,11 @@ from pathlib import Path
 
 # ============ CONFIGURATION ============
 TOP_N_GAMES = 6
-INITIAL_POOL_SIZE = 36
+INITIAL_POOL_SIZE = 100
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
-MIN_RATIO = 0.75  # Minimum 75% positive ratio to be considered
+MIN_REVIEWS = 300  # Minimum total reviews to be considered
+MIN_RATIO = 0.95  # Minimum positive ratio to be considered
 SEARCH_URL = (
     "https://store.steampowered.com/search/results/"
     "?sort_by=Released_DESC"
@@ -105,10 +106,15 @@ def main():
         if total == 0:
             print(f"            ❌ No reviews")
             continue
+        
+        # Filter out games below minimum review threshold
+        if total < MIN_REVIEWS:
+            print(f"            ❌ Only {total} reviews (below {MIN_REVIEWS} threshold)")
+            continue
             
         ratio = pos / total
         
-        # Filter out games below 75% positive ratio
+        # Filter out games below ratio threshold
         if ratio < MIN_RATIO:
             print(f"            ❌ {ratio:.1%} rating (below {MIN_RATIO:.0%} threshold)")
             continue
