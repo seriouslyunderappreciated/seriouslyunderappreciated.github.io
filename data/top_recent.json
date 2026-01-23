@@ -3,36 +3,42 @@
     "appid": "2393920",
     "name": "Angeline Era",
     "total_positive": 459,
-    "ratio": 0.972457627118644
+    "ratio": 0.972457627118644,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2393920/9cb8948c0a35a2f2b4bc55ad2d8b54baad523a70/library_600x900.jpg"
   },
   {
     "appid": "1718460",
     "name": "Terminator 2D: NO FATE",
     "total_positive": 995,
-    "ratio": 0.8382476832350463
+    "ratio": 0.8382476832350463,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1718460/30c491f6e252d8234d61432284deafaa4413bde5/library_600x900.jpg"
   },
   {
     "appid": "2070270",
     "name": "Cloudheim",
-    "total_positive": 638,
-    "ratio": 0.8075949367088607
+    "total_positive": 639,
+    "ratio": 0.8078381795195955,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070270/327f237ed8884cc85a83a3fff165244c75944964/library_capsule.jpg"
   },
   {
     "appid": "2735580",
     "name": "Netherworld Covenant",
     "total_positive": 411,
-    "ratio": 0.8074656188605108
+    "ratio": 0.8074656188605108,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2735580/8e5303b9faefac0fa6cb0386b74fd33289f1b873/library_600x900.jpg"
   },
   {
     "appid": "1672810",
     "name": "MIO: Memories in Orbit",
-    "total_positive": 278,
-    "ratio": 0.8057971014492754
+    "total_positive": 279,
+    "ratio": 0.8040345821325648,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1672810/library_600x900.jpg"
   },
   {
     "appid": "3014320",
     "name": "OCTOPATH TRAVELER 0",
     "total_positive": 1497,
-    "ratio": 0.7657289002557545
+    "ratio": 0.7657289002557545,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3014320/eabd14c65d16a083157aaca508b21be11c3f1977/library_600x900.jpg"
   }
 ]
