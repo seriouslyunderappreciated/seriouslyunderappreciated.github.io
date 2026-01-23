@@ -17,7 +17,7 @@ SEARCH_URL = (
     "&json=1"
     "&untags=599,701,5055,1667,3978,1100689,24904,3799,1666,1663,10437,21978,"
     "615955,10383,1084988,1100687,255534,699,4102,1665,4885,4255,5395,5537,1664,"
-    "493,1770,353880,597,1718"
+    "493,1770,353880,597,1718, 1754"
     "&category1=998"
     "&category3=2"
     "&controllersupport=18"
@@ -35,8 +35,8 @@ def extract_appid_from_logo(logo_url):
         return match.group(1)
     return None
 
-def get_review_count(appid):
-    """Fetch total positive reviews for a given appid."""
+def get_review_data(appid):
+    """Fetch review data for a given appid."""
     url = f"https://store.steampowered.com/appreviews/{appid}?json=1&language=all&num_per_page=0"
     
     try:
@@ -46,11 +46,13 @@ def get_review_count(appid):
         
         if data.get("success") == 1:
             query_summary = data.get("query_summary", {})
-            return query_summary.get("total_positive", 0)
-        return 0
+            total_positive = query_summary.get("total_positive", 0)
+            total_negative = query_summary.get("total_negative", 0)
+            return total_positive, total_negative
+        return 0, 0
     except Exception as e:
         print(f"  ⚠️  Error fetching reviews for appid {appid}: {e}")
-        return 0
+        return 0, 0
 
 def main():
     print("🎮 Steam Top Recent Games Scraper")
@@ -88,21 +90,30 @@ def main():
         
         print(f"  🔍 [{i}/{len(items)}] {name} (appid: {appid})")
         
-        total_positive = get_review_count(appid)
+        total_positive, total_negative = get_review_data(appid)
+        
+        # Calculate ratio (positive / total reviews)
+        # If less than 200 total reviews, set ratio to 0
+        total_reviews = total_positive + total_negative
+        if total_reviews < 200:
+            ratio = 0
+        else:
+            ratio = total_positive / total_reviews
         
         games_with_reviews.append({
             "appid": appid,
             "name": name,
-            "total_positive": total_positive
+            "total_positive": total_positive,
+            "ratio": ratio
         })
         
         # Rate limiting delay
         if i < len(items):
             time.sleep(REQUEST_DELAY)
     
-    # Step 3: Sort by positive reviews (descending)
-    print(f"\n📈 Sorting games by positive review count...")
-    games_with_reviews.sort(key=lambda x: x["total_positive"], reverse=True)
+    # Step 3: Sort by ratio (descending)
+    print(f"\n📈 Sorting games by positive review ratio...")
+    games_with_reviews.sort(key=lambda x: x["ratio"], reverse=True)
     
     # Step 4: Take top N games
     top_games = games_with_reviews[:TOP_N_GAMES]
@@ -118,10 +129,11 @@ def main():
     print(f"\n✅ Saved top {len(top_games)} games to {output_file}")
     
     # Display results
-    print(f"\n🏆 Top {len(top_games)} Recent Games by Positive Reviews:")
-    print("=" * 70)
+    print(f"\n🏆 Top {len(top_games)} Recent Games by Positive Ratio:")
+    print("=" * 85)
     for i, game in enumerate(top_games, 1):
-        print(f"{i:2d}. {game['name']:<50} | 👍 {game['total_positive']:>7,} | ID: {game['appid']}")
+        ratio_pct = game['ratio'] * 100
+        print(f"{i:2d}. {game['name']:<45} | Ratio: {ratio_pct:>5.1f}% | 👍 {game['total_positive']:>7,} | ID: {game['appid']}")
     
     print(f"\n✨ Done! Check {output_file} for the full data.")
 
