@@ -19,7 +19,7 @@ def make_keywords(game_name: str) -> str:
 
 def get_steam_app_metadata(appid: int):
     """
-    Fetches build ID, timestamp, and the modern library capsule path in one call.
+    Fetches build ID, timestamp, and the modern header path from SteamCMD.
     """
     url = f"https://api.steamcmd.net/v1/info/{appid}"
     try:
@@ -36,19 +36,17 @@ def get_steam_app_metadata(appid: int):
         buildid = branch_data.get('buildid')
         timestamp = branch_data.get('timeupdated')
 
-        # Extract Modern Library Capsule (the new cover logic)
-        capsule_path = (
+        # Extract Modern Header filename (e.g., "header.jpg")
+        header_filename = (
             app_info.get("common", {})
-            .get("library_assets_full", {})
-            .get("library_capsule", {})
-            .get("image", {})
+            .get("header_image", {})
             .get("english")
         )
 
         return {
             "buildid": buildid,
             "timestamp": int(timestamp) if timestamp else None,
-            "capsule_path": capsule_path
+            "header_filename": header_filename
         }
     except Exception:
         return None
@@ -89,25 +87,22 @@ for appid in builds_csv.keys():
     keywords = make_keywords(game_name)
     rinurl = f"https://cs.rin.ru/forum/search.php?st=0&sk=t&sd=d&sr=topics&keywords={keywords}&terms=all&fid[]=10&sf=titleonly"
 
-    # CONSTRUCTION OF NEW COVER URL
-    # Fallback to the old header if the modern library capsule isn't found
-    if metadata['capsule_path']:
-        cover_url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/{metadata['capsule_path']}"
-    else:
-        cover_url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/header.jpg"
+    # CONSTRUCTION OF NEW FASTLY HEADER URL
+    # We use the filename from metadata if available, otherwise default to "header.jpg"
+    img_name = metadata.get('header_filename') or "header.jpg"
+    header_url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/{img_name}"
 
     temp_data_with_ts.append((
         metadata['timestamp'],
         appid,
         {
-            "steamheader": cover_url,
+            "steamheader": header_url,
             "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes",
             "date": formatted_date,
             "rinurl": rinurl
         }
     ))
     
-    # Respect the API
     time.sleep(0.5)
 
 # Sort newest → oldest
