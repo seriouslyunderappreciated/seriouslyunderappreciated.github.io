@@ -10,8 +10,14 @@ TOP_N_GAMES = 6
 INITIAL_POOL_SIZE = 100
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
+APPDETAILS_DELAY = 0.5  # Delay for appdetails API
 MIN_REVIEWS = 300  # Minimum total reviews to be considered
 MIN_RATIO = 0.95  # Minimum positive ratio to be considered
+
+# Excluded genres and categories (by description)
+EXCLUDED_GENRES = ["Early Access"]
+EXCLUDED_CATEGORIES = []
+
 SEARCH_URL = (
     "https://store.steampowered.com/search/results/"
     "?sort_by=Released_DESC"
@@ -74,6 +80,38 @@ def get_steamcmd_cover(appid):
     
     return None
 
+def check_excluded_content(appid):
+    """Check if game has excluded genres or categories. Returns True if should be excluded."""
+    url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        
+        # Navigate to the app data
+        app_data = data.get(str(appid), {})
+        if not app_data.get("success"):
+            return False
+        
+        game_data = app_data.get("data", {})
+        
+        # Check genres
+        genres = game_data.get("genres", [])
+        for genre in genres:
+            if genre.get("description") in EXCLUDED_GENRES:
+                return True
+        
+        # Check categories
+        categories = game_data.get("categories", [])
+        for category in categories:
+            if category.get("description") in EXCLUDED_CATEGORIES:
+                return True
+        
+        return False
+    except Exception as e:
+        print(f"    ⚠️  Error checking excluded content for {appid}: {e}")
+        return False
+
 def main():
     print("🎮 Steam Top Recent Games Scraper")
     print("=" * 50)
@@ -98,7 +136,14 @@ def main():
             print(f"  [{i}/{len(items)}] ⚠️  Skipping {name} (no AppID)")
             continue
         
-        print(f"  [{i}/{len(items)}] Fetching reviews for: {name}")
+        print(f"  [{i}/{len(items)}] Checking: {name}")
+        
+        # Check for excluded content (genres/categories)
+        if check_excluded_content(appid):
+            print(f"            ❌ Excluded (matches excluded genres/categories)")
+            time.sleep(APPDETAILS_DELAY)
+            continue
+        
         pos, neg = get_review_data(appid)
         total = pos + neg
         
