@@ -1,56 +1,56 @@
 [
   {
-    "appid": "3014320",
-    "name": "OCTOPATH TRAVELER 0",
-    "total_reviews": 1959,
-    "total_positive": 1500,
-    "ratio": 0.7656967840735069,
-    "weighted_score": 1500.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3014320/eabd14c65d16a083157aaca508b21be11c3f1977/library_600x900.jpg"
+    "appid": "1145350",
+    "name": "Hades II",
+    "total_reviews": 103714,
+    "total_positive": 99210,
+    "ratio": 0.9565728831208902,
+    "weighted_score": 99210.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145350/2ba105370a00877459144db0dd68af5f2d338429/library_capsule.jpg"
   },
   {
-    "appid": "1718460",
-    "name": "Terminator 2D: NO FATE",
-    "total_reviews": 1188,
-    "total_positive": 996,
-    "ratio": 0.8383838383838383,
-    "weighted_score": 996.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1718460/30c491f6e252d8234d61432284deafaa4413bde5/library_600x900.jpg"
+    "appid": "3375780",
+    "name": "Trails in the Sky 1st Chapter",
+    "total_reviews": 2976,
+    "total_positive": 2857,
+    "ratio": 0.960013440860215,
+    "weighted_score": 2857.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3375780/5130e0696adf7d4e6183716f403f670af5112d4c/library_600x900.jpg"
   },
   {
-    "appid": "3639650",
-    "name": "Kotama and Academy Citadel",
-    "total_reviews": 1204,
-    "total_positive": 907,
-    "ratio": 0.7533222591362126,
-    "weighted_score": 907.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3639650/3c5f60147287ab20d0d55fd05cf8d396e7491e0f/library_capsule.jpg"
+    "appid": "1710820",
+    "name": "Cleared Hot",
+    "total_reviews": 2807,
+    "total_positive": 2728,
+    "ratio": 0.9718560741004632,
+    "weighted_score": 2728.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1710820/c971aef26627f4a0edb6612bf9ba6e1e6dcf3ed2/library_capsule.jpg"
   },
   {
-    "appid": "2070270",
-    "name": "Cloudheim",
-    "total_reviews": 798,
-    "total_positive": 646,
-    "ratio": 0.8095238095238095,
-    "weighted_score": 646.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070270/327f237ed8884cc85a83a3fff165244c75944964/library_capsule.jpg"
+    "appid": "3265060",
+    "name": "Touhou Dystopian",
+    "total_reviews": 1797,
+    "total_positive": 1757,
+    "ratio": 0.9777406789092933,
+    "weighted_score": 1757.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3265060/c51b09e97105809bc85b9245117b5710beaead5f/library_capsule.jpg"
   },
   {
-    "appid": "2393920",
-    "name": "Angeline Era",
-    "total_reviews": 474,
-    "total_positive": 461,
-    "ratio": 0.9725738396624473,
-    "weighted_score": 461.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2393920/9cb8948c0a35a2f2b4bc55ad2d8b54baad523a70/library_600x900.jpg"
+    "appid": "2416100",
+    "name": "Goodnight Universe",
+    "total_reviews": 922,
+    "total_positive": 895,
+    "ratio": 0.9707158351409978,
+    "weighted_score": 895.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2416100/library_600x900.jpg"
   },
   {
-    "appid": "2108180",
-    "name": "Swordhaven: Iron Conspiracy",
-    "total_reviews": 568,
-    "total_positive": 427,
-    "ratio": 0.7517605633802817,
-    "weighted_score": 427.00000000000006,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2108180/2ad4698bb53d5b3b86cc3e3559206053ae001c87/library_600x900.jpg"
+    "appid": "3081840",
+    "name": "Chrono Gear: Warden of Time",
+    "total_reviews": 785,
+    "total_positive": 777,
+    "ratio": 0.9898089171974522,
+    "weighted_score": 777.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3081840/library_600x900.jpg"
   }
 ]
