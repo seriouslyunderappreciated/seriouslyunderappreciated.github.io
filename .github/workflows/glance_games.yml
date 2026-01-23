@@ -1,4 +1,4 @@
-name: Update IGDB Game Feed
+name: Update Glance Game Feed
 on:
   schedule:
     # Runs every day at midnight (UTC)
@@ -26,7 +26,7 @@ jobs:
           IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
           IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
         # Executes the script from your specific scripts folder
-        run: python .github/scripts/fetch_games.py
+        run: python .github/scripts/glance_games.py
 
       - name: Commit and Push Changes
         run: |
@@ -38,6 +38,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected in IGDB data."
           else
-            git commit -m "Automated update: data/igdb.json"
+            git commit -m "Automated update: data/top_recent.json"
             git push
           fi
