@@ -2,122 +2,113 @@ import csv
 import json
 import requests
 import re
+import time
 from datetime import datetime
+from pathlib import Path
 
 def ordinal(n: int) -> str:
-    """Return ordinal string for a number, e.g., 1 -> 1st, 2 -> 2nd"""
     if 10 <= n % 100 <= 20:
         suffix = 'th'
     else:
         suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
     return str(n) + suffix
 
-
 def make_keywords(game_name: str) -> str:
-    """
-    Convert a game title into a search keyword string:
-    - lowercase
-    - keep letters, numbers, and apostrophes inside words
-    - allow multiple apostrophes in a word
-    - remove all other punctuation
-    - join with '+'
-    """
-    # Matches words consisting of letters/numbers with apostrophes anywhere except leading/trailing
-    # Examples: clancy's, o'neill, king's, rock'n'roll
     words = re.findall(r"[a-zA-Z0-9]+(?:'[a-zA-Z0-9]+)*", game_name.lower())
     return "+".join(words)
 
-
-def get_latest_public_buildid(appid: int) -> str | None:
-    """Fetch the latest public build ID for a Steam AppID."""
-    url = f"https://api.steamcmd.net/v1/info/{appid}"
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        data = response.json()
-    except requests.exceptions.RequestException:
-        return None
-
-    try:
-        return data['data'][str(appid)]['depots']['branches']['public']['buildid']
-    except KeyError:
-        return None
-
-
-def get_latest_public_timeupdated(appid: int) -> tuple[int, str] | None:
+def get_steam_app_metadata(appid: int):
     """
-    Fetch the latest public 'timeupdated' for a Steam AppID.
-    Returns a tuple: (timestamp, formatted date string)
+    Fetches build ID, timestamp, and the modern library capsule path in one call.
     """
     url = f"https://api.steamcmd.net/v1/info/{appid}"
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         data = response.json()
-    except requests.exceptions.RequestException:
-        return None
+        
+        app_info = data.get('data', {}).get(str(appid), {})
+        if not app_info:
+            return None
 
-    try:
-        timestamp = int(data['data'][str(appid)]['depots']['branches']['public']['timeupdated'])
-        dt = datetime.utcfromtimestamp(timestamp)
-        formatted_date = dt.strftime(f"%B {ordinal(dt.day)}, %Y")
-        return timestamp, formatted_date
-    except KeyError:
-        return None
+        # Extract Build ID and Timestamp
+        branch_data = app_info.get('depots', {}).get('branches', {}).get('public', {})
+        buildid = branch_data.get('buildid')
+        timestamp = branch_data.get('timeupdated')
 
+        # Extract Modern Library Capsule (the new cover logic)
+        capsule_path = (
+            app_info.get("common", {})
+            .get("library_assets_full", {})
+            .get("library_capsule", {})
+            .get("image", {})
+            .get("english")
+        )
 
-# Load builds.csv → dict: appid -> {buildid, game}
-builds_csv = {}
-with open('data/builds.csv', newline='', encoding='utf-8') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        builds_csv[row['appid']] = {
-            "buildid": row['buildid'],
-            "game": row['game']
+        return {
+            "buildid": buildid,
+            "timestamp": int(timestamp) if timestamp else None,
+            "capsule_path": capsule_path
         }
+    except Exception:
+        return None
 
-# List of appids
-app_ids = list(builds_csv.keys())
+# Load builds.csv
+builds_csv = {}
+try:
+    with open('data/builds.csv', newline='', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            builds_csv[row['appid']] = {
+                "buildid": row['buildid'],
+                "game": row['game']
+            }
+except FileNotFoundError:
+    print("Error: data/builds.csv not found.")
+    exit()
 
-temp_data = {}
 temp_data_with_ts = []
 
-for appid in app_ids:
-    latest_buildid = get_latest_public_buildid(int(appid))
-    if latest_buildid is None:
+for appid in builds_csv.keys():
+    print(f"Checking AppID: {appid}...")
+    metadata = get_steam_app_metadata(int(appid))
+    
+    if not metadata or not metadata['buildid']:
         continue
 
-    # Skip unchanged build
-    if latest_buildid == builds_csv[appid]["buildid"]:
+    # Skip if build hasn't changed
+    if str(metadata['buildid']) == builds_csv[appid]["buildid"]:
         continue
 
-    timeupdated = get_latest_public_timeupdated(int(appid))
-    if timeupdated is None:
-        continue
+    # Format Date
+    dt = datetime.utcfromtimestamp(metadata['timestamp'])
+    formatted_date = dt.strftime(f"%B {ordinal(dt.day)}, %Y")
 
-    timestamp, formatted_date = timeupdated
-
-    # Create keywords from cleaned game name
+    # Construct Keywords and URLs
     game_name = builds_csv[appid]["game"]
     keywords = make_keywords(game_name)
+    rinurl = f"https://cs.rin.ru/forum/search.php?st=0&sk=t&sd=d&sr=topics&keywords={keywords}&terms=all&fid[]=10&sf=titleonly"
 
-    # Construct rinurl
-    rinurl = (
-        "https://cs.rin.ru/forum/search.php?"
-        f"st=0&sk=t&sd=d&sr=topics&keywords={keywords}"
-        "&terms=all&fid[]=10&sf=titleonly"
-    )
+    # CONSTRUCTION OF NEW COVER URL
+    # Fallback to the old header if the modern library capsule isn't found
+    if metadata['capsule_path']:
+        cover_url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/{metadata['capsule_path']}"
+    else:
+        cover_url = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/header.jpg"
 
     temp_data_with_ts.append((
-        timestamp,
+        metadata['timestamp'],
         appid,
         {
-            "steamheader": f"https://steamcdn-a.akamaihd.net/steam/apps/{appid}/header.jpg",
+            "steamheader": cover_url,
             "steamdburl": f"https://steamdb.info/app/{appid}/patchnotes",
             "date": formatted_date,
             "rinurl": rinurl
         }
     ))
+    
+    # Respect the API
+    time.sleep(0.5)
 
 # Sort newest → oldest
 temp_data_with_ts.sort(reverse=True, key=lambda x: x[0])
@@ -126,5 +117,9 @@ temp_data_with_ts.sort(reverse=True, key=lambda x: x[0])
 temp_data = {appid: data for _, appid, data in temp_data_with_ts}
 
 # Write output JSON
-with open('data/temp.json', 'w', encoding='utf-8') as f:
+output_path = Path('data/temp.json')
+output_path.parent.mkdir(exist_ok=True)
+with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(temp_data, f, indent=2)
+
+print(f"Done! Updated {len(temp_data)} entries.")
