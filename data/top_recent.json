@@ -1,21 +1,21 @@
 [
   {
-    "appid": "3375780",
-    "name": "Trails in the Sky 1st Chapter",
-    "total_reviews": 2976,
-    "total_positive": 2857,
-    "ratio": 0.960013440860215,
-    "weighted_score": 1920.02688172043,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3375780/5130e0696adf7d4e6183716f403f670af5112d4c/library_600x900.jpg"
-  },
-  {
     "appid": "1145350",
     "name": "Hades II",
     "total_reviews": 103718,
     "total_positive": 99214,
     "ratio": 0.9565745579359417,
-    "weighted_score": 1913.1491158718834,
+    "weighted_score": 99214.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145350/2ba105370a00877459144db0dd68af5f2d338429/library_capsule.jpg"
+  },
+  {
+    "appid": "1984270",
+    "name": "Digimon Story Time Stranger",
+    "total_reviews": 13454,
+    "total_positive": 12123,
+    "ratio": 0.9010703136613647,
+    "weighted_score": 12123.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1984270/abcd3844124c51dc6247eb3b52afdd43fb2414c3/library_600x900.jpg"
   },
   {
     "appid": "1904480",
@@ -23,7 +23,7 @@
     "total_reviews": 6847,
     "total_positive": 6384,
     "ratio": 0.932379144150723,
-    "weighted_score": 1864.7582883014459,
+    "weighted_score": 6384.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1904480/ade63b00f9dd2b767dc1fd7c0df0cd17013c7eed/library_capsule.jpg"
   }
 ]
