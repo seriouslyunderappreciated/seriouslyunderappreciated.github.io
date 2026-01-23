@@ -3,7 +3,7 @@
     {
       "name": "Big Hops",
       "steam_appid": "1221480",
-      "total_positive": 163,
+      "total_positive": 165,
       "platforms": [
         "PC (Microsoft Windows)",
         "PlayStation 5",
@@ -34,7 +34,7 @@
     {
       "name": "Ghetto Zombies: Graffiti Squad",
       "steam_appid": "3047820",
-      "total_positive": 52,
+      "total_positive": 53,
       "platforms": [
         "Xbox Series X|S",
         "PlayStation 4",
@@ -72,7 +72,7 @@
     {
       "name": "Gah!",
       "steam_appid": "2471090",
-      "total_positive": 41,
+      "total_positive": 42,
       "platforms": [
         "PC (Microsoft Windows)"
       ],
@@ -93,7 +93,7 @@
     {
       "name": "Velaster",
       "steam_appid": "1897060",
-      "total_positive": 33,
+      "total_positive": 35,
       "platforms": [
         "PC (Microsoft Windows)"
       ],
@@ -114,7 +114,7 @@
     {
       "name": "Elengard: Ascension",
       "steam_appid": "2017480",
-      "total_positive": 29,
+      "total_positive": 30,
       "platforms": [
         "PC (Microsoft Windows)"
       ],
@@ -315,6 +315,29 @@
           "name": "Party"
         }
       ],
+      "cover_url": null
+    },
+    {
+      "name": "Hack and Climb",
+      "platforms": [
+        null,
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 8,
+          "name": "Platform"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [],
       "cover_url": null
     },
     {
@@ -523,7 +546,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -683,7 +706,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -1096,6 +1119,24 @@
       "cover_url": null
     },
     {
+      "name": "Red Passport: Ticket to Russia",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [],
+      "cover_url": null
+    },
+    {
       "name": "Spiritual Bond: Breaking the Curse, Intertwining Fates",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -1205,11 +1246,61 @@
       "cover_url": null
     },
     {
+      "name": "Nahi's Winter Holidate",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 32,
+          "name": "Indie"
+        },
+        {
+          "id": 34,
+          "name": "Visual Novel"
+        }
+      ],
+      "themes": [
+        {
+          "id": 27,
+          "name": "Comedy"
+        },
+        {
+          "id": 44,
+          "name": "Romance"
+        }
+      ],
+      "cover_url": null
+    },
+    {
+      "name": "MetaChess",
+      "platforms": [
+        "PC (Microsoft Windows)",
+        "Mac"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        },
+        {
+          "id": 35,
+          "name": "Card & Board Game"
+        }
+      ],
+      "themes": [],
+      "cover_url": null
+    },
+    {
       "name": "Paravalence: With My Angel",
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -1234,25 +1325,6 @@
       "cover_url": null
     },
     {
-      "name": "Nova Hunter",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 31,
-          "name": "Adventure"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
       "name": "Shadow of Paris",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -1265,29 +1337,6 @@
         {
           "id": 32,
           "name": "Indie"
-        }
-      ],
-      "themes": [],
-      "cover_url": null
-    },
-    {
-      "name": "MetaChess",
-      "platforms": [
-        "PC (Microsoft Windows)",
-        null
-      ],
-      "genres": [
-        {
-          "id": 15,
-          "name": "Strategy"
-        },
-        {
-          "id": 32,
-          "name": "Indie"
-        },
-        {
-          "id": 35,
-          "name": "Card & Board Game"
         }
       ],
       "themes": [],
@@ -1340,7 +1389,7 @@
       "name": "Sunflower Stronghold",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -1669,7 +1718,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -1679,20 +1728,6 @@
         {
           "id": 32,
           "name": "Indie"
-        }
-      ],
-      "themes": [],
-      "cover_url": null
-    },
-    {
-      "name": "Journey to Shambhala",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 31,
-          "name": "Adventure"
         }
       ],
       "themes": [],
@@ -2099,7 +2134,7 @@
       "name": "Dungeon Antiqua 2",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -2116,34 +2151,18 @@
       "cover_url": null
     },
     {
-      "name": "Cannoneer",
-      "platforms": [
-        "PC (Microsoft Windows)",
-        "SteamVR"
-      ],
-      "genres": [
-        {
-          "id": 32,
-          "name": "Indie"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
-      "name": "Neuroxus",
+      "name": "Where We Went",
       "platforms": [
         "PC (Microsoft Windows)"
       ],
       "genres": [
         {
-          "id": 5,
-          "name": "Shooter"
+          "id": 9,
+          "name": "Puzzle"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
         },
         {
           "id": 32,
@@ -2152,12 +2171,12 @@
       ],
       "themes": [
         {
-          "id": 1,
-          "name": "Action"
+          "id": 17,
+          "name": "Fantasy"
         },
         {
-          "id": 18,
-          "name": "Science fiction"
+          "id": 43,
+          "name": "Mystery"
         }
       ],
       "cover_url": null
@@ -2167,7 +2186,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -2271,7 +2290,7 @@
       "name": "MetroCross",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -2510,29 +2529,6 @@
       "cover_url": null
     },
     {
-      "name": "The Professor",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 12,
-          "name": "Role-playing (RPG)"
-        },
-        {
-          "id": 31,
-          "name": "Adventure"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
       "name": "Mech Builder 3D",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -2647,7 +2643,7 @@
       "name": "Adventure Seekers: Lost to Sea - Collector's Edition",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -2784,7 +2780,7 @@
       "name": "Wordy Weapon",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -2890,28 +2886,9 @@
       "name": "Baking Bad",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
-      "name": "Ordinary Heroes",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 15,
-          "name": "Strategy"
-        }
-      ],
       "themes": [
         {
           "id": 1,
@@ -3024,7 +3001,7 @@
       "name": "Wrangle Ranch",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3072,7 +3049,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [],
       "themes": [],
@@ -3109,7 +3086,7 @@
       "name": "Cuben",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3133,11 +3110,38 @@
       "cover_url": null
     },
     {
+      "name": "One & Done",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        }
+      ],
+      "cover_url": null
+    },
+    {
       "name": "That Time I Saved You",
       "platforms": [
         null,
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3281,15 +3285,6 @@
       "cover_url": null
     },
     {
-      "name": "Macho Harvest: Muscular Harvest Puzzle",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [],
-      "themes": [],
-      "cover_url": null
-    },
-    {
       "name": "Reid's Secret Date",
       "platforms": [
         null,
@@ -3314,7 +3309,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3523,6 +3518,41 @@
       "cover_url": "https://images.igdb.com/igdb/image/upload/t_cover_big/co8pai.jpg"
     },
     {
+      "name": "Breath of Life",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 12,
+          "name": "Role-playing (RPG)"
+        },
+        {
+          "id": 25,
+          "name": "Hack and slash/Beat 'em up"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        },
+        {
+          "id": 17,
+          "name": "Fantasy"
+        }
+      ],
+      "cover_url": null
+    },
+    {
       "name": "Log.in",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -3603,7 +3633,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3833,7 +3863,7 @@
       "name": "Couch Detective",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -3994,33 +4024,6 @@
       "cover_url": null
     },
     {
-      "name": "Wartheon",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 12,
-          "name": "Role-playing (RPG)"
-        },
-        {
-          "id": 31,
-          "name": "Adventure"
-        },
-        {
-          "id": 32,
-          "name": "Indie"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
       "name": "Nice City",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -4049,7 +4052,7 @@
         null,
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -4184,24 +4187,6 @@
       "cover_url": null
     },
     {
-      "name": "Skulker",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 12,
-          "name": "Role-playing (RPG)"
-        },
-        {
-          "id": 32,
-          "name": "Indie"
-        }
-      ],
-      "themes": [],
-      "cover_url": null
-    },
-    {
       "name": "Depths of Insanity 3",
       "platforms": [
         "PC (Microsoft Windows)"
@@ -4315,32 +4300,11 @@
       "cover_url": null
     },
     {
-      "name": "2XKO",
-      "platforms": [
-        "Xbox Series X|S",
-        "PC (Microsoft Windows)",
-        "PlayStation 5"
-      ],
-      "genres": [
-        {
-          "id": 4,
-          "name": "Fighting"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
-        }
-      ],
-      "cover_url": null
-    },
-    {
       "name": "Bound Between Desks",
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -4632,7 +4596,7 @@
       "name": "Arrow Spire: Tower Defense",
       "platforms": [
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -4810,6 +4774,46 @@
       "cover_url": null
     },
     {
+      "name": "Banquet for Fools",
+      "platforms": [
+        "PC (Microsoft Windows)",
+        "Mac"
+      ],
+      "genres": [
+        {
+          "id": 12,
+          "name": "Role-playing (RPG)"
+        },
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        },
+        {
+          "id": 17,
+          "name": "Fantasy"
+        },
+        {
+          "id": 23,
+          "name": "Stealth"
+        },
+        {
+          "id": 43,
+          "name": "Mystery"
+        }
+      ],
+      "cover_url": null
+    },
+    {
       "name": "Devastablance Mountain Brotherhood",
       "platforms": [
         "Linux",
@@ -4856,7 +4860,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -4897,25 +4901,6 @@
         {
           "id": 17,
           "name": "Fantasy"
-        }
-      ],
-      "cover_url": null
-    },
-    {
-      "name": "The Helios Incident",
-      "platforms": [
-        "PC (Microsoft Windows)"
-      ],
-      "genres": [
-        {
-          "id": 32,
-          "name": "Indie"
-        }
-      ],
-      "themes": [
-        {
-          "id": 1,
-          "name": "Action"
         }
       ],
       "cover_url": null
@@ -5099,39 +5084,11 @@
       "cover_url": null
     },
     {
-      "name": "The Fortress",
-      "platforms": [
-        "PC (Microsoft Windows)",
-        null
-      ],
-      "genres": [
-        {
-          "id": 12,
-          "name": "Role-playing (RPG)"
-        },
-        {
-          "id": 31,
-          "name": "Adventure"
-        },
-        {
-          "id": 32,
-          "name": "Indie"
-        }
-      ],
-      "themes": [
-        {
-          "id": 17,
-          "name": "Fantasy"
-        }
-      ],
-      "cover_url": null
-    },
-    {
       "name": "The Seven Bad Apples",
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -5184,7 +5141,7 @@
       "platforms": [
         "Linux",
         "PC (Microsoft Windows)",
-        null
+        "Mac"
       ],
       "genres": [
         {
@@ -5206,6 +5163,117 @@
           "name": "Action"
         }
       ],
+      "cover_url": null
+    },
+    {
+      "name": "Tubby's Wonderful Town",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        }
+      ],
+      "cover_url": null
+    },
+    {
+      "name": "Chaturanga",
+      "platforms": [
+        "PC (Microsoft Windows)",
+        "Mac"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        },
+        {
+          "id": 35,
+          "name": "Card & Board Game"
+        }
+      ],
+      "themes": [],
+      "cover_url": null
+    },
+    {
+      "name": "Deadrock Salvation",
+      "platforms": [
+        "PC (Microsoft Windows)",
+        "Mac"
+      ],
+      "genres": [
+        {
+          "id": 12,
+          "name": "Role-playing (RPG)"
+        }
+      ],
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        }
+      ],
+      "cover_url": null
+    },
+    {
+      "name": "Static Memory",
+      "platforms": [
+        "PC (Microsoft Windows)"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [],
+      "cover_url": null
+    },
+    {
+      "name": "Pomelo & Friends: Sevilla",
+      "platforms": [
+        "PC (Microsoft Windows)",
+        "Mac"
+      ],
+      "genres": [
+        {
+          "id": 15,
+          "name": "Strategy"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        }
+      ],
+      "themes": [],
       "cover_url": null
     }
   ]
