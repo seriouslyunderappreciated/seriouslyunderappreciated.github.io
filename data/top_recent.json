@@ -2,20 +2,11 @@
   {
     "appid": "3014320",
     "name": "OCTOPATH TRAVELER 0",
-    "total_reviews": 1958,
-    "total_positive": 1499,
-    "ratio": 0.7655771195097038,
-    "weighted_score": 1499.0,
+    "total_reviews": 1959,
+    "total_positive": 1500,
+    "ratio": 0.7656967840735069,
+    "weighted_score": 1500.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3014320/eabd14c65d16a083157aaca508b21be11c3f1977/library_600x900.jpg"
-  },
-  {
-    "appid": "2313700",
-    "name": "Constance",
-    "total_reviews": 1730,
-    "total_positive": 1420,
-    "ratio": 0.8208092485549133,
-    "weighted_score": 1420.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2313700/cca9198fde88ead4e3bb74482e1e3d4c14429721/library_600x900.jpg"
   },
   {
     "appid": "1718460",
@@ -38,10 +29,10 @@
   {
     "appid": "2070270",
     "name": "Cloudheim",
-    "total_reviews": 795,
-    "total_positive": 643,
-    "ratio": 0.8088050314465409,
-    "weighted_score": 643.0,
+    "total_reviews": 798,
+    "total_positive": 646,
+    "ratio": 0.8095238095238095,
+    "weighted_score": 646.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070270/327f237ed8884cc85a83a3fff165244c75944964/library_capsule.jpg"
   },
   {
@@ -52,5 +43,14 @@
     "ratio": 0.9725738396624473,
     "weighted_score": 461.0,
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2393920/9cb8948c0a35a2f2b4bc55ad2d8b54baad523a70/library_600x900.jpg"
+  },
+  {
+    "appid": "2108180",
+    "name": "Swordhaven: Iron Conspiracy",
+    "total_reviews": 568,
+    "total_positive": 427,
+    "ratio": 0.7517605633802817,
+    "weighted_score": 427.00000000000006,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2108180/2ad4698bb53d5b3b86cc3e3559206053ae001c87/library_600x900.jpg"
   }
 ]
