@@ -33,7 +33,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           # Stage only the generated data file
-          git add data/igdb.json
+          git add data/top_recent.json
           # Only commit if the file actually changed to avoid empty runs
           if git diff --staged --quiet; then
             echo "No changes detected in IGDB data."
