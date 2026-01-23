@@ -6,11 +6,10 @@ import os
 from pathlib import Path
 
 # ============ CONFIGURATION ============
-TOP_N_GAMES = 6  # Number of top games to output
-INITIAL_POOL_SIZE = 40  # Number of games to fetch from Steam search
-REQUEST_DELAY = 0.5  # Delay between review API requests (seconds) to avoid rate limiting
-
-# Steam search URL with your filters
+TOP_N_GAMES = 6
+INITIAL_POOL_SIZE = 40
+REQUEST_DELAY = 0.5  # Delay for review API
+STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
 SEARCH_URL = (
     "https://store.steampowered.com/search/results/"
     "?sort_by=Released_DESC"
@@ -29,95 +28,93 @@ SEARCH_URL = (
 )
 
 def extract_appid_from_logo(logo_url):
-    """Extract appid from Steam logo URL."""
     match = re.search(r"steam/\w+/(\d+)", logo_url)
     if match:
         return match.group(1)
     return None
 
 def get_review_data(appid):
-    """Fetch review data for a given appid."""
     url = f"https://store.steampowered.com/appreviews/{appid}?json=1&language=all&num_per_page=0"
-    
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("success") == 1:
+            query_summary = data.get("query_summary", {})
+            return query_summary.get("total_positive", 0), query_summary.get("total_negative", 0)
+        return 0, 0
+    except Exception:
+        return 0, 0
+
+def get_steamcmd_cover(appid):
+    """Fetch the library capsule image from SteamCMD API."""
+    url = f"https://api.steamcmd.net/v1/info/{appid}"
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         data = response.json()
         
-        if data.get("success") == 1:
-            query_summary = data.get("query_summary", {})
-            total_positive = query_summary.get("total_positive", 0)
-            total_negative = query_summary.get("total_negative", 0)
-            return total_positive, total_negative
-        return 0, 0
+        # Navigate the JSON structure provided in your example
+        # data -> data -> {appid} -> common -> library_assets_full -> library_capsule -> image -> english
+        app_data = data.get("data", {}).get(str(appid), {})
+        capsule_path = (
+            app_data.get("common", {})
+            .get("library_assets_full", {})
+            .get("library_capsule", {})
+            .get("image", {})
+            .get("english")
+        )
+        
+        if capsule_path:
+            return f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/{capsule_path}"
     except Exception as e:
-        print(f"  ⚠️  Error fetching reviews for appid {appid}: {e}")
-        return 0, 0
+        print(f"    ⚠️  Error fetching SteamCMD data for {appid}: {e}")
+    
+    return None
 
 def main():
     print("🎮 Steam Top Recent Games Scraper")
     print("=" * 50)
     
-    # Step 1: Fetch initial pool of games
-    print(f"\n📥 Fetching {INITIAL_POOL_SIZE} recently released games...")
+    # Step 1: Fetch initial pool
     try:
         response = requests.get(SEARCH_URL, timeout=15)
         response.raise_for_status()
-        data = response.json()
+        items = response.json().get("items", [])
     except Exception as e:
-        print(f"❌ Error fetching search results: {e}")
+        print(f"❌ Error: {e}")
         return
-    
-    items = data.get("items", [])
-    if not items:
-        print("❌ No games found in search results!")
-        return
-    
-    print(f"✅ Found {len(items)} games")
-    
-    # Step 2: Extract appids and fetch review counts
-    print(f"\n📊 Fetching review counts for each game...")
+
+    # Step 2: Fetch reviews
     games_with_reviews = []
-    
     for i, item in enumerate(items, 1):
-        name = item.get("name", "Unknown")
-        logo = item.get("logo", "")
+        appid = extract_appid_from_logo(item.get("logo", ""))
+        if not appid: continue
         
-        appid = extract_appid_from_logo(logo)
-        if not appid:
-            print(f"  ⚠️  [{i}/{len(items)}] Skipping '{name}' - couldn't extract appid")
-            continue
-        
-        print(f"  🔍 [{i}/{len(items)}] {name} (appid: {appid})")
-        
-        total_positive, total_negative = get_review_data(appid)
-        
-        # Calculate ratio (positive / total reviews)
-        # If less than 200 total reviews, set ratio to 0
-        total_reviews = total_positive + total_negative
-        if total_reviews < 200:
-            ratio = 0
-        else:
-            ratio = total_positive / total_reviews
+        pos, neg = get_review_data(appid)
+        total = pos + neg
+        ratio = pos / total if total >= 200 else 0
         
         games_with_reviews.append({
             "appid": appid,
-            "name": name,
-            "total_positive": total_positive,
+            "name": item.get("name", "Unknown"),
+            "total_positive": pos,
             "ratio": ratio
         })
-        
-        # Rate limiting delay
-        if i < len(items):
-            time.sleep(REQUEST_DELAY)
-    
-    # Step 3: Sort by ratio (descending)
-    print(f"\n📈 Sorting games by positive review ratio...")
+        time.sleep(REQUEST_DELAY)
+
+    # Step 3 & 4: Sort and Slice
     games_with_reviews.sort(key=lambda x: x["ratio"], reverse=True)
-    
-    # Step 4: Take top N games
     top_games = games_with_reviews[:TOP_N_GAMES]
-    
+
+    # NEW STEP: Fetch Cover URLs for Top N
+    print(f"\n🖼️  Fetching cover art for Top {TOP_N_GAMES} games...")
+    for game in top_games:
+        print(f"  Fetching cover for: {game['name']}")
+        cover_url = get_steamcmd_cover(game['appid'])
+        game['cover_url'] = cover_url
+        time.sleep(STEAMCMD_DELAY)
+
     # Step 5: Save to JSON
     output_dir = Path("data")
     output_dir.mkdir(exist_ok=True)
@@ -126,16 +123,7 @@ def main():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(top_games, f, indent=2, ensure_ascii=False)
     
-    print(f"\n✅ Saved top {len(top_games)} games to {output_file}")
-    
-    # Display results
-    print(f"\n🏆 Top {len(top_games)} Recent Games by Positive Ratio:")
-    print("=" * 85)
-    for i, game in enumerate(top_games, 1):
-        ratio_pct = game['ratio'] * 100
-        print(f"{i:2d}. {game['name']:<45} | Ratio: {ratio_pct:>5.1f}% | 👍 {game['total_positive']:>7,} | ID: {game['appid']}")
-    
-    print(f"\n✨ Done! Check {output_file} for the full data.")
+    print(f"\n✅ Saved to {output_file}")
 
 if __name__ == "__main__":
     main()
