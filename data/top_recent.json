@@ -9,48 +9,21 @@
     "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145350/2ba105370a00877459144db0dd68af5f2d338429/library_capsule.jpg"
   },
   {
-    "appid": "3375780",
-    "name": "Trails in the Sky 1st Chapter",
-    "total_reviews": 2976,
-    "total_positive": 2857,
-    "ratio": 0.960013440860215,
-    "weighted_score": 2857.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3375780/5130e0696adf7d4e6183716f403f670af5112d4c/library_600x900.jpg"
+    "appid": "1984270",
+    "name": "Digimon Story Time Stranger",
+    "total_reviews": 13453,
+    "total_positive": 12123,
+    "ratio": 0.9011372927971456,
+    "weighted_score": 12123.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1984270/abcd3844124c51dc6247eb3b52afdd43fb2414c3/library_600x900.jpg"
   },
   {
-    "appid": "3265060",
-    "name": "Touhou Dystopian",
-    "total_reviews": 1797,
-    "total_positive": 1757,
-    "ratio": 0.9777406789092933,
-    "weighted_score": 1757.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3265060/c51b09e97105809bc85b9245117b5710beaead5f/library_capsule.jpg"
-  },
-  {
-    "appid": "2416100",
-    "name": "Goodnight Universe",
-    "total_reviews": 922,
-    "total_positive": 895,
-    "ratio": 0.9707158351409978,
-    "weighted_score": 895.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2416100/library_600x900.jpg"
-  },
-  {
-    "appid": "3081840",
-    "name": "Chrono Gear: Warden of Time",
-    "total_reviews": 785,
-    "total_positive": 777,
-    "ratio": 0.9898089171974522,
-    "weighted_score": 777.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3081840/library_600x900.jpg"
-  },
-  {
-    "appid": "2393920",
-    "name": "Angeline Era",
-    "total_reviews": 474,
-    "total_positive": 461,
-    "ratio": 0.9725738396624473,
-    "weighted_score": 461.0,
-    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2393920/9cb8948c0a35a2f2b4bc55ad2d8b54baad523a70/library_600x900.jpg"
+    "appid": "1904480",
+    "name": "Absolum",
+    "total_reviews": 6846,
+    "total_positive": 6383,
+    "ratio": 0.9323692667250949,
+    "weighted_score": 6383.0,
+    "cover_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1904480/ade63b00f9dd2b767dc1fd7c0df0cd17013c7eed/library_capsule.jpg"
   }
 ]
