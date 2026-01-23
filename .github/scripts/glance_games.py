@@ -6,13 +6,13 @@ import os
 from pathlib import Path
 
 # ============ CONFIGURATION ============
-TOP_N_GAMES = 6
+TOP_N_GAMES = 3
 INITIAL_POOL_SIZE = 100
 REQUEST_DELAY = 0.5  # Delay for review API
 STEAMCMD_DELAY = 0.5 # Delay for SteamCMD API to be respectful
 APPDETAILS_DELAY = 0.5  # Delay for appdetails API
 MIN_REVIEWS = 300  # Minimum total reviews to be considered
-MIN_RATIO = 0.95  # Minimum positive ratio to be considered
+MIN_RATIO = 0.90  # Minimum positive ratio to be considered
 
 # Excluded genres and categories (by description)
 EXCLUDED_GENRES = ["Early Access"]
