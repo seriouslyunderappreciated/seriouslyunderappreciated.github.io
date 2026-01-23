@@ -7,7 +7,7 @@ from pathlib import Path
 
 # ============ CONFIGURATION ============
 TOP_N_GAMES = 6  # Number of top games to output
-INITIAL_POOL_SIZE = 30  # Number of games to fetch from Steam search
+INITIAL_POOL_SIZE = 40  # Number of games to fetch from Steam search
 REQUEST_DELAY = 0.5  # Delay between review API requests (seconds) to avoid rate limiting
 
 # Steam search URL with your filters
