@@ -113,10 +113,10 @@ def main():
             print(f"            ❌ {ratio:.1%} rating (below {MIN_RATIO:.0%} threshold)")
             continue
         
-        # Calculate weighted rank: total reviews × ratio
-        weighted_rank = total * ratio
+        # Calculate weighted score: total reviews × ratio
+        weighted_score = total * ratio
         
-        print(f"            ✅ {ratio:.1%} with {total} reviews → rank: {weighted_rank:.0f}")
+        print(f"            ✅ {ratio:.1%} with {total} reviews → score: {weighted_score:.0f}")
         
         games_with_reviews.append({
             "appid": appid,
@@ -124,18 +124,18 @@ def main():
             "total_reviews": total,
             "total_positive": pos,
             "ratio": ratio,
-            "weighted_rank": weighted_rank
+            "weighted_score": weighted_score
         })
         time.sleep(REQUEST_DELAY)
 
-    # Step 3 & 4: Sort by weighted rank and slice
-    games_with_reviews.sort(key=lambda x: x["weighted_rank"], reverse=True)
+    # Step 3 & 4: Sort by weighted score and slice
+    games_with_reviews.sort(key=lambda x: x["weighted_score"], reverse=True)
     top_games = games_with_reviews[:TOP_N_GAMES]
 
     # Step 5: Fetch Cover URLs for Top N
     print(f"\n🖼️  Fetching cover art for Top {TOP_N_GAMES} games...")
     for game in top_games:
-        print(f"  Fetching cover for: {game['name']} (rank: {game['weighted_rank']:.0f})")
+        print(f"  Fetching cover for: {game['name']} (score: {game['weighted_score']:.0f})")
         cover_url = get_steamcmd_cover(game['appid'])
         game['cover_url'] = cover_url
         time.sleep(STEAMCMD_DELAY)
@@ -149,9 +149,9 @@ def main():
         json.dump(top_games, f, indent=2, ensure_ascii=False)
     
     print(f"\n✅ Saved to {output_file}")
-    print(f"\nTop {TOP_N_GAMES} games by weighted rank:")
+    print(f"\nTop {TOP_N_GAMES} games by weighted score:")
     for i, game in enumerate(top_games, 1):
-        print(f"  {i}. {game['name']}: {game['ratio']:.1%} ({game['total_reviews']} reviews) → rank: {game['weighted_rank']:.0f}")
+        print(f"  {i}. {game['name']}: {game['ratio']:.1%} ({game['total_reviews']} reviews) → score: {game['weighted_score']:.0f}")
 
 if __name__ == "__main__":
     main()
